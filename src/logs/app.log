@@ -2476,3 +2476,294 @@
 2025-06-24 15:07:19,800 - src.hardware.audio_interface - INFO - 音频设备资源已清理
 2025-06-24 15:07:19,811 - src.hardware.audio_interface - INFO - 音频设备资源已清理
 2025-06-24 15:07:19,817 - services.resource_manager - INFO - 所有资源已清理
+2025-06-24 15:17:50,900 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-24 15:17:50,901 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-24 15:17:50,901 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-24 15:17:50,901 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-24 15:17:50,901 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.002秒
+2025-06-24 15:17:50,936 - services.keyboard_service - INFO - 注册按键处理器: ctrl+1
+2025-06-24 15:17:50,936 - services.keyboard_service - INFO - 注册按键处理器: ctrl+2
+2025-06-24 15:17:50,936 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:17:50,977 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:17:56,207 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:17:56,261 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:18:01,495 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:18:01,553 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:18:06,786 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:18:06,839 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:18:12,093 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:18:12,151 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:18:17,373 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:18:17,424 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:18:22,658 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:18:22,712 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:18:27,943 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:18:27,997 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:18:33,226 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:18:33,280 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:18:38,512 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:18:38,565 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:18:43,803 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:18:43,856 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:18:49,093 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:18:49,149 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:18:54,405 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:18:54,462 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:18:59,692 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:18:59,747 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:19:00,621 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-24 15:19:00,621 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:19:00,621 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-24 15:19:00,621 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-24 15:19:00,621 - __main__ - INFO - 用户中断程序
+2025-06-24 15:19:00,621 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-24 15:19:00,621 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:19:00,622 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-24 15:19:00,623 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 69.723秒
+2025-06-24 15:19:00,623 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-24 15:19:00,623 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-24 15:19:00,623 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-24 15:19:00,623 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:19:00,623 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-24 15:19:00,623 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-24 15:19:00,623 - services.resource_manager - INFO - 所有资源已清理
+2025-06-24 15:19:00,623 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:19:00,633 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:19:00,638 - services.resource_manager - INFO - 所有资源已清理
+2025-06-24 15:21:00,979 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-24 15:21:00,979 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-24 15:21:00,979 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-24 15:21:00,979 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-24 15:21:00,979 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.002秒
+2025-06-24 15:21:01,013 - services.keyboard_service - INFO - 注册按键处理器: ctrl+1
+2025-06-24 15:21:01,013 - services.keyboard_service - INFO - 注册按键处理器: ctrl+2
+2025-06-24 15:21:01,013 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:21:01,053 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:21:06,286 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:21:06,339 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:21:09,269 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-24 15:21:09,270 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:21:09,270 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-24 15:21:09,270 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-24 15:21:09,270 - __main__ - INFO - 用户中断程序
+2025-06-24 15:21:09,270 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-24 15:21:09,270 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:21:09,271 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-24 15:21:09,271 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 8.292秒
+2025-06-24 15:21:09,271 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-24 15:21:09,271 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-24 15:21:09,271 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-24 15:21:09,271 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:21:09,271 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-24 15:21:09,271 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-24 15:21:09,271 - services.resource_manager - INFO - 所有资源已清理
+2025-06-24 15:21:09,271 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:21:09,281 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:21:09,287 - services.resource_manager - INFO - 所有资源已清理
+2025-06-24 15:22:43,558 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-24 15:22:43,559 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-24 15:22:43,559 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-24 15:22:43,559 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-24 15:22:43,559 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.002秒
+2025-06-24 15:22:43,596 - services.keyboard_service - INFO - 注册按键处理器: ctrl+1
+2025-06-24 15:22:43,597 - services.keyboard_service - INFO - 注册按键处理器: ctrl+2
+2025-06-24 15:22:43,597 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:22:43,640 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:22:48,880 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:22:48,935 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:22:54,166 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:22:54,224 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:26:06,033 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-24 15:26:06,033 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-24 15:26:06,034 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-24 15:26:06,034 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-24 15:26:06,034 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.002秒
+2025-06-24 15:26:06,068 - services.keyboard_service - INFO - 注册按键处理器: ctrl+1
+2025-06-24 15:26:06,068 - services.keyboard_service - INFO - 注册按键处理器: ctrl+2
+2025-06-24 15:26:06,068 - services.keyboard_service - INFO - 键盘监听服务已启动
+2025-06-24 15:26:06,068 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:26:06,111 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:26:06,120 - pynput.keyboard.Listener - WARNING - This process is not trusted! Input event monitoring will not be possible until it is added to accessibility clients.
+2025-06-24 15:26:09,226 - services.audio_service - INFO - 播放预留音频: reserved_1a.mp3
+2025-06-24 15:26:09,229 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/reserved_audios/reserved_1a.mp3
+2025-06-24 15:26:11,343 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:26:11,396 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:26:16,633 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:26:16,687 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:26:18,077 - services.audio_service - INFO - 播放预留音频: reserved_2.mp3
+2025-06-24 15:26:18,079 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/reserved_audios/reserved_2.mp3
+2025-06-24 15:26:21,918 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:26:21,972 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:26:27,201 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:26:27,257 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:26:28,049 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-24 15:26:28,049 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:26:28,049 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-24 15:26:28,049 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-24 15:26:28,049 - __main__ - INFO - 用户中断程序
+2025-06-24 15:26:28,049 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-24 15:26:28,049 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:26:28,049 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-24 15:26:28,049 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 22.016秒
+2025-06-24 15:26:28,049 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-24 15:26:28,049 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-24 15:26:28,049 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-24 15:26:28,049 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:26:28,049 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-24 15:26:28,049 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-24 15:26:28,049 - services.resource_manager - INFO - 所有资源已清理
+2025-06-24 15:26:28,056 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:26:32,484 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-24 15:26:32,484 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-24 15:26:32,484 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-24 15:26:32,484 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-24 15:26:32,484 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.002秒
+2025-06-24 15:26:32,525 - services.keyboard_service - INFO - 注册按键处理器: ctrl+1
+2025-06-24 15:26:32,525 - services.keyboard_service - INFO - 注册按键处理器: ctrl+2
+2025-06-24 15:26:32,526 - services.keyboard_service - INFO - 键盘监听服务已启动
+2025-06-24 15:26:32,526 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:26:32,568 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:26:32,569 - pynput.keyboard.Listener - WARNING - This process is not trusted! Input event monitoring will not be possible until it is added to accessibility clients.
+2025-06-24 15:26:37,805 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:26:37,859 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:26:43,091 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:26:43,151 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:26:48,384 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:26:48,441 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:26:53,691 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:26:53,747 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:26:55,418 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-24 15:26:55,418 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:26:55,419 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-24 15:26:55,419 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-24 15:26:55,419 - __main__ - INFO - 用户中断程序
+2025-06-24 15:26:55,419 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-24 15:26:55,419 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:26:55,420 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-24 15:26:55,420 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 22.936秒
+2025-06-24 15:26:55,420 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-24 15:26:55,420 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-24 15:26:55,420 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-24 15:26:55,420 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:26:55,420 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-24 15:26:55,421 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-24 15:26:55,421 - services.resource_manager - INFO - 所有资源已清理
+2025-06-24 15:26:55,431 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:27:08,627 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-24 15:27:08,627 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-24 15:27:08,627 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-24 15:27:08,627 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-24 15:27:08,627 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.002秒
+2025-06-24 15:27:08,663 - services.keyboard_service - INFO - 注册按键处理器: ctrl+1
+2025-06-24 15:27:08,663 - services.keyboard_service - INFO - 注册按键处理器: ctrl+2
+2025-06-24 15:27:08,663 - services.keyboard_service - INFO - 键盘监听服务已启动
+2025-06-24 15:27:08,663 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:27:08,700 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:27:08,711 - pynput.keyboard.Listener - WARNING - This process is not trusted! Input event monitoring will not be possible until it is added to accessibility clients.
+2025-06-24 15:27:11,179 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-24 15:27:12,629 - src.hardware.audio_interface - INFO - 录音时长: 0.84秒
+2025-06-24 15:27:15,387 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-24 15:27:15,387 - src.hardware.audio_interface - INFO - 你好，伯乐。
+2025-06-24 15:27:15,387 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.5
+2025-06-24 15:27:15,388 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-24 15:27:15,553 - services.audio_service - INFO - 播放提示音频...
+2025-06-24 15:27:19,086 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-24 15:27:19,138 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-24 15:27:20,081 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-24 15:27:25,115 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-24 15:27:25,118 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250624_152719.wav
+2025-06-24 15:27:25,315 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-24 15:27:25,317 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 6.230秒
+2025-06-24 15:27:27,811 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-24 15:27:27,812 - __main__ - INFO - 请问北京化工大学在哪个展位？
+2025-06-24 15:27:27,812 - __main__ - INFO - [性能监控] 语音转文字耗时: 2.495秒
+2025-06-24 15:27:27,812 - src.hardware.audio_interface - INFO - 文本相似度: 0.00, 阈值: 0.5
+2025-06-24 15:27:28,123 - services.audio_service - INFO - 播放等待音频...
+2025-06-24 15:27:28,125 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-24 15:27:31,766 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-24 15:27:31,766 - services.chat_processor - INFO - 北京化工大学：
+展位号：S001
+省市：北京市
+2025-06-24 15:27:33,778 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250624_152733.mp3
+2025-06-24 15:27:33,779 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-24 15:27:33,779 - __main__ - INFO - [性能监控] 智能体处理耗时: 5.967秒
+2025-06-24 15:27:40,966 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250624_152733.mp3
+2025-06-24 15:27:40,968 - services.audio_service - INFO - 结果音频播放完成
+2025-06-24 15:27:40,968 - root - INFO - Conversation cycle completed successfully
+2025-06-24 15:27:40,969 - __main__ - INFO - [性能监控] 音频播放耗时: 7.190秒
+2025-06-24 15:27:41,020 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-24 15:27:43,357 - services.audio_service - INFO - 播放预留音频: reserved_1a.mp3
+2025-06-24 15:27:43,357 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/reserved_audios/reserved_1a.mp3
+2025-06-24 15:27:53,054 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-24 15:27:56,039 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-24 15:27:56,041 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250624_152740.wav
+2025-06-24 15:27:56,232 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-24 15:27:56,234 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 15.265秒
+2025-06-24 15:27:57,640 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-24 15:27:57,641 - __main__ - INFO - 你好，伯乐。
+2025-06-24 15:27:57,641 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.407秒
+2025-06-24 15:27:57,641 - src.hardware.audio_interface - INFO - 文本相似度: 0.55, 阈值: 0.5
+2025-06-24 15:27:57,641 - src.hardware.audio_interface - INFO - 相似度检测，检测到结束词！
+2025-06-24 15:27:57,641 - __main__ - INFO - 检测到用户输入 再见，伯乐 退出聊天，播放再见音频文件。
+2025-06-24 15:27:57,641 - services.audio_service - INFO - 播放再见音频...
+2025-06-24 15:28:01,302 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/bye_audios/bye.mp3
+2025-06-24 15:28:01,303 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:28:01,355 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:28:06,500 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-24 15:28:06,500 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:28:06,500 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-24 15:28:06,500 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-24 15:28:06,500 - __main__ - INFO - 用户中断程序
+2025-06-24 15:28:06,500 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-24 15:28:06,500 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:28:06,500 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-24 15:28:06,500 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 57.873秒
+2025-06-24 15:28:06,500 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-24 15:28:06,500 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-24 15:28:06,500 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-24 15:28:06,500 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:28:06,500 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-24 15:28:06,500 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-24 15:28:06,501 - services.resource_manager - INFO - 所有资源已清理
+2025-06-24 15:28:06,508 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:36:10,268 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-24 15:36:10,268 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-24 15:36:10,268 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-24 15:36:10,268 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-24 15:36:10,268 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.002秒
+2025-06-24 15:36:10,306 - services.keyboard_service - INFO - 注册按键处理器: ctrl+1
+2025-06-24 15:36:10,306 - services.keyboard_service - INFO - 注册按键处理器: ctrl+2
+2025-06-24 15:36:10,306 - services.keyboard_service - INFO - 键盘监听服务已启动
+2025-06-24 15:36:10,306 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:36:10,355 - pynput.keyboard.Listener - WARNING - This process is not trusted! Input event monitoring will not be possible until it is added to accessibility clients.
+2025-06-24 15:36:10,396 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:36:12,748 - services.audio_service - INFO - 播放预留音频: reserved_gaoxiao1.mp3
+2025-06-24 15:36:12,751 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/reserved_audios/reserved_gaoxiao1.mp3
+2025-06-24 15:36:13,727 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-24 15:36:14,325 - src.hardware.audio_interface - INFO - 录音时长: 0.09秒
+2025-06-24 15:36:14,326 - src.hardware.audio_interface - INFO - 录音时长过短，不进行语音识别
+2025-06-24 15:36:14,523 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:36:14,573 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:36:19,803 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:36:19,853 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:36:22,086 - services.audio_service - INFO - 播放预留音频: reserved_gaoxiao2.mp3
+2025-06-24 15:36:22,086 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/reserved_audios/reserved_gaoxiao2.mp3
+2025-06-24 15:36:25,083 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:36:25,136 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:36:27,912 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-24 15:36:27,913 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:36:27,913 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-24 15:36:27,914 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-24 15:36:27,914 - __main__ - INFO - 用户中断程序
+2025-06-24 15:36:27,914 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-24 15:36:27,914 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:36:27,914 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-24 15:36:27,914 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 17.647秒
+2025-06-24 15:36:27,915 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-24 15:36:27,915 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-24 15:36:27,915 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-24 15:36:27,915 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:36:27,915 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-24 15:36:27,915 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-24 15:36:27,915 - services.resource_manager - INFO - 所有资源已清理
+2025-06-24 15:36:27,925 - src.hardware.audio_interface - INFO - 音频设备资源已清理

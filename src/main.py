@@ -6,7 +6,7 @@ from contextlib import contextmanager
 from config import Config
 from services.chat_processor import ChatProcessor
 from services.audio_service import AudioService
-#from services.keyboard_service import KeyboardService
+from services.keyboard_service import KeyboardService
 from utils.paths import PathManager
 from services.scheduler import CleanupScheduler
 from services.error_handler import ErrorCategory
@@ -45,6 +45,7 @@ def main():
             try:
                 PathManager.create_dir(Config.OUTPUT_DIR)
                 PathManager.create_dir(Config.RECORD_DIR)
+                PathManager.create_dir(os.path.join(Config.OUTPUT_DIR, Config.AUDIO_NAMES["reserved_dir"]))
             except Exception as e:
                 with resource_manager.manage_resource(ResourceType.ERROR_HANDLER) as error_handler:
                     error_handler.handle_error(e, ErrorCategory.FILE)
@@ -65,6 +66,16 @@ def main():
 
                         # 创建音频服务
                         audio_service = AudioService(audio_interface, audio_mgr)
+
+                        # 创建键盘监听服务
+                        keyboard_service = KeyboardService(
+                            os.path.join(Config.OUTPUT_DIR, Config.AUDIO_NAMES["reserved_dir"])
+                        )
+                        keyboard_service.register_handler("ctrl+1", lambda: audio_service.play_reserved_audio("gaoxiao1"))
+                        keyboard_service.register_handler("ctrl+2", lambda: audio_service.play_reserved_audio("gaoxiao2"))
+
+                        # 启动键盘监听
+                        keyboard_service.start()
 
                         # 创建对话处理器
                         processor = ChatProcessor(api_client, audio_service)
