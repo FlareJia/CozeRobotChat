@@ -1,0 +1,1385 @@
+2025-06-05 09:46:28,642 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-05 09:46:28,643 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-05 09:46:28,643 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-05 09:46:28,643 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-05 09:46:28,643 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.005秒
+2025-06-05 09:46:28,689 - __main__ - INFO - 等待唤醒词...
+2025-06-05 09:46:28,753 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 09:46:32,259 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 09:46:33,620 - src.hardware.audio_interface - INFO - 录音时长: 0.56秒
+2025-06-05 09:46:35,296 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-05 09:46:35,297 - src.hardware.audio_interface - INFO - 你好，伯乐。
+2025-06-05 09:46:35,297 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.5
+2025-06-05 09:46:35,298 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-05 09:46:35,414 - services.audio_service - WARNING - 提示音频文件不存在: outputs/hello_audios/hello_recruitment.mp3
+2025-06-05 09:46:35,488 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 09:46:40,952 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 09:46:46,072 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 09:46:46,074 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_094635.wav
+2025-06-05 09:46:46,191 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 09:46:46,192 - __main__ - INFO - [性能监控] 音频录制耗时: 10.777秒
+2025-06-05 09:46:47,794 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 09:46:47,795 - __main__ - INFO - 今天天气怎么样？
+2025-06-05 09:46:47,795 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.602秒
+2025-06-05 09:46:47,795 - src.hardware.audio_interface - INFO - 文本相似度: 0.00, 阈值: 0.5
+2025-06-05 09:46:47,899 - services.audio_service - WARNING - 等待音频文件不存在: outputs/wait_audios/wait_recruitment.mp3
+2025-06-05 09:46:47,899 - services.chat_processor - ERROR - 无法获取对话ID
+2025-06-05 09:46:47,899 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-05 09:46:47,899 - __main__ - INFO - [性能监控] 智能体处理耗时: 0.104秒
+2025-06-05 09:46:47,900 - __main__ - INFO - [性能监控] 音频播放耗时: 0.000秒
+2025-06-05 09:46:47,977 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 09:47:05,158 - __main__ - INFO - [性能监控] 音频录制耗时: 17.258秒
+2025-06-05 09:47:05,158 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 09:47:05,158 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 09:47:05,158 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 09:47:05,158 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 09:47:05,158 - __main__ - INFO - 用户中断程序
+2025-06-05 09:47:05,158 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-05 09:47:05,158 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 09:47:05,158 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-05 09:47:05,159 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 36.515秒
+2025-06-05 09:47:05,159 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 09:47:05,159 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 09:47:05,159 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 09:47:05,159 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 09:47:05,159 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 09:47:05,159 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 09:47:05,159 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 09:47:05,159 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 09:47:05,165 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 09:47:05,168 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 09:48:55,251 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-05 09:48:55,252 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-05 09:48:55,252 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-05 09:48:55,252 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-05 09:48:55,252 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.001秒
+2025-06-05 09:48:55,290 - __main__ - INFO - 等待唤醒词...
+2025-06-05 09:48:55,352 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 09:48:56,635 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 09:48:57,832 - src.hardware.audio_interface - INFO - 录音时长: 0.74秒
+2025-06-05 09:48:59,414 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-05 09:48:59,415 - src.hardware.audio_interface - INFO - 你好，不乐。
+2025-06-05 09:48:59,415 - src.hardware.audio_interface - INFO - 文本相似度: 0.73, 阈值: 0.5
+2025-06-05 09:48:59,415 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-05 09:48:59,537 - services.audio_service - WARNING - 提示音频文件不存在: outputs/hello_audios/hello_recruitment.mp3
+2025-06-05 09:48:59,613 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 09:49:00,556 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 09:49:02,686 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 09:49:02,687 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_094859.wav
+2025-06-05 09:49:02,803 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 09:49:02,804 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 3.266秒
+2025-06-05 09:49:03,838 - src.services.api_client - ERROR - 响应中缺少文本内容
+2025-06-05 09:49:03,838 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 09:49:03,839 - __main__ - INFO - None
+2025-06-05 09:49:03,839 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.035秒
+2025-06-05 09:49:04,042 - services.audio_service - WARNING - 等待音频文件不存在: outputs/wait_audios/wait_recruitment.mp3
+2025-06-05 09:49:04,043 - services.chat_processor - ERROR - 无法获取对话ID
+2025-06-05 09:49:04,043 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-05 09:49:04,043 - __main__ - INFO - [性能监控] 智能体处理耗时: 0.204秒
+2025-06-05 09:49:04,043 - __main__ - INFO - [性能监控] 音频播放耗时: 0.000秒
+2025-06-05 09:49:04,122 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 09:49:10,612 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 09:49:13,514 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 09:49:13,516 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_094904.wav
+2025-06-05 09:49:13,634 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 09:49:13,634 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 9.591秒
+2025-06-05 09:49:15,400 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 09:49:15,400 - __main__ - INFO - 明天天气怎么样？
+2025-06-05 09:49:15,401 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.766秒
+2025-06-05 09:49:15,401 - src.hardware.audio_interface - INFO - 文本相似度: 0.00, 阈值: 0.5
+2025-06-05 09:49:15,504 - services.audio_service - WARNING - 等待音频文件不存在: outputs/wait_audios/wait_recruitment.mp3
+2025-06-05 09:49:15,505 - services.chat_processor - ERROR - 无法获取对话ID
+2025-06-05 09:49:15,505 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-05 09:49:15,505 - __main__ - INFO - [性能监控] 智能体处理耗时: 0.104秒
+2025-06-05 09:49:15,505 - __main__ - INFO - [性能监控] 音频播放耗时: 0.000秒
+2025-06-05 09:49:15,583 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 09:49:20,564 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 5.058秒
+2025-06-05 09:49:20,564 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 09:49:20,564 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 09:49:20,564 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 09:49:20,564 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 09:49:20,564 - __main__ - INFO - 用户中断程序
+2025-06-05 09:49:20,564 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-05 09:49:20,565 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 09:49:20,565 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-05 09:49:20,565 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 25.313秒
+2025-06-05 09:49:20,565 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 09:49:20,565 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 09:49:20,565 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 09:49:20,565 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 09:49:20,565 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 09:49:20,566 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 09:49:20,566 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 09:49:20,566 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 09:49:20,574 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 09:49:20,578 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 09:52:41,338 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-05 09:52:41,339 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-05 09:52:41,339 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-05 09:52:41,339 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-05 09:52:41,339 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.002秒
+2025-06-05 09:52:41,377 - __main__ - INFO - 等待唤醒词...
+2025-06-05 09:52:41,437 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 09:52:42,978 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 09:52:44,171 - src.hardware.audio_interface - INFO - 录音时长: 0.56秒
+2025-06-05 09:52:45,363 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-05 09:52:45,363 - src.hardware.audio_interface - INFO - 你好，伯乐。
+2025-06-05 09:52:45,364 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.5
+2025-06-05 09:52:45,364 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-05 09:52:45,482 - services.audio_service - INFO - 播放提示音频...
+2025-06-05 09:52:49,132 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-05 09:52:49,210 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 09:52:50,239 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 09:52:53,563 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 09:52:53,565 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_095249.wav
+2025-06-05 09:52:53,685 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 09:52:53,687 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 4.554秒
+2025-06-05 09:52:55,880 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 09:52:55,880 - __main__ - INFO - 今天天气如何？
+2025-06-05 09:52:55,880 - __main__ - INFO - [性能监控] 语音转文字耗时: 2.193秒
+2025-06-05 09:52:55,881 - src.hardware.audio_interface - INFO - 文本相似度: 0.00, 阈值: 0.5
+2025-06-05 09:52:56,002 - services.audio_service - WARNING - 等待音频文件不存在: outputs/wait_audios/wait_recruitment.mp3
+2025-06-05 09:52:56,002 - services.chat_processor - ERROR - 无法获取对话ID
+2025-06-05 09:52:56,002 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-05 09:52:56,002 - __main__ - INFO - [性能监控] 智能体处理耗时: 0.122秒
+2025-06-05 09:52:56,003 - __main__ - INFO - [性能监控] 音频播放耗时: 0.000秒
+2025-06-05 09:52:56,080 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 09:53:00,549 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 4.546秒
+2025-06-05 09:53:00,549 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 09:53:00,549 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 09:53:00,549 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 09:53:00,549 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 09:53:00,549 - __main__ - INFO - 用户中断程序
+2025-06-05 09:53:00,549 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-05 09:53:00,549 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 09:53:00,549 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-05 09:53:00,549 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 19.210秒
+2025-06-05 09:53:00,549 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 09:53:00,549 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 09:53:00,549 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 09:53:00,549 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 09:53:00,549 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 09:53:00,549 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 09:53:00,550 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 09:53:00,550 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 09:53:00,559 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 09:53:00,567 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 10:14:47,859 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-05 10:14:47,860 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-05 10:14:47,860 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-05 10:14:47,861 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-05 10:14:47,861 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.005秒
+2025-06-05 10:14:47,904 - __main__ - INFO - 等待唤醒词...
+2025-06-05 10:14:47,965 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 10:14:49,930 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:14:51,213 - src.hardware.audio_interface - INFO - 录音时长: 0.74秒
+2025-06-05 10:14:53,113 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-05 10:14:53,113 - src.hardware.audio_interface - INFO - 你好，伯乐。
+2025-06-05 10:14:53,114 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.5
+2025-06-05 10:14:53,114 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-05 10:14:53,228 - services.audio_service - INFO - 播放提示音频...
+2025-06-05 10:14:56,941 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-05 10:14:57,005 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 10:14:57,948 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:15:01,023 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 10:15:01,024 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_101456.wav
+2025-06-05 10:15:01,138 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 10:15:01,139 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 4.198秒
+2025-06-05 10:15:05,549 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 10:15:05,549 - __main__ - INFO - 今天天气如何？
+2025-06-05 10:15:05,549 - __main__ - INFO - [性能监控] 语音转文字耗时: 4.410秒
+2025-06-05 10:15:27,693 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:15:27,693 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:15:27,693 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:15:27,693 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:15:27,693 - __main__ - INFO - 用户中断程序
+2025-06-05 10:15:27,693 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-05 10:15:27,693 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:15:27,693 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-05 10:15:27,693 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 39.833秒
+2025-06-05 10:15:27,693 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:15:27,693 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:15:27,693 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:15:27,693 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:15:27,693 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:15:27,694 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:15:27,694 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 10:15:56,854 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-05 10:15:56,856 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-05 10:15:56,856 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-05 10:15:56,856 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-05 10:15:56,856 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.005秒
+2025-06-05 10:15:56,894 - __main__ - INFO - 等待唤醒词...
+2025-06-05 10:15:56,954 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 10:15:58,496 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:15:59,515 - src.hardware.audio_interface - INFO - 录音时长: 0.56秒
+2025-06-05 10:16:00,884 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-05 10:16:00,884 - src.hardware.audio_interface - INFO - 你好，不乐。
+2025-06-05 10:16:00,885 - src.hardware.audio_interface - INFO - 文本相似度: 0.73, 阈值: 0.5
+2025-06-05 10:16:00,885 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-05 10:16:01,002 - services.audio_service - INFO - 播放提示音频...
+2025-06-05 10:16:04,707 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-05 10:16:04,786 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 10:16:06,414 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:16:09,229 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 10:16:09,231 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_101604.wav
+2025-06-05 10:16:09,352 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 10:16:09,354 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 4.646秒
+2025-06-05 10:16:11,895 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 10:16:11,896 - __main__ - INFO - 今天天气如
+2025-06-05 10:16:11,896 - __main__ - INFO - [性能监控] 语音转文字耗时: 2.541秒
+2025-06-05 10:16:27,384 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:16:27,384 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:16:27,384 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:16:27,384 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:16:27,384 - __main__ - INFO - 用户中断程序
+2025-06-05 10:16:27,384 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-05 10:16:27,384 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:16:27,385 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-05 10:16:27,385 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 30.528秒
+2025-06-05 10:16:27,385 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:16:27,385 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:16:27,385 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:16:27,385 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:16:27,385 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:16:27,385 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:16:27,385 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 10:17:53,950 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-05 10:17:53,951 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-05 10:17:53,951 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-05 10:17:53,951 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-05 10:17:53,951 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.004秒
+2025-06-05 10:17:53,988 - __main__ - INFO - 等待唤醒词...
+2025-06-05 10:17:54,047 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 10:17:55,500 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:17:56,783 - src.hardware.audio_interface - INFO - 录音时长: 0.65秒
+2025-06-05 10:17:58,493 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-05 10:17:58,494 - src.hardware.audio_interface - INFO - 你好，伯乐。
+2025-06-05 10:17:58,495 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.5
+2025-06-05 10:17:58,495 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-05 10:17:58,614 - services.audio_service - INFO - 播放提示音频...
+2025-06-05 10:18:02,317 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-05 10:18:02,393 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 10:18:02,825 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:18:05,213 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 10:18:05,215 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_101802.wav
+2025-06-05 10:18:05,332 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 10:18:05,335 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 3.017秒
+2025-06-05 10:18:06,527 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 10:18:06,527 - __main__ - INFO - 天气如
+2025-06-05 10:18:06,527 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.192秒
+2025-06-05 10:18:09,591 - src.hardware.audio_interface - INFO - 文本相似度: 0.00, 阈值: 0.7
+2025-06-05 10:18:15,179 - services.audio_service - WARNING - 等待音频文件不存在: outputs/wait_audios/wait_recruitment.mp3
+2025-06-05 10:18:15,179 - services.chat_processor - ERROR - 无法获取对话ID
+2025-06-05 10:18:15,842 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-05 10:18:15,842 - __main__ - INFO - [性能监控] 智能体处理耗时: 1.931秒
+2025-06-05 10:18:19,102 - __main__ - INFO - [性能监控] 音频播放耗时: 2.610秒
+2025-06-05 10:20:38,131 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-05 10:20:38,131 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-05 10:20:38,131 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-05 10:20:38,132 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-05 10:20:38,132 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.002秒
+2025-06-05 10:20:38,171 - __main__ - INFO - 等待唤醒词...
+2025-06-05 10:20:38,231 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 10:20:39,689 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:20:40,793 - src.hardware.audio_interface - INFO - 录音时长: 0.56秒
+2025-06-05 10:20:42,504 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-05 10:20:42,505 - src.hardware.audio_interface - INFO - 你好，不乐。
+2025-06-05 10:20:42,505 - src.hardware.audio_interface - INFO - 文本相似度: 0.73, 阈值: 0.5
+2025-06-05 10:20:42,505 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-05 10:20:42,628 - services.audio_service - INFO - 播放提示音频...
+2025-06-05 10:20:46,216 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-05 10:20:46,296 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 10:20:46,641 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:20:49,711 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 10:20:49,713 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_102046.wav
+2025-06-05 10:20:49,834 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 10:20:49,836 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 3.619秒
+2025-06-05 10:20:51,281 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 10:20:51,282 - __main__ - INFO - 天气如何？
+2025-06-05 10:20:51,282 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.447秒
+2025-06-05 10:20:51,283 - src.hardware.audio_interface - INFO - 文本相似度: 0.00, 阈值: 0.7
+2025-06-05 10:20:51,375 - services.audio_service - WARNING - 等待音频文件不存在: outputs/wait_audios/wait_recruitment.mp3
+2025-06-05 10:20:51,375 - services.chat_processor - ERROR - 无法获取对话ID
+2025-06-05 10:20:51,376 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-05 10:20:51,376 - __main__ - INFO - [性能监控] 智能体处理耗时: 0.093秒
+2025-06-05 10:20:51,376 - __main__ - INFO - [性能监控] 音频播放耗时: 0.000秒
+2025-06-05 10:20:51,450 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 10:20:53,502 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:20:55,808 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 10:20:55,810 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_102051.wav
+2025-06-05 10:20:55,929 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 10:20:55,930 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 4.554秒
+2025-06-05 10:20:57,244 - src.services.api_client - ERROR - 响应中缺少文本内容
+2025-06-05 10:20:57,244 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 10:20:57,244 - __main__ - INFO - None
+2025-06-05 10:20:57,245 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.314秒
+2025-06-05 10:20:57,421 - services.audio_service - WARNING - 等待音频文件不存在: outputs/wait_audios/wait_recruitment.mp3
+2025-06-05 10:20:57,421 - services.chat_processor - ERROR - 无法获取对话ID
+2025-06-05 10:20:57,421 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-05 10:20:57,421 - __main__ - INFO - [性能监控] 智能体处理耗时: 0.176秒
+2025-06-05 10:20:57,421 - __main__ - INFO - [性能监控] 音频播放耗时: 0.000秒
+2025-06-05 10:20:57,503 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 10:20:59,799 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 159.604秒
+2025-06-05 10:20:59,799 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:20:59,799 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:20:59,799 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:20:59,799 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:20:59,799 - __main__ - INFO - 用户中断程序
+2025-06-05 10:20:59,799 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-05 10:20:59,799 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:20:59,800 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-05 10:20:59,800 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 185.849秒
+2025-06-05 10:20:59,800 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:20:59,800 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:20:59,800 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:20:59,800 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:20:59,800 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:20:59,800 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:20:59,800 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 10:20:59,922 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 2.500秒
+2025-06-05 10:20:59,922 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:20:59,922 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:20:59,922 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:20:59,922 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:20:59,922 - __main__ - INFO - 用户中断程序
+2025-06-05 10:20:59,922 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-05 10:20:59,922 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:20:59,922 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-05 10:20:59,922 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 21.791秒
+2025-06-05 10:20:59,922 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:20:59,922 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:20:59,922 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:20:59,922 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:20:59,922 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:20:59,922 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:20:59,922 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 10:20:59,923 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:20:59,929 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:20:59,934 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 10:21:43,059 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-05 10:21:43,060 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-05 10:21:43,060 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-05 10:21:43,060 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-05 10:21:43,060 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.004秒
+2025-06-05 10:21:43,098 - __main__ - INFO - 等待唤醒词...
+2025-06-05 10:21:43,161 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 10:21:44,186 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:21:45,728 - src.hardware.audio_interface - INFO - 录音时长: 0.74秒
+2025-06-05 10:22:07,787 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-05 10:22:07,788 - src.hardware.audio_interface - INFO - 你好，伯乐。
+2025-06-05 10:22:07,788 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.5
+2025-06-05 10:22:07,788 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-05 10:22:07,900 - services.audio_service - INFO - 播放提示音频...
+2025-06-05 10:22:11,605 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-05 10:22:11,683 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 10:22:11,941 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:22:16,040 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 10:22:16,042 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_102211.wav
+2025-06-05 10:22:16,160 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 10:22:16,161 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 4.555秒
+2025-06-05 10:22:24,832 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 10:22:24,832 - __main__ - INFO - 今天天气如何？
+2025-06-05 10:22:24,832 - __main__ - INFO - [性能监控] 语音转文字耗时: 8.671秒
+2025-06-05 10:22:31,487 - src.hardware.audio_interface - INFO - 文本相似度: 0.00, 阈值: 0.7
+2025-06-05 10:22:31,596 - services.audio_service - WARNING - 等待音频文件不存在: outputs/wait_audios/wait_recruitment.mp3
+2025-06-05 10:22:31,596 - services.chat_processor - ERROR - 无法获取对话ID
+2025-06-05 10:22:31,596 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-05 10:22:31,597 - __main__ - INFO - [性能监控] 智能体处理耗时: 0.109秒
+2025-06-05 10:22:31,597 - __main__ - INFO - [性能监控] 音频播放耗时: 0.000秒
+2025-06-05 10:22:31,673 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 10:22:39,358 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:22:42,260 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 10:22:42,262 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_102231.wav
+2025-06-05 10:22:42,382 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 10:22:42,384 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 10.787秒
+2025-06-05 10:23:00,152 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 10:23:00,976 - __main__ - INFO - 今天天气如何？
+2025-06-05 10:23:00,976 - __main__ - INFO - [性能监控] 语音转文字耗时: 18.592秒
+2025-06-05 10:23:02,529 - src.hardware.audio_interface - INFO - 文本相似度: 0.00, 阈值: 0.7
+2025-06-05 10:23:26,328 - services.audio_service - WARNING - 等待音频文件不存在: outputs/wait_audios/wait_recruitment.mp3
+2025-06-05 10:23:47,041 - __main__ - INFO - [性能监控] 智能体处理耗时: 34.305秒
+2025-06-05 10:23:47,041 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:23:47,041 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:23:47,041 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:23:47,041 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:23:47,041 - __main__ - INFO - 用户中断程序
+2025-06-05 10:23:47,041 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-05 10:23:47,041 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:23:47,041 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-05 10:23:47,041 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 123.981秒
+2025-06-05 10:23:47,041 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:23:47,041 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:23:47,041 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:23:47,042 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:23:47,042 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:23:47,042 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:23:47,042 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 10:23:47,048 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:24:33,871 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-05 10:24:33,871 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-05 10:24:33,871 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-05 10:24:33,872 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-05 10:24:33,872 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.002秒
+2025-06-05 10:24:33,908 - __main__ - INFO - 等待唤醒词...
+2025-06-05 10:24:33,969 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 10:24:34,999 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:24:36,533 - src.hardware.audio_interface - INFO - 录音时长: 0.93秒
+2025-06-05 10:24:38,337 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-05 10:24:38,337 - src.hardware.audio_interface - INFO - 你好，伯乐。
+2025-06-05 10:24:38,337 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.5
+2025-06-05 10:24:38,337 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-05 10:24:38,459 - services.audio_service - INFO - 播放提示音频...
+2025-06-05 10:24:42,050 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-05 10:24:42,129 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 10:24:42,471 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:24:45,205 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 10:24:45,207 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_102442.wav
+2025-06-05 10:24:45,328 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 10:24:45,330 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 3.279秒
+2025-06-05 10:24:47,008 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 10:24:47,009 - __main__ - INFO - 今天天气如何？
+2025-06-05 10:24:47,009 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.679秒
+2025-06-05 10:24:47,009 - src.hardware.audio_interface - INFO - 文本相似度: 0.00, 阈值: 0.7
+2025-06-05 10:24:47,106 - services.audio_service - WARNING - 等待音频文件不存在: outputs/wait_audios/wait_recruitment.mp3
+2025-06-05 10:24:47,106 - services.chat_processor - ERROR - 无法获取对话ID
+2025-06-05 10:24:47,107 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-05 10:24:47,107 - __main__ - INFO - [性能监控] 智能体处理耗时: 0.097秒
+2025-06-05 10:24:47,107 - __main__ - INFO - [性能监控] 音频播放耗时: 0.000秒
+2025-06-05 10:24:47,184 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 10:24:49,154 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:24:51,540 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 10:24:51,541 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_102447.wav
+2025-06-05 10:24:51,661 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 10:24:51,663 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 4.556秒
+2025-06-05 10:24:52,634 - src.services.api_client - ERROR - 响应中缺少文本内容
+2025-06-05 10:24:52,634 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 10:24:52,634 - __main__ - INFO - None
+2025-06-05 10:24:52,634 - __main__ - INFO - [性能监控] 语音转文字耗时: 0.971秒
+2025-06-05 10:24:52,725 - services.audio_service - WARNING - 等待音频文件不存在: outputs/wait_audios/wait_recruitment.mp3
+2025-06-05 10:24:52,726 - services.chat_processor - ERROR - 无法获取对话ID
+2025-06-05 10:24:52,726 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-05 10:24:52,726 - __main__ - INFO - [性能监控] 智能体处理耗时: 0.092秒
+2025-06-05 10:24:52,726 - __main__ - INFO - [性能监控] 音频播放耗时: 0.000秒
+2025-06-05 10:24:52,803 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 10:24:53,150 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:24:55,281 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 10:24:55,281 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_102452.wav
+2025-06-05 10:24:55,395 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 10:24:55,396 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 2.669秒
+2025-06-05 10:24:55,795 - __main__ - INFO - [性能监控] 语音转文字耗时: 0.399秒
+2025-06-05 10:24:55,795 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:24:55,795 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:24:55,795 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:24:55,795 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:24:55,795 - __main__ - INFO - 用户中断程序
+2025-06-05 10:24:55,795 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-05 10:24:55,795 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:24:55,795 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-05 10:24:55,795 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 21.923秒
+2025-06-05 10:24:55,795 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:24:55,795 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:24:55,795 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:24:55,795 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:24:55,795 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:24:55,795 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:24:55,795 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 10:24:55,800 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:24:55,800 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:24:55,803 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 10:26:12,288 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-05 10:26:12,289 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-05 10:26:12,289 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-05 10:26:12,289 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-05 10:26:12,289 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.004秒
+2025-06-05 10:26:12,330 - __main__ - INFO - 等待唤醒词...
+2025-06-05 10:26:12,389 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 10:26:13,759 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:26:15,297 - src.hardware.audio_interface - INFO - 录音时长: 0.56秒
+2025-06-05 10:26:16,893 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-05 10:26:16,894 - src.hardware.audio_interface - INFO - 你好，不乐。
+2025-06-05 10:26:16,894 - src.hardware.audio_interface - INFO - 文本相似度: 0.73, 阈值: 0.5
+2025-06-05 10:26:16,894 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-05 10:26:17,019 - services.audio_service - INFO - 播放提示音频...
+2025-06-05 10:26:20,731 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-05 10:26:20,811 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 10:26:21,839 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:26:24,656 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 10:26:24,658 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_102620.wav
+2025-06-05 10:26:24,778 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 10:26:24,780 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 4.049秒
+2025-06-05 10:26:26,343 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 10:26:26,344 - __main__ - INFO - 明天天气
+2025-06-05 10:26:26,344 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.563秒
+2025-06-05 10:26:26,345 - src.hardware.audio_interface - INFO - 文本相似度: 0.00, 阈值: 0.7
+2025-06-05 10:27:18,381 - __main__ - INFO - [性能监控] 智能体处理耗时: 52.036秒
+2025-06-05 10:27:18,381 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:27:18,381 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:27:18,381 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:27:18,381 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:27:18,381 - __main__ - INFO - 用户中断程序
+2025-06-05 10:27:18,381 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-05 10:27:18,381 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:27:18,381 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-05 10:27:18,381 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 66.092秒
+2025-06-05 10:27:18,381 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:27:18,382 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:27:18,382 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:27:18,382 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:27:18,382 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:27:18,382 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:27:18,382 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 10:27:18,387 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:29:16,905 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-05 10:29:16,906 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-05 10:29:16,906 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-05 10:29:16,907 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-05 10:29:16,907 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.004秒
+2025-06-05 10:29:16,949 - __main__ - INFO - 等待唤醒词...
+2025-06-05 10:29:17,012 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 10:29:18,464 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:29:19,830 - src.hardware.audio_interface - INFO - 录音时长: 0.74秒
+2025-06-05 10:29:21,476 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-05 10:29:21,477 - src.hardware.audio_interface - INFO - 你好，伯乐。
+2025-06-05 10:29:21,478 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.5
+2025-06-05 10:29:21,478 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-05 10:29:21,600 - services.audio_service - INFO - 播放提示音频...
+2025-06-05 10:29:25,310 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-05 10:29:25,390 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 10:29:26,163 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:29:29,489 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 10:29:29,492 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_102925.wav
+2025-06-05 10:29:29,613 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 10:29:29,616 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 4.305秒
+2025-06-05 10:29:31,569 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 10:29:31,569 - __main__ - INFO - 今天天气如何？
+2025-06-05 10:29:31,569 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.953秒
+2025-06-05 10:29:31,570 - src.hardware.audio_interface - INFO - 文本相似度: 0.00, 阈值: 0.7
+2025-06-05 10:29:47,408 - services.audio_service - WARNING - 等待音频文件不存在: outputs/wait_audios/wait_recruitment.mp3
+2025-06-05 10:30:01,048 - __main__ - INFO - [性能监控] 智能体处理耗时: 29.478秒
+2025-06-05 10:30:01,049 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:30:01,049 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:30:01,049 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:30:01,049 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:30:01,049 - __main__ - INFO - 用户中断程序
+2025-06-05 10:30:01,049 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-05 10:30:01,049 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:30:01,049 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-05 10:30:01,049 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 44.142秒
+2025-06-05 10:30:01,049 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:30:01,049 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:30:01,049 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:30:01,049 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:30:01,049 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:30:01,049 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:30:01,049 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 10:30:01,055 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:30:03,012 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-05 10:30:03,012 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-05 10:30:03,012 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-05 10:30:03,013 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-05 10:30:03,013 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.002秒
+2025-06-05 10:30:03,051 - __main__ - INFO - 等待唤醒词...
+2025-06-05 10:30:03,114 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 10:30:04,484 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:30:05,847 - src.hardware.audio_interface - INFO - 录音时长: 0.74秒
+2025-06-05 10:30:07,094 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-05 10:30:07,094 - src.hardware.audio_interface - INFO - 你好，伯乐。
+2025-06-05 10:30:07,094 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.5
+2025-06-05 10:30:07,095 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-05 10:30:07,215 - services.audio_service - INFO - 播放提示音频...
+2025-06-05 10:30:10,801 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-05 10:30:10,882 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 10:30:11,225 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:30:14,472 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 10:30:14,473 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_103010.wav
+2025-06-05 10:30:14,589 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 10:30:14,592 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 3.790秒
+2025-06-05 10:30:16,677 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 10:30:16,677 - __main__ - INFO - 明天天气如何？
+2025-06-05 10:30:16,678 - __main__ - INFO - [性能监控] 语音转文字耗时: 2.086秒
+2025-06-05 10:30:16,678 - src.hardware.audio_interface - INFO - 文本相似度: 0.00, 阈值: 0.7
+2025-06-05 10:30:16,860 - services.audio_service - WARNING - 等待音频文件不存在: outputs/wait_audios/wait_recruitment.mp3
+2025-06-05 10:30:34,146 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-05 10:30:34,147 - services.chat_processor - INFO - 明天（2025年6月6日）天气阴，气温25℃到37℃，西南风1级，湿度52%。 
+2025-06-05 10:30:36,154 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250605_103036.mp3
+2025-06-05 10:30:36,154 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-05 10:30:36,154 - __main__ - INFO - [性能监控] 智能体处理耗时: 19.476秒
+2025-06-05 10:30:46,759 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250605_103036.mp3
+2025-06-05 10:30:46,761 - services.audio_service - INFO - 结果音频播放完成
+2025-06-05 10:30:46,761 - root - INFO - Conversation cycle completed successfully
+2025-06-05 10:30:46,761 - __main__ - INFO - [性能监控] 音频播放耗时: 10.608秒
+2025-06-05 10:30:46,840 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 10:30:48,804 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:30:54,009 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 10:30:54,011 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_103046.wav
+2025-06-05 10:30:54,135 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 10:30:54,137 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 7.375秒
+2025-06-05 10:30:55,681 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 10:30:55,681 - __main__ - INFO - 那请问我要带雨伞吗？
+2025-06-05 10:30:55,681 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.544秒
+2025-06-05 10:30:55,681 - src.hardware.audio_interface - INFO - 文本相似度: 0.00, 阈值: 0.7
+2025-06-05 10:30:55,885 - services.audio_service - WARNING - 等待音频文件不存在: outputs/wait_audios/wait_recruitment.mp3
+2025-06-05 10:31:11,019 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-05 10:31:11,020 - services.chat_processor - INFO - 今天（2025年6月5日）天气多云，无需带伞。 
+2025-06-05 10:31:12,379 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250605_103112.mp3
+2025-06-05 10:31:12,379 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-05 10:31:12,379 - __main__ - INFO - [性能监控] 智能体处理耗时: 16.698秒
+2025-06-05 10:31:17,761 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250605_103112.mp3
+2025-06-05 10:31:17,763 - services.audio_service - INFO - 结果音频播放完成
+2025-06-05 10:31:17,763 - root - INFO - Conversation cycle completed successfully
+2025-06-05 10:31:17,763 - __main__ - INFO - [性能监控] 音频播放耗时: 5.383秒
+2025-06-05 10:31:17,843 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 10:31:19,211 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:31:22,540 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 10:31:22,542 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_103117.wav
+2025-06-05 10:31:22,659 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 10:31:22,661 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 4.897秒
+2025-06-05 10:31:24,517 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 10:31:24,518 - __main__ - INFO - 再见，伯乐。
+2025-06-05 10:31:24,518 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.857秒
+2025-06-05 10:31:24,518 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.7
+2025-06-05 10:31:24,519 - src.hardware.audio_interface - INFO - 相似度检测，检测到结束词！
+2025-06-05 10:31:24,519 - __main__ - INFO - 检测到用户输入 再见，伯乐 退出聊天，播放再见音频文件。
+2025-06-05 10:31:24,519 - __main__ - INFO - 等待唤醒词...
+2025-06-05 10:31:24,594 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 10:31:29,756 - __main__ - INFO - 等待唤醒词...
+2025-06-05 10:31:29,832 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 10:31:32,768 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:31:32,768 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:31:32,768 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:31:32,768 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:31:32,768 - __main__ - INFO - 用户中断程序
+2025-06-05 10:31:32,768 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-05 10:31:32,768 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:31:32,768 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-05 10:31:32,769 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 89.756秒
+2025-06-05 10:31:32,769 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:31:32,769 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:31:32,769 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:31:32,769 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:31:32,769 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:31:32,769 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:31:32,769 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 10:31:32,769 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:31:32,779 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:31:32,785 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 10:36:20,377 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-05 10:36:20,378 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-05 10:36:20,378 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-05 10:36:20,378 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-05 10:36:20,378 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.002秒
+2025-06-05 10:36:20,414 - __main__ - INFO - 等待唤醒词...
+2025-06-05 10:36:20,477 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 10:36:25,632 - __main__ - INFO - 等待唤醒词...
+2025-06-05 10:36:25,709 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 10:36:26,053 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:36:27,076 - src.hardware.audio_interface - INFO - 录音时长: 0.46秒
+2025-06-05 10:36:28,182 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-05 10:36:28,182 - src.hardware.audio_interface - INFO - 你好，不乐。
+2025-06-05 10:36:28,182 - src.hardware.audio_interface - INFO - 文本相似度: 0.73, 阈值: 0.5
+2025-06-05 10:36:28,182 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-05 10:36:28,304 - services.audio_service - INFO - 播放提示音频...
+2025-06-05 10:36:31,892 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-05 10:36:31,971 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 10:36:33,594 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:36:37,609 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 10:36:37,611 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_103631.wav
+2025-06-05 10:36:37,724 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 10:36:37,725 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 5.832秒
+2025-06-05 10:36:42,758 - urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')': /v1/audio/transcriptions
+2025-06-05 10:36:44,365 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 10:36:44,366 - __main__ - INFO - 今天天气怎么样？
+2025-06-05 10:36:44,366 - __main__ - INFO - [性能监控] 语音转文字耗时: 6.640秒
+2025-06-05 10:36:44,366 - src.hardware.audio_interface - INFO - 文本相似度: 0.00, 阈值: 0.7
+2025-06-05 10:36:44,503 - services.audio_service - WARNING - 等待音频文件不存在: outputs/wait_audios/wait_recruitment.mp3
+2025-06-05 10:37:01,472 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-05 10:37:01,472 - services.chat_processor - INFO - 由于未成功获取到天气信息，推测是缺少城市名导致。请你提供具体的城市名，这样我可以重新调用天气查询工具，为你获取该城市今天（2025年6月5日）的天气情况。 
+2025-06-05 10:37:04,565 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250605_103704.mp3
+2025-06-05 10:37:04,565 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-05 10:37:04,565 - __main__ - INFO - [性能监控] 智能体处理耗时: 20.199秒
+2025-06-05 10:37:20,390 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250605_103704.mp3
+2025-06-05 10:37:20,392 - services.audio_service - INFO - 结果音频播放完成
+2025-06-05 10:37:20,392 - root - INFO - Conversation cycle completed successfully
+2025-06-05 10:37:20,393 - __main__ - INFO - [性能监控] 音频播放耗时: 15.828秒
+2025-06-05 10:37:20,469 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 10:37:22,434 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:37:25,595 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 10:37:25,597 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_103720.wav
+2025-06-05 10:37:25,718 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 10:37:25,719 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 5.326秒
+2025-06-05 10:37:28,184 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 10:37:28,185 - __main__ - INFO - 再见，伯乐。
+2025-06-05 10:37:28,185 - __main__ - INFO - [性能监控] 语音转文字耗时: 2.466秒
+2025-06-05 10:37:28,185 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.7
+2025-06-05 10:37:28,185 - src.hardware.audio_interface - INFO - 相似度检测，检测到结束词！
+2025-06-05 10:37:28,185 - __main__ - INFO - 检测到用户输入 再见，伯乐 退出聊天，播放再见音频文件。
+2025-06-05 10:37:28,185 - __main__ - INFO - 等待唤醒词...
+2025-06-05 10:37:28,258 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 10:37:33,420 - __main__ - INFO - 等待唤醒词...
+2025-06-05 10:37:33,496 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 10:37:35,573 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:37:35,573 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:37:35,573 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:37:35,574 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:37:35,574 - __main__ - INFO - 用户中断程序
+2025-06-05 10:37:35,574 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-05 10:37:35,574 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:37:35,574 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-05 10:37:35,574 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 75.196秒
+2025-06-05 10:37:35,574 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:37:35,574 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:37:35,574 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:37:35,574 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:37:35,574 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:37:35,574 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:37:35,574 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 10:37:35,582 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:37:35,582 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:37:35,588 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 10:38:22,838 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-05 10:38:22,838 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-05 10:38:22,838 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-05 10:38:22,838 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-05 10:38:22,838 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.002秒
+2025-06-05 10:38:22,875 - __main__ - INFO - 等待唤醒词...
+2025-06-05 10:38:22,937 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 10:38:25,444 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:38:25,445 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:38:25,445 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:38:25,445 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:38:25,445 - __main__ - INFO - 用户中断程序
+2025-06-05 10:38:25,445 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-05 10:38:25,445 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:38:25,445 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-05 10:38:25,445 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 2.607秒
+2025-06-05 10:38:25,445 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:38:25,445 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:38:25,445 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:38:25,445 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:38:25,445 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:38:25,445 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:38:25,446 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 10:38:25,446 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:38:25,452 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:38:25,456 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 10:39:34,047 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-05 10:39:34,047 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-05 10:39:34,048 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-05 10:39:34,048 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-05 10:39:34,048 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.002秒
+2025-06-05 10:39:34,087 - __main__ - INFO - 等待唤醒词...
+2025-06-05 10:39:34,147 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 10:39:35,603 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:39:36,624 - src.hardware.audio_interface - INFO - 录音时长: 0.37秒
+2025-06-05 10:39:36,625 - src.hardware.audio_interface - INFO - 录音时长过短，不进行语音识别
+2025-06-05 10:39:36,745 - __main__ - INFO - 等待唤醒词...
+2025-06-05 10:39:36,820 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 10:39:40,921 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:39:42,368 - src.hardware.audio_interface - INFO - 录音时长: 0.84秒
+2025-06-05 10:39:43,766 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-05 10:39:43,766 - src.hardware.audio_interface - INFO - 你好，伯乐。
+2025-06-05 10:39:43,766 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.5
+2025-06-05 10:39:43,766 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-05 10:39:43,883 - services.audio_service - INFO - 播放提示音频...
+2025-06-05 10:39:47,473 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-05 10:39:47,553 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 10:39:48,239 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:39:52,589 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 10:39:52,593 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_103947.wav
+2025-06-05 10:39:52,712 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 10:39:52,713 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 5.240秒
+2025-06-05 10:39:54,930 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 10:39:54,930 - __main__ - INFO - 今天深圳天气如何？
+2025-06-05 10:39:54,930 - __main__ - INFO - [性能监控] 语音转文字耗时: 2.217秒
+2025-06-05 10:39:54,931 - src.hardware.audio_interface - INFO - 文本相似度: 0.00, 阈值: 0.7
+2025-06-05 10:40:11,752 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-05 10:40:11,752 - services.chat_processor - INFO - 今天（2025年6月5日）深圳天气为雷阵雨，气温24-30℃，湿度83%，北风1级。 
+2025-06-05 10:40:13,622 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250605_104013.mp3
+2025-06-05 10:40:13,623 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-05 10:40:13,623 - __main__ - INFO - [性能监控] 智能体处理耗时: 18.692秒
+2025-06-05 10:40:24,193 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250605_104013.mp3
+2025-06-05 10:40:24,195 - services.audio_service - INFO - 结果音频播放完成
+2025-06-05 10:40:24,196 - root - INFO - Conversation cycle completed successfully
+2025-06-05 10:40:24,196 - __main__ - INFO - [性能监控] 音频播放耗时: 10.573秒
+2025-06-05 10:40:24,272 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-05 10:40:25,728 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-05 10:40:28,369 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-05 10:40:28,372 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250605_104024.wav
+2025-06-05 10:40:28,493 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-05 10:40:28,494 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 4.298秒
+2025-06-05 10:40:29,506 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-05 10:40:29,507 - __main__ - INFO - 再见，伯乐。
+2025-06-05 10:40:29,507 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.012秒
+2025-06-05 10:40:29,507 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.7
+2025-06-05 10:40:29,507 - src.hardware.audio_interface - INFO - 相似度检测，检测到结束词！
+2025-06-05 10:40:29,507 - __main__ - INFO - 检测到用户输入 再见，伯乐 退出聊天，播放再见音频文件。
+2025-06-05 10:40:29,508 - services.audio_service - INFO - 播放再见音频...
+2025-06-05 10:40:33,169 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/bye_audios/bye.mp3
+2025-06-05 10:40:33,170 - __main__ - INFO - 等待唤醒词...
+2025-06-05 10:40:33,249 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-05 10:40:38,226 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:40:38,226 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:40:38,227 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:40:38,227 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:40:38,227 - __main__ - INFO - 用户中断程序
+2025-06-05 10:40:38,227 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-05 10:40:38,227 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:40:38,227 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-05 10:40:38,227 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 64.179秒
+2025-06-05 10:40:38,227 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:40:38,227 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-05 10:40:38,227 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-05 10:40:38,227 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:40:38,227 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-05 10:40:38,227 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-05 10:40:38,227 - services.resource_manager - INFO - 所有资源已清理
+2025-06-05 10:40:38,227 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:40:38,235 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-05 10:40:38,240 - services.resource_manager - INFO - 所有资源已清理
+2025-06-17 11:36:01,435 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-17 11:36:01,436 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-17 11:36:01,436 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-17 11:36:01,436 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-17 11:36:01,436 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.003秒
+2025-06-17 11:36:01,480 - __main__ - INFO - 等待唤醒词...
+2025-06-17 11:36:01,540 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 11:36:05,893 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-17 11:36:07,945 - src.hardware.audio_interface - INFO - 录音时长: 1.21秒
+2025-06-17 11:36:10,643 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-17 11:36:10,644 - src.hardware.audio_interface - INFO - 你好，不乐。
+2025-06-17 11:36:10,644 - src.hardware.audio_interface - INFO - 文本相似度: 0.73, 阈值: 0.5
+2025-06-17 11:36:10,644 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-17 11:36:10,765 - services.audio_service - INFO - 播放提示音频...
+2025-06-17 11:36:14,491 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-17 11:36:14,571 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-17 11:36:15,174 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-17 11:36:23,276 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-17 11:36:23,280 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250617_113614.wav
+2025-06-17 11:36:23,397 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-17 11:36:23,398 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 8.906秒
+2025-06-17 11:36:25,108 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-17 11:36:25,108 - __main__ - INFO - 我650分，请给我推荐一个广东的学校和专业。
+2025-06-17 11:36:25,108 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.710秒
+2025-06-17 11:36:25,109 - src.hardware.audio_interface - INFO - 文本相似度: 0.07, 阈值: 0.7
+2025-06-17 11:36:25,195 - services.audio_service - INFO - 播放等待音频...
+2025-06-17 11:36:25,196 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-17 11:36:25,197 - services.chat_processor - ERROR - 无法获取对话ID
+2025-06-17 11:36:25,197 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-17 11:36:25,197 - __main__ - INFO - [性能监控] 智能体处理耗时: 0.088秒
+2025-06-17 11:36:25,197 - __main__ - INFO - [性能监控] 音频播放耗时: 0.000秒
+2025-06-17 11:36:25,270 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-17 11:36:47,574 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 22.377秒
+2025-06-17 11:36:47,574 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-17 11:36:47,574 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:36:47,574 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-17 11:36:47,574 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-17 11:36:47,574 - __main__ - INFO - 用户中断程序
+2025-06-17 11:36:47,574 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-17 11:36:47,574 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:36:47,574 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-17 11:36:47,574 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 46.139秒
+2025-06-17 11:36:47,574 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-17 11:36:47,574 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-17 11:36:47,574 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-17 11:36:47,574 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:36:47,575 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-17 11:36:47,575 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-17 11:36:47,575 - services.resource_manager - INFO - 所有资源已清理
+2025-06-17 11:36:47,575 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:36:47,581 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:36:47,586 - services.resource_manager - INFO - 所有资源已清理
+2025-06-17 11:37:05,146 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-17 11:37:05,146 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-17 11:37:05,146 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-17 11:37:05,146 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-17 11:37:05,146 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.002秒
+2025-06-17 11:37:05,183 - __main__ - INFO - 等待唤醒词...
+2025-06-17 11:37:05,245 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 11:37:07,296 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-17 11:37:08,492 - src.hardware.audio_interface - INFO - 录音时长: 0.65秒
+2025-06-17 11:37:13,529 - urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')': /v1/audio/transcriptions
+2025-06-17 11:37:14,933 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-17 11:37:14,933 - src.hardware.audio_interface - INFO - 你好，不乐。
+2025-06-17 11:37:14,934 - src.hardware.audio_interface - INFO - 文本相似度: 0.73, 阈值: 0.5
+2025-06-17 11:37:14,934 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-17 11:37:15,048 - services.audio_service - INFO - 播放提示音频...
+2025-06-17 11:37:18,629 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-17 11:37:18,707 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-17 11:37:19,736 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-17 11:37:25,537 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-17 11:37:25,540 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250617_113718.wav
+2025-06-17 11:37:25,658 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-17 11:37:25,661 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 7.032秒
+2025-06-17 11:37:27,422 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-17 11:37:27,422 - __main__ - INFO - 请问深圳属于哪个省份？
+2025-06-17 11:37:27,423 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.761秒
+2025-06-17 11:37:27,423 - src.hardware.audio_interface - INFO - 文本相似度: 0.00, 阈值: 0.7
+2025-06-17 11:37:27,524 - services.audio_service - INFO - 播放等待音频...
+2025-06-17 11:37:27,525 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-17 11:37:27,525 - services.chat_processor - ERROR - 无法获取对话ID
+2025-06-17 11:37:27,525 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-17 11:37:27,525 - __main__ - INFO - [性能监控] 智能体处理耗时: 0.102秒
+2025-06-17 11:37:27,526 - __main__ - INFO - [性能监控] 音频播放耗时: 0.000秒
+2025-06-17 11:37:27,601 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-17 11:37:57,640 - src.hardware.audio_interface - INFO - 达到最大录音时间，停止录音
+2025-06-17 11:37:57,762 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 30.237秒
+2025-06-17 11:37:57,842 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-17 11:38:05,208 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 7.445秒
+2025-06-17 11:38:05,208 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-17 11:38:05,209 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:38:05,209 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-17 11:38:05,209 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-17 11:38:05,209 - __main__ - INFO - 用户中断程序
+2025-06-17 11:38:05,209 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-17 11:38:05,209 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:38:05,209 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-17 11:38:05,209 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 60.063秒
+2025-06-17 11:38:05,209 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-17 11:38:05,209 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-17 11:38:05,209 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-17 11:38:05,209 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:38:05,209 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-17 11:38:05,209 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-17 11:38:05,209 - services.resource_manager - INFO - 所有资源已清理
+2025-06-17 11:38:05,210 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:38:05,217 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:38:05,222 - services.resource_manager - INFO - 所有资源已清理
+2025-06-17 11:38:23,291 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-17 11:38:23,291 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-17 11:38:23,291 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-17 11:38:23,291 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-17 11:38:23,291 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.002秒
+2025-06-17 11:38:23,327 - __main__ - INFO - 等待唤醒词...
+2025-06-17 11:38:23,390 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 11:38:26,923 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-17 11:38:26,923 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:38:26,923 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-17 11:38:26,923 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-17 11:38:26,923 - __main__ - INFO - 用户中断程序
+2025-06-17 11:38:26,923 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-17 11:38:26,923 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:38:26,924 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-17 11:38:26,924 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 3.633秒
+2025-06-17 11:38:26,924 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-17 11:38:26,924 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-17 11:38:26,924 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-17 11:38:26,924 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:38:26,924 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-17 11:38:26,924 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-17 11:38:26,924 - services.resource_manager - INFO - 所有资源已清理
+2025-06-17 11:38:26,924 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:38:26,930 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:38:26,934 - services.resource_manager - INFO - 所有资源已清理
+2025-06-17 11:38:43,237 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-17 11:38:43,237 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-17 11:38:43,237 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-17 11:38:43,238 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-17 11:38:43,238 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.002秒
+2025-06-17 11:38:43,274 - __main__ - INFO - 等待唤醒词...
+2025-06-17 11:38:43,338 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 11:38:44,621 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-17 11:38:45,734 - src.hardware.audio_interface - INFO - 录音时长: 0.65秒
+2025-06-17 11:38:47,163 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-17 11:38:47,163 - src.hardware.audio_interface - INFO - 你好，不乐。
+2025-06-17 11:38:47,163 - src.hardware.audio_interface - INFO - 文本相似度: 0.73, 阈值: 0.5
+2025-06-17 11:38:47,163 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-17 11:38:47,282 - services.audio_service - INFO - 播放提示音频...
+2025-06-17 11:38:50,857 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-17 11:38:50,937 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-17 11:38:51,540 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-17 11:38:55,375 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-17 11:38:55,377 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250617_113850.wav
+2025-06-17 11:38:55,488 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-17 11:38:55,489 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 4.631秒
+2025-06-17 11:38:57,227 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-17 11:38:57,228 - __main__ - INFO - 深圳属于哪个省份？
+2025-06-17 11:38:57,228 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.739秒
+2025-06-17 11:38:57,228 - src.hardware.audio_interface - INFO - 文本相似度: 0.00, 阈值: 0.7
+2025-06-17 11:38:57,308 - services.audio_service - INFO - 播放等待音频...
+2025-06-17 11:38:57,310 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-17 11:38:57,310 - services.chat_processor - ERROR - 无法获取对话ID
+2025-06-17 11:38:57,310 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-17 11:38:57,310 - __main__ - INFO - [性能监控] 智能体处理耗时: 0.082秒
+2025-06-17 11:38:57,310 - __main__ - INFO - [性能监控] 音频播放耗时: 0.000秒
+2025-06-17 11:38:57,387 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-17 11:39:01,173 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 3.862秒
+2025-06-17 11:39:01,173 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-17 11:39:01,173 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:39:01,173 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-17 11:39:01,173 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-17 11:39:01,174 - __main__ - INFO - 用户中断程序
+2025-06-17 11:39:01,174 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-17 11:39:01,174 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:39:01,174 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-17 11:39:01,174 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 17.936秒
+2025-06-17 11:39:01,174 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-17 11:39:01,174 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-17 11:39:01,174 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-17 11:39:01,174 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:39:01,174 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-17 11:39:01,174 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-17 11:39:01,174 - services.resource_manager - INFO - 所有资源已清理
+2025-06-17 11:39:01,174 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:39:01,182 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:39:01,188 - services.resource_manager - INFO - 所有资源已清理
+2025-06-17 11:39:19,626 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-17 11:39:19,627 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-17 11:39:19,627 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-17 11:39:19,627 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-17 11:39:19,628 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.005秒
+2025-06-17 11:39:19,665 - __main__ - INFO - 等待唤醒词...
+2025-06-17 11:39:19,729 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 11:39:21,952 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-17 11:39:22,805 - src.hardware.audio_interface - INFO - 录音时长: 0.19秒
+2025-06-17 11:39:22,806 - src.hardware.audio_interface - INFO - 录音时长过短，不进行语音识别
+2025-06-17 11:39:22,931 - __main__ - INFO - 等待唤醒词...
+2025-06-17 11:39:23,008 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 11:39:23,783 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-17 11:39:25,228 - src.hardware.audio_interface - INFO - 录音时长: 0.74秒
+2025-06-17 11:39:26,425 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-17 11:39:26,425 - src.hardware.audio_interface - INFO - 你好，伯乐。
+2025-06-17 11:39:26,426 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.5
+2025-06-17 11:39:26,426 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-17 11:39:26,542 - services.audio_service - INFO - 播放提示音频...
+2025-06-17 11:39:30,243 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-17 11:39:30,321 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-17 11:39:31,522 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-17 11:39:35,702 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-17 11:39:35,706 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250617_113930.wav
+2025-06-17 11:39:35,825 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-17 11:39:35,826 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 5.583秒
+2025-06-17 11:39:37,517 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-17 11:39:37,517 - __main__ - INFO - 我650分，给我推荐学校。
+2025-06-17 11:39:37,517 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.691秒
+2025-06-17 11:39:37,518 - src.hardware.audio_interface - INFO - 文本相似度: 0.11, 阈值: 0.7
+2025-06-17 11:40:05,689 - services.audio_service - INFO - 播放等待音频...
+2025-06-17 11:40:05,690 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-17 11:40:07,151 - __main__ - INFO - [性能监控] 智能体处理耗时: 29.633秒
+2025-06-17 11:40:07,151 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-17 11:40:08,152 - src.hardware.audio_interface - INFO - 已停止音频播放
+2025-06-17 11:42:07,305 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-17 11:42:07,305 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-17 11:42:07,305 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-17 11:42:07,305 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-17 11:42:07,305 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.001秒
+2025-06-17 11:42:07,342 - __main__ - INFO - 等待唤醒词...
+2025-06-17 11:42:07,404 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 11:42:08,174 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-17 11:42:08,772 - src.hardware.audio_interface - INFO - 录音时长: 0.09秒
+2025-06-17 11:42:08,772 - src.hardware.audio_interface - INFO - 录音时长过短，不进行语音识别
+2025-06-17 11:42:08,891 - __main__ - INFO - 等待唤醒词...
+2025-06-17 11:42:08,969 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 11:42:09,488 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-17 11:42:10,764 - src.hardware.audio_interface - INFO - 录音时长: 0.56秒
+2025-06-17 11:42:12,089 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-17 11:42:12,090 - src.hardware.audio_interface - INFO - 你好了。
+2025-06-17 11:42:12,090 - src.hardware.audio_interface - INFO - 文本相似度: 0.44, 阈值: 0.5
+2025-06-17 11:42:12,206 - __main__ - INFO - 等待唤醒词...
+2025-06-17 11:42:12,282 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 11:42:17,440 - __main__ - INFO - 等待唤醒词...
+2025-06-17 11:42:17,516 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 11:42:17,859 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-17 11:42:18,800 - src.hardware.audio_interface - INFO - 录音时长: 0.37秒
+2025-06-17 11:42:18,800 - src.hardware.audio_interface - INFO - 录音时长过短，不进行语音识别
+2025-06-17 11:42:18,919 - __main__ - INFO - 等待唤醒词...
+2025-06-17 11:42:18,996 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 11:42:23,780 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-17 11:42:25,655 - src.hardware.audio_interface - INFO - 录音时长: 1.02秒
+2025-06-17 11:42:27,043 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-17 11:42:27,043 - src.hardware.audio_interface - INFO - 你好，伯乐。
+2025-06-17 11:42:27,043 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.5
+2025-06-17 11:42:27,044 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-17 11:42:27,167 - services.audio_service - INFO - 播放提示音频...
+2025-06-17 11:42:30,749 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-17 11:42:30,831 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-17 11:42:31,431 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-17 11:42:37,318 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-17 11:42:37,321 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250617_114230.wav
+2025-06-17 11:42:37,440 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-17 11:42:37,442 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 6.692秒
+2025-06-17 11:42:39,392 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-17 11:42:39,393 - __main__ - INFO - 我650分，请给我推荐学校。
+2025-06-17 11:42:39,393 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.951秒
+2025-06-17 11:42:39,393 - src.hardware.audio_interface - INFO - 文本相似度: 0.11, 阈值: 0.7
+2025-06-17 11:42:39,490 - services.audio_service - INFO - 播放等待音频...
+2025-06-17 11:42:39,491 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-17 11:42:39,492 - services.chat_processor - ERROR - 无法获取对话ID
+2025-06-17 11:42:39,492 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-17 11:42:39,492 - __main__ - INFO - [性能监控] 智能体处理耗时: 0.099秒
+2025-06-17 11:42:39,492 - __main__ - INFO - [性能监控] 音频播放耗时: 0.000秒
+2025-06-17 11:42:39,569 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-17 11:43:02,129 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 22.636秒
+2025-06-17 11:43:02,129 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-17 11:43:02,129 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:43:02,129 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-17 11:43:02,129 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-17 11:43:02,129 - __main__ - INFO - 用户中断程序
+2025-06-17 11:43:02,129 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-17 11:43:02,129 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:43:02,129 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-17 11:43:02,129 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 54.824秒
+2025-06-17 11:43:02,129 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-17 11:43:02,129 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-17 11:43:02,130 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-17 11:43:02,130 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:43:02,130 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-17 11:43:02,130 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-17 11:43:02,130 - services.resource_manager - INFO - 所有资源已清理
+2025-06-17 11:43:02,130 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:43:02,136 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 11:43:02,140 - services.resource_manager - INFO - 所有资源已清理
+2025-06-17 14:03:46,308 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-17 14:03:46,309 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-17 14:03:46,309 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-17 14:03:46,309 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-17 14:03:46,309 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.004秒
+2025-06-17 14:03:46,352 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:46,397 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:46,735 - src.hardware.audio_interface - ERROR - 唤醒词检测失败: [Errno -9981] Input overflowed
+2025-06-17 14:03:46,735 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:46,735 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:46,736 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:46,783 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:47,120 - src.hardware.audio_interface - ERROR - 唤醒词检测失败: [Errno -9981] Input overflowed
+2025-06-17 14:03:47,121 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:47,122 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:47,122 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:47,175 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:47,500 - src.hardware.audio_interface - ERROR - 唤醒词检测失败: [Errno -9981] Input overflowed
+2025-06-17 14:03:47,501 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:47,502 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:47,502 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:47,551 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:47,882 - src.hardware.audio_interface - ERROR - 唤醒词检测失败: [Errno -9981] Input overflowed
+2025-06-17 14:03:47,883 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:47,884 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:47,884 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:47,936 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:48,264 - src.hardware.audio_interface - ERROR - 唤醒词检测失败: [Errno -9981] Input overflowed
+2025-06-17 14:03:48,265 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:48,266 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:48,266 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:48,316 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:48,655 - src.hardware.audio_interface - ERROR - 唤醒词检测失败: [Errno -9981] Input overflowed
+2025-06-17 14:03:48,657 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:48,657 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:48,658 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:48,708 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:49,039 - src.hardware.audio_interface - ERROR - 唤醒词检测失败: [Errno -9981] Input overflowed
+2025-06-17 14:03:49,040 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:49,040 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:49,041 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:49,091 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:49,424 - src.hardware.audio_interface - ERROR - 唤醒词检测失败: [Errno -9981] Input overflowed
+2025-06-17 14:03:49,425 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:49,426 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:49,426 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:49,478 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:49,812 - src.hardware.audio_interface - ERROR - 唤醒词检测失败: [Errno -9981] Input overflowed
+2025-06-17 14:03:49,813 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:49,813 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:49,814 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:49,860 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:50,192 - src.hardware.audio_interface - ERROR - 唤醒词检测失败: [Errno -9981] Input overflowed
+2025-06-17 14:03:50,192 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:50,192 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:50,192 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:50,238 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:50,562 - src.hardware.audio_interface - ERROR - 唤醒词检测失败: [Errno -9981] Input overflowed
+2025-06-17 14:03:50,563 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:50,563 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:50,563 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:50,605 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:50,935 - src.hardware.audio_interface - ERROR - 唤醒词检测失败: [Errno -9981] Input overflowed
+2025-06-17 14:03:50,936 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:50,936 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:50,936 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:50,985 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:51,312 - src.hardware.audio_interface - ERROR - 唤醒词检测失败: [Errno -9981] Input overflowed
+2025-06-17 14:03:51,313 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:51,313 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:51,313 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:51,352 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:51,684 - src.hardware.audio_interface - ERROR - 唤醒词检测失败: [Errno -9981] Input overflowed
+2025-06-17 14:03:51,685 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:51,686 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:51,688 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:51,736 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:52,064 - src.hardware.audio_interface - ERROR - 唤醒词检测失败: [Errno -9981] Input overflowed
+2025-06-17 14:03:52,065 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:52,065 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:52,065 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:52,103 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:52,433 - src.hardware.audio_interface - ERROR - 唤醒词检测失败: [Errno -9981] Input overflowed
+2025-06-17 14:03:52,433 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:52,434 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:52,434 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:52,474 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:52,802 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:52,802 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:52,802 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:52,843 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:53,174 - src.hardware.audio_interface - ERROR - 唤醒词检测失败: [Errno -9981] Input overflowed
+2025-06-17 14:03:53,176 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:53,176 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:53,176 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:53,225 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:53,554 - src.hardware.audio_interface - ERROR - 唤醒词检测失败: [Errno -9981] Input overflowed
+2025-06-17 14:03:53,555 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:53,555 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:53,556 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:53,606 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:53,931 - src.hardware.audio_interface - ERROR - 唤醒词检测失败: [Errno -9981] Input overflowed
+2025-06-17 14:03:53,931 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:53,931 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:53,932 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:53,972 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:54,300 - src.hardware.audio_interface - ERROR - 唤醒词检测失败: [Errno -9981] Input overflowed
+2025-06-17 14:03:54,300 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:54,300 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:54,300 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:03:54,342 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:03:54,673 - src.hardware.audio_interface - ERROR - 唤醒词检测失败: [Errno -9981] Input overflowed
+2025-06-17 14:03:54,673 - src.services.error_handler - ERROR - 未知错误: Stream not open
+2025-06-17 14:03:54,674 - src.services.error_handler - WARNING - 错误提示音频文件不存在
+2025-06-17 14:03:54,674 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:04:06,408 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-17 14:04:06,408 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-17 14:04:06,409 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-17 14:04:06,409 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-17 14:04:06,409 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.004秒
+2025-06-17 14:04:06,448 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:04:06,511 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:04:11,667 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:04:11,744 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:04:13,456 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-17 14:04:14,821 - src.hardware.audio_interface - INFO - 录音时长: 0.84秒
+2025-06-17 14:04:16,903 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-17 14:04:16,904 - src.hardware.audio_interface - INFO - 你好，伯乐。
+2025-06-17 14:04:16,904 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.5
+2025-06-17 14:04:16,905 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-17 14:04:17,024 - services.audio_service - INFO - 播放提示音频...
+2025-06-17 14:04:20,714 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-17 14:04:20,786 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-17 14:04:27,362 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-17 14:04:29,495 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-17 14:04:29,497 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250617_140420.wav
+2025-06-17 14:04:29,612 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-17 14:04:29,614 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 8.899秒
+2025-06-17 14:04:30,699 - src.services.api_client - ERROR - 响应中缺少文本内容
+2025-06-17 14:04:30,699 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-17 14:04:30,700 - __main__ - INFO - None
+2025-06-17 14:04:30,700 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.085秒
+2025-06-17 14:04:47,123 - services.audio_service - INFO - 播放等待音频...
+2025-06-17 14:04:47,123 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-17 14:04:49,729 - __main__ - INFO - [性能监控] 智能体处理耗时: 19.029秒
+2025-06-17 14:04:49,729 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-17 14:04:49,840 - src.hardware.audio_interface - INFO - 已停止音频播放
+2025-06-17 14:04:50,342 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 14:04:50,342 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-17 14:04:50,342 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-17 14:04:50,342 - __main__ - INFO - 用户中断程序
+2025-06-17 14:04:50,342 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-17 14:04:50,342 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 14:04:50,343 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-17 14:04:50,343 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 43.934秒
+2025-06-17 14:04:50,343 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-17 14:04:50,343 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-17 14:04:50,343 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-17 14:04:50,343 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 14:04:50,343 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-17 14:04:50,343 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-17 14:04:50,343 - services.resource_manager - INFO - 所有资源已清理
+2025-06-17 14:04:50,357 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 14:05:21,417 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-17 14:05:21,418 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-17 14:05:21,418 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-17 14:05:21,418 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-17 14:05:21,418 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.004秒
+2025-06-17 14:05:21,457 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:05:21,519 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:05:24,597 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-17 14:05:25,705 - src.hardware.audio_interface - INFO - 录音时长: 0.56秒
+2025-06-17 14:05:27,302 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-17 14:05:27,303 - src.hardware.audio_interface - INFO - 你好，伯乐。
+2025-06-17 14:05:27,303 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.5
+2025-06-17 14:05:27,303 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-17 14:05:27,426 - services.audio_service - INFO - 播放提示音频...
+2025-06-17 14:05:31,128 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-17 14:05:31,206 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-17 14:05:32,490 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-17 14:05:37,270 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-17 14:05:37,273 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250617_140531.wav
+2025-06-17 14:05:37,390 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-17 14:05:37,392 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 6.263秒
+2025-06-17 14:05:39,179 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-17 14:05:39,180 - __main__ - INFO - 我600分，请给我推荐一个学校。
+2025-06-17 14:05:39,180 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.788秒
+2025-06-17 14:05:39,181 - src.hardware.audio_interface - INFO - 文本相似度: 0.10, 阈值: 0.7
+2025-06-17 14:05:45,957 - services.audio_service - INFO - 播放等待音频...
+2025-06-17 14:05:45,957 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-17 14:06:01,016 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-17 14:06:01,016 - services.chat_processor - INFO - 理科可考虑西安电子科技大学、北京邮电大学；文科可关注西南财经大学、南京师范大学，结合意向城市再筛选。 
+2025-06-17 14:06:03,298 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250617_140603.mp3
+2025-06-17 14:06:03,299 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-17 14:06:03,299 - __main__ - INFO - [性能监控] 智能体处理耗时: 24.118秒
+2025-06-17 14:06:14,586 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250617_140603.mp3
+2025-06-17 14:06:14,588 - services.audio_service - INFO - 结果音频播放完成
+2025-06-17 14:06:14,589 - root - INFO - Conversation cycle completed successfully
+2025-06-17 14:06:14,589 - __main__ - INFO - [性能监控] 音频播放耗时: 11.290秒
+2025-06-17 14:06:14,663 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-17 14:06:26,102 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-17 14:06:36,338 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-17 14:06:36,341 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250617_140614.wav
+2025-06-17 14:06:36,458 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-17 14:06:36,460 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 21.871秒
+2025-06-17 14:06:38,607 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-17 14:06:38,607 - __main__ - INFO - 请给我推荐一个学校，我是600分，我需要去北京邮电大学，请给我推荐一个专业。
+2025-06-17 14:06:38,608 - __main__ - INFO - [性能监控] 语音转文字耗时: 2.147秒
+2025-06-17 14:06:38,608 - src.hardware.audio_interface - INFO - 文本相似度: 0.05, 阈值: 0.7
+2025-06-17 14:06:45,379 - services.audio_service - INFO - 播放等待音频...
+2025-06-17 14:06:45,380 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-17 14:06:55,442 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-17 14:06:55,443 - services.chat_processor - INFO - 用户需要根据600分和目标学校北京邮电大学推荐专业，调用ts-jago_highschool_major_re-jago_highschool_major_re函数获取推荐。北京邮电大学可考虑专业：通信工程、计算机科学与技术、电子信息工程。 
+2025-06-17 14:06:59,693 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250617_140659.mp3
+2025-06-17 14:06:59,694 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-17 14:06:59,694 - __main__ - INFO - [性能监控] 智能体处理耗时: 21.086秒
+2025-06-17 14:07:27,835 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250617_140659.mp3
+2025-06-17 14:07:27,837 - services.audio_service - INFO - 结果音频播放完成
+2025-06-17 14:07:27,838 - root - INFO - Conversation cycle completed successfully
+2025-06-17 14:07:27,838 - __main__ - INFO - [性能监控] 音频播放耗时: 28.144秒
+2025-06-17 14:07:27,916 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-17 14:07:30,223 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-17 14:07:32,868 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-17 14:07:32,871 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250617_140727.wav
+2025-06-17 14:07:32,990 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-17 14:07:32,992 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 5.153秒
+2025-06-17 14:07:34,498 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-17 14:07:34,499 - __main__ - INFO - 再见，伯乐。
+2025-06-17 14:07:34,500 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.508秒
+2025-06-17 14:07:34,500 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.7
+2025-06-17 14:07:34,500 - src.hardware.audio_interface - INFO - 相似度检测，检测到结束词！
+2025-06-17 14:07:34,500 - __main__ - INFO - 检测到用户输入 再见，伯乐 退出聊天，播放再见音频文件。
+2025-06-17 14:07:34,501 - services.audio_service - INFO - 播放再见音频...
+2025-06-17 14:07:38,160 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/bye_audios/bye.mp3
+2025-06-17 14:07:38,160 - __main__ - INFO - 等待唤醒词...
+2025-06-17 14:07:38,234 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-17 14:07:40,226 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-17 14:07:40,226 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 14:07:40,226 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-17 14:07:40,226 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-17 14:07:40,226 - __main__ - INFO - 用户中断程序
+2025-06-17 14:07:40,226 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-17 14:07:40,227 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 14:07:40,227 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-17 14:07:40,227 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 138.809秒
+2025-06-17 14:07:40,227 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-17 14:07:40,227 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-17 14:07:40,227 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-17 14:07:40,227 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 14:07:40,227 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-17 14:07:40,227 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-17 14:07:40,228 - services.resource_manager - INFO - 所有资源已清理
+2025-06-17 14:07:40,238 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-17 14:07:40,238 - src.hardware.audio_interface - INFO - 音频设备资源已清理
