@@ -73,7 +73,7 @@ class Config:
     BYE_WORD_SETTINGS = {
         "bye_word": "再见，伯乐",
         "bye_word_buffer": [],
-        "bye_word_threshold": 0.7
+        "bye_word_threshold": 0.5
     }
 
 
