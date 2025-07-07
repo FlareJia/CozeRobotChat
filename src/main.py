@@ -2,6 +2,7 @@ import logging
 import time
 import os
 import threading
+from difflib import SequenceMatcher
 from contextlib import contextmanager
 from config import Config
 from services.chat_processor import ChatProcessor
@@ -34,6 +35,43 @@ def time_recorder(step_name):
     finally:
         elapsed = time.perf_counter() - start_time
         logger.info(f"[性能监控] {step_name}耗时: {elapsed:.3f}秒")
+
+
+# todo 移动到其他地方
+def _calculate_similarity(text1: str, text2: str) -> float:
+    # 计算两个字符串的相似度
+    #:param text1: 第一个字符串
+    #:param text2: 第二个字符串
+    #:return: 相似度（0-1之间）
+
+    return SequenceMatcher(None, text1, text2).ratio()
+
+
+def _is_bye_word_match(text: str) -> bool:
+    # 检查文本是否匹配结束词
+    #:param text: 待检查的文本
+    #:return: 是否匹配
+
+    if not text:
+        return False
+
+    # 计算相似度
+    similarity = _calculate_similarity(text, Config.BYE_WORD_SETTINGS["bye_word"])
+    logger.info(f"文本相似度: {similarity:.2f}")
+
+    return similarity >= Config.BYE_WORD_SETTINGS["bye_word_threshold"]
+
+    # todo 移动到其他地方
+
+
+def detect_bye_word(text: str) -> bool:
+    if text and _is_bye_word_match(text):
+        logger.info("相似度检测，检测到结束词！")
+        return True
+    if text and Config.BYE_WORD_SETTINGS["bye_word"] in text:
+        logger.info("全量in检测，检测到结束词！")
+        return True
+    return False
 
 
 def main():
@@ -71,8 +109,18 @@ def main():
                         keyboard_service = KeyboardService(
                             os.path.join(Config.OUTPUT_DIR, Config.AUDIO_NAMES["reserved_dir"])
                         )
-                        keyboard_service.register_handler("ctrl+1", lambda: audio_service.play_reserved_audio("gaoxiao1"))
-                        keyboard_service.register_handler("ctrl+2", lambda: audio_service.play_reserved_audio("gaoxiao2"))
+                        keyboard_service.register_handler("ctrl+1",
+                                                          lambda: audio_service.play_reserved_audio("gaoxiao1"))
+                        keyboard_service.register_handler("ctrl+2",
+                                                          lambda: audio_service.play_reserved_audio("gaoxiao2"))
+                        keyboard_service.register_handler("alt+1",
+                                                          lambda: audio_service.play_reserved_audio("aochengda1"))
+                        keyboard_service.register_handler("alt+2",
+                                                          lambda: audio_service.play_reserved_audio("gangchengda1"))
+                        keyboard_service.register_handler("alt+3",
+                                                          lambda: audio_service.play_reserved_audio("gangchengda2"))
+                        keyboard_service.register_handler("alt+4",
+                                                          lambda: audio_service.play_reserved_audio("gangchengda3"))
 
                         # 启动键盘监听
                         keyboard_service.start()
@@ -128,7 +176,7 @@ def main():
                                             continue
 
                                     # 检测是否为结束对话
-                                    if audio_interface.detect_bye_word(transcript):
+                                    if detect_bye_word(transcript):
                                         logger.info("检测到用户输入 再见，伯乐 退出聊天，播放再见音频文件。")
                                         audio_service.play_bye_audio()
                                         break
