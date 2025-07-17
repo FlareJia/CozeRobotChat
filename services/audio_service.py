@@ -1,10 +1,10 @@
 import os
 import logging
 from typing import Optional
-from src.config import Config
-from src.hardware.audio_interface import RobotAudioInterface
-from src.services.audio_manager import AudioFileManager
-from src.services.exceptions import AudioError
+from config import Config
+from hardware.audio_interface import RobotAudioInterface
+from services.audio_manager import AudioFileManager
+from services.exceptions import AudioError
 
 logger = logging.getLogger(__name__)
 

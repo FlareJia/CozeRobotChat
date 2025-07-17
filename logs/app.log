@@ -2767,3 +2767,706 @@
 2025-06-24 15:36:27,915 - services.resource_manager - INFO - 资源已清理: error_handler
 2025-06-24 15:36:27,915 - services.resource_manager - INFO - 所有资源已清理
 2025-06-24 15:36:27,925 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:54:39,887 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-24 15:54:39,887 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-24 15:54:39,887 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-24 15:54:39,888 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-24 15:54:39,888 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.002秒
+2025-06-24 15:54:39,927 - services.keyboard_service - INFO - 注册按键处理器: ctrl+1
+2025-06-24 15:54:39,927 - services.keyboard_service - INFO - 注册按键处理器: ctrl+2
+2025-06-24 15:54:39,927 - services.keyboard_service - INFO - 键盘监听服务已启动
+2025-06-24 15:54:39,927 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:54:39,964 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:54:39,975 - pynput.keyboard.Listener - WARNING - This process is not trusted! Input event monitoring will not be possible until it is added to accessibility clients.
+2025-06-24 15:54:44,064 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-24 15:54:45,345 - src.hardware.audio_interface - INFO - 录音时长: 0.37秒
+2025-06-24 15:54:45,345 - src.hardware.audio_interface - INFO - 录音时长过短，不进行语音识别
+2025-06-24 15:54:45,530 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:54:45,581 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:54:48,398 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-24 15:54:49,597 - src.hardware.audio_interface - INFO - 录音时长: 0.65秒
+2025-06-24 15:54:51,475 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-24 15:54:51,475 - src.hardware.audio_interface - INFO - 你好，伯乐。
+2025-06-24 15:54:51,476 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.5
+2025-06-24 15:54:51,476 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-24 15:54:51,666 - services.audio_service - INFO - 播放提示音频...
+2025-06-24 15:54:55,201 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-24 15:54:55,255 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-24 15:54:56,794 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-24 15:54:59,694 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-24 15:54:59,696 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250624_155455.wav
+2025-06-24 15:54:59,892 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-24 15:54:59,894 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 4.691秒
+2025-06-24 15:55:07,099 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-24 15:55:07,100 - __main__ - INFO - 再见，伯乐。
+2025-06-24 15:55:07,100 - __main__ - INFO - [性能监控] 语音转文字耗时: 7.206秒
+2025-06-24 15:55:07,100 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.5
+2025-06-24 15:55:07,101 - src.hardware.audio_interface - INFO - 相似度检测，检测到结束词！
+2025-06-24 15:55:07,101 - __main__ - INFO - 检测到用户输入 再见，伯乐 退出聊天，播放再见音频文件。
+2025-06-24 15:55:07,101 - services.audio_service - INFO - 播放再见音频...
+2025-06-24 15:55:10,761 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/bye_audios/bye.mp3
+2025-06-24 15:55:10,761 - __main__ - INFO - 等待唤醒词...
+2025-06-24 15:55:10,816 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-24 15:55:12,203 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-24 15:55:12,204 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:55:12,204 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-24 15:55:12,204 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-24 15:55:12,204 - __main__ - INFO - 用户中断程序
+2025-06-24 15:55:12,204 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-24 15:55:12,204 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:55:12,204 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-24 15:55:12,204 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 32.317秒
+2025-06-24 15:55:12,205 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-24 15:55:12,205 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-24 15:55:12,205 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-24 15:55:12,205 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-24 15:55:12,205 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-24 15:55:12,205 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-24 15:55:12,205 - services.resource_manager - INFO - 所有资源已清理
+2025-06-24 15:55:12,215 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-26 10:18:58,762 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-26 10:18:58,762 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-26 10:18:58,763 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-26 10:18:58,763 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-26 10:18:58,763 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.003秒
+2025-06-26 10:18:58,799 - services.keyboard_service - INFO - 注册按键处理器: ctrl+1
+2025-06-26 10:18:58,799 - services.keyboard_service - INFO - 注册按键处理器: ctrl+2
+2025-06-26 10:18:58,799 - services.keyboard_service - INFO - 键盘监听服务已启动
+2025-06-26 10:18:58,799 - __main__ - INFO - 等待唤醒词...
+2025-06-26 10:18:58,852 - pynput.keyboard.Listener - WARNING - This process is not trusted! Input event monitoring will not be possible until it is added to accessibility clients.
+2025-06-26 10:18:58,861 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-26 10:19:04,023 - __main__ - INFO - 等待唤醒词...
+2025-06-26 10:19:04,098 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-26 10:19:09,256 - __main__ - INFO - 等待唤醒词...
+2025-06-26 10:19:09,332 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-26 10:19:14,488 - __main__ - INFO - 等待唤醒词...
+2025-06-26 10:19:14,565 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-26 10:19:19,725 - __main__ - INFO - 等待唤醒词...
+2025-06-26 10:19:19,802 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-26 10:19:24,957 - __main__ - INFO - 等待唤醒词...
+2025-06-26 10:19:25,032 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-26 10:19:30,186 - __main__ - INFO - 等待唤醒词...
+2025-06-26 10:19:30,265 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-26 10:19:35,421 - __main__ - INFO - 等待唤醒词...
+2025-06-26 10:19:35,497 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-26 10:19:40,657 - __main__ - INFO - 等待唤醒词...
+2025-06-26 10:19:40,718 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-26 10:19:45,870 - __main__ - INFO - 等待唤醒词...
+2025-06-26 10:19:45,946 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-26 10:19:51,107 - __main__ - INFO - 等待唤醒词...
+2025-06-26 10:19:51,183 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-26 10:19:56,333 - __main__ - INFO - 等待唤醒词...
+2025-06-26 10:19:56,402 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-26 10:19:57,706 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-26 10:19:57,707 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-26 10:19:57,707 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-26 10:19:57,707 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-26 10:19:57,707 - __main__ - INFO - 用户中断程序
+2025-06-26 10:19:57,707 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-26 10:19:57,707 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-26 10:19:57,707 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-26 10:19:57,707 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 58.944秒
+2025-06-26 10:19:57,707 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-26 10:19:57,707 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-26 10:19:57,707 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-26 10:19:57,708 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-26 10:19:57,708 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-26 10:19:57,708 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-26 10:19:57,708 - services.resource_manager - INFO - 所有资源已清理
+2025-06-26 10:19:57,721 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-26 10:19:59,064 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-26 10:19:59,064 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-26 10:19:59,064 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-26 10:19:59,064 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-26 10:19:59,064 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.002秒
+2025-06-26 10:19:59,100 - services.keyboard_service - INFO - 注册按键处理器: ctrl+1
+2025-06-26 10:19:59,100 - services.keyboard_service - INFO - 注册按键处理器: ctrl+2
+2025-06-26 10:19:59,100 - services.keyboard_service - INFO - 键盘监听服务已启动
+2025-06-26 10:19:59,100 - __main__ - INFO - 等待唤醒词...
+2025-06-26 10:19:59,137 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-26 10:19:59,152 - pynput.keyboard.Listener - WARNING - This process is not trusted! Input event monitoring will not be possible until it is added to accessibility clients.
+2025-06-26 10:20:04,367 - __main__ - INFO - 等待唤醒词...
+2025-06-26 10:20:04,416 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-26 10:20:06,809 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 10:20:08,004 - src.hardware.audio_interface - INFO - 录音时长: 0.74秒
+2025-06-26 10:20:11,101 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-26 10:20:11,101 - src.hardware.audio_interface - INFO - 你好，伯乐。
+2025-06-26 10:20:11,102 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.5
+2025-06-26 10:20:11,102 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-26 10:20:11,266 - services.audio_service - INFO - 播放提示音频...
+2025-06-26 10:20:14,802 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-26 10:20:14,855 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 10:20:18,103 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 10:20:21,772 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 10:20:21,774 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_102014.wav
+2025-06-26 10:20:21,963 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 10:20:21,965 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 7.162秒
+2025-06-26 10:20:24,480 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 10:20:24,481 - __main__ - INFO - 今天我长得漂亮吗？
+2025-06-26 10:20:24,481 - __main__ - INFO - [性能监控] 语音转文字耗时: 2.516秒
+2025-06-26 10:20:24,482 - __main__ - INFO - 文本相似度: 0.00
+2025-06-26 10:20:24,701 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 10:20:24,702 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 10:20:28,240 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 10:20:28,241 - services.chat_processor - INFO - 该问题请咨询人工客服
+2025-06-26 10:20:29,316 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_102029.mp3
+2025-06-26 10:20:29,316 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 10:20:29,316 - __main__ - INFO - [性能监控] 智能体处理耗时: 4.834秒
+2025-06-26 10:20:32,593 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_102029.mp3
+2025-06-26 10:20:32,595 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 10:20:32,595 - root - INFO - Conversation cycle completed successfully
+2025-06-26 10:20:32,595 - __main__ - INFO - [性能监控] 音频播放耗时: 3.279秒
+2025-06-26 10:20:32,647 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 10:20:59,274 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 10:21:07,636 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 10:21:07,640 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_102032.wav
+2025-06-26 10:21:07,832 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 10:21:07,833 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 35.237秒
+2025-06-26 10:21:11,560 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 10:21:11,560 - __main__ - INFO - 请问深圳市核桃有什么政策利于博士的发展吗？
+2025-06-26 10:21:11,560 - __main__ - INFO - [性能监控] 语音转文字耗时: 3.727秒
+2025-06-26 10:21:11,560 - __main__ - INFO - 文本相似度: 0.00
+2025-06-26 10:21:11,768 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 10:21:11,769 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 10:21:15,163 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 10:21:15,164 - services.chat_processor - INFO - 该问题请咨询人工客服
+2025-06-26 10:21:16,228 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_102116.mp3
+2025-06-26 10:21:16,228 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 10:21:16,228 - __main__ - INFO - [性能监控] 智能体处理耗时: 4.667秒
+2025-06-26 10:21:19,500 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_102116.mp3
+2025-06-26 10:21:19,501 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 10:21:19,501 - root - INFO - Conversation cycle completed successfully
+2025-06-26 10:21:19,501 - __main__ - INFO - [性能监控] 音频播放耗时: 3.273秒
+2025-06-26 10:21:19,554 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 10:21:44,386 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 10:21:47,714 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 10:21:47,715 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_102119.wav
+2025-06-26 10:21:47,906 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 10:21:47,907 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 28.406秒
+2025-06-26 10:21:50,064 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 10:21:50,064 - __main__ - INFO - 请给我讲一个笑话。
+2025-06-26 10:21:50,064 - __main__ - INFO - [性能监控] 语音转文字耗时: 2.156秒
+2025-06-26 10:21:50,064 - __main__ - INFO - 文本相似度: 0.00
+2025-06-26 10:21:50,271 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 10:21:50,271 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 10:21:53,485 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 10:21:53,486 - services.chat_processor - INFO - 小蚂蚁迷路找不到蚁窝，可着急了，恰好看到它的朋友经过，于是冲过去大喊一声：“哥们儿！你…你都如何回蚁窝（回忆我）？”那朋友一愣，然后反问道：“带……带……带着笑或是很沉默？” 
+2025-06-26 10:21:57,221 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_102157.mp3
+2025-06-26 10:21:57,222 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 10:21:57,222 - __main__ - INFO - [性能监控] 智能体处理耗时: 7.158秒
+2025-06-26 10:22:15,674 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_102157.mp3
+2025-06-26 10:22:15,676 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 10:22:15,676 - root - INFO - Conversation cycle completed successfully
+2025-06-26 10:22:15,676 - __main__ - INFO - [性能监控] 音频播放耗时: 18.454秒
+2025-06-26 10:22:15,733 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 10:22:23,413 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 10:22:29,130 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 10:22:29,131 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_102215.wav
+2025-06-26 10:22:29,325 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 10:22:29,331 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 13.655秒
+2025-06-26 10:22:31,574 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 10:22:31,574 - __main__ - INFO - 我想来深圳福田发展，能获得什么资源？
+2025-06-26 10:22:31,574 - __main__ - INFO - [性能监控] 语音转文字耗时: 2.243秒
+2025-06-26 10:22:31,574 - __main__ - INFO - 文本相似度: 0.09
+2025-06-26 10:22:31,729 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 10:22:31,730 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 10:22:34,323 - src.hardware.audio_interface - INFO - 已停止音频播放
+2025-06-26 10:22:34,960 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 10:22:34,961 - services.chat_processor - INFO - 该问题请咨询人工客服
+2025-06-26 10:22:35,991 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_102235.mp3
+2025-06-26 10:22:35,992 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 10:22:35,992 - __main__ - INFO - [性能监控] 智能体处理耗时: 4.417秒
+2025-06-26 10:22:39,293 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_102235.mp3
+2025-06-26 10:22:39,295 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 10:22:39,295 - root - INFO - Conversation cycle completed successfully
+2025-06-26 10:22:39,296 - __main__ - INFO - [性能监控] 音频播放耗时: 3.304秒
+2025-06-26 10:22:39,347 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 10:22:47,714 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 10:22:55,308 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 10:22:55,313 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_102239.wav
+2025-06-26 10:22:55,502 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 10:22:55,505 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 16.209秒
+2025-06-26 10:23:00,156 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 10:23:00,157 - __main__ - INFO - 积分制认定的三类英才20万元支持是现金发放吗？
+2025-06-26 10:23:00,157 - __main__ - INFO - [性能监控] 语音转文字耗时: 4.651秒
+2025-06-26 10:23:00,157 - __main__ - INFO - 文本相似度: 0.00
+2025-06-26 10:23:00,542 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 10:23:00,544 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 10:23:03,098 - src.hardware.audio_interface - INFO - 已停止音频播放
+2025-06-26 10:23:03,788 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 10:23:03,789 - services.chat_processor - INFO - 该问题请咨询人工客服
+2025-06-26 10:23:04,921 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_102304.mp3
+2025-06-26 10:23:04,922 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 10:23:04,922 - __main__ - INFO - [性能监控] 智能体处理耗时: 4.764秒
+2025-06-26 10:23:08,185 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_102304.mp3
+2025-06-26 10:23:08,187 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 10:23:08,187 - root - INFO - Conversation cycle completed successfully
+2025-06-26 10:23:08,187 - __main__ - INFO - [性能监控] 音频播放耗时: 3.265秒
+2025-06-26 10:23:08,243 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 10:23:18,316 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 10:23:23,092 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 10:23:23,094 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_102308.wav
+2025-06-26 10:23:23,286 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 10:23:23,287 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 15.100秒
+2025-06-26 10:23:39,320 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 10:23:39,320 - __main__ - INFO - 请问福田区有哪些政策？
+2025-06-26 10:23:39,320 - __main__ - INFO - [性能监控] 语音转文字耗时: 16.032秒
+2025-06-26 10:23:39,320 - __main__ - INFO - 文本相似度: 0.00
+2025-06-26 10:23:39,469 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 10:23:39,470 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 10:23:44,025 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 10:23:44,026 - services.chat_processor - INFO - 福田区人才政策包括：
+- 人才培养：高端人才培养支持、青年人才培养支持、技能人才培养支持。
+- 人才评价：成就制、积分制、举荐制、实效制、河套专项人才认定。
+- 人才服务：发展资源支持、服务联盟支持、青年安居支持、福田英才专属服务。 
+2025-06-26 10:23:49,926 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_102349.mp3
+2025-06-26 10:23:49,927 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 10:23:49,927 - __main__ - INFO - [性能监控] 智能体处理耗时: 10.607秒
+2025-06-26 10:24:17,267 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_102349.mp3
+2025-06-26 10:24:17,268 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 10:24:17,268 - root - INFO - Conversation cycle completed successfully
+2025-06-26 10:24:17,268 - __main__ - INFO - [性能监控] 音频播放耗时: 27.341秒
+2025-06-26 10:24:17,305 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 10:24:47,342 - src.hardware.audio_interface - INFO - 达到最大录音时间，停止录音
+2025-06-26 10:24:47,533 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 30.265秒
+2025-06-26 10:24:47,586 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 10:24:48,526 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 10:24:56,464 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 10:24:56,469 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_102447.wav
+2025-06-26 10:24:56,658 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 10:24:56,659 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 9.125秒
+2025-06-26 10:25:02,889 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 10:25:02,889 - __main__ - INFO - 请问大学生实习基地补贴支持本科生多少钱？
+2025-06-26 10:25:02,889 - __main__ - INFO - [性能监控] 语音转文字耗时: 6.230秒
+2025-06-26 10:25:02,889 - __main__ - INFO - 文本相似度: 0.00
+2025-06-26 10:25:03,093 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 10:25:03,094 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 10:25:07,087 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 10:25:07,088 - services.chat_processor - INFO - 该问题请咨询人工客服
+2025-06-26 10:25:08,551 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_102508.mp3
+2025-06-26 10:25:08,552 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 10:25:08,552 - __main__ - INFO - [性能监控] 智能体处理耗时: 5.663秒
+2025-06-26 10:25:11,889 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_102508.mp3
+2025-06-26 10:25:11,891 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 10:25:11,891 - root - INFO - Conversation cycle completed successfully
+2025-06-26 10:25:11,891 - __main__ - INFO - [性能监控] 音频播放耗时: 3.339秒
+2025-06-26 10:25:11,942 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 10:25:17,832 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 10:25:25,427 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 10:25:25,430 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_102511.wav
+2025-06-26 10:25:25,620 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 10:25:25,621 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 13.730秒
+2025-06-26 10:25:29,613 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 10:25:29,614 - __main__ - INFO - 请问青年人才引进的大学生实习基地补贴是什么？
+2025-06-26 10:25:29,614 - __main__ - INFO - [性能监控] 语音转文字耗时: 3.992秒
+2025-06-26 10:25:29,614 - __main__ - INFO - 文本相似度: 0.00
+2025-06-26 10:25:29,726 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 10:25:29,728 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 10:25:33,101 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 10:25:33,101 - services.chat_processor - INFO - 该问题请咨询人工客服
+2025-06-26 10:25:34,320 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_102534.mp3
+2025-06-26 10:25:34,321 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 10:25:34,321 - __main__ - INFO - [性能监控] 智能体处理耗时: 4.706秒
+2025-06-26 10:25:37,598 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_102534.mp3
+2025-06-26 10:25:37,610 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 10:25:37,622 - root - INFO - Conversation cycle completed successfully
+2025-06-26 10:25:37,623 - __main__ - INFO - [性能监控] 音频播放耗时: 3.301秒
+2025-06-26 10:25:37,668 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 10:25:51,775 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 14.152秒
+2025-06-26 10:25:51,776 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-26 10:25:51,776 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-26 10:25:51,776 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-26 10:25:51,776 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-26 10:25:51,777 - __main__ - INFO - 用户中断程序
+2025-06-26 10:25:51,777 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-26 10:25:51,777 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-26 10:25:51,777 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-26 10:25:51,778 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 352.713秒
+2025-06-26 10:25:51,778 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-26 10:25:51,778 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-26 10:25:51,778 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-26 10:25:51,778 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-26 10:25:51,778 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-26 10:25:51,778 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-26 10:25:51,778 - services.resource_manager - INFO - 所有资源已清理
+2025-06-26 10:25:51,792 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-26 10:59:38,539 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-26 10:59:38,539 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-26 10:59:38,539 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-26 10:59:38,540 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-26 10:59:38,540 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.003秒
+2025-06-26 10:59:38,592 - services.keyboard_service - INFO - 注册按键处理器: ctrl+1
+2025-06-26 10:59:38,592 - services.keyboard_service - INFO - 注册按键处理器: ctrl+2
+2025-06-26 10:59:38,592 - services.keyboard_service - INFO - 键盘监听服务已启动
+2025-06-26 10:59:38,592 - __main__ - INFO - 等待唤醒词...
+2025-06-26 10:59:38,633 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-26 10:59:38,640 - pynput.keyboard.Listener - WARNING - This process is not trusted! Input event monitoring will not be possible until it is added to accessibility clients.
+2025-06-26 10:59:43,870 - __main__ - INFO - 等待唤醒词...
+2025-06-26 10:59:43,923 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-26 10:59:45,765 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 10:59:47,044 - src.hardware.audio_interface - INFO - 录音时长: 0.65秒
+2025-06-26 10:59:54,746 - urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')': /v1/audio/transcriptions
+2025-06-26 10:59:58,763 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-26 10:59:58,764 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-26 10:59:58,764 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-26 10:59:58,764 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-26 10:59:58,764 - __main__ - INFO - 用户中断程序
+2025-06-26 10:59:58,764 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-26 10:59:58,764 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-26 10:59:58,765 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-26 10:59:58,765 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 20.226秒
+2025-06-26 10:59:58,765 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-26 10:59:58,765 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-26 10:59:58,765 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-26 10:59:58,765 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-26 10:59:58,765 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-26 10:59:58,765 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-26 10:59:58,765 - services.resource_manager - INFO - 所有资源已清理
+2025-06-26 10:59:58,773 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-26 11:03:05,715 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-26 11:03:05,716 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-06-26 11:03:05,716 - apscheduler.scheduler - INFO - Scheduler started
+2025-06-26 11:03:05,716 - services.scheduler - INFO - 文件清理调度器已启动
+2025-06-26 11:03:05,716 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.002秒
+2025-06-26 11:03:05,761 - services.keyboard_service - INFO - 注册按键处理器: ctrl+1
+2025-06-26 11:03:05,761 - services.keyboard_service - INFO - 注册按键处理器: ctrl+2
+2025-06-26 11:03:05,762 - services.keyboard_service - INFO - 键盘监听服务已启动
+2025-06-26 11:03:05,762 - __main__ - INFO - 等待唤醒词...
+2025-06-26 11:03:05,800 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-26 11:03:05,817 - pynput.keyboard.Listener - WARNING - This process is not trusted! Input event monitoring will not be possible until it is added to accessibility clients.
+2025-06-26 11:03:11,027 - __main__ - INFO - 等待唤醒词...
+2025-06-26 11:03:11,080 - src.hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-06-26 11:03:12,364 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 11:03:13,471 - src.hardware.audio_interface - INFO - 录音时长: 0.65秒
+2025-06-26 11:03:14,785 - src.hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-06-26 11:03:14,785 - src.hardware.audio_interface - INFO - 你好，伯乐。
+2025-06-26 11:03:14,786 - src.hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.5
+2025-06-26 11:03:14,786 - src.hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-06-26 11:03:14,954 - services.audio_service - INFO - 播放提示音频...
+2025-06-26 11:03:18,484 - src.hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-06-26 11:03:18,540 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 11:03:19,136 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 11:03:23,238 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 11:03:23,242 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_110318.wav
+2025-06-26 11:03:23,435 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 11:03:23,436 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 4.952秒
+2025-06-26 11:03:25,107 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 11:03:25,107 - __main__ - INFO - 给我讲个可爱的笑话。
+2025-06-26 11:03:25,107 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.671秒
+2025-06-26 11:03:25,108 - __main__ - INFO - 文本相似度: 0.00
+2025-06-26 11:03:25,279 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 11:03:25,280 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 11:03:29,010 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 11:03:29,010 - services.chat_processor - INFO - 小蚂蚁迷路找不到蚁窝，可着急了，恰好看到它的朋友经过，于是冲过去大喊一声：“哥们儿！你…你都如何回蚁窝（回忆我）？”那朋友一愣，然后反问道：“带……带……带着笑或是很沉默？” 
+2025-06-26 11:03:32,384 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_110332.mp3
+2025-06-26 11:03:32,385 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 11:03:32,385 - __main__ - INFO - [性能监控] 智能体处理耗时: 7.277秒
+2025-06-26 11:03:50,872 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_110332.mp3
+2025-06-26 11:03:50,875 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 11:03:50,875 - root - INFO - Conversation cycle completed successfully
+2025-06-26 11:03:50,875 - __main__ - INFO - [性能监控] 音频播放耗时: 18.490秒
+2025-06-26 11:03:50,932 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 11:03:52,983 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 11:03:57,336 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 11:03:57,340 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_110350.wav
+2025-06-26 11:03:57,535 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 11:03:57,536 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 6.661秒
+2025-06-26 11:03:58,854 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 11:03:58,854 - __main__ - INFO - 伯乐伯乐，再给我讲一个笑话。
+2025-06-26 11:03:58,854 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.318秒
+2025-06-26 11:03:58,854 - __main__ - INFO - 文本相似度: 0.21
+2025-06-26 11:03:58,956 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 11:03:58,957 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 11:04:02,664 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 11:04:02,665 - services.chat_processor - INFO - 小蚂蚁迷路找不到蚁窝，可着急了，恰好看到它的朋友经过，于是冲过去大喊一声：“哥们儿！你…你都如何回蚁窝（回忆我）？”那朋友一愣，然后反问道：“带…带…带着笑或是很沉默？” 
+2025-06-26 11:04:06,227 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_110406.mp3
+2025-06-26 11:04:06,227 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 11:04:06,227 - __main__ - INFO - [性能监控] 智能体处理耗时: 7.373秒
+2025-06-26 11:04:24,903 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_110406.mp3
+2025-06-26 11:04:24,905 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 11:04:24,905 - root - INFO - Conversation cycle completed successfully
+2025-06-26 11:04:24,906 - __main__ - INFO - [性能监控] 音频播放耗时: 18.679秒
+2025-06-26 11:04:24,962 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 11:04:26,501 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 11:04:31,532 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 11:04:31,535 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_110424.wav
+2025-06-26 11:04:31,726 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 11:04:31,728 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 6.822秒
+2025-06-26 11:04:33,271 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 11:04:33,271 - __main__ - INFO - 请问西瓜和香蕉可以一起吃吗？
+2025-06-26 11:04:33,272 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.543秒
+2025-06-26 11:04:33,272 - __main__ - INFO - 文本相似度: 0.00
+2025-06-26 11:04:33,388 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 11:04:33,388 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 11:04:37,080 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 11:04:37,081 - services.chat_processor - INFO - 西瓜和香蕉通常能一起吃。二者营养无冲突，一起吃能补充维生素等营养。但它们都属凉性水果，肠胃弱的人大量同食可能腹泻。 
+2025-06-26 11:04:39,821 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_110439.mp3
+2025-06-26 11:04:39,821 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 11:04:39,821 - __main__ - INFO - [性能监控] 智能体处理耗时: 6.549秒
+2025-06-26 11:04:52,626 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_110439.mp3
+2025-06-26 11:04:52,627 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 11:04:52,627 - root - INFO - Conversation cycle completed successfully
+2025-06-26 11:04:52,627 - __main__ - INFO - [性能监控] 音频播放耗时: 12.806秒
+2025-06-26 11:04:52,681 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 11:04:54,562 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 11:04:59,423 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 11:04:59,426 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_110452.wav
+2025-06-26 11:04:59,618 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 11:04:59,619 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 6.992秒
+2025-06-26 11:05:01,662 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 11:05:01,663 - __main__ - INFO - 深圳福田区有哪些好玩的地方？
+2025-06-26 11:05:01,663 - __main__ - INFO - [性能监控] 语音转文字耗时: 2.043秒
+2025-06-26 11:05:01,663 - __main__ - INFO - 文本相似度: 0.00
+2025-06-26 11:05:01,771 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 11:05:01,772 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 11:05:08,046 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 11:05:08,046 - services.chat_processor - INFO - 深圳福田区好玩的地方不少。有莲花山公园，可登高望远、赏景休闲；深圳博物馆新馆，能了解历史文化；还有福田红树林生态公园，可看湿地与鸟类。购物娱乐去福田COCO Park等地。 
+2025-06-26 11:05:11,172 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_110511.mp3
+2025-06-26 11:05:11,172 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 11:05:11,172 - __main__ - INFO - [性能监控] 智能体处理耗时: 9.509秒
+2025-06-26 11:05:29,807 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_110511.mp3
+2025-06-26 11:05:29,811 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 11:05:29,811 - root - INFO - Conversation cycle completed successfully
+2025-06-26 11:05:29,811 - __main__ - INFO - [性能监控] 音频播放耗时: 18.640秒
+2025-06-26 11:05:29,867 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 11:05:33,966 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 11:05:44,462 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 11:05:44,466 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_110529.wav
+2025-06-26 11:05:44,659 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 11:05:44,660 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 14.849秒
+2025-06-26 11:05:47,394 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 11:05:47,395 - __main__ - INFO - 请问深圳市福田区人才引进支持的青年人才引进支持有哪一些补贴？
+2025-06-26 11:05:47,395 - __main__ - INFO - [性能监控] 语音转文字耗时: 2.735秒
+2025-06-26 11:05:47,395 - __main__ - INFO - 文本相似度: 0.00
+2025-06-26 11:05:47,518 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 11:05:47,518 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 11:05:55,679 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 11:05:55,679 - services.chat_processor - INFO - 福田区青年人才引进支持补贴如下：
+1. 大学生实习基地补贴：大专生每人1000元/月（限深圳院校应届生和深圳生源），本科生每人1500元/月，硕士生每人2500元/月，博士生每人4500元/月，每名实习生补贴累计不超6个月，港澳台籍实习生补贴提高50%。
+2. 新引进优秀青年入户补贴：35周岁以下，毕业于境内外知名高校的硕士及本科毕业生，由用人单位申报，分别给予最高5万元、最高3万元生活补贴，符合条件的外籍和港澳台青年可同等享受。 博士毕业生可按深圳市政策申请生活补贴。 
+2025-06-26 11:06:03,629 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_110603.mp3
+2025-06-26 11:06:03,629 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 11:06:03,630 - __main__ - INFO - [性能监控] 智能体处理耗时: 16.235秒
+2025-06-26 11:06:56,103 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_110603.mp3
+2025-06-26 11:06:56,105 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 11:06:56,106 - root - INFO - Conversation cycle completed successfully
+2025-06-26 11:06:56,106 - __main__ - INFO - [性能监控] 音频播放耗时: 52.477秒
+2025-06-26 11:06:56,161 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 11:06:57,954 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 11:07:00,085 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 11:07:00,087 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_110656.wav
+2025-06-26 11:07:00,282 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 11:07:00,283 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 4.177秒
+2025-06-26 11:07:01,242 - src.services.api_client - ERROR - 响应中缺少文本内容
+2025-06-26 11:07:01,242 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 11:07:01,242 - __main__ - INFO - None
+2025-06-26 11:07:01,243 - __main__ - INFO - [性能监控] 语音转文字耗时: 0.959秒
+2025-06-26 11:07:01,366 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 11:07:01,367 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 11:07:05,079 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 11:07:05,079 - services.chat_processor - INFO - 不太明确你说的“None 精简且快速的输出内容”具体意思，可以详细解释一下问题，这样我能更好交流。 
+2025-06-26 11:07:06,922 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_110706.mp3
+2025-06-26 11:07:06,923 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 11:07:06,923 - __main__ - INFO - [性能监控] 智能体处理耗时: 5.680秒
+2025-06-26 11:07:16,486 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_110706.mp3
+2025-06-26 11:07:16,487 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 11:07:16,487 - root - INFO - Conversation cycle completed successfully
+2025-06-26 11:07:16,487 - __main__ - INFO - [性能监控] 音频播放耗时: 9.565秒
+2025-06-26 11:07:16,543 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 11:07:17,057 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 11:07:19,193 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 11:07:19,195 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_110716.wav
+2025-06-26 11:07:19,390 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 11:07:19,391 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 2.904秒
+2025-06-26 11:07:20,269 - src.services.api_client - ERROR - 响应中缺少文本内容
+2025-06-26 11:07:20,270 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 11:07:20,270 - __main__ - INFO - None
+2025-06-26 11:07:20,270 - __main__ - INFO - [性能监控] 语音转文字耗时: 0.879秒
+2025-06-26 11:07:20,367 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 11:07:20,368 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 11:07:23,544 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 11:07:23,544 - services.chat_processor - INFO - 不太明确你所说“None 精简且快速的输出内容”具体意思，可以详细解释一下你的问题，这样我能更好为你交流。 
+2025-06-26 11:07:25,617 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_110725.mp3
+2025-06-26 11:07:25,617 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 11:07:25,617 - __main__ - INFO - [性能监控] 智能体处理耗时: 5.347秒
+2025-06-26 11:07:35,925 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_110725.mp3
+2025-06-26 11:07:35,926 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 11:07:35,926 - root - INFO - Conversation cycle completed successfully
+2025-06-26 11:07:35,926 - __main__ - INFO - [性能监控] 音频播放耗时: 10.309秒
+2025-06-26 11:07:35,980 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 11:07:37,431 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 11:07:45,793 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 11:07:45,797 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_110735.wav
+2025-06-26 11:07:45,991 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 11:07:45,992 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 10.066秒
+2025-06-26 11:07:48,328 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 11:07:48,328 - __main__ - INFO - 请问引才伯乐支持，比赛引才有哪一些资金支持呢？
+2025-06-26 11:07:48,329 - __main__ - INFO - [性能监控] 语音转文字耗时: 2.336秒
+2025-06-26 11:07:48,329 - __main__ - INFO - 文本相似度: 0.14
+2025-06-26 11:07:48,436 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 11:07:48,437 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 11:07:50,896 - src.hardware.audio_interface - INFO - 已停止音频播放
+2025-06-26 11:07:51,550 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 11:07:51,551 - services.chat_processor - INFO - 该问题请咨询人工客服
+2025-06-26 11:07:52,518 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_110752.mp3
+2025-06-26 11:07:52,518 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 11:07:52,519 - __main__ - INFO - [性能监控] 智能体处理耗时: 4.190秒
+2025-06-26 11:07:55,748 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_110752.mp3
+2025-06-26 11:07:55,749 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 11:07:55,749 - root - INFO - Conversation cycle completed successfully
+2025-06-26 11:07:55,749 - __main__ - INFO - [性能监控] 音频播放耗时: 3.231秒
+2025-06-26 11:07:55,789 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 11:07:59,460 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 11:08:04,408 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 11:08:04,410 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_110755.wav
+2025-06-26 11:08:04,604 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 11:08:04,606 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 8.857秒
+2025-06-26 11:08:06,861 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 11:08:06,862 - __main__ - INFO - 请问有哪一些人才评价制？
+2025-06-26 11:08:06,862 - __main__ - INFO - [性能监控] 语音转文字耗时: 2.256秒
+2025-06-26 11:08:06,862 - __main__ - INFO - 文本相似度: 0.00
+2025-06-26 11:08:06,983 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 11:08:06,984 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 11:08:15,132 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 11:08:15,132 - services.chat_processor - INFO - 福田区人才评价制有：
+1. 成就制：在福田或为福田工作，取得重大成就等的高端人才或团队核心成员可直接认定为相应类别的福田英才。
+2. 积分制：从事特定工作的人才，按教育背景等指标评分，达相应分值可申请认定Ⅱ、Ⅲ类福田英才并获支持。
+3. 举荐制：突出用人单位等有举荐权，3名特定层级英才每年可联合举荐1名，单位也可自主认定。
+4. 实效制：行业主管部门制定专项措施，符合条件人才单次获80万（含）以上支持可认定为I类英才等。
+5. 河套专项人才认定：适用于河套深港科技创新合作区深圳园区内相关用人单位的人才。 
+2025-06-26 11:08:23,920 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_110823.mp3
+2025-06-26 11:08:23,920 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 11:08:23,920 - __main__ - INFO - [性能监控] 智能体处理耗时: 17.058秒
+2025-06-26 11:09:20,817 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_110823.mp3
+2025-06-26 11:09:20,819 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 11:09:20,819 - root - INFO - Conversation cycle completed successfully
+2025-06-26 11:09:20,820 - __main__ - INFO - [性能监控] 音频播放耗时: 56.901秒
+2025-06-26 11:09:20,875 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 11:09:44,432 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 11:09:51,766 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 11:09:51,769 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_110920.wav
+2025-06-26 11:09:51,957 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 11:09:51,959 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 31.140秒
+2025-06-26 11:09:55,018 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 11:09:55,018 - __main__ - INFO - 请问深圳福田区有哪些人力资源服务产业园的支持？
+2025-06-26 11:09:55,018 - __main__ - INFO - [性能监控] 语音转文字耗时: 3.059秒
+2025-06-26 11:09:55,018 - __main__ - INFO - 文本相似度: 0.00
+2025-06-26 11:09:55,134 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 11:09:55,135 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 11:10:03,385 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 11:10:03,385 - services.chat_processor - INFO - 该问题请咨询人工客服
+2025-06-26 11:10:04,358 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_111004.mp3
+2025-06-26 11:10:04,358 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 11:10:04,359 - __main__ - INFO - [性能监控] 智能体处理耗时: 9.341秒
+2025-06-26 11:10:07,654 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_111004.mp3
+2025-06-26 11:10:07,655 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 11:10:07,655 - root - INFO - Conversation cycle completed successfully
+2025-06-26 11:10:07,655 - __main__ - INFO - [性能监控] 音频播放耗时: 3.296秒
+2025-06-26 11:10:07,694 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 11:10:15,290 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 11:10:23,567 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 11:10:23,568 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_111007.wav
+2025-06-26 11:10:23,764 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 11:10:23,765 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 16.110秒
+2025-06-26 11:10:42,434 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 11:10:42,434 - __main__ - INFO - 请问福田英才专属服务的子女入学支持是什么？
+2025-06-26 11:10:42,434 - __main__ - INFO - [性能监控] 语音转文字耗时: 18.669秒
+2025-06-26 11:10:42,434 - __main__ - INFO - 文本相似度: 0.00
+2025-06-26 11:10:42,533 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 11:10:42,533 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 11:10:46,030 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 11:10:46,030 - services.chat_processor - INFO - 根据福田区有关政策和实际情况，给予福田英才子女教育保障支持。落实单位为区教育局。 
+2025-06-26 11:10:47,793 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_111047.mp3
+2025-06-26 11:10:47,794 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 11:10:47,794 - __main__ - INFO - [性能监控] 智能体处理耗时: 5.360秒
+2025-06-26 11:10:57,244 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_111047.mp3
+2025-06-26 11:10:57,245 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 11:10:57,245 - root - INFO - Conversation cycle completed successfully
+2025-06-26 11:10:57,245 - __main__ - INFO - [性能监控] 音频播放耗时: 9.451秒
+2025-06-26 11:10:57,299 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 11:11:10,183 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 11:11:15,050 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 11:11:15,051 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_111057.wav
+2025-06-26 11:11:15,244 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 11:11:15,245 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 18.000秒
+2025-06-26 11:11:17,221 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 11:11:17,222 - __main__ - INFO - 请问福田区有哪些产业园支持？
+2025-06-26 11:11:17,222 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.976秒
+2025-06-26 11:11:17,222 - __main__ - INFO - 文本相似度: 0.00
+2025-06-26 11:11:17,331 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 11:11:17,332 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 11:11:25,376 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 11:11:25,377 - services.chat_processor - INFO - 从福田政府在线可知，有《福田区重点产业项目遴选实施办法》等政策。2024 年还有产业发展专项资金相关内容。你可登录福田区企业服务平台等获取产业园具体支持政策。 
+2025-06-26 11:11:28,440 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_111128.mp3
+2025-06-26 11:11:28,440 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 11:11:28,440 - __main__ - INFO - [性能监控] 智能体处理耗时: 11.218秒
+2025-06-26 11:11:45,957 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_111128.mp3
+2025-06-26 11:11:45,958 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 11:11:45,958 - root - INFO - Conversation cycle completed successfully
+2025-06-26 11:11:45,958 - __main__ - INFO - [性能监控] 音频播放耗时: 17.518秒
+2025-06-26 11:11:46,014 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 11:11:49,516 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 11:11:51,648 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 11:11:51,649 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_111145.wav
+2025-06-26 11:11:51,839 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 11:11:51,839 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 5.881秒
+2025-06-26 11:11:53,058 - src.services.api_client - ERROR - 响应中缺少文本内容
+2025-06-26 11:11:53,058 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 11:11:53,058 - __main__ - INFO - None
+2025-06-26 11:11:53,058 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.219秒
+2025-06-26 11:11:53,161 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 11:11:53,162 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 11:11:56,950 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 11:11:56,951 - services.chat_processor - INFO - 不太理解你所说“None 精简且快速的输出内容”是什么意思，可以详细解释一下问题，这样我能更好地和你交流。 
+2025-06-26 11:11:58,768 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_111158.mp3
+2025-06-26 11:11:58,768 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 11:11:58,768 - __main__ - INFO - [性能监控] 智能体处理耗时: 5.709秒
+2025-06-26 11:12:08,367 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_111158.mp3
+2025-06-26 11:12:08,369 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 11:12:08,369 - root - INFO - Conversation cycle completed successfully
+2025-06-26 11:12:08,369 - __main__ - INFO - [性能监控] 音频播放耗时: 9.601秒
+2025-06-26 11:12:08,425 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 11:12:08,937 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 11:12:13,117 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 11:12:13,118 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_111208.wav
+2025-06-26 11:12:13,310 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 11:12:13,311 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 4.941秒
+2025-06-26 11:12:15,180 - src.services.api_client - ERROR - 响应中缺少文本内容
+2025-06-26 11:12:15,180 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-06-26 11:12:15,181 - __main__ - INFO - None
+2025-06-26 11:12:15,181 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.870秒
+2025-06-26 11:12:15,285 - services.audio_service - INFO - 播放等待音频...
+2025-06-26 11:12:15,287 - src.hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-06-26 11:12:19,388 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-06-26 11:12:19,389 - services.chat_processor - INFO - 不太明确你说的“None 精简且快速的输出内容”具体意思，可以详细解释一下你的问题，这样我才能更好作答。 
+2025-06-26 11:12:21,100 - src.services.api_client - INFO - 音频文件已保存: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_111221.mp3
+2025-06-26 11:12:21,100 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-06-26 11:12:21,100 - __main__ - INFO - [性能监控] 智能体处理耗时: 5.919秒
+2025-06-26 11:12:31,023 - src.hardware.audio_interface - INFO - 成功播放音频: /Users/zhengjia/PycharmProjects/coze-communitation/src/outputs/coze_audio_20250626_111221.mp3
+2025-06-26 11:12:31,025 - services.audio_service - INFO - 结果音频播放完成
+2025-06-26 11:12:31,025 - root - INFO - Conversation cycle completed successfully
+2025-06-26 11:12:31,026 - __main__ - INFO - [性能监控] 音频播放耗时: 9.926秒
+2025-06-26 11:12:31,080 - src.hardware.audio_interface - INFO - 开始录音...
+2025-06-26 11:12:39,018 - src.hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-06-26 11:12:41,239 - src.hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-06-26 11:12:41,240 - src.hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250626_111231.wav
+2025-06-26 11:12:41,429 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-06-26 11:12:41,430 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 10.405秒
+2025-06-26 11:12:42,996 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.566秒
+2025-06-26 11:12:42,996 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-26 11:12:42,996 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-26 11:12:42,996 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-26 11:12:42,996 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-26 11:12:42,996 - __main__ - INFO - 用户中断程序
+2025-06-26 11:12:42,996 - src.services.error_handler - INFO - 执行紧急清理...
+2025-06-26 11:12:42,996 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-26 11:12:42,996 - src.services.error_handler - INFO - 紧急清理完成
+2025-06-26 11:12:42,996 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 577.291秒
+2025-06-26 11:12:42,996 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-26 11:12:42,996 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-06-26 11:12:42,996 - services.resource_manager - INFO - 资源已清理: api_client
+2025-06-26 11:12:42,996 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-06-26 11:12:42,996 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-06-26 11:12:42,996 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-06-26 11:12:42,996 - services.resource_manager - INFO - 所有资源已清理
+2025-06-26 11:12:43,001 - src.hardware.audio_interface - INFO - 音频设备资源已清理

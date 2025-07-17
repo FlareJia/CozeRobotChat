@@ -10,9 +10,9 @@ from typing import Optional
 from playsound import playsound
 from datetime import datetime
 from difflib import SequenceMatcher
-from src.config import Config
-from src.utils.paths import PathManager
-from src.services.exceptions import AudioError
+from config import Config
+from utils.paths import PathManager
+from services.exceptions import AudioError
 
 logger = logging.getLogger(__name__)
 
@@ -154,7 +154,7 @@ class RobotAudioInterface:
                     wf.writeframes(b''.join(frames))
 
                 # 使用语音识别检查是否包含唤醒词
-                from src.services.api_client import EnhancedCozeAPIClient
+                from services.api_client import EnhancedCozeAPIClient
                 api_client = EnhancedCozeAPIClient(Config.BEARER_TOKEN)
                 text = api_client.transcribe_audio(temp_filename)
 

@@ -6,11 +6,11 @@ from dataclasses import dataclass
 from enum import Enum
 from datetime import datetime
 
-from src.hardware.audio_interface import RobotAudioInterface
-from src.services.api_client import EnhancedCozeAPIClient
-from src.services.audio_manager import AudioFileManager
-from src.services.error_handler import AdvancedErrorHandler
-from src.config import Config
+from hardware.audio_interface import RobotAudioInterface
+from services.api_client import EnhancedCozeAPIClient
+from services.audio_manager import AudioFileManager
+from services.error_handler import AdvancedErrorHandler
+from config import Config
 
 
 # 创建一个简单的日志处理器，避免在垃圾回收时的问题

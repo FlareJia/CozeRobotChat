@@ -5,11 +5,11 @@ import requests
 import logging
 from datetime import datetime
 from retrying import retry
-from typing import Optional, Dict, List, Any, Union
+from typing import Optional, Dict, List, Union
 from urllib.parse import urljoin
-from src.utils.paths import PathManager
-from src.utils.backoff import BackoffManager
-from src.config import Config
+from utils.paths import PathManager
+from utils.backoff import BackoffManager
+from config import Config
 
 logger = logging.getLogger(__name__)
 

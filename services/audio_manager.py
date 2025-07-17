@@ -4,8 +4,8 @@ from typing import List, Optional
 from pathlib import Path
 import datetime
 from filelock import FileLock, Timeout
-from src.utils.paths import PathManager
-from src.config import Config
+from utils.paths import PathManager
+from config import Config
 
 logger = logging.getLogger(__name__)
 

@@ -2,9 +2,9 @@
 import logging
 import time
 from typing import Optional
-from src.utils.backoff import BackoffManager
-from src.config import Config
-from src.services.audio_service import AudioService
+from utils.backoff import BackoffManager
+from config import Config
+from services.audio_service import AudioService
 
 logger = logging.getLogger(__name__)
 

@@ -1,7 +1,7 @@
 # services/scheduler.py
 import logging
 from apscheduler.schedulers.background import BackgroundScheduler
-from src.config import Config
+from config import Config
 
 logger = logging.getLogger(__name__)
 
@@ -30,7 +30,7 @@ class CleanupScheduler:
 
     def _cleanup_task(self):
         """安全清理任务"""
-        from src.utils.cleaner import FileCleaner
+        from utils.cleaner import FileCleaner
 
         FileCleaner.clean_old_files(
             directories=[Config.OUTPUT_DIR, Config.RECORD_DIR],

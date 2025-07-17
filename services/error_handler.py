@@ -6,11 +6,11 @@ import time
 from typing import Dict, Any, Callable, List
 from enum import Enum
 from dataclasses import dataclass
-from .api_client import EnhancedCozeAPIClient
-from .exceptions import AudioError, APIError
-from src.hardware.audio_interface import RobotAudioInterface
-from src.config import Config
-from src.utils.paths import PathManager
+from services.api_client import EnhancedCozeAPIClient
+from services.exceptions import AudioError, APIError
+from hardware.audio_interface import RobotAudioInterface
+from config import Config
+from utils.paths import PathManager
 
 logger = logging.getLogger(__name__)
 
