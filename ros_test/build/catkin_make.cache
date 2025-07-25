@@ -1,0 +1,2 @@
+kuavo_audio_player:musicplayer_pkg
+-DCATKIN_DEVEL_PREFIX=/home/lab/szhr/coze-communitation2/ros_test/devel -DCMAKE_INSTALL_PREFIX=/home/lab/szhr/coze-communitation2/ros_test/install -G Unix Makefiles
