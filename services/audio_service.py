@@ -64,12 +64,17 @@ class AudioService:
         else:
             logger.warning(f"提示音频文件不存在: {hello_audio_path}")
 
-    def play_reserved_audio(self, audio_number: int) -> None:
-        """播放预留音频"""
-        audio_path = os.path.join(self.reserved_audios_dir, f"reserved_{audio_number}.mp3")
+    def play_reserved_audio_sync(self, audio_number: int) -> None:
+        """
+        同步播放预留音频（由后台工作线程调用）。
+        这个方法现在是阻塞的，会等待音频播放完毕。
+        """
+        # 根据数字构建文件名，例如 "reserved_shuzhi1.mp3"
+        audio_path = os.path.join(self.reserved_audios_dir, f"reserved_shuzhi{audio_number}.mp3")
         if os.path.exists(audio_path):
-            logger.info(f"播放预留音频: reserved_{audio_number}.mp3")
-            self._play_audio_async(audio_path)
+            logger.info(f"播放预留音频: reserved_shuzhi{audio_number}.mp3")
+            # 调用底层的同步播放方法
+            self._play_audio(audio_path)
         else:
             logger.warning(f"预留音频文件不存在: {audio_path}")
 
