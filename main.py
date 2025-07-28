@@ -154,41 +154,7 @@ def main():
                         )
 
                         # 修改键盘快捷键的处理器
-                        if Config.FEATURE_FLAGS.get('USE_ASYNC_RESERVED_AUDIO'):
-                            # 异步方式：将播放任务（音频编号）放入队列
-                            logger.info("注册异步音频播放处理器。")
-                            keyboard_service.register_handler("ctrl+1", lambda: reserved_audio_queue.put(1))
-                            keyboard_service.register_handler("ctrl+2", lambda: reserved_audio_queue.put(2))
-                            keyboard_service.register_handler("ctrl+3", lambda: reserved_audio_queue.put(3))
-                            keyboard_service.register_handler("ctrl+4", lambda: reserved_audio_queue.put(4))
-                            keyboard_service.register_handler("ctrl+5", lambda: reserved_audio_queue.put(5))
-                            keyboard_service.register_handler("ctrl+6", lambda: reserved_audio_queue.put(6))
-                            keyboard_service.register_handler("ctrl+7", lambda: reserved_audio_queue.put(7))
-                            keyboard_service.register_handler("ctrl+8", lambda: reserved_audio_queue.put(8))
-                            keyboard_service.register_handler("ctrl+9", lambda: reserved_audio_queue.put(9))
-
-
-                            # 新增：批量添加 z, x, c, v，b 系列快捷键
-                            logger.info("注册 z, x, c, v 系列异步音频播放处理器。")
-                            start_audio_number = 10
-                            key_map = {
-                                'z': list(range(1, 10)),  # z+1 to z+9  10-18
-                                'x': list(range(1, 10)),  # x+1 to x+9  19-27
-                                'c': list(range(1, 10)),  # c+1 to c+9  28-36
-                                'v': list(range(1, 10)),  # v+1 to v+9  37-45
-                                'b': list(range(1, 10)),  # b+1 to b+5  46-54
-                            }
-                            for key, numbers in key_map.items():
-                                for number in numbers:
-                                    # 使用闭包来捕获正确的 audio_number
-                                    def create_handler(audio_num):
-                                        return lambda: reserved_audio_queue.put(audio_num)
-                                    
-                                    combo = f"{key}+{number}"
-                                    audio_number = start_audio_number + (list(key_map.keys()).index(key) * 9) + (number - 1)
-                                    
-                                    keyboard_service.register_handler(combo, create_handler(audio_number))
-                        else:
+              
                             # 同步方式：直接调用播放方法（旧逻辑） 
                             logger.info("注册同步音频播放处理器。")
                             keyboard_service.register_handler("ctrl+1",
