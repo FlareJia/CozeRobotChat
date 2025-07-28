@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>musicplayer_pkg</name>
+  <version>0.0.0</version>
+  <description>The music_client package</description>
+
+  <maintainer email="lab@todo.todo">lab</maintainer>
+  <license>MIT</license>  <!-- 建议使用 MIT 或 BSD，"TODO" 会报 warning -->
+
+  <!-- 构建工具 -->
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- 编译时依赖 -->
+  <build_depend>message_generation</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>std_msgs</build_depend>
+
+  <!-- 导出构建接口依赖 -->
+  <build_export_depend>message_generation</build_export_depend>
+  <build_export_depend>rospy</build_export_depend>
+  <build_export_depend>std_msgs</build_export_depend>
+
+  <!-- 运行时依赖 -->
+  <exec_depend>message_runtime</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+
+  <export>
+  </export>
+</package>

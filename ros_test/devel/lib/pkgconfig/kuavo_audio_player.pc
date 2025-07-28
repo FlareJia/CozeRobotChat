@@ -1,0 +1,8 @@
+prefix=/home/lab/szhr/coze-communitation2/ros_test/devel
+
+Name: kuavo_audio_player
+Description: Description of kuavo_audio_player
+Version: 0.0.0
+Cflags: -I/home/lab/szhr/coze-communitation2/ros_test/devel/include
+Libs: -L${prefix}/lib 
+Requires: geometry_msgs rospy std_msgs turtlesim message_runtime
