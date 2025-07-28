@@ -14,7 +14,6 @@ from services.scheduler import CleanupScheduler
 from services.error_handler import ErrorCategory
 from services.exceptions import AudioError, APIError
 from services.resource_manager import ResourceManager, ResourceType
-import subprocess
 
 logging.basicConfig(
     level=logging.INFO,
@@ -87,17 +86,7 @@ def reserved_audio_worker(queue: Queue, audio_service, stop_event: threading.Eve
             # 非阻塞地从队列中获取音频编号，等待1秒
             audio_number = queue.get(timeout=1)
             logger.info(f"从队列中获取到预留音频编号 '{audio_number}'，准备播放。")
-            # audio_service.play_reserved_audio_sync(audio_number)  # 调用同步播放方法
-            music_name = f"reserved_shuzhi{audio_number}.mp3"
-            volume = 80
-            command = f"rosservice call /play_music2 '{{music_number: {music_name}, volume: {volume}}}'"
-            result = subprocess.run(
-                command,
-                shell = True
-    
-            )
-            print("Service result:", result.stdout)
-
+            audio_service.play_reserved_audio_sync(audio_number)  # 调用同步播放方法
             queue.task_done()
         except Empty:
             # 队列为空，继续等待
@@ -105,6 +94,7 @@ def reserved_audio_worker(queue: Queue, audio_service, stop_event: threading.Eve
         except Exception as e:
             logger.error(f"播放预留音频时出错: {e}", exc_info=True)
     logger.info("预留音频播放工作线程已停止。")
+
 
 def main():
     resource_manager = ResourceManager()
@@ -176,9 +166,30 @@ def main():
                             keyboard_service.register_handler("ctrl+7", lambda: reserved_audio_queue.put(7))
                             keyboard_service.register_handler("ctrl+8", lambda: reserved_audio_queue.put(8))
                             keyboard_service.register_handler("ctrl+9", lambda: reserved_audio_queue.put(9))
-                            keyboard_service.register_handler("alt+1", lambda: reserved_audio_queue.put(1))
+
+
+                            # 新增：批量添加 z, x, c, v，b 系列快捷键
+                            logger.info("注册 z, x, c, v 系列异步音频播放处理器。")
+                            start_audio_number = 10
+                            key_map = {
+                                'z': list(range(1, 10)),  # z+1 to z+9  10-18
+                                'x': list(range(1, 10)),  # x+1 to x+9  19-27
+                                'c': list(range(1, 10)),  # c+1 to c+9  28-36
+                                'v': list(range(1, 10)),  # v+1 to v+9  37-45
+                                'b': list(range(1, 10)),  # b+1 to b+5  46-54
+                            }
+                            for key, numbers in key_map.items():
+                                for number in numbers:
+                                    # 使用闭包来捕获正确的 audio_number
+                                    def create_handler(audio_num):
+                                        return lambda: reserved_audio_queue.put(audio_num)
+                                    
+                                    combo = f"{key}+{number}"
+                                    audio_number = start_audio_number + (list(key_map.keys()).index(key) * 9) + (number - 1)
+                                    
+                                    keyboard_service.register_handler(combo, create_handler(audio_number))
                         else:
-                            # 同步方式：直接调用播放方法（旧逻辑）
+                            # 同步方式：直接调用播放方法（旧逻辑） 
                             logger.info("注册同步音频播放处理器。")
                             keyboard_service.register_handler("ctrl+1",
                                                               lambda: audio_service.play_reserved_audio_sync(1))
