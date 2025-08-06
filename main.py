@@ -2,6 +2,7 @@ import logging
 import time
 import os
 import threading
+from queue import Queue, Empty  # 新增导入
 from difflib import SequenceMatcher
 from contextlib import contextmanager
 from config import Config
@@ -74,8 +75,41 @@ def detect_bye_word(text: str) -> bool:
     return False
 
 
+# 新增：预留音频播放工作线程
+def reserved_audio_worker(queue: Queue, audio_service, stop_event: threading.Event):
+    """
+    从队列中获取并播放预留音频。
+    """
+    logger.info("预留音频播放工作线程已启动。")
+    while not stop_event.is_set():
+        try:
+            # 非阻塞地从队列中获取音频编号，等待1秒
+            audio_number = queue.get(timeout=1)
+            logger.info(f"从队列中获取到预留音频编号 '{audio_number}'，准备播放。")
+            audio_service.play_reserved_audio_sync(audio_number)  # 调用同步播放方法
+            queue.task_done()
+        except Empty:
+            # 队列为空，继续等待
+            continue
+        except Exception as e:
+            logger.error(f"播放预留音频时出错: {e}", exc_info=True)
+    logger.info("预留音频播放工作线程已停止。")
+
+
 def main():
     resource_manager = ResourceManager()
+
+    # 新增：为工作线程创建停止事件
+    stop_worker_event = threading.Event()
+
+    # 新增：创建预留音频播放队列
+    reserved_audio_queue = Queue() if Config.FEATURE_FLAGS.get('USE_ASYNC_RESERVED_AUDIO') else None
+
+    # 新增：启动预留音频播放工作线程
+    if reserved_audio_queue is not None:
+        # 我们需要在 audio_service 初始化之后再启动线程
+        # 因此线程启动代码将移动到后面
+        worker_thread = None
 
     try:
         with time_recorder("基础设施初始化"):
@@ -105,22 +139,104 @@ def main():
                         # 创建音频服务
                         audio_service = AudioService(audio_interface, audio_mgr)
 
+                        # 如果启用异步播放，则在这里启动工作线程
+                        if reserved_audio_queue is not None:
+                            worker_thread = threading.Thread(
+                                target=reserved_audio_worker,
+                                args=(reserved_audio_queue, audio_service, stop_worker_event),
+                                daemon=True
+                            )
+                            worker_thread.start()
+
                         # 创建键盘监听服务
                         keyboard_service = KeyboardService(
                             os.path.join(Config.OUTPUT_DIR, Config.AUDIO_NAMES["reserved_dir"])
                         )
-                        keyboard_service.register_handler("ctrl+1",
-                                                          lambda: audio_service.play_reserved_audio("gaoxiao1"))
-                        keyboard_service.register_handler("ctrl+2",
-                                                          lambda: audio_service.play_reserved_audio("gaoxiao2"))
-                        keyboard_service.register_handler("alt+1",
-                                                          lambda: audio_service.play_reserved_audio("aochengda1"))
-                        keyboard_service.register_handler("alt+2",
-                                                          lambda: audio_service.play_reserved_audio("gangchengda1"))
-                        keyboard_service.register_handler("alt+3",
-                                                          lambda: audio_service.play_reserved_audio("gangchengda2"))
-                        keyboard_service.register_handler("alt+4",
-                                                          lambda: audio_service.play_reserved_audio("gangchengda3"))
+
+                        # 修改键盘快捷键的处理器
+                        if Config.FEATURE_FLAGS.get('USE_ASYNC_RESERVED_AUDIO'):
+                            # 异步方式：将播放任务（音频编号）放入队列
+                            logger.info("注册异步音频播放处理器。")
+
+ 
+                            keyboard_service.register_handler("ctrl+1", lambda: reserved_audio_queue.put(1))
+                            keyboard_service.register_handler("ctrl+2", lambda: reserved_audio_queue.put(2))
+                            keyboard_service.register_handler("ctrl+3", lambda: reserved_audio_queue.put(3))
+                            keyboard_service.register_handler("ctrl+4", lambda: reserved_audio_queue.put(4))
+                            keyboard_service.register_handler("ctrl+5", lambda: reserved_audio_queue.put(5))
+                            keyboard_service.register_handler("ctrl+6", lambda: reserved_audio_queue.put(6))
+                            keyboard_service.register_handler("ctrl+7", lambda: reserved_audio_queue.put(7))
+                            keyboard_service.register_handler("ctrl+8", lambda: reserved_audio_queue.put(8))
+                            keyboard_service.register_handler("ctrl+9", lambda: reserved_audio_queue.put(9))
+                            keyboard_service.register_handler("ctrl+q", lambda: reserved_audio_queue.put(10))
+                            keyboard_service.register_handler("ctrl+w", lambda: reserved_audio_queue.put(11))
+                            keyboard_service.register_handler("ctrl+e", lambda: reserved_audio_queue.put(12))
+                            keyboard_service.register_handler("ctrl+r", lambda: reserved_audio_queue.put(13))
+                            keyboard_service.register_handler("ctrl+t", lambda: reserved_audio_queue.put(14))
+                            keyboard_service.register_handler("ctrl+y", lambda: reserved_audio_queue.put(15))
+                            keyboard_service.register_handler("ctrl+u", lambda: reserved_audio_queue.put(16))
+                            keyboard_service.register_handler("ctrl+i", lambda: reserved_audio_queue.put(17))
+                            keyboard_service.register_handler("ctrl+o", lambda: reserved_audio_queue.put(18))
+                            keyboard_service.register_handler("ctrl+p", lambda: reserved_audio_queue.put(19))
+                            keyboard_service.register_handler("ctrl+a", lambda: reserved_audio_queue.put(20))
+                            keyboard_service.register_handler("ctrl+s", lambda: reserved_audio_queue.put(21))
+                            keyboard_service.register_handler("ctrl+d", lambda: reserved_audio_queue.put(22))
+                            keyboard_service.register_handler("ctrl+f", lambda: reserved_audio_queue.put(23))
+                            keyboard_service.register_handler("ctrl+g", lambda: reserved_audio_queue.put(24))  # 问
+
+                            keyboard_service.register_handler("alt+1", lambda: reserved_audio_queue.put(91))
+                            keyboard_service.register_handler("alt+2", lambda: reserved_audio_queue.put(92))
+                            keyboard_service.register_handler("alt+3", lambda: reserved_audio_queue.put(93))
+                            keyboard_service.register_handler("alt+4", lambda: reserved_audio_queue.put(94))
+                            keyboard_service.register_handler("alt+5", lambda: reserved_audio_queue.put(95))
+                            keyboard_service.register_handler("alt+6", lambda: reserved_audio_queue.put(96))
+                            keyboard_service.register_handler("alt+7", lambda: reserved_audio_queue.put(97))
+                            keyboard_service.register_handler("alt+8", lambda: reserved_audio_queue.put(98))
+                            keyboard_service.register_handler("alt+9", lambda: reserved_audio_queue.put(99))
+                            keyboard_service.register_handler("alt+q", lambda: reserved_audio_queue.put(910))
+                            keyboard_service.register_handler("alt+w", lambda: reserved_audio_queue.put(911))
+                            keyboard_service.register_handler("alt+e", lambda: reserved_audio_queue.put(912))
+                            keyboard_service.register_handler("alt+r", lambda: reserved_audio_queue.put(913))
+                            keyboard_service.register_handler("alt+t", lambda: reserved_audio_queue.put(914))
+                            keyboard_service.register_handler("alt+y", lambda: reserved_audio_queue.put(915))
+                            keyboard_service.register_handler("alt+u", lambda: reserved_audio_queue.put(916))
+                            keyboard_service.register_handler("alt+i", lambda: reserved_audio_queue.put(917))
+                            keyboard_service.register_handler("alt+o", lambda: reserved_audio_queue.put(918))
+                            keyboard_service.register_handler("alt+p", lambda: reserved_audio_queue.put(919))
+                            keyboard_service.register_handler("alt+a", lambda: reserved_audio_queue.put(920))
+                            keyboard_service.register_handler("alt+s", lambda: reserved_audio_queue.put(921))
+                            keyboard_service.register_handler("alt+d", lambda: reserved_audio_queue.put(922))
+                            keyboard_service.register_handler("alt+f", lambda: reserved_audio_queue.put(923))
+                            keyboard_service.register_handler("alt+g", lambda: reserved_audio_queue.put(924))  # 答
+
+                            keyboard_service.register_handler("ctrl+v", lambda: reserved_audio_queue.put(991))
+                            keyboard_service.register_handler("ctrl+b", lambda: reserved_audio_queue.put(992))
+                            keyboard_service.register_handler("ctrl+n", lambda: reserved_audio_queue.put(993))
+                            keyboard_service.register_handler("ctrl+m", lambda: reserved_audio_queue.put(994))  # 开场白
+                     
+                        else:
+                            # 同步方式：直接调用播放方法（旧逻辑） 
+                            logger.info("注册同步音频播放处理器。")
+                            keyboard_service.register_handler("ctrl+1",
+                                                              lambda: audio_service.play_reserved_audio_sync(1))
+                            keyboard_service.register_handler("ctrl+2",
+                                                              lambda: audio_service.play_reserved_audio_sync(2))
+                            keyboard_service.register_handler("ctrl+3",
+                                                              lambda: audio_service.play_reserved_audio_sync(3))
+                            keyboard_service.register_handler("ctrl+4",
+                                                              lambda: audio_service.play_reserved_audio_sync(4))
+                            keyboard_service.register_handler("ctrl+5",
+                                                              lambda: audio_service.play_reserved_audio_sync(5))
+                            keyboard_service.register_handler("ctrl+6",
+                                                              lambda: audio_service.play_reserved_audio_sync(6))
+                            keyboard_service.register_handler("ctrl+7",
+                                                              lambda: audio_service.play_reserved_audio_sync(7))
+                            keyboard_service.register_handler("ctrl+8",
+                                                              lambda: audio_service.play_reserved_audio_sync(8))
+                            keyboard_service.register_handler("ctrl+9",
+                                                              lambda: audio_service.play_reserved_audio_sync(9))
+                            keyboard_service.register_handler("alt+1",
+                                                              lambda: audio_service.play_reserved_audio_sync(1))
 
                         # 启动键盘监听
                         keyboard_service.start()
@@ -226,6 +342,14 @@ def main():
             error_handler.handle_error(e, ErrorCategory.SYSTEM)
         raise
     finally:
+        # 新增：停止工作线程
+        logger.info("正在停止预留音频播放工作线程...")
+        stop_worker_event.set()
+        if 'worker_thread' in locals() and worker_thread and worker_thread.is_alive():
+            worker_thread.join(timeout=2)
+            if worker_thread.is_alive():
+                logger.warning("预留音频播放工作线程未能正常停止。")
+
         # 清理所有资源
         resource_manager.cleanup_all()
 
