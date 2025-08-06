@@ -85,7 +85,7 @@ class ChatProcessor:
         return False
 
     def _handle_response(self, conv_id: str, chat_id: str) -> Optional[str]:
-        """处理API响应，当返回内容以'...'开头时写入txt文件，包含新内容标记"""
+        """处理API响应"""
         messages = self.api_client.get_chat_messages(conv_id, chat_id)
         if not messages:
             return None
@@ -97,32 +97,11 @@ class ChatProcessor:
             if msg.get('type') == "answer"
         )
 
+        #content += " 感谢您的使用，更多岗位信息请进入展馆查看哦。"
+
         # 测试print
         logger.info("询问智能体返回的结果为：")
         logger.info(content)
-
-        # 检查内容是否以"..."开头
-        if content.startswith("...") and len(content) > 3:
-            # 获取"..."后面的内容
-            content_to_write = content[3:].strip()
-            content = "好的"
-            
-            try:
-                # 写入到txt文件，第一行为布尔值表示有新内容，第二行为实际内容
-                with open("shared_content.txt", "w", encoding="utf-8") as f:
-                    f.write("True\n")  # 第一行：布尔值表示有新写入
-                    f.write(content_to_write)  # 第二行：实际内容
-                logger.info("内容已成功写入shared_content.txt文件")
-            except Exception as e:
-                logger.error(f"写入文件失败: {str(e)}")
-        else:
-            # 如果不是特殊标记内容，可选择写入False表示无新内容
-            try:
-                with open("shared_content.txt", "w", encoding="utf-8") as f:
-                    f.write("False\n")  # 第一行：布尔值表示无新写入
-                logger.info("无特殊内容，已更新标记为False")
-            except Exception as e:
-                logger.warning(f"更新无新内容标记失败: {str(e)}")
 
         # 生成音频文件
         return self.api_client.generate_audio(content)
