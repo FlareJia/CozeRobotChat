@@ -1,6 +1,0 @@
-<launch>
-  <node pkg="musicplayer_pkg" type="client_play_music.py" name="play_music_client" output="screen">
-    <param name="music_number" value="reserved_gaoxiao1.mp3"/>
-    <param name="volume" value="90"/>
-  </node>
-</launch>
