@@ -59,7 +59,7 @@ class Config:
         "chunk": 4096,  # 增大缓冲区块（原1024太小）
         "silence_duration": 0.5,   # 检测延长静默判断时间
         "max_duration": 5,       # 检测最大录音时长（秒）
-        "threshold": 92500,        # 检测-声音阈值灵敏度，测试3000
+        "threshold": 3000,        # 检测-声音阈值灵敏度，测试3000
         "min_recording_duration_second": 0.4,    # 检测-录音检测最小时间（秒）
     }
 
