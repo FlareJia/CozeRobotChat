@@ -14,6 +14,7 @@ from services.scheduler import CleanupScheduler
 from services.error_handler import ErrorCategory
 from services.exceptions import AudioError, APIError
 from services.resource_manager import ResourceManager, ResourceType
+import subprocess
 
 logging.basicConfig(
     level=logging.INFO,
@@ -86,7 +87,17 @@ def reserved_audio_worker(queue: Queue, audio_service, stop_event: threading.Eve
             # 非阻塞地从队列中获取音频编号，等待1秒
             audio_number = queue.get(timeout=1)
             logger.info(f"从队列中获取到预留音频编号 '{audio_number}'，准备播放。")
-            audio_service.play_reserved_audio_sync(audio_number)  # 调用同步播放方法
+            # audio_service.play_reserved_audio_sync(audio_number)  # 调用同步播放方法
+            music_name = f"reserved_{audio_number}.mp3"
+            volume = 150
+            command = f"rosservice call /play_music2 '{{music_number: {music_name}, volume: {volume}}}'"
+            result = subprocess.run(
+                command,
+                shell = True
+    
+            )
+            print("Service result:", result.stdout)
+
             queue.task_done()
         except Empty:
             # 队列为空，继续等待
@@ -94,7 +105,6 @@ def reserved_audio_worker(queue: Queue, audio_service, stop_event: threading.Eve
         except Exception as e:
             logger.error(f"播放预留音频时出错: {e}", exc_info=True)
     logger.info("预留音频播放工作线程已停止。")
-
 
 def main():
     resource_manager = ResourceManager()
@@ -214,8 +224,10 @@ def main():
                             keyboard_service.register_handler("ctrl+n", lambda: reserved_audio_queue.put(993))
                             keyboard_service.register_handler("ctrl+m", lambda: reserved_audio_queue.put(994))  # 开场白
                      
+
+
                         else:
-                            # 同步方式：直接调用播放方法（旧逻辑） 
+                            # 同步方式：直接调用播放方法（旧逻辑）
                             logger.info("注册同步音频播放处理器。")
                             keyboard_service.register_handler("ctrl+1",
                                                               lambda: audio_service.play_reserved_audio_sync(1))

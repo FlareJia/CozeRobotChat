@@ -105,4 +105,3 @@ class ChatProcessor:
 
         # 生成音频文件
         return self.api_client.generate_audio(content)
-    

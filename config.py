@@ -89,3 +89,8 @@ class Config:
         'min_retain_files': 5,  # 每个目录至少保留最新文件数
         'cleanup_interval': 10  # 清理间隔分钟数
     }
+
+    # 新增：功能开关
+    FEATURE_FLAGS = {
+        'USE_ASYNC_RESERVED_AUDIO': True  # 是否启用预留音频异步播放
+    }

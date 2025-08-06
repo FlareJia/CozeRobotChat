@@ -112,7 +112,8 @@ catkin_package(
 #  DEPENDS system_lib
   CATKIN_DEPENDS 
   geometry_msgs 
-  rospy 
+  rospy
+  roscpp 
   std_msgs 
   turtlesim 
   message_runtime
@@ -220,6 +221,6 @@ install(DIRECTORY launch
 )
 
 catkin_install_python(PROGRAMS
-  scripts/loundspeaker.py
+  scripts/loudspeaker.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
