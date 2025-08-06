@@ -46,7 +46,7 @@ class Config:
         "channels": 1,          # 单声道（2为立体声）
         "rate": 44100,          # 提高采样率（原16000太低）
         "chunk": 4096,          # 增大缓冲区块（原1024太小）
-        "threshold": 3500,      # 降低阈值提高灵敏度，测试1000
+        "threshold": 1000,      # 降低阈值提高灵敏度，测试1000
         "silence_duration": 2,  # 延长静默判断时间
         "max_duration": 30      # 最大录音时长（秒）
     }
@@ -59,7 +59,9 @@ class Config:
         "chunk": 4096,  # 增大缓冲区块（原1024太小）
         "silence_duration": 0.5,   # 检测延长静默判断时间
         "max_duration": 5,       # 检测最大录音时长（秒）
+
         "threshold": 3000,        # 检测-声音阈值灵敏度，测试3000
+
         "min_recording_duration_second": 0.4,    # 检测-录音检测最小时间（秒）
     }
 
@@ -86,9 +88,4 @@ class Config:
         'retention_minutes': 10,  # 文件保留分钟数
         'min_retain_files': 5,  # 每个目录至少保留最新文件数
         'cleanup_interval': 10  # 清理间隔分钟数
-    }
-
-    # 新增：功能开关
-    FEATURE_FLAGS = {
-        'USE_ASYNC_RESERVED_AUDIO': True  # 是否启用预留音频异步播放
     }
