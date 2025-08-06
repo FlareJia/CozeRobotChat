@@ -2,6 +2,7 @@
 build/
 devel/
 install/
+.catkin_tools/
 
 # Catkin工作空间生成文件
 .catkin_workspace
