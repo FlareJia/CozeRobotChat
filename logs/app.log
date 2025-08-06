@@ -3470,3 +3470,631 @@
 2025-06-26 11:12:42,996 - services.resource_manager - INFO - 资源已清理: error_handler
 2025-06-26 11:12:42,996 - services.resource_manager - INFO - 所有资源已清理
 2025-06-26 11:12:43,001 - src.hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:18:01,357 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-06 15:18:01,358 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-08-06 15:18:01,358 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-06 15:18:01,359 - services.scheduler - INFO - 文件清理调度器已启动
+2025-08-06 15:18:01,359 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.006秒
+2025-08-06 15:18:01,829 - services.keyboard_service - ERROR - ❌ 未找到合适的键盘输入设备！
+2025-08-06 15:18:01,860 - services.keyboard_service - INFO - 注册按键处理器: ctrl+1
+2025-08-06 15:18:01,860 - services.keyboard_service - INFO - 注册按键处理器: ctrl+2
+2025-08-06 15:18:01,860 - services.keyboard_service - INFO - 注册按键处理器: alt+1
+2025-08-06 15:18:01,860 - services.keyboard_service - INFO - 注册按键处理器: alt+2
+2025-08-06 15:18:01,860 - services.keyboard_service - INFO - 注册按键处理器: alt+3
+2025-08-06 15:18:01,860 - services.keyboard_service - INFO - 注册按键处理器: alt+4
+2025-08-06 15:18:01,861 - services.keyboard_service - ERROR - ❌ 未找到合适的键盘输入设备！
+2025-08-06 15:18:01,884 - services.keyboard_service - ERROR - 未找到可用的键盘设备！
+2025-08-06 15:18:01,884 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:18:01,921 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:18:02,065 - hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-08-06 15:18:02,772 - hardware.audio_interface - INFO - 录音时长: 0.09秒
+2025-08-06 15:18:02,772 - hardware.audio_interface - INFO - 录音时长过短，不进行语音识别
+2025-08-06 15:18:02,773 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:18:02,775 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:18:07,778 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:18:07,779 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:18:12,855 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:18:12,858 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:18:17,935 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:18:17,936 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:18:23,085 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:18:23,087 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:18:28,236 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:18:28,238 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:18:33,313 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:18:33,315 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:18:38,465 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:18:38,475 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:18:43,478 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:18:43,480 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:18:48,482 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:18:48,484 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:18:53,560 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:18:53,562 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:18:58,638 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:18:58,640 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:19:03,715 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:19:03,716 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:19:08,865 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:19:08,867 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:19:13,213 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-08-06 15:19:13,214 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:19:13,214 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-08-06 15:19:13,214 - services.resource_manager - INFO - 资源已清理: api_client
+2025-08-06 15:19:13,214 - __main__ - INFO - 用户中断程序
+2025-08-06 15:19:13,214 - services.error_handler - INFO - 执行紧急清理...
+2025-08-06 15:19:13,214 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:19:13,215 - services.error_handler - INFO - 紧急清理完成
+2025-08-06 15:19:13,215 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 71.856秒
+2025-08-06 15:19:13,215 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-08-06 15:19:13,215 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-08-06 15:19:13,215 - services.resource_manager - INFO - 资源已清理: api_client
+2025-08-06 15:19:13,215 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:19:13,215 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-08-06 15:19:13,215 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-08-06 15:19:13,215 - services.resource_manager - INFO - 所有资源已清理
+2025-08-06 15:19:13,215 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:19:13,231 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:19:13,245 - services.resource_manager - INFO - 所有资源已清理
+2025-08-06 15:19:48,965 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-06 15:19:48,966 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-08-06 15:19:48,966 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-06 15:19:48,966 - services.scheduler - INFO - 文件清理调度器已启动
+2025-08-06 15:19:48,966 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.004秒
+2025-08-06 15:19:49,413 - services.keyboard_service - ERROR - ❌ 未找到合适的键盘输入设备！
+2025-08-06 15:19:49,460 - services.keyboard_service - INFO - 注册按键处理器: ctrl+1
+2025-08-06 15:19:49,460 - services.keyboard_service - INFO - 注册按键处理器: ctrl+2
+2025-08-06 15:19:49,460 - services.keyboard_service - INFO - 注册按键处理器: alt+1
+2025-08-06 15:19:49,460 - services.keyboard_service - INFO - 注册按键处理器: alt+2
+2025-08-06 15:19:49,461 - services.keyboard_service - INFO - 注册按键处理器: alt+3
+2025-08-06 15:19:49,461 - services.keyboard_service - INFO - 注册按键处理器: alt+4
+2025-08-06 15:19:49,461 - services.keyboard_service - ERROR - ❌ 未找到合适的键盘输入设备！
+2025-08-06 15:19:49,492 - services.keyboard_service - ERROR - 未找到可用的键盘设备！
+2025-08-06 15:19:49,492 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:19:49,529 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:19:49,673 - hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-08-06 15:19:50,380 - hardware.audio_interface - INFO - 录音时长: 0.09秒
+2025-08-06 15:19:50,380 - hardware.audio_interface - INFO - 录音时长过短，不进行语音识别
+2025-08-06 15:19:50,381 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:19:50,383 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:19:55,459 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:19:55,461 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:19:56,386 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-08-06 15:19:56,386 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:19:56,386 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-08-06 15:19:56,386 - services.resource_manager - INFO - 资源已清理: api_client
+2025-08-06 15:19:56,386 - __main__ - INFO - 用户中断程序
+2025-08-06 15:19:56,386 - services.error_handler - INFO - 执行紧急清理...
+2025-08-06 15:19:56,386 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:19:56,387 - services.error_handler - INFO - 紧急清理完成
+2025-08-06 15:19:56,387 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 7.420秒
+2025-08-06 15:19:56,387 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-08-06 15:19:56,387 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-08-06 15:19:56,387 - services.resource_manager - INFO - 资源已清理: api_client
+2025-08-06 15:19:56,387 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:19:56,387 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-08-06 15:19:56,387 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-08-06 15:19:56,387 - services.resource_manager - INFO - 所有资源已清理
+2025-08-06 15:19:56,387 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:19:56,402 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:19:56,415 - services.resource_manager - INFO - 所有资源已清理
+2025-08-06 15:33:01,024 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-06 15:33:01,024 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-08-06 15:33:01,025 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-06 15:33:01,025 - services.scheduler - INFO - 文件清理调度器已启动
+2025-08-06 15:33:01,025 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.004秒
+2025-08-06 15:33:01,468 - __main__ - INFO - 预留音频播放工作线程已启动。
+2025-08-06 15:33:01,469 - services.keyboard_service - ERROR - ❌ 未找到合适的键盘输入设备！
+2025-08-06 15:33:01,496 - __main__ - INFO - 注册异步音频播放处理器。
+2025-08-06 15:33:01,496 - services.keyboard_service - INFO - 注册按键处理器: ctrl+1
+2025-08-06 15:33:01,496 - services.keyboard_service - INFO - 注册按键处理器: ctrl+2
+2025-08-06 15:33:01,496 - services.keyboard_service - INFO - 注册按键处理器: ctrl+3
+2025-08-06 15:33:01,496 - services.keyboard_service - INFO - 注册按键处理器: ctrl+4
+2025-08-06 15:33:01,496 - services.keyboard_service - INFO - 注册按键处理器: ctrl+5
+2025-08-06 15:33:01,496 - services.keyboard_service - INFO - 注册按键处理器: ctrl+6
+2025-08-06 15:33:01,497 - services.keyboard_service - INFO - 注册按键处理器: ctrl+7
+2025-08-06 15:33:01,497 - services.keyboard_service - INFO - 注册按键处理器: ctrl+8
+2025-08-06 15:33:01,497 - services.keyboard_service - INFO - 注册按键处理器: ctrl+9
+2025-08-06 15:33:01,497 - services.keyboard_service - INFO - 注册按键处理器: ctrl+q
+2025-08-06 15:33:01,497 - services.keyboard_service - INFO - 注册按键处理器: ctrl+w
+2025-08-06 15:33:01,497 - services.keyboard_service - INFO - 注册按键处理器: ctrl+e
+2025-08-06 15:33:01,497 - services.keyboard_service - INFO - 注册按键处理器: ctrl+r
+2025-08-06 15:33:01,497 - services.keyboard_service - INFO - 注册按键处理器: ctrl+t
+2025-08-06 15:33:01,497 - services.keyboard_service - INFO - 注册按键处理器: ctrl+y
+2025-08-06 15:33:01,497 - services.keyboard_service - INFO - 注册按键处理器: ctrl+u
+2025-08-06 15:33:01,497 - services.keyboard_service - INFO - 注册按键处理器: ctrl+i
+2025-08-06 15:33:01,497 - services.keyboard_service - INFO - 注册按键处理器: ctrl+o
+2025-08-06 15:33:01,497 - services.keyboard_service - INFO - 注册按键处理器: ctrl+p
+2025-08-06 15:33:01,497 - services.keyboard_service - INFO - 注册按键处理器: ctrl+a
+2025-08-06 15:33:01,497 - services.keyboard_service - INFO - 注册按键处理器: ctrl+s
+2025-08-06 15:33:01,497 - services.keyboard_service - INFO - 注册按键处理器: ctrl+d
+2025-08-06 15:33:01,497 - services.keyboard_service - INFO - 注册按键处理器: ctrl+f
+2025-08-06 15:33:01,497 - services.keyboard_service - INFO - 注册按键处理器: ctrl+g
+2025-08-06 15:33:01,497 - services.keyboard_service - INFO - 注册按键处理器: alt+1
+2025-08-06 15:33:01,497 - services.keyboard_service - INFO - 注册按键处理器: alt+2
+2025-08-06 15:33:01,498 - services.keyboard_service - INFO - 注册按键处理器: alt+3
+2025-08-06 15:33:01,498 - services.keyboard_service - INFO - 注册按键处理器: alt+4
+2025-08-06 15:33:01,498 - services.keyboard_service - INFO - 注册按键处理器: alt+5
+2025-08-06 15:33:01,498 - services.keyboard_service - INFO - 注册按键处理器: alt+6
+2025-08-06 15:33:01,498 - services.keyboard_service - INFO - 注册按键处理器: alt+7
+2025-08-06 15:33:01,498 - services.keyboard_service - INFO - 注册按键处理器: alt+8
+2025-08-06 15:33:01,498 - services.keyboard_service - INFO - 注册按键处理器: alt+9
+2025-08-06 15:33:01,498 - services.keyboard_service - INFO - 注册按键处理器: alt+q
+2025-08-06 15:33:01,498 - services.keyboard_service - INFO - 注册按键处理器: alt+w
+2025-08-06 15:33:01,498 - services.keyboard_service - INFO - 注册按键处理器: alt+e
+2025-08-06 15:33:01,498 - services.keyboard_service - INFO - 注册按键处理器: alt+r
+2025-08-06 15:33:01,498 - services.keyboard_service - INFO - 注册按键处理器: alt+t
+2025-08-06 15:33:01,498 - services.keyboard_service - INFO - 注册按键处理器: alt+y
+2025-08-06 15:33:01,498 - services.keyboard_service - INFO - 注册按键处理器: alt+u
+2025-08-06 15:33:01,498 - services.keyboard_service - INFO - 注册按键处理器: alt+i
+2025-08-06 15:33:01,498 - services.keyboard_service - INFO - 注册按键处理器: alt+o
+2025-08-06 15:33:01,499 - services.keyboard_service - INFO - 注册按键处理器: alt+p
+2025-08-06 15:33:01,499 - services.keyboard_service - INFO - 注册按键处理器: alt+a
+2025-08-06 15:33:01,499 - services.keyboard_service - INFO - 注册按键处理器: alt+s
+2025-08-06 15:33:01,499 - services.keyboard_service - INFO - 注册按键处理器: alt+d
+2025-08-06 15:33:01,499 - services.keyboard_service - INFO - 注册按键处理器: alt+f
+2025-08-06 15:33:01,499 - services.keyboard_service - INFO - 注册按键处理器: alt+g
+2025-08-06 15:33:01,499 - services.keyboard_service - INFO - 注册按键处理器: ctrl+v
+2025-08-06 15:33:01,499 - services.keyboard_service - INFO - 注册按键处理器: ctrl+b
+2025-08-06 15:33:01,499 - services.keyboard_service - INFO - 注册按键处理器: ctrl+n
+2025-08-06 15:33:01,499 - services.keyboard_service - INFO - 注册按键处理器: ctrl+m
+2025-08-06 15:33:01,499 - services.keyboard_service - ERROR - ❌ 未找到合适的键盘输入设备！
+2025-08-06 15:33:01,520 - services.keyboard_service - ERROR - 未找到可用的键盘设备！
+2025-08-06 15:33:01,520 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:33:01,553 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:33:01,697 - hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-08-06 15:33:02,404 - hardware.audio_interface - INFO - 录音时长: 0.09秒
+2025-08-06 15:33:02,404 - hardware.audio_interface - INFO - 录音时长过短，不进行语音识别
+2025-08-06 15:33:02,405 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:33:02,407 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:33:07,481 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:33:07,483 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:33:12,559 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:33:12,561 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:33:17,564 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:33:17,566 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:33:22,641 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:33:22,642 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:33:27,791 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:33:27,793 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:33:32,941 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:33:32,943 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:33:37,946 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:33:37,948 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:33:43,096 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:33:43,105 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:33:48,107 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:33:48,108 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:33:53,257 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:33:53,258 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:33:58,333 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:33:58,335 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:34:03,482 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:34:03,492 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:34:08,494 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:34:08,496 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:34:13,500 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:34:13,502 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:34:18,504 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:34:18,508 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:34:23,585 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:34:23,586 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:34:28,736 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:34:28,741 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:34:33,819 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:34:33,821 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:34:38,969 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:34:38,978 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:34:43,980 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:34:43,982 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:34:49,131 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:34:49,133 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:34:54,210 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:34:54,211 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:34:59,360 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:34:59,362 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:35:04,511 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:35:04,512 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:35:09,587 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:35:09,589 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:35:14,663 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:35:14,665 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:35:19,740 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:35:19,742 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:35:24,891 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:35:24,892 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:35:30,041 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:35:30,043 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:35:35,119 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:35:35,120 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:35:40,122 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:35:40,124 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:35:45,200 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:35:45,202 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:35:50,204 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:35:50,206 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:35:55,282 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:35:55,284 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:36:00,286 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:36:00,288 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:36:05,364 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:36:05,366 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:36:10,514 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:36:10,516 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:36:15,592 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:36:15,596 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:36:20,673 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:36:20,674 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:36:25,823 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:36:25,825 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:36:30,974 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:36:30,976 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:36:36,125 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:36:36,127 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:36:39,245 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-08-06 15:36:39,245 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:36:39,245 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-08-06 15:36:39,245 - services.resource_manager - INFO - 资源已清理: api_client
+2025-08-06 15:36:39,245 - __main__ - INFO - 用户中断程序
+2025-08-06 15:36:39,245 - services.error_handler - INFO - 执行紧急清理...
+2025-08-06 15:36:39,246 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:36:39,246 - services.error_handler - INFO - 紧急清理完成
+2025-08-06 15:36:39,246 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 218.221秒
+2025-08-06 15:36:39,246 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-08-06 15:36:39,246 - __main__ - INFO - 正在停止预留音频播放工作线程...
+2025-08-06 15:36:39,485 - __main__ - INFO - 预留音频播放工作线程已停止。
+2025-08-06 15:36:39,485 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-08-06 15:36:39,486 - services.resource_manager - INFO - 资源已清理: api_client
+2025-08-06 15:36:39,486 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:36:39,486 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-08-06 15:36:39,486 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-08-06 15:36:39,486 - services.resource_manager - INFO - 所有资源已清理
+2025-08-06 15:36:39,486 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:36:39,500 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:36:39,514 - services.resource_manager - INFO - 所有资源已清理
+2025-08-06 15:36:43,490 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-06 15:36:43,491 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-08-06 15:36:43,491 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-06 15:36:43,491 - services.scheduler - INFO - 文件清理调度器已启动
+2025-08-06 15:36:43,492 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.004秒
+2025-08-06 15:36:43,936 - __main__ - INFO - 预留音频播放工作线程已启动。
+2025-08-06 15:36:43,937 - services.keyboard_service - ERROR - ❌ 未找到合适的键盘输入设备！
+2025-08-06 15:36:43,976 - __main__ - INFO - 注册异步音频播放处理器。
+2025-08-06 15:36:43,976 - services.keyboard_service - INFO - 注册按键处理器: ctrl+1
+2025-08-06 15:36:43,976 - services.keyboard_service - INFO - 注册按键处理器: ctrl+2
+2025-08-06 15:36:43,976 - services.keyboard_service - INFO - 注册按键处理器: ctrl+3
+2025-08-06 15:36:43,976 - services.keyboard_service - INFO - 注册按键处理器: ctrl+4
+2025-08-06 15:36:43,976 - services.keyboard_service - INFO - 注册按键处理器: ctrl+5
+2025-08-06 15:36:43,977 - services.keyboard_service - INFO - 注册按键处理器: ctrl+6
+2025-08-06 15:36:43,977 - services.keyboard_service - INFO - 注册按键处理器: ctrl+7
+2025-08-06 15:36:43,977 - services.keyboard_service - INFO - 注册按键处理器: ctrl+8
+2025-08-06 15:36:43,977 - services.keyboard_service - INFO - 注册按键处理器: ctrl+9
+2025-08-06 15:36:43,977 - services.keyboard_service - INFO - 注册按键处理器: ctrl+q
+2025-08-06 15:36:43,977 - services.keyboard_service - INFO - 注册按键处理器: ctrl+w
+2025-08-06 15:36:43,977 - services.keyboard_service - INFO - 注册按键处理器: ctrl+e
+2025-08-06 15:36:43,977 - services.keyboard_service - INFO - 注册按键处理器: ctrl+r
+2025-08-06 15:36:43,977 - services.keyboard_service - INFO - 注册按键处理器: ctrl+t
+2025-08-06 15:36:43,977 - services.keyboard_service - INFO - 注册按键处理器: ctrl+y
+2025-08-06 15:36:43,977 - services.keyboard_service - INFO - 注册按键处理器: ctrl+u
+2025-08-06 15:36:43,977 - services.keyboard_service - INFO - 注册按键处理器: ctrl+i
+2025-08-06 15:36:43,977 - services.keyboard_service - INFO - 注册按键处理器: ctrl+o
+2025-08-06 15:36:43,977 - services.keyboard_service - INFO - 注册按键处理器: ctrl+p
+2025-08-06 15:36:43,977 - services.keyboard_service - INFO - 注册按键处理器: ctrl+a
+2025-08-06 15:36:43,977 - services.keyboard_service - INFO - 注册按键处理器: ctrl+s
+2025-08-06 15:36:43,977 - services.keyboard_service - INFO - 注册按键处理器: ctrl+d
+2025-08-06 15:36:43,977 - services.keyboard_service - INFO - 注册按键处理器: ctrl+f
+2025-08-06 15:36:43,977 - services.keyboard_service - INFO - 注册按键处理器: ctrl+g
+2025-08-06 15:36:43,977 - services.keyboard_service - INFO - 注册按键处理器: alt+1
+2025-08-06 15:36:43,978 - services.keyboard_service - INFO - 注册按键处理器: alt+2
+2025-08-06 15:36:43,978 - services.keyboard_service - INFO - 注册按键处理器: alt+3
+2025-08-06 15:36:43,978 - services.keyboard_service - INFO - 注册按键处理器: alt+4
+2025-08-06 15:36:43,978 - services.keyboard_service - INFO - 注册按键处理器: alt+5
+2025-08-06 15:36:43,978 - services.keyboard_service - INFO - 注册按键处理器: alt+6
+2025-08-06 15:36:43,978 - services.keyboard_service - INFO - 注册按键处理器: alt+7
+2025-08-06 15:36:43,978 - services.keyboard_service - INFO - 注册按键处理器: alt+8
+2025-08-06 15:36:43,978 - services.keyboard_service - INFO - 注册按键处理器: alt+9
+2025-08-06 15:36:43,978 - services.keyboard_service - INFO - 注册按键处理器: alt+q
+2025-08-06 15:36:43,978 - services.keyboard_service - INFO - 注册按键处理器: alt+w
+2025-08-06 15:36:43,978 - services.keyboard_service - INFO - 注册按键处理器: alt+e
+2025-08-06 15:36:43,978 - services.keyboard_service - INFO - 注册按键处理器: alt+r
+2025-08-06 15:36:43,978 - services.keyboard_service - INFO - 注册按键处理器: alt+t
+2025-08-06 15:36:43,978 - services.keyboard_service - INFO - 注册按键处理器: alt+y
+2025-08-06 15:36:43,978 - services.keyboard_service - INFO - 注册按键处理器: alt+u
+2025-08-06 15:36:43,978 - services.keyboard_service - INFO - 注册按键处理器: alt+i
+2025-08-06 15:36:43,979 - services.keyboard_service - INFO - 注册按键处理器: alt+o
+2025-08-06 15:36:43,979 - services.keyboard_service - INFO - 注册按键处理器: alt+p
+2025-08-06 15:36:43,979 - services.keyboard_service - INFO - 注册按键处理器: alt+a
+2025-08-06 15:36:43,979 - services.keyboard_service - INFO - 注册按键处理器: alt+s
+2025-08-06 15:36:43,979 - services.keyboard_service - INFO - 注册按键处理器: alt+d
+2025-08-06 15:36:43,979 - services.keyboard_service - INFO - 注册按键处理器: alt+f
+2025-08-06 15:36:43,979 - services.keyboard_service - INFO - 注册按键处理器: alt+g
+2025-08-06 15:36:43,979 - services.keyboard_service - INFO - 注册按键处理器: ctrl+v
+2025-08-06 15:36:43,979 - services.keyboard_service - INFO - 注册按键处理器: ctrl+b
+2025-08-06 15:36:43,979 - services.keyboard_service - INFO - 注册按键处理器: ctrl+n
+2025-08-06 15:36:43,979 - services.keyboard_service - INFO - 注册按键处理器: ctrl+m
+2025-08-06 15:36:43,979 - services.keyboard_service - ERROR - ❌ 未找到合适的键盘输入设备！
+2025-08-06 15:36:44,000 - services.keyboard_service - ERROR - 未找到可用的键盘设备！
+2025-08-06 15:36:44,000 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:36:44,004 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:36:46,972 - hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-08-06 15:36:47,620 - hardware.audio_interface - INFO - 录音时长: 0.19秒
+2025-08-06 15:36:47,620 - hardware.audio_interface - INFO - 录音时长过短，不进行语音识别
+2025-08-06 15:36:47,621 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:36:47,623 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:36:49,206 - hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-08-06 15:36:50,407 - hardware.audio_interface - INFO - 录音时长: 0.65秒
+2025-08-06 15:36:51,969 - hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-08-06 15:36:51,969 - hardware.audio_interface - INFO - 你好，伯乐。
+2025-08-06 15:36:51,970 - hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.5
+2025-08-06 15:36:51,970 - hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-08-06 15:36:51,971 - services.audio_service - INFO - 播放提示音频...
+2025-08-06 15:36:55,858 - hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-08-06 15:36:55,861 - hardware.audio_interface - INFO - 开始录音...
+2025-08-06 15:37:01,715 - hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-08-06 15:37:05,710 - hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-08-06 15:37:05,711 - hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250806_153655.wav
+2025-08-06 15:37:05,712 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-08-06 15:37:05,712 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 9.853秒
+2025-08-06 15:37:07,727 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-08-06 15:37:07,727 - __main__ - INFO - 苹果和香蕉哪个好吃？
+2025-08-06 15:37:07,727 - __main__ - INFO - [性能监控] 语音转文字耗时: 2.015秒
+2025-08-06 15:37:07,727 - __main__ - INFO - 文本相似度: 0.00
+2025-08-06 15:37:07,870 - services.audio_service - INFO - 播放等待音频...
+2025-08-06 15:37:07,870 - hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-08-06 15:37:15,465 - services.chat_processor - INFO - 询问智能体返回的结果为：
+2025-08-06 15:37:15,466 - services.chat_processor - INFO - 这取决于个人口味。苹果口感脆爽清甜，香蕉软糯香甜。有人偏爱苹果的清爽，有人钟情香蕉的绵密，无法简单说哪个更好吃呢。 
+2025-08-06 15:37:17,840 - services.api_client - INFO - 音频文件已保存: /home/leju_kuavo/szhr/CozeRobotChat/outputs/coze_audio_20250806_153717.mp3
+2025-08-06 15:37:17,840 - __main__ - INFO - 将coze返回的文字结果转为音频文件完成。
+2025-08-06 15:37:17,840 - __main__ - INFO - [性能监控] 智能体处理耗时: 10.113秒
+2025-08-06 15:37:31,480 - hardware.audio_interface - INFO - 成功播放音频: /home/leju_kuavo/szhr/CozeRobotChat/outputs/coze_audio_20250806_153717.mp3
+2025-08-06 15:37:31,481 - services.audio_service - INFO - 结果音频播放完成
+2025-08-06 15:37:31,481 - root - INFO - Conversation cycle completed successfully
+2025-08-06 15:37:31,481 - __main__ - INFO - [性能监控] 音频播放耗时: 13.640秒
+2025-08-06 15:37:31,485 - hardware.audio_interface - INFO - 开始录音...
+2025-08-06 15:37:32,906 - hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-08-06 15:37:36,273 - hardware.audio_interface - INFO - 静默超过2秒，停止录音
+2025-08-06 15:37:36,273 - hardware.audio_interface - INFO - 录音文件已保存至: records/recording_20250806_153731.wav
+2025-08-06 15:37:36,274 - services.audio_service - INFO - 录音完成，保存的音频文件为：
+2025-08-06 15:37:36,275 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 4.794秒
+2025-08-06 15:37:37,671 - __main__ - INFO - 音频文件转文字完成，转换成的文字为：
+2025-08-06 15:37:37,672 - __main__ - INFO - 我已经用最
+2025-08-06 15:37:37,672 - __main__ - INFO - [性能监控] 语音转文字耗时: 1.397秒
+2025-08-06 15:37:37,672 - __main__ - INFO - 文本相似度: 0.00
+2025-08-06 15:37:37,768 - services.audio_service - INFO - 播放等待音频...
+2025-08-06 15:37:37,769 - hardware.audio_interface - INFO - 开始异步播放音频: outputs/wait_audios/wait_policy.mp3
+2025-08-06 15:37:39,525 - __main__ - INFO - [性能监控] 智能体处理耗时: 1.853秒
+2025-08-06 15:37:39,525 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-08-06 15:37:40,525 - hardware.audio_interface - INFO - 已停止音频播放
+2025-08-06 15:37:41,026 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:37:41,026 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-08-06 15:37:41,026 - services.resource_manager - INFO - 资源已清理: api_client
+2025-08-06 15:37:41,026 - __main__ - INFO - 用户中断程序
+2025-08-06 15:37:41,027 - services.error_handler - INFO - 执行紧急清理...
+2025-08-06 15:37:41,027 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:37:41,027 - services.error_handler - INFO - 紧急清理完成
+2025-08-06 15:37:41,027 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 57.536秒
+2025-08-06 15:37:41,028 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-08-06 15:37:41,028 - __main__ - INFO - 正在停止预留音频播放工作线程...
+2025-08-06 15:37:41,941 - __main__ - INFO - 预留音频播放工作线程已停止。
+2025-08-06 15:37:41,941 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-08-06 15:37:41,942 - services.resource_manager - INFO - 资源已清理: api_client
+2025-08-06 15:37:41,942 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:37:41,942 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-08-06 15:37:41,942 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-08-06 15:37:41,942 - services.resource_manager - INFO - 所有资源已清理
+2025-08-06 15:37:41,943 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:37:41,960 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:37:41,976 - services.resource_manager - INFO - 所有资源已清理
+2025-08-06 15:39:30,855 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-06 15:39:30,856 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-08-06 15:39:30,856 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-06 15:39:30,857 - services.scheduler - INFO - 文件清理调度器已启动
+2025-08-06 15:39:30,857 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.004秒
+2025-08-06 15:39:31,268 - __main__ - INFO - 预留音频播放工作线程已启动。
+2025-08-06 15:39:31,269 - services.keyboard_service - ERROR - ❌ 未找到合适的键盘输入设备！
+2025-08-06 15:39:31,308 - __main__ - INFO - 注册异步音频播放处理器。
+2025-08-06 15:39:31,308 - services.keyboard_service - INFO - 注册按键处理器: ctrl+1
+2025-08-06 15:39:31,308 - services.keyboard_service - INFO - 注册按键处理器: ctrl+2
+2025-08-06 15:39:31,308 - services.keyboard_service - INFO - 注册按键处理器: ctrl+3
+2025-08-06 15:39:31,308 - services.keyboard_service - INFO - 注册按键处理器: ctrl+4
+2025-08-06 15:39:31,308 - services.keyboard_service - INFO - 注册按键处理器: ctrl+5
+2025-08-06 15:39:31,309 - services.keyboard_service - INFO - 注册按键处理器: ctrl+6
+2025-08-06 15:39:31,309 - services.keyboard_service - INFO - 注册按键处理器: ctrl+7
+2025-08-06 15:39:31,309 - services.keyboard_service - INFO - 注册按键处理器: ctrl+8
+2025-08-06 15:39:31,309 - services.keyboard_service - INFO - 注册按键处理器: ctrl+9
+2025-08-06 15:39:31,309 - services.keyboard_service - INFO - 注册按键处理器: ctrl+q
+2025-08-06 15:39:31,309 - services.keyboard_service - INFO - 注册按键处理器: ctrl+w
+2025-08-06 15:39:31,309 - services.keyboard_service - INFO - 注册按键处理器: ctrl+e
+2025-08-06 15:39:31,309 - services.keyboard_service - INFO - 注册按键处理器: ctrl+r
+2025-08-06 15:39:31,309 - services.keyboard_service - INFO - 注册按键处理器: ctrl+t
+2025-08-06 15:39:31,309 - services.keyboard_service - INFO - 注册按键处理器: ctrl+y
+2025-08-06 15:39:31,309 - services.keyboard_service - INFO - 注册按键处理器: ctrl+u
+2025-08-06 15:39:31,309 - services.keyboard_service - INFO - 注册按键处理器: ctrl+i
+2025-08-06 15:39:31,309 - services.keyboard_service - INFO - 注册按键处理器: ctrl+o
+2025-08-06 15:39:31,309 - services.keyboard_service - INFO - 注册按键处理器: ctrl+p
+2025-08-06 15:39:31,309 - services.keyboard_service - INFO - 注册按键处理器: ctrl+a
+2025-08-06 15:39:31,309 - services.keyboard_service - INFO - 注册按键处理器: ctrl+s
+2025-08-06 15:39:31,309 - services.keyboard_service - INFO - 注册按键处理器: ctrl+d
+2025-08-06 15:39:31,309 - services.keyboard_service - INFO - 注册按键处理器: ctrl+f
+2025-08-06 15:39:31,309 - services.keyboard_service - INFO - 注册按键处理器: ctrl+g
+2025-08-06 15:39:31,309 - services.keyboard_service - INFO - 注册按键处理器: alt+1
+2025-08-06 15:39:31,310 - services.keyboard_service - INFO - 注册按键处理器: alt+2
+2025-08-06 15:39:31,310 - services.keyboard_service - INFO - 注册按键处理器: alt+3
+2025-08-06 15:39:31,310 - services.keyboard_service - INFO - 注册按键处理器: alt+4
+2025-08-06 15:39:31,310 - services.keyboard_service - INFO - 注册按键处理器: alt+5
+2025-08-06 15:39:31,310 - services.keyboard_service - INFO - 注册按键处理器: alt+6
+2025-08-06 15:39:31,310 - services.keyboard_service - INFO - 注册按键处理器: alt+7
+2025-08-06 15:39:31,310 - services.keyboard_service - INFO - 注册按键处理器: alt+8
+2025-08-06 15:39:31,310 - services.keyboard_service - INFO - 注册按键处理器: alt+9
+2025-08-06 15:39:31,310 - services.keyboard_service - INFO - 注册按键处理器: alt+q
+2025-08-06 15:39:31,310 - services.keyboard_service - INFO - 注册按键处理器: alt+w
+2025-08-06 15:39:31,310 - services.keyboard_service - INFO - 注册按键处理器: alt+e
+2025-08-06 15:39:31,310 - services.keyboard_service - INFO - 注册按键处理器: alt+r
+2025-08-06 15:39:31,310 - services.keyboard_service - INFO - 注册按键处理器: alt+t
+2025-08-06 15:39:31,310 - services.keyboard_service - INFO - 注册按键处理器: alt+y
+2025-08-06 15:39:31,310 - services.keyboard_service - INFO - 注册按键处理器: alt+u
+2025-08-06 15:39:31,310 - services.keyboard_service - INFO - 注册按键处理器: alt+i
+2025-08-06 15:39:31,311 - services.keyboard_service - INFO - 注册按键处理器: alt+o
+2025-08-06 15:39:31,311 - services.keyboard_service - INFO - 注册按键处理器: alt+p
+2025-08-06 15:39:31,311 - services.keyboard_service - INFO - 注册按键处理器: alt+a
+2025-08-06 15:39:31,311 - services.keyboard_service - INFO - 注册按键处理器: alt+s
+2025-08-06 15:39:31,311 - services.keyboard_service - INFO - 注册按键处理器: alt+d
+2025-08-06 15:39:31,311 - services.keyboard_service - INFO - 注册按键处理器: alt+f
+2025-08-06 15:39:31,311 - services.keyboard_service - INFO - 注册按键处理器: alt+g
+2025-08-06 15:39:31,311 - services.keyboard_service - INFO - 注册按键处理器: ctrl+v
+2025-08-06 15:39:31,311 - services.keyboard_service - INFO - 注册按键处理器: ctrl+b
+2025-08-06 15:39:31,311 - services.keyboard_service - INFO - 注册按键处理器: ctrl+n
+2025-08-06 15:39:31,311 - services.keyboard_service - INFO - 注册按键处理器: ctrl+m
+2025-08-06 15:39:31,311 - services.keyboard_service - ERROR - ❌ 未找到合适的键盘输入设备！
+2025-08-06 15:39:31,336 - services.keyboard_service - ERROR - 未找到可用的键盘设备！
+2025-08-06 15:39:31,336 - __main__ - INFO - 等待唤醒词...
+2025-08-06 15:39:31,340 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 15:39:34,218 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-08-06 15:39:34,218 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:39:34,226 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-08-06 15:39:34,226 - services.resource_manager - INFO - 资源已清理: api_client
+2025-08-06 15:39:34,226 - __main__ - INFO - 用户中断程序
+2025-08-06 15:39:34,226 - services.error_handler - INFO - 执行紧急清理...
+2025-08-06 15:39:34,227 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:39:34,227 - services.error_handler - INFO - 紧急清理完成
+2025-08-06 15:39:34,227 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 3.370秒
+2025-08-06 15:39:34,227 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-08-06 15:39:34,227 - __main__ - INFO - 正在停止预留音频播放工作线程...
+2025-08-06 15:39:34,269 - __main__ - INFO - 预留音频播放工作线程已停止。
+2025-08-06 15:39:34,269 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-08-06 15:39:34,269 - services.resource_manager - INFO - 资源已清理: api_client
+2025-08-06 15:39:34,269 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:39:34,269 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-08-06 15:39:34,269 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-08-06 15:39:34,269 - services.resource_manager - INFO - 所有资源已清理
+2025-08-06 15:39:34,269 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:39:34,283 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 15:39:34,296 - services.resource_manager - INFO - 所有资源已清理
+2025-08-06 16:01:57,539 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-06 16:01:57,540 - apscheduler.scheduler - INFO - Added job "CleanupScheduler._cleanup_task" to job store "default"
+2025-08-06 16:01:57,540 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-06 16:01:57,541 - services.scheduler - INFO - 文件清理调度器已启动
+2025-08-06 16:01:57,541 - __main__ - INFO - [性能监控] 基础设施初始化耗时: 0.004秒
+2025-08-06 16:01:57,968 - __main__ - INFO - 预留音频播放工作线程已启动。
+2025-08-06 16:01:57,969 - services.keyboard_service - ERROR - ❌ 未找到合适的键盘输入设备！
+2025-08-06 16:01:58,008 - __main__ - INFO - 注册异步音频播放处理器。
+2025-08-06 16:01:58,008 - services.keyboard_service - INFO - 注册按键处理器: ctrl+1
+2025-08-06 16:01:58,008 - services.keyboard_service - INFO - 注册按键处理器: ctrl+2
+2025-08-06 16:01:58,008 - services.keyboard_service - INFO - 注册按键处理器: ctrl+3
+2025-08-06 16:01:58,008 - services.keyboard_service - INFO - 注册按键处理器: ctrl+4
+2025-08-06 16:01:58,008 - services.keyboard_service - INFO - 注册按键处理器: ctrl+5
+2025-08-06 16:01:58,008 - services.keyboard_service - INFO - 注册按键处理器: ctrl+6
+2025-08-06 16:01:58,009 - services.keyboard_service - INFO - 注册按键处理器: ctrl+7
+2025-08-06 16:01:58,009 - services.keyboard_service - INFO - 注册按键处理器: ctrl+8
+2025-08-06 16:01:58,009 - services.keyboard_service - INFO - 注册按键处理器: ctrl+9
+2025-08-06 16:01:58,009 - services.keyboard_service - INFO - 注册按键处理器: ctrl+q
+2025-08-06 16:01:58,009 - services.keyboard_service - INFO - 注册按键处理器: ctrl+w
+2025-08-06 16:01:58,009 - services.keyboard_service - INFO - 注册按键处理器: ctrl+e
+2025-08-06 16:01:58,009 - services.keyboard_service - INFO - 注册按键处理器: ctrl+r
+2025-08-06 16:01:58,009 - services.keyboard_service - INFO - 注册按键处理器: ctrl+t
+2025-08-06 16:01:58,009 - services.keyboard_service - INFO - 注册按键处理器: ctrl+y
+2025-08-06 16:01:58,009 - services.keyboard_service - INFO - 注册按键处理器: ctrl+u
+2025-08-06 16:01:58,009 - services.keyboard_service - INFO - 注册按键处理器: ctrl+i
+2025-08-06 16:01:58,009 - services.keyboard_service - INFO - 注册按键处理器: ctrl+o
+2025-08-06 16:01:58,009 - services.keyboard_service - INFO - 注册按键处理器: ctrl+p
+2025-08-06 16:01:58,009 - services.keyboard_service - INFO - 注册按键处理器: ctrl+a
+2025-08-06 16:01:58,009 - services.keyboard_service - INFO - 注册按键处理器: ctrl+s
+2025-08-06 16:01:58,009 - services.keyboard_service - INFO - 注册按键处理器: ctrl+d
+2025-08-06 16:01:58,009 - services.keyboard_service - INFO - 注册按键处理器: ctrl+f
+2025-08-06 16:01:58,009 - services.keyboard_service - INFO - 注册按键处理器: ctrl+g
+2025-08-06 16:01:58,009 - services.keyboard_service - INFO - 注册按键处理器: alt+1
+2025-08-06 16:01:58,010 - services.keyboard_service - INFO - 注册按键处理器: alt+2
+2025-08-06 16:01:58,010 - services.keyboard_service - INFO - 注册按键处理器: alt+3
+2025-08-06 16:01:58,010 - services.keyboard_service - INFO - 注册按键处理器: alt+4
+2025-08-06 16:01:58,010 - services.keyboard_service - INFO - 注册按键处理器: alt+5
+2025-08-06 16:01:58,010 - services.keyboard_service - INFO - 注册按键处理器: alt+6
+2025-08-06 16:01:58,010 - services.keyboard_service - INFO - 注册按键处理器: alt+7
+2025-08-06 16:01:58,010 - services.keyboard_service - INFO - 注册按键处理器: alt+8
+2025-08-06 16:01:58,010 - services.keyboard_service - INFO - 注册按键处理器: alt+9
+2025-08-06 16:01:58,010 - services.keyboard_service - INFO - 注册按键处理器: alt+q
+2025-08-06 16:01:58,010 - services.keyboard_service - INFO - 注册按键处理器: alt+w
+2025-08-06 16:01:58,010 - services.keyboard_service - INFO - 注册按键处理器: alt+e
+2025-08-06 16:01:58,010 - services.keyboard_service - INFO - 注册按键处理器: alt+r
+2025-08-06 16:01:58,010 - services.keyboard_service - INFO - 注册按键处理器: alt+t
+2025-08-06 16:01:58,010 - services.keyboard_service - INFO - 注册按键处理器: alt+y
+2025-08-06 16:01:58,010 - services.keyboard_service - INFO - 注册按键处理器: alt+u
+2025-08-06 16:01:58,010 - services.keyboard_service - INFO - 注册按键处理器: alt+i
+2025-08-06 16:01:58,011 - services.keyboard_service - INFO - 注册按键处理器: alt+o
+2025-08-06 16:01:58,011 - services.keyboard_service - INFO - 注册按键处理器: alt+p
+2025-08-06 16:01:58,011 - services.keyboard_service - INFO - 注册按键处理器: alt+a
+2025-08-06 16:01:58,011 - services.keyboard_service - INFO - 注册按键处理器: alt+s
+2025-08-06 16:01:58,011 - services.keyboard_service - INFO - 注册按键处理器: alt+d
+2025-08-06 16:01:58,011 - services.keyboard_service - INFO - 注册按键处理器: alt+f
+2025-08-06 16:01:58,011 - services.keyboard_service - INFO - 注册按键处理器: alt+g
+2025-08-06 16:01:58,011 - services.keyboard_service - INFO - 注册按键处理器: ctrl+v
+2025-08-06 16:01:58,011 - services.keyboard_service - INFO - 注册按键处理器: ctrl+b
+2025-08-06 16:01:58,011 - services.keyboard_service - INFO - 注册按键处理器: ctrl+n
+2025-08-06 16:01:58,011 - services.keyboard_service - INFO - 注册按键处理器: ctrl+m
+2025-08-06 16:01:58,011 - services.keyboard_service - ERROR - ❌ 未找到合适的键盘输入设备！
+2025-08-06 16:01:58,024 - services.keyboard_service - ERROR - 未找到可用的键盘设备！
+2025-08-06 16:01:58,024 - __main__ - INFO - 等待唤醒词...
+2025-08-06 16:01:58,028 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 16:01:59,997 - hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-08-06 16:02:00,709 - hardware.audio_interface - INFO - 录音时长: 0.19秒
+2025-08-06 16:02:00,710 - hardware.audio_interface - INFO - 录音时长过短，不进行语音识别
+2025-08-06 16:02:00,710 - __main__ - INFO - 等待唤醒词...
+2025-08-06 16:02:00,712 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 16:02:02,287 - hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-08-06 16:02:02,999 - hardware.audio_interface - INFO - 录音时长: 0.09秒
+2025-08-06 16:02:02,999 - hardware.audio_interface - INFO - 录音时长过短，不进行语音识别
+2025-08-06 16:02:03,007 - __main__ - INFO - 等待唤醒词...
+2025-08-06 16:02:03,008 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 16:02:03,158 - hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-08-06 16:02:03,871 - hardware.audio_interface - INFO - 录音时长: 0.09秒
+2025-08-06 16:02:03,871 - hardware.audio_interface - INFO - 录音时长过短，不进行语音识别
+2025-08-06 16:02:03,871 - __main__ - INFO - 等待唤醒词...
+2025-08-06 16:02:03,873 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 16:02:07,026 - hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-08-06 16:02:07,737 - hardware.audio_interface - INFO - 录音时长: 0.09秒
+2025-08-06 16:02:07,737 - hardware.audio_interface - INFO - 录音时长过短，不进行语音识别
+2025-08-06 16:02:07,738 - __main__ - INFO - 等待唤醒词...
+2025-08-06 16:02:07,740 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 16:02:09,628 - hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-08-06 16:02:10,340 - hardware.audio_interface - INFO - 录音时长: 0.09秒
+2025-08-06 16:02:10,340 - hardware.audio_interface - INFO - 录音时长过短，不进行语音识别
+2025-08-06 16:02:10,341 - __main__ - INFO - 等待唤醒词...
+2025-08-06 16:02:10,343 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 16:02:12,390 - hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-08-06 16:02:12,944 - hardware.audio_interface - INFO - 录音时长: 0.09秒
+2025-08-06 16:02:12,944 - hardware.audio_interface - INFO - 录音时长过短，不进行语音识别
+2025-08-06 16:02:12,945 - __main__ - INFO - 等待唤醒词...
+2025-08-06 16:02:12,947 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 16:02:17,995 - __main__ - INFO - 等待唤醒词...
+2025-08-06 16:02:17,997 - hardware.audio_interface - INFO - 开始检测唤醒词...
+2025-08-06 16:02:19,135 - hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-08-06 16:02:20,705 - hardware.audio_interface - INFO - 录音时长: 0.93秒
+2025-08-06 16:02:22,550 - hardware.audio_interface - INFO - 检测的用户输入语音为：
+2025-08-06 16:02:22,550 - hardware.audio_interface - INFO - 你好，伯乐。
+2025-08-06 16:02:22,550 - hardware.audio_interface - INFO - 文本相似度: 0.91, 阈值: 0.5
+2025-08-06 16:02:22,550 - hardware.audio_interface - INFO - 相似度检测，检测到唤醒词！
+2025-08-06 16:02:22,552 - services.audio_service - INFO - 播放提示音频...
+2025-08-06 16:02:26,414 - hardware.audio_interface - INFO - 成功播放音频: outputs/hello_audios/hello.mp3
+2025-08-06 16:02:26,417 - hardware.audio_interface - INFO - 开始录音...
+2025-08-06 16:02:28,001 - hardware.audio_interface - INFO - 检测到声音，开始录音
+2025-08-06 16:02:29,799 - __main__ - INFO - [性能监控] 等待用户输入对话，音频录制耗时: 3.384秒
+2025-08-06 16:02:29,799 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-08-06 16:02:29,799 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 16:02:29,799 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-08-06 16:02:29,799 - services.resource_manager - INFO - 资源已清理: api_client
+2025-08-06 16:02:29,800 - __main__ - INFO - 用户中断程序
+2025-08-06 16:02:29,800 - services.error_handler - INFO - 执行紧急清理...
+2025-08-06 16:02:29,800 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 16:02:29,801 - services.error_handler - INFO - 紧急清理完成
+2025-08-06 16:02:29,801 - __main__ - INFO - [性能监控] 服务组件初始化耗时: 32.259秒
+2025-08-06 16:02:29,801 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-08-06 16:02:29,801 - __main__ - INFO - 正在停止预留音频播放工作线程...
+2025-08-06 16:02:29,972 - __main__ - INFO - 预留音频播放工作线程已停止。
+2025-08-06 16:02:29,972 - services.resource_manager - INFO - 资源已清理: audio_manager
+2025-08-06 16:02:29,972 - services.resource_manager - INFO - 资源已清理: api_client
+2025-08-06 16:02:29,972 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 16:02:29,972 - services.resource_manager - INFO - 资源已清理: audio_device
+2025-08-06 16:02:29,972 - services.resource_manager - INFO - 资源已清理: error_handler
+2025-08-06 16:02:29,972 - services.resource_manager - INFO - 所有资源已清理
+2025-08-06 16:02:29,973 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 16:02:29,989 - hardware.audio_interface - INFO - 音频设备资源已清理
+2025-08-06 16:02:30,005 - services.resource_manager - INFO - 所有资源已清理
