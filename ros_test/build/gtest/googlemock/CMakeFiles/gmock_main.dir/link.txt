@@ -1,1 +1,0 @@
-/usr/bin/ccache  g++ -fPIC   -shared -Wl,-soname,libgmock_main.so -o ../lib/libgmock_main.so CMakeFiles/gmock_main.dir/src/gmock_main.cc.o  -Wl,-rpath,/home/lab/szhr/coze-communitation2/ros_test/build/gtest/lib ../lib/libgmock.so ../lib/libgtest.so -lpthread 
