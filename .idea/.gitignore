@@ -1,3 +1,5 @@
 # 默认忽略的文件
 /shelf/
 /workspace.xml
+# 忽略环境配置文件，防止敏感信息泄露
+.env
