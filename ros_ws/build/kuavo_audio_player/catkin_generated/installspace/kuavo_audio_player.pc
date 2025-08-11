@@ -1,8 +1,0 @@
-prefix=/home/lab/szhr/CozeRobotChat/ros_ws/install
-
-Name: kuavo_audio_player
-Description: Description of kuavo_audio_player
-Version: 0.0.0
-Cflags: -I${prefix}/include
-Libs: -L${prefix}/lib 
-Requires: geometry_msgs rospy roscpp std_msgs turtlesim message_runtime
