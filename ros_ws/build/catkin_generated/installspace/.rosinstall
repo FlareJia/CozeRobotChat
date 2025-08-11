@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/lab/szhr/CozeRobotChat/ros_ws/install/setup.sh

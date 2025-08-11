@@ -1,0 +1,10 @@
+<launch>
+  <!-- 文件传输服务 -->
+  <node pkg="file_transfer" 
+        type="file_server.py" 
+        name="file_transfer_server"
+        output="screen">
+    <!-- 可配置的服务名称 -->
+    <param name="service_name" value="file_transfer" />
+  </node>
+</launch>

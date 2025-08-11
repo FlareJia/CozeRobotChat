@@ -7,18 +7,19 @@ import os
 import platform
 import threading
 from typing import Optional
-from playsound import playsound
 from datetime import datetime
 from difflib import SequenceMatcher
 from config import Config
 from utils.paths import PathManager
 from services.exceptions import AudioError
+import subprocess  # 仅保留subprocess用于ROS服务调用
+
 
 logger = logging.getLogger(__name__)
 
 
 class RobotAudioInterface:
-    """硬件音频接口控制器"""
+    """硬件音频接口控制器（基于ROS服务的音频播放实现）"""
 
     def __init__(self):
         self.config = Config()
@@ -27,9 +28,9 @@ class RobotAudioInterface:
         self.wake_word = self.config.WAKE_WORD_SETTINGS["wake_word"]
         self.wake_word_buffer = self.config.WAKE_WORD_SETTINGS["wake_word_buffer"]
         self.wake_word_threshold = self.config.WAKE_WORD_SETTINGS["wake_word_threshold"]  # 语音识别相似度阈值
-        self._play_thread = None
-        self._stop_playing = False
-        self._is_playing = False  # 添加播放状态标志
+        self._play_thread = None  # 异步播放线程
+        self._stop_playing = False  # 停止播放标志
+        self._is_playing = False  # 播放状态标志
         self.bye_word = self.config.BYE_WORD_SETTINGS["bye_word"]
         self.bye_word_threshold = self.config.BYE_WORD_SETTINGS["bye_word_threshold"]  # 语音识别相似度阈值
 
@@ -39,59 +40,37 @@ class RobotAudioInterface:
             raise AudioError("未检测到可用的音频设备")
 
     def _calculate_similarity(self, text1: str, text2: str) -> float:
-        """
-        计算两个字符串的相似度
-        :param text1: 第一个字符串
-        :param text2: 第二个字符串
-        :return: 相似度（0-1之间）
-        """
+        """计算两个字符串的相似度（0-1之间）"""
         return SequenceMatcher(None, text1, text2).ratio()
 
     def _is_wake_word_match(self, text: str) -> bool:
-        """
-        检查文本是否匹配唤醒词
-        :param text: 待检查的文本
-        :return: 是否匹配
-        """
+        """检查文本是否匹配唤醒词"""
         if not text:
             return False
-
-        # 计算相似度
         similarity = self._calculate_similarity(text, self.wake_word)
-        logger.info(f"文本相似度: {similarity:.2f}, 阈值: {self.wake_word_threshold}")
-
+        logger.info(f"唤醒词相似度: {similarity:.2f}, 阈值: {self.wake_word_threshold}")
         return similarity >= self.wake_word_threshold
-    # todo 移动到其他地方
+
     def _is_bye_word_match(self, text: str) -> bool:
-        """
-        检查文本是否匹配结束词
-        :param text: 待检查的文本
-        :return: 是否匹配
-        """
+        """检查文本是否匹配结束词"""
         if not text:
             return False
-
-        # 计算相似度
         similarity = self._calculate_similarity(text, self.bye_word)
-        logger.info(f"文本相似度: {similarity:.2f}, 阈值: {self.bye_word_threshold}")
-
+        logger.info(f"结束词相似度: {similarity:.2f}, 阈值: {self.bye_word_threshold}")
         return similarity >= self.bye_word_threshold
 
-    # todo 移动到其他地方
     def detect_bye_word(self, text: str) -> bool:
+        """检测文本中是否包含结束词"""
         if text and self._is_bye_word_match(text):
-            logger.info("相似度检测，检测到结束词！")
+            logger.info("相似度检测：检测到结束词！")
             return True
         if text and self.bye_word in text:
-            logger.info("全量in检测，检测到结束词！")
+            logger.info("全量匹配：检测到结束词！")
             return True
         return False
 
     def detect_wake_word(self) -> bool:
-        """
-        检测语音唤醒词
-        :return: 是否检测到唤醒词
-        """
+        """检测语音中的唤醒词"""
         try:
             # 配置音频流
             stream = self.audio.open(
@@ -108,12 +87,11 @@ class RobotAudioInterface:
             silence_start = None
             start_time = time.time()
 
-            # 录音主循环
+            # 录音主循环（检测声音并收集音频帧）
             while True:
                 data = stream.read(self.config.DETECT_SETTINGS["chunk"])
-                rms = audioop.rms(data, 2)  # 计算音频能量值
+                rms = audioop.rms(data, 2)  # 计算音频能量（判断是否有声音）
 
-                # 声音检测逻辑
                 if rms > self.config.DETECT_SETTINGS["threshold"]:
                     if not recording:
                         logger.info("检测到声音，开始录音")
@@ -124,25 +102,23 @@ class RobotAudioInterface:
                 elif recording:
                     if silence_start is None:
                         silence_start = time.time()
-                    elif time.time() - silence_start > self.config.DETECT_SETTINGS["silence_duration"]:  # 静默2秒后停止
-                        break
+                    elif time.time() - silence_start > self.config.DETECT_SETTINGS["silence_duration"]:
+                        break  # 静默超过阈值，停止录音
 
-                # 超时检查
-                if time.time() - start_time > self.config.DETECT_SETTINGS["max_duration"]:  # 最多录音5秒
+                # 超时检查（防止无限录音）
+                if time.time() - start_time > self.config.DETECT_SETTINGS["max_duration"]:
                     break
 
-            # 保存临时录音文件
+            # 处理录音结果
             if len(frames) > 0:
-                # 计算录音时长
-                recording_duration = len(frames) * self.config.DETECT_SETTINGS["chunk"] / self.config.DETECT_SETTINGS[
-                    "rate"]
+                recording_duration = len(frames) * self.config.DETECT_SETTINGS["chunk"] / self.config.DETECT_SETTINGS["rate"]
                 logger.info(f"录音时长: {recording_duration:.2f}秒")
 
-                # 如果录音时长小于0.5秒，直接返回False
                 if recording_duration < self.config.DETECT_SETTINGS["min_recording_duration_second"]:
                     logger.info("录音时长过短，不进行语音识别")
                     return False
 
+                # 保存临时录音文件
                 temp_filename = os.path.join(
                     self.config.RECORD_DIR,
                     f"temp_wake_word_{int(time.time())}.wav"
@@ -153,24 +129,23 @@ class RobotAudioInterface:
                     wf.setframerate(self.config.RECORD_SETTINGS["rate"])
                     wf.writeframes(b''.join(frames))
 
-                # 使用语音识别检查是否包含唤醒词
+                # 调用语音识别API转文字
                 from services.api_client import EnhancedCozeAPIClient
                 api_client = EnhancedCozeAPIClient(Config.BEARER_TOKEN)
                 text = api_client.transcribe_audio(temp_filename)
 
-                # 删除临时文件
+                # 清理临时文件
                 try:
                     os.remove(temp_filename)
-                except:
-                    pass
+                except Exception as e:
+                    logger.warning(f"删除临时文件失败: {e}")
 
-                logger.info("检测的用户输入语音为：")
-                logger.info(text)
+                logger.info(f"检测到的语音文本: {text}")
                 if text and self._is_wake_word_match(text):
-                    logger.info("相似度检测，检测到唤醒词！")
+                    logger.info("相似度检测：检测到唤醒词！")
                     return True
                 if text and self.wake_word in text:
-                    logger.info("全量in检测，检测到唤醒词！")
+                    logger.info("全量匹配：检测到唤醒词！")
                     return True
 
             return False
@@ -184,10 +159,7 @@ class RobotAudioInterface:
                 stream.close()
 
     def record_audio(self) -> Optional[str]:
-        """
-        执行录音操作
-        :return: 录音文件路径（成功时）或 None（失败时）
-        """
+        """录音并返回文件路径"""
         try:
             # 生成唯一文件名
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -218,9 +190,8 @@ class RobotAudioInterface:
             # 录音主循环
             while True:
                 data = stream.read(self.config.RECORD_SETTINGS["chunk"])
-                rms = audioop.rms(data, 2)  # 计算音频能量值
+                rms = audioop.rms(data, 2)  # 音频能量检测
 
-                # 声音检测逻辑
                 if rms > self.config.RECORD_SETTINGS["threshold"]:
                     if not recording:
                         logger.info("检测到声音，开始录音")
@@ -263,55 +234,26 @@ class RobotAudioInterface:
                 stream.close()
 
     def play_audio(self, file_path: str) -> bool:
-        """
-        播放音频文件
-        :param file_path: 音频文件路径
-        :return: 是否播放成功
-        """
+        """同步播放音频（通过ROS服务）"""
         if not self._validate_audio_file(file_path):
             return False
 
         try:
-            self.stop_audio()
-            time.sleep(0.5)
-            return self._play_by_system(file_path)
+            self.stop_audio()  # 停止当前播放（如果有）
+            time.sleep(0.5)  # 等待停止完成
+            return self._play_via_ros_service(file_path)
         except Exception as e:
-            raise AudioError(f"播放失败: {str(e)}")
-
-    def _validate_audio_file(self, file_path: str) -> bool:
-        """验证音频文件有效性"""
-        if not os.path.exists(file_path):
-            raise AudioError(f"文件不存在: {file_path}")
-
-        if not any(file_path.lower().endswith(fmt) for fmt in Config.AUDIO_FORMATS):
-            raise AudioError(f"不支持的音频格式: {os.path.splitext(file_path)[1]}")
-
-        return True
-
-    def _play_by_system(self, file_path: str) -> bool:
-        """根据操作系统调用不同的播放方式"""
-        abs_path = os.path.abspath(file_path)
-        system = platform.system()
-
-        try:
-            playsound(abs_path)
-            logger.info(f"成功播放音频: {file_path}")
-            return True
-        except Exception as e:
-            raise AudioError(f"播放命令执行失败: {str(e)}")
+            logger.error(f"同步播放失败: {e}")
+            raise AudioError(f"同步播放失败: {str(e)}")
 
     def play_audio_async(self, file_path: str) -> threading.Thread:
-        """
-        异步播放音频文件
-        :param file_path: 音频文件路径
-        :return: 播放线程对象
-        """
+        """异步播放音频（通过ROS服务，在独立线程中执行）"""
         if not self._validate_audio_file(file_path):
             raise AudioError(f"无效的音频文件: {file_path}")
 
         abs_path = os.path.abspath(file_path)
 
-        # 如果已经有播放线程在运行，先停止它
+        # 停止当前播放线程（如果存在）
         if self._play_thread and self._play_thread.is_alive():
             self._stop_playing = True
             self._play_thread.join(timeout=1.0)
@@ -321,32 +263,66 @@ class RobotAudioInterface:
         self._stop_playing = False
         self._is_playing = True
         self._play_thread = threading.Thread(
-            target=self._play_audio_thread,
+            target=self._async_play_via_ros,
             args=(abs_path,),
             daemon=True
         )
         self._play_thread.start()
-
-        logger.info(f"开始异步播放音频: {file_path}")
+        logger.info(f"已启动异步播放线程，文件: {file_path}")
         return self._play_thread
 
-    def _play_audio_thread(self, file_path: str) -> None:
-        """
-        在独立线程中播放音频
-        :param file_path: 音频文件路径
-        """
+    def _async_play_via_ros(self, file_path: str) -> None:
+        """异步播放的线程执行函数"""
         try:
-            playsound(file_path)
+            # 调用ROS服务播放，通过_stop_playing标志控制中断
+            result = subprocess.run(
+                f"rosservice call /play_music2 '{file_path}'",
+                shell=True,
+                check=True,
+                timeout=30  # 防止无限阻塞（可根据需求调整）
+            )
+            logger.info(f"异步播放完成，返回码: {result.returncode}")
+        except subprocess.TimeoutExpired:
+            if self._stop_playing:
+                logger.info("异步播放已被主动终止")
+            else:
+                logger.error("异步播放超时")
         except Exception as e:
-            raise AudioError(f"音频播放失败: {str(e)}")
+            logger.error(f"异步播放失败: {e}")
         finally:
             self._stop_playing = True
             self._is_playing = False
 
+    def _play_via_ros_service(self, file_path: str) -> bool:
+        """通过ROS服务同步播放音频"""
+        abs_path = os.path.abspath(file_path)
+        try:
+            # 调用ROS服务播放音频
+            result = subprocess.run(
+                f"rosservice call /play_music2 '{abs_path}'",
+                shell=True,
+                check=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True
+            )
+            logger.info(f"ROS服务返回: {result.stdout}")
+            logger.info(f"成功播放音频: {file_path}")
+            return True
+        except subprocess.CalledProcessError as e:
+            logger.error(f"ROS服务调用失败，错误输出: {e.stderr}")
+            raise AudioError(f"ROS服务调用失败: {e.stderr}")
+
+    def _validate_audio_file(self, file_path: str) -> bool:
+        """验证音频文件有效性"""
+        if not os.path.exists(file_path):
+            raise AudioError(f"文件不存在: {file_path}")
+        if not any(file_path.lower().endswith(fmt) for fmt in Config.AUDIO_FORMATS):
+            raise AudioError(f"不支持的音频格式: {os.path.splitext(file_path)[1]}")
+        return True
+
     def stop_audio(self) -> None:
-        """
-        停止当前正在播放的音频
-        """
+        """停止当前播放的音频"""
         if self._play_thread and self._play_thread.is_alive():
             self._stop_playing = True
             self._play_thread.join(timeout=1.0)
@@ -355,22 +331,18 @@ class RobotAudioInterface:
         self._is_playing = False
 
     def is_playing(self) -> bool:
-        """
-        检查是否有音频正在播放
-        :return: 是否正在播放
-        """
+        """检查是否正在播放音频"""
         return self._is_playing
 
     def __del__(self):
-        """清理PyAudio资源"""
+        """清理资源"""
         try:
             self.stop_audio()
             if hasattr(self, 'audio'):
                 self.audio.terminate()
-            logger.info("音频设备资源已清理")
+            logger.info("音频接口资源已清理")
         except Exception as e:
-            logger.error(f"清理音频设备资源时发生错误: {str(e)}")
-            # 确保资源被释放
+            logger.error(f"资源清理错误: {e}")
             if hasattr(self, 'audio'):
                 try:
                     self.audio.terminate()

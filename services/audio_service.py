@@ -141,6 +141,15 @@ class AudioService:
             logger.error(f"播放结果音频失败: {str(e)}")
             return False
 
+    def play_reserved_audio(self, audio_number: int) -> None:
+        """播放预留音频"""
+        audio_path = os.path.join(self.reserved_audios_dir, f"reserved_{audio_number}.mp3")
+        if os.path.exists(audio_path):
+            logger.info(f"播放预留音频: reserved_{audio_number}.mp3")
+            self._play_audio_async(audio_path)
+        else:
+            logger.warning(f"预留音频文件不存在: {audio_path}")
+
     def stop_audio(self) -> None:
         """停止当前音频播放"""
         self.audio_interface.stop_audio()

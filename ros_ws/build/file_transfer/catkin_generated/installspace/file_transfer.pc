@@ -1,0 +1,8 @@
+prefix=/home/lab/szhr/CozeRobotChat/ros_ws/install
+
+Name: file_transfer
+Description: Description of file_transfer
+Version: 0.0.1
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: rospy std_msgs message_runtime

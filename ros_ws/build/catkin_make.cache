@@ -1,0 +1,2 @@
+file_transfer:kuavo_audio_player:musicplayer_pkg
+-DCATKIN_DEVEL_PREFIX=/home/lab/szhr/CozeRobotChat/ros_ws/devel -DCMAKE_INSTALL_PREFIX=/home/lab/szhr/CozeRobotChat/ros_ws/install -G Unix Makefiles

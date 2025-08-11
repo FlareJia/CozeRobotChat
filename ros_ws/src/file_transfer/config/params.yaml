@@ -1,0 +1,4 @@
+# 文件传输服务配置参数
+file_transfer_server:
+  service_name: "file_transfer"
+  # 其他可能的配置参数...
