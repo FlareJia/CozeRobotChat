@@ -1,0 +1,6 @@
+# 请求：动作文件名（不含.tact后缀，路径固定）
+string action_name
+---
+# 响应：执行结果
+bool success
+string message
