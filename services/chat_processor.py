@@ -1,6 +1,7 @@
 import logging
 import time
 import json
+import os
 import subprocess  # 新增：导入subprocess模块
 from typing import Optional
 from utils.backoff import BackoffManager
@@ -84,7 +85,7 @@ class ChatProcessor:
         return False
 
     def _handle_response(self, conv_id: str, chat_id: str) -> Optional[str]:
-        """处理API响应，整合获取回答和音频转换逻辑"""
+        """处理API响应，整合获取回答、音频转换和传输逻辑"""
         # 1. 获取智能体的JSON回答
         answer_json = self._get_agent_answer(conv_id, chat_id)
         if not answer_json:
@@ -93,13 +94,21 @@ class ChatProcessor:
         # 2. 根据ismove判断是否执行rosservice命令
         if answer_json.get('ismove', False):
             move_content = answer_json.get('move', 'none')
-            # 执行rosservice调用
             self._execute_rosservice(move_content)
         
         # 3. 将speech内容转换为音频
         audio_path = self._convert_answer_to_audio(answer_json)
-        return audio_path
-
+        if not audio_path:
+            return None  # 音频生成失败则返回
+        
+        # 4. 自动传输音频到下位机
+        transfer_success = self._transfer_audio_to_lower(audio_path)
+        if not transfer_success:
+            logger.warning("音频传输失败，但音频文件已生成")
+        
+        return audio_path  # 即使传输失败，仍返回本地音频路径（可选）
+    
+    
     def _execute_rosservice(self, action: str) -> None:
         """
         通过subprocess执行rosservice命令
@@ -206,4 +215,59 @@ class ChatProcessor:
         except Exception as e:
             logger.error(f"回答转音频失败：{str(e)}")
             return None
-    
+        
+
+
+
+    def _transfer_audio_to_lower(self, upper_audio_path: str) -> bool:
+        """
+        调用ROS客户端脚本，将生成的音频文件传输到下位机
+        :param upper_audio_path: 上位机中音频文件的绝对路径
+        :return: 传输是否成功
+        """
+        try:
+            # 1. 定义ROS环境路径和传输脚本路径（根据实际路径修改）
+            ros_ws_path = os.path.expanduser("~/szhr/CozeRobotChat_test/ros_ws")
+            transfer_script = os.path.join(
+                ros_ws_path, "src", "file_transfer", "scripts", "audio_transfer_client.py"
+            )
+            
+            # 2. 下位机保存音频的目标路径（根据下位机实际路径配置）
+            # 建议在Config中添加配置项：LOWER_AUDIO_TARGET_PATH
+            lower_target_path = self.config.LOWER_AUDIO_TARGET_PATH  # 例如："/home/lab/robot_audio/output.wav"
+            
+            # 3. 确保上位机音频路径为绝对路径
+            upper_audio_abs = os.path.abspath(upper_audio_path)
+            if not os.path.exists(upper_audio_abs):
+                logger.error(f"音频文件不存在：{upper_audio_abs}")
+                return False
+
+            # 4. 构建命令：加载ROS环境并调用传输脚本
+            command = [
+                "bash", "-c",
+                f"source {ros_ws_path}/devel/setup.bash && "
+                f"python3 {transfer_script} "
+                f"--upper_source {upper_audio_abs} "
+                f"--lower_target {lower_target_path}"
+            ]
+
+            # 5. 执行命令并检查结果
+            result = subprocess.run(
+                command,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True
+            )
+
+            if result.returncode == 0:
+                logger.info(f"音频传输成功：{upper_audio_abs} -> {lower_target_path}")
+                logger.info(f"传输输出：{result.stdout}")
+                return True
+            else:
+                logger.error(f"音频传输失败，错误码：{result.returncode}")
+                logger.error(f"错误输出：{result.stderr}")
+                return False
+
+        except Exception as e:
+            logger.error(f"音频传输过程中发生错误：{str(e)}")
+            return False

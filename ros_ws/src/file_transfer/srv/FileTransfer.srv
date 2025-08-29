@@ -1,10 +1,10 @@
-# Request
-string source_path    # 源文件路径(调用方指定)
-string target_path    # 目标文件路径(服务端指定)
-bool is_download      # true=下位机->上位机(下载), false=上位机->下位机(上传)
-uint8[] file_data     # 文件数据(二进制)
-
-# Response
-bool success
-string message
-int64 file_size
+# 请求部分（客户端→服务端）
+string source_path       # 源文件路径
+string target_path       # 目标文件路径（下位机保存路径）
+bool is_download         # True：下载（下位机→上位机）；False：上传（上位机→下位机）
+uint8[] file_data        # 文件数据（上传时客户端发送，下载时服务端返回）
+---
+# 响应部分（服务端→客户端）【关键】
+bool success             # 传输是否成功（必须定义！）
+string message           # 状态描述（成功/错误信息）
+int64 file_size          # 文件大小（字节）
