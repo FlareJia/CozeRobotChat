@@ -1,14 +1,14 @@
 import logging
 import time
 import json
+import os
 import subprocess  # 新增：导入subprocess模块
 from typing import Optional
 from utils.backoff import BackoffManager
 from config import Config
 from services.audio_service import AudioService
-
 logger = logging.getLogger(__name__)
-
+from utils.file_transfer import File_transfer
 
 class ChatProcessor:
     """对话流程处理器，协调API调用和音频管理"""
@@ -84,7 +84,7 @@ class ChatProcessor:
         return False
 
     def _handle_response(self, conv_id: str, chat_id: str) -> Optional[str]:
-        """处理API响应，整合获取回答和音频转换逻辑"""
+        """处理API响应，整合获取回答、音频转换和传输逻辑"""
         # 1. 获取智能体的JSON回答
         answer_json = self._get_agent_answer(conv_id, chat_id)
         if not answer_json:
@@ -93,13 +93,21 @@ class ChatProcessor:
         # 2. 根据ismove判断是否执行rosservice命令
         if answer_json.get('ismove', False):
             move_content = answer_json.get('move', 'none')
-            # 执行rosservice调用
             self._execute_rosservice(move_content)
         
         # 3. 将speech内容转换为音频
         audio_path = self._convert_answer_to_audio(answer_json)
-        return audio_path
-
+        if not audio_path:
+            return None  # 音频生成失败则返回
+        
+        # 4. 自动传输音频到下位机
+        transfer_success = File_transfer._transfer_audio_to_lower(audio_path)
+        if not transfer_success:
+            logger.warning("音频传输失败，但音频文件已生成")
+        
+        return audio_path  # 即使传输失败，仍返回本地音频路径（可选）
+    
+    
     def _execute_rosservice(self, action: str) -> None:
         """
         通过subprocess执行rosservice命令
@@ -206,4 +214,7 @@ class ChatProcessor:
         except Exception as e:
             logger.error(f"回答转音频失败：{str(e)}")
             return None
-    
+        
+
+
+

@@ -5,7 +5,7 @@
 """
 import rospy
 import os
-from file_transfer_pkg.srv import FileTransfer, FileTransferRequest
+from file_transfer.srv import FileTransfer, FileTransferRequest
 
 class FileTransferClient:
     """文件传输客户端API"""

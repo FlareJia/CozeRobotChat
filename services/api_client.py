@@ -199,7 +199,7 @@ class EnhancedCozeAPIClient:
         payload = {
             "input": text,
             "voice_id": voice_id,
-            "response_format": "mp3",
+            "response_format": "wav",
             "speed": speed,
             "sample_rate": sample_rate
         }
@@ -324,7 +324,7 @@ class EnhancedCozeAPIClient:
         PathManager.create_dir(output_dir)
 
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = f"coze_audio_{timestamp}.mp3"
+        filename = f"coze_audio_{timestamp}.wav"
         file_path = os.path.join(output_dir, filename)
 
         try:

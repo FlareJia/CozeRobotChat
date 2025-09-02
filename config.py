@@ -10,6 +10,7 @@ class Config:
     BEARER_TOKEN = os.getenv("BEARER_TOKEN")
     BOT_ID = os.getenv("BOT_ID")
     USER_ID = os.getenv("USER_ID")
+    LOWER_AUDIO_TARGET_PATH = "/home/lab/szhr/CozeRobotChat_test/records/outputs.wav"
 
     # 音频合成参数
     # VOICE_ID = 7426720361733177353    # 男声
@@ -24,7 +25,7 @@ class Config:
         "error_dir": "error_audios",
         "error_mp3": "system_error.mp3",
         "hello_dir": "hello_audios",
-        "hello_mp3": "hello.mp3",
+        "hello_mp3": "hello.wav",
         "hello_mp3_recruitment": "hello_recruitment.mp3",
         "hello_mp3_policy": "hello_policy.mp3",
         "wait_dir": "wait_audios",

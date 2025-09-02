@@ -42,7 +42,7 @@ class AudioFileManager:
             logger.error("获取文件锁超时，注册失败")
             return False
 
-    def generate_filepath(self, prefix: str = "audio", extension: str = "mp3") -> str:
+    def generate_filepath(self, prefix: str = "audio", extension: str = "wav") -> str:
         """生成安全的音频文件路径"""
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         filename = f"{prefix}_{timestamp}.{extension}"
