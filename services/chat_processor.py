@@ -234,7 +234,7 @@ class ChatProcessor:
             
             # 2. 下位机保存音频的目标路径（根据下位机实际路径配置）
             # 建议在Config中添加配置项：LOWER_AUDIO_TARGET_PATH
-            lower_target_path = self.config.LOWER_AUDIO_TARGET_PATH  # 例如："/home/lab/robot_audio/output.wav"
+            lower_target_path = self.config.LOWER_AUDIO_TARGET_PATH 
             
             # 3. 确保上位机音频路径为绝对路径
             upper_audio_abs = os.path.abspath(upper_audio_path)
@@ -245,8 +245,8 @@ class ChatProcessor:
             # 4. 构建命令：加载ROS环境并调用传输脚本
             command = [
                 "bash", "-c",
-                f"source {ros_ws_path}/devel/setup.bash && "
-                f"python3 {transfer_script} "
+                # f"source {ros_ws_path}/devel/setup.bash && "
+                # f"python3 {transfer_script} "
                 f"--upper_source {upper_audio_abs} "
                 f"--lower_target {lower_target_path}"
             ]
