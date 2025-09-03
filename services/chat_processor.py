@@ -7,9 +7,10 @@ from typing import Optional
 from utils.backoff import BackoffManager
 from config import Config
 from services.audio_service import AudioService
-logger = logging.getLogger(__name__)
 from utils.file_transfer import File_transfer
 
+
+logger = logging.getLogger(__name__)
 class ChatProcessor:
     """对话流程处理器，协调API调用和音频管理"""
 
@@ -97,11 +98,12 @@ class ChatProcessor:
         
         # 3. 将speech内容转换为音频
         audio_path = self._convert_answer_to_audio(answer_json)
+        logger.info(audio_path)
         if not audio_path:
             return None  # 音频生成失败则返回
-        
+        file_transfer = File_transfer()
         # 4. 自动传输音频到下位机
-        transfer_success = File_transfer._transfer_audio_to_lower(audio_path)
+        transfer_success = file_transfer._transfer_audio_to_lower(audio_path)
         if not transfer_success:
             logger.warning("音频传输失败，但音频文件已生成")
         

@@ -10,8 +10,8 @@ class Config:
     BEARER_TOKEN = os.getenv("BEARER_TOKEN")
     BOT_ID = os.getenv("BOT_ID")
     USER_ID = os.getenv("USER_ID")
-    LOWER_AUDIO_TARGET_PATH = "/home/lab/szhr/CozeRobotChat_test/records/outputs.wav"
-
+    LOWER_AUDIO_TARGET_PATH = "/home/lab/szhr/CozeRobotChat/records/outputs.wav"
+    ROS_WS_PATH = os.path.expanduser("~/szhr/CozeRobotChat/ros_ws")
     # 音频合成参数
     # VOICE_ID = 7426720361733177353    # 男声
     # VOICE_ID = 7426720361753903141      # 爽快思思

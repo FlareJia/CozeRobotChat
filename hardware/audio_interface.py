@@ -235,8 +235,8 @@ class RobotAudioInterface:
 
     def play_audio(self, file_path: str) -> bool:
         """同步播放音频（通过ROS服务）"""
-        if not self._validate_audio_file(file_path):
-            return False
+        # if not self._validate_audio_file(file_path):
+        #     return False
 
         try:
             self.stop_audio()  # 停止当前播放（如果有）
@@ -248,8 +248,8 @@ class RobotAudioInterface:
 
     def play_audio_async(self, file_path: str) -> threading.Thread:
         """异步播放音频（通过ROS服务，在独立线程中执行）"""
-        if not self._validate_audio_file(file_path):
-            raise AudioError(f"无效的音频文件: {file_path}")
+        # if not self._validate_audio_file(file_path):
+        #     raise AudioError(f"无效的音频文件: {file_path}")
 
         abs_path = os.path.abspath(file_path)
 

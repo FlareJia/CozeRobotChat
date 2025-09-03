@@ -2,12 +2,22 @@
 import os
 import logging
 import subprocess
+from config import Config
 
 
 logger = logging.getLogger(__name__)
 class File_transfer:
+    def __init__(self):
+        self.config = Config()
+        # 从配置类中获取路径
+        self.ros_ws_path = self.config.ROS_WS_PATH
+        
+        # # 验证路径是否存在
+        # if not os.path.exists(self.ros_ws_path):
+        #     logger.error(f"ROS工作空间路径不存在: {self.ros_ws_path}")
+        #     # 可以根据需要抛出异常或做其他处理
+        #     # raise FileNotFoundError(f"ROS工作空间路径不存在: {self.ros_ws_path}")
     
-
     def _transfer_audio_to_lower(self, upper_audio_path: str) -> bool:
         """
         调用ROS客户端脚本，将生成的音频文件传输到下位机
@@ -15,11 +25,11 @@ class File_transfer:
         :return: 传输是否成功
         """
         try:
-            # 1. 定义ROS环境路径和传输脚本路径（根据实际路径修改）
-            ros_ws_path = os.path.expanduser("~/szhr/CozeRobotChat_test/ros_ws")
+            # 使用从配置获取的路径构建脚本路径
             transfer_script = os.path.join(
-                ros_ws_path, "src", "file_transfer", "scripts", "audio_transfer_client.py"
+                self.ros_ws_path, "src", "file_transfer", "scripts", "audio_transfer_client.py"
             )
+            
             
             # 2. 下位机保存音频的目标路径（根据下位机实际路径配置）
             # 建议在Config中添加配置项：LOWER_AUDIO_TARGET_PATH
@@ -34,11 +44,11 @@ class File_transfer:
             # 4. 构建命令：加载ROS环境并调用传输脚本
             command = [
                 "bash", "-c",
-                # f"source {ros_ws_path}/devel/setup.bash && "
-                # f"python3 {transfer_script} "
-                f"--upper_source {upper_audio_abs} "
-                f"--lower_target {lower_target_path}"
+                f"python3 {transfer_script} "  # 必须保留python3执行脚本的部分
+                f"--upper_source '{upper_audio_abs}' "
+                f"--lower_target '{lower_target_path}'"
             ]
+
 
             # 5. 执行命令并检查结果
             result = subprocess.run(
