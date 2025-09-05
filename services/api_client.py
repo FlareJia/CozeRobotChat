@@ -130,6 +130,8 @@ class EnhancedCozeAPIClient:
             ]
         }
 
+        # return self._request("POST", "chat", json=payload)
+
         try:
             response = self.session.post(
                 url=url,
@@ -290,7 +292,7 @@ class EnhancedCozeAPIClient:
     def get_chat_messages(self, conversation_id: str, chat_id: str) -> Optional[List[Dict]]:
         params = {
             "conversation_id": conversation_id,
-            "chat_id": chat_id,
+            "chat_id": chat_id
             # "limit": 10  # 限制条数
         }
         # try:
