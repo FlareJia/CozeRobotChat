@@ -39,6 +39,13 @@ class EnhancedCozeAPIClient:
             "Content-Type": "application/json",
             "Accept": "application/json"
         })
+        # # 添加 SSL 验证选项和超时设置
+        # self.session.verify = True
+        # self.session.mount('https://', requests.adapters.HTTPAdapter(
+        #     max_retries=3,
+        #     pool_connections=10,
+        #     pool_maxsize=10
+        # ))
         self.session.timeout = 30
 
     def _build_url(self, endpoint: str, version: str = "v3") -> str:
@@ -165,7 +172,7 @@ class EnhancedCozeAPIClient:
             logger.error(f"API请求失败: {str(e)}", exc_info=True)
         return None
 
-
+    # 上传到coze服务器
     def upload_image(self, image_path: str) -> Optional[str]:
         try:
             file_name = os.path.basename(image_path)  # 提取实际文件名（如 captured_image.jpg）
@@ -215,7 +222,7 @@ class EnhancedCozeAPIClient:
             logger.error(f"上传失败: {str(e)}")
             return None
 
-
+    # 上传到简历处理服务器
     def upload_image_url(self, image_path: str) -> Optional[str]:
         try:
             file_name = os.path.basename(image_path)  # 提取实际文件名（如 captured_image.jpg）
@@ -277,24 +284,30 @@ class EnhancedCozeAPIClient:
             "conversation_id": conversation_id,
             "chat_id": chat_id
         }
-        #return self._request("GET", "chat/retrieve", params=params)
-        return self._request("GET", "chat/status", params=params)
+        return self._request("GET", "chat/retrieve", params=params)
+        #return self._request("GET", "chat/status", params=params)
 
     def get_chat_messages(self, conversation_id: str, chat_id: str) -> Optional[List[Dict]]:
         params = {
             "conversation_id": conversation_id,
             "chat_id": chat_id,
-            "limit": 10  # 限制条数
+            # "limit": 10  # 限制条数
         }
-        try:
-            # 端点从"conversation/messages"改为"chat/messages"
-            response = self._request("GET", "chat/messages", params=params)
-            logger.debug(f"get_chat_messages响应: {response}")
-            # 消息通常在"data"字段（根据v3 API规范）
-            return response.get("data", []) if response else []
-        except Exception as e:
-            logger.error(f"获取消息失败: {str(e)}")
-            return []
+        # try:
+        #     # 端点从"conversation/messages"改为"chat/messages"
+        #     response = self._request("GET", "chat/messages", params=params)
+        #     logger.debug(f"get_chat_messages响应: {response}")
+        #     # 消息通常在"data"字段（根据v3 API规范）
+        #     return response.get("data", []) if response else []
+        # except Exception as e:
+        #     logger.error(f"获取消息失败: {str(e)}")
+        #     return []
+        while True:
+            try:
+                response = self._request("GET", "chat/message/list", params=params)
+                return response.get("data", []) if response else []
+            except CozeAPIError:
+                self.backoff.wait()
 
     def generate_audio(
             self,

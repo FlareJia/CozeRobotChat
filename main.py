@@ -39,20 +39,12 @@ def time_recorder(step_name):
         logger.info(f"[性能监控] {step_name}耗时: {elapsed:.3f}秒")
 
 
-# todo 移动到其他地方
 def _calculate_similarity(text1: str, text2: str) -> float:
-    # 计算两个字符串的相似度
-    #:param text1: 第一个字符串
-    #:param text2: 第二个字符串
-    #:return: 相似度（0-1之间）
 
     return SequenceMatcher(None, text1, text2).ratio()
 
 
 def _is_bye_word_match(text: str) -> bool:
-    # 检查文本是否匹配结束词
-    #:param text: 待检查的文本
-    #:return: 是否匹配
 
     if not text:
         return False
@@ -62,8 +54,6 @@ def _is_bye_word_match(text: str) -> bool:
     logger.info(f"文本相似度: {similarity:.2f}")
 
     return similarity >= Config.BYE_WORD_SETTINGS["bye_word_threshold"]
-
-    # todo 移动到其他地方
 
 
 def detect_bye_word(text: str) -> bool:
@@ -109,12 +99,6 @@ def main():
                         image_output_dir = os.path.join(Config.OUTPUT_DIR, Config.IMAGE_NAMES["images_dir"])  # 保存图片的目录
                         camera_service = CameraService(output_dir=image_output_dir)
                         audio_service = AudioService(audio_interface, audio_mgr)
-                        
-                        # 初始化相机服务
-                        # with resource_manager.manage_resource(ResourceType.CAMERA_SERVICE, 
-                        #                                      output_dir="images") as camera_service:
-                        #     logger.info("相机服务初始化完成")
-                        #     # 2. 初始化相机服务（可指定输出目录，默认是 "images"）
                         
 
                         # 创建键盘监听服务
@@ -220,7 +204,6 @@ def main():
                                                 logger.info("智能体要求拍照，开始拍照...")
                                                 
                                                 # 调用相机服务拍照
-                                                #image_path = camera_service.capture_stable_image()
                                                 # 3. 捕获稳定图像（target_frame 控制等待帧数，越大越稳定，默认50）
                                                 target_frame = 50  # 可根据需求调整
                                                 image_path = camera_service.capture_stable_image(target_frame=target_frame)
@@ -237,6 +220,7 @@ def main():
                                                 )
 
                                                 # 播放结果音频
+                                                # todo 需要修改语音文件的位置，现在发送到了下位机
                                                 if result_audio and os.path.exists(result_audio):
                                                     logger.info(f"播放图片分析结果音频: {result_audio}")
                                                     audio_service.play_audio(result_audio)
@@ -248,6 +232,7 @@ def main():
                                                 logger.info("智能体不需要拍照，直接处理文本")
                                                 # 用智能体返回的 speech_content 生成音频
                                                 result_audio = processor.process_query(speech_content)
+                                                # todo 需要修改语音文件的位置，现在发送到了下位机
                                                 if result_audio and os.path.exists(result_audio):
                                                     audio_service.play_audio(result_audio)
                                                 else:
@@ -257,9 +242,11 @@ def main():
 
                                         except APIError as e:
                                             error_handler.handle_error(e, ErrorCategory.API)
+                                            audio_service.end_conversation()
                                             continue
                                         except Exception as e:
                                             logger.error(f"处理出错: {str(e)}", exc_info=True)
+                                            audio_service.end_conversation()
                                             continue
                                     # 播放结果
                                     with time_recorder("音频播放"):
