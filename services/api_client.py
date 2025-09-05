@@ -305,7 +305,7 @@ class EnhancedCozeAPIClient:
         while True:
             try:
                 response = self._request("GET", "chat/message/list", params=params)
-                return response.get("data", []) if response else []
+                return response.get("data", []) if response else None
             except CozeAPIError:
                 self.backoff.wait()
 
