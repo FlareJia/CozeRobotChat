@@ -18,18 +18,6 @@ from utils.file_transfer import File_transfer
 class ChatProcessor:
     """对话流程处理器，协调API调用和音频管理"""
 
-    # def __init__(self, config, api_client, audio_service: AudioService, camera_service):
-    #     """
-    #     :param api_client: EnhancedCozeAPIClient 实例
-    #     :param audio_service: AudioService 实例
-    #     """
-    #     self.config = config
-    #     self.api_client = api_client
-    #     self.audio_service = audio_service
-    #     self.camera_service = camera_service 
-    #     self.backoff = BackoffManager()
-    #     self.config = Config()
-
     def __init__(self, config, api_client, camera_service, audio_service: AudioService):
         """
         :param api_client: EnhancedCozeAPIClient 实例
@@ -41,28 +29,6 @@ class ChatProcessor:
         self.audio_service = audio_service
         self.backoff = BackoffManager()
 
-    # def get_raw_response(self, query: str) -> Optional[str]:
-    #     """获取智能体原始响应（JSON字符串）"""
-    #     # 格式化查询内容为字典（匹配 api_client 要求的格式）
-    #     formatted_query = {
-    #         "text": query,
-    #         "has_image": False  # 此时还未涉及图片，默认false
-    #     }
-    #     # 调用API时传递格式化后的字典
-    #     response = self.api_client.send_chat_request(
-    #         self.config.BOT_ID,
-    #         self.config.USER_ID,
-    #         formatted_query  # 这里从纯文本改为字典
-    #     )
-    #     # 根据实际API响应格式调整返回路径（确保能拿到包含JSON的原始响应）
-    #     # 例如：如果响应是 {"data": {"content": "JSON字符串"}}, 则保持不变
-    #     return response.get("data", {}).get("content")
-
-    # services/chat_processor.py 中修改
-    # services/chat_processor.py 中修改
-    # services/chat_processor.py
-
-
     def get_raw_response(self, query: str) -> Optional[Dict]:
         """获取智能体的拍照指令（替换原轮询逻辑，直接用流式响应）"""
         return self.api_client.send_chat_request(
@@ -70,16 +36,8 @@ class ChatProcessor:
             user_id=self.config.USER_ID,
             content={"text": query}
         )
-    # def get_raw_response(self, query: str) -> Optional[str]:
-    #     """获取智能体原始响应（JSON字符串）"""
-    #     response = self.api_client.send_chat_request(
-    #         self.config.BOT_ID,
-    #         self.config.USER_ID,
-    #         query
-    #     )
-    #     return response.get("data", {}).get("content")  # 根据实际API响应格式调整
 
-    # 1111
+
     def process_query(self, query: str, image_path: Optional[str] = None) -> Optional[str]:
         """
         处理用户查询（支持传递图片路径）
@@ -144,38 +102,6 @@ class ChatProcessor:
             })
         return formatted
     
-    # def process_image_query(self, query: str, image_path: str) -> Optional[str]:
-    #     """上传图片并调用工作流处理"""
-    #     # 1. 上传图片获取file_id
-    #     file_id = self.api_client.upload_image(image_path)
-    #     if not file_id:
-    #         logger.error("未获取到file_id，终止图片处理")
-    #         return None
-
-    #     # 2. 向工作流发送带图片的请求
-    #     workflow_response = self.api_client.send_chat_request(
-    #         bot_id=self.config.WORKFLOW_BOT_ID,  # 工作流对应的智能体ID
-    #         user_id=self.config.USER_ID,
-    #         content={
-    #             "text": query,
-    #             "additional_messages": [
-    #                 {
-    #                     "role": "user",
-    #                     "content": [
-    #                         {"type": "text", "text": query},
-    #                         {"type": "image", "file_id": file_id}
-    #                     ],
-    #                     "content_type": "multimodal"
-    #                 }
-    #             ]
-    #         }
-    #     )
-
-    #     # 3. 生成结果音频（复用你的TTS逻辑）
-    #     if workflow_response and "content" in workflow_response:
-    #         result_text = workflow_response["content"]
-    #         return self.audio_service.text_to_speech(result_text)
-    #     return None
 
     def process_image_query(self, query: str, image_path: str, url_or_id: True) -> Optional[str]:
         """调用工作流接口处理图片，严格按文档参数构造请求"""

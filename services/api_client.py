@@ -33,12 +33,6 @@ class EnhancedCozeAPIClient:
         self.backoff = BackoffManager(initial_delay=2, max_delay=30)
         self.session.verify = True
 
-        # # 新增：定义临时文件目录（用于图片重编码）
-        # self.output_dir = output_dir
-        # # 确保目录存在
-        # os.makedirs(self.output_dir, exist_ok=True)
-        # logger.info(f"API客户端初始化，临时文件目录: {self.output_dir}")
-
     def _configure_session(self):
         self.session.headers.update({
             "Authorization": f"Bearer {self.bearer_token}",
@@ -171,90 +165,6 @@ class EnhancedCozeAPIClient:
             logger.error(f"API请求失败: {str(e)}", exc_info=True)
         return None
 
-    # def upload_image(self, image_path: str) -> Optional[str]:
-    #     """严格按Coze文件上传规范处理，确保文件有效"""
-    #     try:
-    #         # 1. 检查文件合法性
-    #         if not os.path.exists(image_path):
-    #             logger.error(f"图片不存在: {image_path}")
-    #             return None
-            
-    #         # 检查文件格式（仅允许jpg/png）
-    #         valid_extensions = ('.jpg', '.jpeg', '.png')
-    #         if not image_path.lower().endswith(valid_extensions):
-    #             logger.error(f"不支持的图片格式，仅允许: {valid_extensions}")
-    #             return None
-            
-    #         # 检查文件大小（假设限制10MB）
-    #         max_size = 10 * 1024 * 1024  # 10MB
-    #         if os.path.getsize(image_path) > max_size:
-    #             logger.error(f"图片过大（{os.path.getsize(image_path)/1024/1024:.2f}MB），最大支持10MB")
-    #             return None
-
-    #         # # 2. 构造符合要求的上传请求
-    #         # with open(image_path, "rb") as f:
-    #         #     # 显式指定文件名和MIME类型（关键）
-    #         #     files = {
-    #         #         "file": (
-    #         #             os.path.basename(image_path),  # 保留原始文件名
-    #         #             f, 
-    #         #             "image/jpeg" if image_path.lower().endswith(('.jpg', '.jpeg')) else "image/png"
-    #         #         )
-    #         #     }
-    #             # 关键：重新编码图片，确保内容符合标准JPG格式
-        
-    #         # 用OpenCV读取并重新保存（强制标准编码）
-    #         img = cv2.imread(image_path)
-    #         if img is None:
-    #             logger.error("无法读取图片内容（可能损坏）")
-    #             return None
-            
-    #         # 临时文件用于上传（避免修改原始图片）
-    #         temp_path = os.path.join(self.output_dir, "temp_upload.jpg")
-    #         # 强制使用95%质量的JPG编码（Coze更易识别）
-    #         cv2.imwrite(temp_path, img, [int(cv2.IMWRITE_JPEG_QUALITY), 95])
-    #         logger.info(f"图片重新编码完成: {temp_path}")
-
-    #         # 使用重新编码的临时文件上传
-    #         with open(temp_path, "rb") as f:
-    #             files = {
-    #                 "file": (
-    #                     "temp_upload.jpg",
-    #                     f,
-    #                     "image/jpeg"  # 明确MIME类型
-    #                 )
-    #             }
-
-
-
-    #             response = self.session.post(
-    #                 url=f"{self.API_BASE_V1}files/upload",  # 正确的v1上传端点
-    #                 files=files,
-    #                 headers={"Authorization": f"Bearer {self.bearer_token}"}
-    #             )
-    #             response.raise_for_status()
-    #             result = response.json()
-
-    #             # 3. 解析响应（根据API规范，成功时code=0）
-    #             if result.get("code") != 0:
-    #                 logger.error(f"上传失败，API错误: {result.get('msg')}，logid: {result.get('detail', {}).get('logid')}")
-    #                 return None
-                
-    #             file_id = result.get("data", {}).get("file_id")
-    #             if file_id:
-    #                 logger.info(f"图片上传成功，file_id: {file_id}")
-    #                 return file_id
-    #             else:
-    #                 logger.error(f"上传成功但无file_id，响应: {result}")
-    #                 return None
-                
-    #             # 上传后删除临时文件
-    #         if os.path.exists(temp_path):
-    #             os.remove(temp_path)
-
-    #     except Exception as e:
-    #         logger.error(f"上传异常: {str(e)}，响应: {response.text if 'response' in locals() else '无'}")
-    #         return None
 
     def upload_image(self, image_path: str) -> Optional[str]:
         try:
@@ -310,15 +220,6 @@ class EnhancedCozeAPIClient:
         try:
             file_name = os.path.basename(image_path)  # 提取实际文件名（如 captured_image.jpg）
 
-            # with open(image_path, "rb") as f:
-            #     files = {
-            #         "file": (
-            #             file_name,        # 文件名（与 Postman 一致）
-            #             f,                # 文件对象
-            #             "image/jpeg"      # MIME 类型（JPG 固定为 image/jpeg，PNG 则为 image/png）
-            #         )
-            #     }
-
             with open(image_path, "rb") as f:
                 # 2. 显式构造文件字段的元数据（完全匹配curl的格式）
                 files = {
@@ -331,13 +232,6 @@ class EnhancedCozeAPIClient:
                 }
 
                 headers ={}
-
-                # response = self.session.post(
-                #     url=f"http://121.40.26.93/api/upload_image",
-                #     files=files,
-                #     verify=False,  # 临时关闭SSL验证（避免环境问题干扰）
-                #     headers=headers
-                # )
                 session = requests.Session()
                 response = session.post(
                     url="http://121.40.26.93/api/upload_image",
