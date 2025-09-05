@@ -1,67 +1,28 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>file_transfer</name>
-  <version>0.0.1</version>
-  <description>A ROS package for transferring files between upper and lower computers</description>
+  <version>0.0.0</version>
+  <description>ROS文件传输功能包，支持上位机与下位机之间的文件上传和下载</description>
+  <maintainer email="your_email@example.com">你的名字</maintainer>
+  <license>MIT</license>
 
-  <!-- One maintainer tag required, multiple allowed, one person per tag -->
-  <!-- Example:  -->
-  <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="leju_kuavo@todo.todo">leju_kuavo</maintainer>
-
-
-  <!-- One license tag required, multiple allowed, one license per tag -->
-  <!-- Commonly used license strings: -->
-  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
-  <license>BSD</license>
-
-
-  <!-- Url tags are optional, but multiple are allowed, one per tag -->
-  <!-- Optional attribute type can be: website, bugtracker, or repository -->
-  <!-- Example: -->
-  <!-- <url type="website">http://wiki.ros.org/file_transfer</url> -->
-
-
-  <!-- Author tags are optional, multiple are allowed, one per tag -->
-  <!-- Authors do not have to be maintainers, but could be -->
-  <!-- Example: -->
-  <!-- <author email="jane.doe@example.com">Jane Doe</author> -->
-
-
-  <!-- The *depend tags are used to specify dependencies -->
-  <!-- Dependencies can be catkin packages or system dependencies -->
-  <!-- Examples: -->
-  <!-- Use depend as a shortcut for packages that are both build and exec dependencies -->
-  <!--   <depend>roscpp</depend> -->
-  <!--   Note that this is equivalent to the following: -->
-  <!--   <build_depend>roscpp</build_depend> -->
-  <!--   <exec_depend>roscpp</exec_depend> -->
-  <!-- Use build_depend for packages you need at compile time: -->
-  <!--   <build_depend>message_generation</build_depend> -->
-  <!-- Use build_export_depend for packages you need in order to build against this package: -->
-  <!--   <build_export_depend>message_generation</build_export_depend> -->
-  <!-- Use buildtool_depend for build tool packages: -->
-  <!--   <buildtool_depend>catkin</buildtool_depend> -->
-  <!-- Use exec_depend for packages you need at runtime: -->
-  <!--   <exec_depend>message_runtime</exec_depend> -->
-  <!-- Use test_depend for packages you need only for testing: -->
-  <!--   <test_depend>gtest</test_depend> -->
-  <!-- Use doc_depend for packages you need only for building documentation: -->
-  <!--   <doc_depend>doxygen</doc_depend> -->
+  <!-- 构建依赖 -->
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>message_generation</build_depend>
+  <build_depend>roscpp</build_depend>
   <build_depend>rospy</build_depend>
   <build_depend>std_msgs</build_depend>
-  <build_export_depend>rospy</build_export_depend>
-  <build_export_depend>std_msgs</build_export_depend>
-  <exec_depend>message_runtime</exec_depend>
+  <!-- 消息生成依赖（必须包含，用于编译.srv文件） -->
+  <build_depend>message_generation</build_depend>
+
+  <!-- 运行依赖 -->
+  <exec_depend>roscpp</exec_depend>
   <exec_depend>rospy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
+  <!-- 消息运行时依赖（必须包含，用于运行时加载消息类型） -->
+  <exec_depend>message_runtime</exec_depend>
 
-
-  <!-- The export tag contains other, unspecified, tags -->
+  <!-- 导出配置 -->
   <export>
-    <!-- Other tools can request additional information be placed here -->
-
+    <build_type>catkin</build_type>
   </export>
 </package>

@@ -2,6 +2,9 @@
 import os
 import logging
 import time
+import json
+import os
+import subprocess  # 新增：导入subprocess模块
 from typing import Optional
 from utils.backoff import BackoffManager
 from config import Config
@@ -10,7 +13,7 @@ from typing import List, Dict, Optional
 import json
 
 logger = logging.getLogger(__name__)
-
+from utils.file_transfer import File_transfer
 
 class ChatProcessor:
     """对话流程处理器，协调API调用和音频管理"""
@@ -302,38 +305,140 @@ class ChatProcessor:
                 self.backoff.wait()
         return False
 
-    def _handle_response(self, conversation_id: str, chat_id: str) -> Optional[str]:
-        """从对话中提取工作流的输出结果"""
-        # 1. 调用get_chat_messages获取完整消息列表（复用你的已有方法）
-        messages = self.api_client.get_chat_messages(conversation_id, chat_id)
-        if not messages:
-            logger.error("工作流未返回任何消息")
-            self.audio_service.play_error_audio("未获取到分析结果")
+    def _handle_response(self, conv_id: str, chat_id: str) -> Optional[str]:
+        """处理API响应，整合获取回答、音频转换和传输逻辑"""
+        # 1. 获取智能体的JSON回答
+        answer_json = self._get_agent_answer(conv_id, chat_id)
+        if not answer_json:
             return None
+        
+        # 2. 根据ismove判断是否执行rosservice命令
+        if answer_json.get('ismove', False):
+            move_content = answer_json.get('move', 'none')
+            self._execute_rosservice(move_content)
+        
 
-        # 2. 过滤出智能体（assistant角色）的回复（工作流的输出在这里）
-        # 注意：消息可能是直接列表，或嵌套在'data'/'items'中，根据实际结构调整
-        assistant_messages = []
-        for msg in messages:
-            # 兼容消息可能的嵌套结构（如msg是{'data': {...}}）
-            actual_msg = msg.get("data", msg) if isinstance(msg, dict) else msg
-            if isinstance(actual_msg, dict) and actual_msg.get("role") == "assistant":
-                assistant_messages.append(actual_msg)
 
-        if not assistant_messages:
-            logger.error(f"未找到智能体的回复，消息列表: {messages}")
-            self.audio_service.play_error_audio("未找到分析结果")
+        # 3. 将speech内容转换为音频
+        audio_path = self._convert_answer_to_audio(answer_json)
+        if not audio_path:
+            return None  # 音频生成失败则返回
+        
+        # 4. 自动传输音频到下位机
+        transfer_success = File_transfer._transfer_audio_to_lower(audio_path)
+        if not transfer_success:
+            logger.warning("音频传输失败，但音频文件已生成")
+        
+        return audio_path  # 即使传输失败，仍返回本地音频路径（可选）
+    
+    
+    def _execute_rosservice(self, action: str) -> None:
+        """
+        通过subprocess执行rosservice命令
+        :param action: 要执行的动作（如"击掌"）
+        """
+        try:
+            # 构建命令：rosservice call /execute_arm_action "动作内容"
+            command = [
+                "rosservice", 
+                "call", 
+                "/execute_arm_action", 
+                f'"{action}"'  # 确保动作内容带引号
+            ]
+            
+            logger.info(f"执行命令: {' '.join(command)}")
+            
+            # 执行命令并捕获输出
+            result = subprocess.run(
+                command,
+                check=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True  # 输出为字符串而非字节
+            )
+            
+            # 记录成功信息
+            logger.info(f"rosservice执行成功，输出: {result.stdout}")
+            print(f"动作执行成功: {action}")
+            
+        except subprocess.CalledProcessError as e:
+            # 命令执行失败（返回非0状态码）
+            logger.error(f"rosservice执行失败，错误码: {e.returncode}, 错误信息: {e.stderr}")
+        except Exception as e:
+            # 其他异常（如命令不存在）
+            logger.error(f"执行rosservice时发生错误: {str(e)}")
+
+    def _get_agent_answer(self, conv_id: str, chat_id: str) -> Optional[dict]:
+        """
+        从智能体获取JSON格式回答，并提取关键字段
+        :return: 包含speech、ismove、move的字典，或None
+        """
+        try:
+            # 调用API获取消息列表（智能体返回的内容在消息中）
+            messages = self.api_client.get_chat_messages(conv_id, chat_id)
+            if not messages:
+                logger.error("未获取到消息列表")
+                return None
+
+            # 提取智能体的回答消息（type="answer"）
+            answer_messages = [
+                msg.get('content', '') 
+                for msg in messages 
+                if msg.get('type') == "answer"
+            ]
+            if not answer_messages:
+                logger.error("未提取到智能体的回答消息")
+                return None
+
+            # 解析JSON格式的回答内容（假设消息内容是纯JSON字符串）
+            try:
+                answer_json = json.loads(answer_messages[0])  # 取第一条回答消息
+            except json.JSONDecodeError as e:
+                logger.error(f"智能体回答不是有效的JSON格式：{str(e)}")
+                return None
+
+            # 验证JSON字段是否完整
+            required_fields = ["image", "ismove", "move", "speech"]
+            if not all(field in answer_json for field in required_fields):
+                logger.error("智能体返回的JSON缺少必要字段")
+                return None
+
+            logger.info("智能体返回的解析结果：")
+            logger.info(f"speech: {answer_json['speech']}")
+            logger.info(f"ismove: {answer_json['ismove']}, move: {answer_json['move']}")
+            return answer_json
+
+        except Exception as e:
+            logger.error(f"获取智能体回答失败：{str(e)}")
             return None
+        
 
-        # 3. 提取工作流输出的文本内容（假设content是纯文本或JSON字符串）
-        result_msg = assistant_messages[0]
-        result_content = result_msg.get("content", "")
-        if not result_content:
-            logger.error("智能体回复内容为空")
-            self.audio_service.play_error_audio("分析结果为空")
+    def _convert_answer_to_audio(self, answer_json: dict) -> Optional[str]:
+        """
+        将JSON中的speech内容转换为音频
+        :param answer_json: 包含speech字段的字典
+        :return: 音频文件路径或None
+        """
+        try:
+            # 提取speech内容
+            speech_text = answer_json.get('speech', '').strip()
+            if not speech_text:
+                logger.error("speech字段为空，无法生成音频")
+                return None
+
+            # 调用API生成音频
+            audio_path = self.api_client.generate_audio(speech_text)
+            if not audio_path:
+                logger.error("音频生成失败")
+                return None
+
+            logger.info(f"音频文件已生成：{audio_path}")
+            return audio_path
+
+        except Exception as e:
+            logger.error(f"回答转音频失败：{str(e)}")
             return None
+        
 
-        logger.info(f"工作流处理结果: {result_content}")
-        return self.api_client.generate_audio(result_content)  # 返回结果用于播放
 
-        #content += " 感谢您的使用，更多岗位信息请进入展馆查看哦。"
+

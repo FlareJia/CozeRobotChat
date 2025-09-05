@@ -264,7 +264,7 @@ def main():
                                     # 播放结果
                                     with time_recorder("音频播放"):
                                         try:
-                                            if not audio_service.play_result_audio(result_audio):
+                                            if not audio_service._play_audio("/home/lab/szhr/CozeRobotChat_test/records/outputs.wav"):
                                                 audio_service.end_conversation()
                                                 continue
                                             logging.info("Conversation cycle completed successfully")

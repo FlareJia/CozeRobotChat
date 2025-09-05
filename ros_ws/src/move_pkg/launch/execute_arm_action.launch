@@ -1,0 +1,10 @@
+<launch>
+    <!-- 启动Python脚本节点 -->
+    <node 
+        pkg="move_pkg"        
+        type="move.py"        
+        name="arm_trajectory_tact_executor"  
+        output="screen"       
+        cwd="node"            
+    />
+</launch>

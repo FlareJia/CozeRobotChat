@@ -6,7 +6,7 @@
 import rospy
 import os
 import logging
-from file_transfer_pkg.srv import FileTransfer, FileTransferResponse
+from file_transfer.srv import FileTransfer, FileTransferResponse
 
 # 配置日志
 logging.basicConfig(level=logging.INFO)

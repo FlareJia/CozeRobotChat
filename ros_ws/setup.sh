@@ -27,7 +27,10 @@ source /home/lab/szhr/CozeRobotChat/ros_ws/devel/setup.bash
 # 启动主程序
 echo "启动Kuavo音频播放器..."
 roslaunch kuavo_audio_player play_music.launch
-
+# echo "启动手臂动作播放节点"
+# roslaunch move_pkg execute_arm_action.launch
+# echo "启动音频传输服务"
+# roslaunch file_transfer file_transfer_server.launch
 # 在这里添加其他启动命令
 # 例如：
 # echo "启动其他组件..."
