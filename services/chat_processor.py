@@ -1,3 +1,5 @@
+# services/chat_processor.py
+import os
 import logging
 import time
 import json
@@ -7,41 +9,59 @@ from typing import Optional
 from utils.backoff import BackoffManager
 from config import Config
 from services.audio_service import AudioService
+from typing import List, Dict, Optional
+import json
+
 logger = logging.getLogger(__name__)
 from utils.file_transfer import File_transfer
 
 class ChatProcessor:
     """对话流程处理器，协调API调用和音频管理"""
 
-    def __init__(self, api_client, audio_service: AudioService):
+    def __init__(self, config, api_client, camera_service, audio_service: AudioService):
         """
         :param api_client: EnhancedCozeAPIClient 实例
         :param audio_service: AudioService 实例
         """
-        self.api_client = api_client
+        self.config = Config()  # 配置项（如之前的 Config 实例）
+        self.api_client = api_client  # API 客户端
+        self.camera_service = camera_service  # 相机服务（关键：新增此参数）
         self.audio_service = audio_service
         self.backoff = BackoffManager()
-        self.config = Config()
 
-    def process_query(self, query: str) -> Optional[str]:
+    def get_raw_response(self, query: str) -> Optional[Dict]:
+        """获取智能体的拍照指令（替换原轮询逻辑，直接用流式响应）"""
+        return self.api_client.send_chat_request(
+            bot_id=self.config.BOT_ID,  # 用于返回拍照指令的智能体ID
+            user_id=self.config.USER_ID,
+            content={"text": query}
+        )
+
+
+    def process_query(self, query: str, image_path: Optional[str] = None) -> Optional[str]:
         """
-        处理用户查询
+        处理用户查询（支持传递图片路径）
         :param query: 用户查询文本
+        :param image_path: 图片保存路径（可选，有图片时传递）
         :return: 生成的音频文件路径
         """
         try:
-            # 发送聊天请求
+            # 格式化查询内容（包含图片信息如果存在）
+            formatted_query = self._format_query(query, image_path)
+            
+            # 发送聊天请求（传递包含图片信息的查询）
             response = self.api_client.send_chat_request(
                 self.config.BOT_ID,
                 self.config.USER_ID,
-                self._format_query(query)
+                formatted_query
             )
             if not response:
                 return None
 
-            # 播放等待音频
-            self.audio_service.play_wait_audio()
-
+          
+            if not image_path:  # 当有图片路径时，不播放等待音频
+                self.audio_service.play_wait_audio()
+        
             # 提取对话ID
             chat_id = response.get('data', {}).get('id')
             conversation_id = response.get('data', {}).get('conversation_id')
@@ -63,9 +83,137 @@ class ChatProcessor:
             self.audio_service.stop_audio()
             return None
 
-    def _format_query(self, query: str) -> str:
-        """格式化查询内容"""
-        return f"{query} 精简且快速的输出内容"
+
+    # 新增/修改辅助方法：格式化包含图片的查询
+    def _format_query(self, query: str, image_path: Optional[str] = None) -> dict:
+        """
+        格式化查询内容，支持包含图片路径信息
+        """
+        formatted = {
+            "text": query,
+            "has_image": False
+        }
+        # 如果有图片路径，添加到查询中
+        if image_path and os.path.exists(image_path):
+            formatted.update({
+                "has_image": True,
+                "image_path": image_path,
+                "image_filename": os.path.basename(image_path)
+            })
+        return formatted
+    
+
+    def process_image_query(self, query: str, image_path: str, url_or_id: True) -> Optional[str]:
+        """调用工作流接口处理图片，严格按文档参数构造请求"""
+            # 新增：检查上传开关
+        if not self.config.FEATURE_FLAGS.get('ENABLE_UPLOAD_IMAGE', False):
+            logger.info("图片上传功能已禁用（通过FEATURE_FLAGS控制）")
+            return None  # 或返回提示信息，如"图片上传功能暂未开放"
+
+        
+        if url_or_id:
+            url = self.api_client.upload_image_url(image_path)
+            logger.info("通过url上传图片到工作流")
+            if not url:
+                logger.error("未获取到有效url，终止处理")
+                return None
+            
+                    # 2. 构造工作流请求参数（按文档规范）
+            workflow_payload = {
+                "workflow_id": self.config.WORKFLOW_BOT_ID,  # 必须：工作流ID（从URL获取）
+                "parameters": {  # 工作流输入参数，包含图片和文本
+                    "input": query,  # 文本查询（如"识别场景"）
+                    "image": url  # 图片参数（需JSON序列化字符串）
+                },
+                "is_async": False  # 同步运行（免费版支持）
+            }
+
+            try:
+                response = self.api_client.session.post(
+                    url=f"{self.api_client.API_BASE_V1}workflow/run",  # 工作流接口
+                    headers={
+                        "Authorization": f"Bearer {self.api_client.bearer_token}",
+                        "Content-Type": "application/json"
+                    },
+                    json=workflow_payload
+                )
+                response.raise_for_status()
+                result = response.json()
+
+                # 4. 解析工作流结果（成功时code=0）
+                if result.get("code") != 0:
+                    logger.error(f"工作流执行失败: {result.get('msg')}，logid: {result.get('detail', {}).get('logid')}")
+                    return None
+                
+                # 关键修正：反序列化data字段的JSON字符串（因为data是字符串，不是字典）
+                data_str = result.get("data", "")  # 获取原始data字符串（如"{\"content_type\":1,\"data\":\"图片内容...\"}"）
+                if not data_str:
+                    logger.error("工作流返回data为空")
+                    return None
+                
+                # 反序列化为字典
+                data_dict = json.loads(data_str)
+                
+                # 提取实际内容（根据响应结构，内容在data_dict的"data"字段中）
+                workflow_result = data_dict.get("data", "")
+                logger.info(f"工作流处理结果: {workflow_result}")
+                return workflow_result
+
+            except json.JSONDecodeError:
+                logger.error(f"工作流data解析失败（非JSON字符串）: {data_str}")
+                return None
+            except Exception as e:
+                logger.error(f"工作流调用失败: {str(e)}，响应: {response.text if 'response' in locals() else '无'}")
+                return None
+
+
+
+        else:
+                # 1. 上传图片获取file_id
+            file_id = self.api_client.upload_image(image_path)
+            if not file_id:
+                logger.error("未获取到有效file_id，终止处理")
+                return None
+
+
+
+            # 2. 构造工作流请求参数（按文档规范）
+            workflow_payload = {
+                "workflow_id": self.config.WORKFLOW_BOT_ID,  # 必须：工作流ID（从URL获取）
+                "parameters": {  # 工作流输入参数，包含图片和文本
+                    "input": query,  # 文本查询（如"识别场景"）
+                    "image": json.dumps({"file_id": file_id})  # 图片参数（需JSON序列化字符串）
+                },
+                "bot_id": self.config.BOT_ID,  # 可选：关联的智能体ID（若工作流需要）
+                "is_async": False  # 同步运行（免费版支持）
+            }
+
+            # 3. 调用工作流接口
+            try:
+                response = self.api_client.session.post(
+                    url=f"{self.api_client.API_BASE_V1}workflow/run",  # 工作流接口
+                    headers={
+                        "Authorization": f"Bearer {self.api_client.bearer_token}",
+                        "Content-Type": "application/json"
+                    },
+                    json=workflow_payload
+                )
+                response.raise_for_status()
+                result = response.json()
+
+                # 4. 解析工作流结果（成功时code=0）
+                if result.get("code") != 0:
+                    logger.error(f"工作流执行失败: {result.get('msg')}，logid: {result.get('detail', {}).get('logid')}")
+                    return None
+                
+                # 假设工作流结果在data.output中（根据实际工作流输出调整）
+                workflow_result = result.get("data", {}).get("output", "")
+                logger.info(f"工作流处理结果: {workflow_result}")
+                return workflow_result
+
+            except Exception as e:
+                logger.error(f"工作流调用失败: {str(e)}，响应: {response.text if 'response' in locals() else '无'}")
+                return None
 
     def _wait_for_completion(self, conv_id: str, chat_id: str) -> bool:
         """等待对话完成"""
@@ -95,6 +243,8 @@ class ChatProcessor:
             move_content = answer_json.get('move', 'none')
             self._execute_rosservice(move_content)
         
+
+
         # 3. 将speech内容转换为音频
         audio_path = self._convert_answer_to_audio(answer_json)
         if not audio_path:

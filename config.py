@@ -11,6 +11,7 @@ class Config:
     BOT_ID = os.getenv("BOT_ID")
     USER_ID = os.getenv("USER_ID")
     LOWER_AUDIO_TARGET_PATH = "/home/lab/szhr/CozeRobotChat_test/records/outputs.wav"
+    WORKFLOW_BOT_ID = os.getenv("WORKFLOW_BOT_ID")
 
     # 音频合成参数
     # VOICE_ID = 7426720361733177353    # 男声
@@ -35,6 +36,13 @@ class Config:
         "bye_dir": "bye_audios",
         "bye_mp3": "bye.mp3"
     }
+
+    IMAGE_NAMES = {
+        "images_dir": "images",
+        "process_by_coze":"true"
+
+    }
+
 
     # 路径配置
     OUTPUT_DIR = "outputs"
@@ -93,3 +101,9 @@ class Config:
     FEATURE_FLAGS = {
         'USE_ASYNC_RESERVED_AUDIO': True  # 是否启用预留音频异步播放
     }
+
+    # 新增：上传开关
+    FEATURE_FLAGS = {
+        'ENABLE_UPLOAD_IMAGE': True   # 是否启用上传图片功能
+    }
+    

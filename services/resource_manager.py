@@ -5,7 +5,7 @@ from contextlib import contextmanager
 from dataclasses import dataclass
 from enum import Enum
 from datetime import datetime
-
+from services.camera_service import CameraService 
 from hardware.audio_interface import RobotAudioInterface
 from services.api_client import EnhancedCozeAPIClient
 from services.audio_manager import AudioFileManager
@@ -40,6 +40,7 @@ class ResourceType(Enum):
     API_CLIENT = "api_client"
     AUDIO_MANAGER = "audio_manager"
     ERROR_HANDLER = "error_handler"
+    CAMERA_SERVICE = "camera_service"
 
 
 @dataclass
@@ -124,6 +125,10 @@ class ResourceManager:
             return AudioFileManager(Config.OUTPUT_DIR)
         elif resource_type == ResourceType.ERROR_HANDLER:
             return AdvancedErrorHandler()
+        elif resource_type == ResourceType.CAMERA_SERVICE:
+            # 假设相机服务类为CameraService，需要传入输出目录等参数
+            output_dir = kwargs.get("output_dir", Config.CAMERA_SETTINGS["images_dir"])
+            return CameraService(output_dir=output_dir)  # 创建相机服务实例
         else:
             raise ValueError(f"未知的资源类型: {resource_type}")
 
