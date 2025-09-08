@@ -1,5 +1,5 @@
-# services/api_client.py
 import os
+import cv2
 import json
 import requests
 import logging
@@ -23,36 +23,30 @@ class CozeAPIError(Exception):
 
 
 class EnhancedCozeAPIClient:
-    """增强版Coze API客户端，包含自动重试和统一错误处理"""
-
     API_BASE_V3 = "https://api.coze.cn/v3/"
     API_BASE_V1 = "https://api.coze.cn/v1/"
 
     def __init__(self, bearer_token: str):
-        """
-        初始化API客户端
-        :param bearer_token: 身份验证令牌
-        """
         self.bearer_token = bearer_token
         self.session = requests.Session()
         self._configure_session()
         self.backoff = BackoffManager(initial_delay=2, max_delay=30)
-        # 设置全局SSL验证选项
-        self.session.verify = True  # 启用SSL验证
+        self.session.verify = True
 
-    def _configure_session(self) -> None:
-        """配置会话参数"""
+    def _configure_session(self):
         self.session.headers.update({
             "Authorization": f"Bearer {self.bearer_token}",
+            "Content-Type": "application/json",
             "Accept": "application/json"
         })
-        # 添加SSL配置
-        self.session.verify = True
-        self.session.mount('https://', requests.adapters.HTTPAdapter(
-            max_retries=3,
-            pool_connections=10,
-            pool_maxsize=10
-        ))
+        # # 添加 SSL 验证选项和超时设置
+        # self.session.verify = True
+        # self.session.mount('https://', requests.adapters.HTTPAdapter(
+        #     max_retries=3,
+        #     pool_connections=10,
+        #     pool_maxsize=10
+        # ))
+        self.session.timeout = 30
 
     def _build_url(self, endpoint: str, version: str = "v3") -> str:
         """构建完整API URL"""
@@ -114,33 +108,168 @@ class EnhancedCozeAPIClient:
             logger.error(error_msg)
             raise CozeAPIError(error_msg) from e
 
-    def send_chat_request(
-            self,
-            bot_id: str,
-            user_id: str,
-            content: str,
-            stream: bool = False
-    ) -> Optional[Dict]:
+    def send_chat_request(self, bot_id: str, user_id: str, content: Dict, stream: bool = True) -> Optional[Dict]:
         """
-        发送聊天请求
-        :param bot_id: 机器人ID
-        :param user_id: 用户ID
-        :param content: 消息内容
-        :param stream: 是否使用流式传输
-        :return: API响应数据
+        发送聊天请求，支持流式响应，返回智能体指令（如拍照指令）
         """
+        # 1. 构建URL（包含conversation_id参数，即使为空）
+        url = f"{self.API_BASE_V3}chat?conversation_id="
+
+        # 2. 构造请求体（使用official字段additional_messages）
         payload = {
             "bot_id": bot_id,
             "user_id": user_id,
             "stream": stream,
-            "type": "question",
-            "additional_messages": [{
-                "role": "user",
-                "content": content,
-                "content_type": "text"
-            }]
+            "auto_save_history": True,
+            "additional_messages": [
+                {
+                    "role": "user",
+                    "content": content["text"],
+                    "content_type": "text"
+                }
+            ]
         }
-        return self._request("POST", "chat", json=payload)
+
+        # return self._request("POST", "chat", json=payload)
+
+        try:
+            response = self.session.post(
+                url=url,
+                json=payload,
+                stream=stream
+            )
+            response.raise_for_status()
+
+            # 3. 处理流式响应（只保留最后一个完整JSON）
+            last_valid_content = ""  # 存储最后一个有效的JSON内容
+            is_done = False
+
+            for line in response.iter_lines():
+                if line:
+                    line_str = line.decode("utf-8").strip()
+
+                    # 标记结束事件
+                    if line_str == "event:done":
+                        is_done = True
+                        continue
+
+                    # 提取智能体回复
+                    if ("role\":\"assistant\"" in line_str 
+                        and "\"type\":\"answer\"" in line_str 
+                        and line_str.startswith("data:")):
+                        json_str = line_str[5:].strip()
+                        data = json.loads(json_str)
+                        # 只保留最后一个content（替换而非追加）
+                        last_valid_content = data.get("content", "").replace("\n", "").replace("    ", "")
+
+            # 所有分块处理完毕后，用最后一个有效的JSON解析
+            if is_done and last_valid_content:
+                try:
+                    return json.loads(last_valid_content)
+                except json.JSONDecodeError as e:
+                    logger.error(f"JSON解析失败，内容: {last_valid_content}，错误: {str(e)}")
+            return None
+
+        except Exception as e:
+            logger.error(f"API请求失败: {str(e)}", exc_info=True)
+        return None
+
+    # 上传到coze服务器
+    def upload_image(self, image_path: str) -> Optional[str]:
+        try:
+            file_name = os.path.basename(image_path)  # 提取实际文件名（如 captured_image.jpg）
+
+            with open(image_path, "rb") as f:
+                files = {
+                    "file": (
+                        file_name,        # 文件名（与 Postman 一致）
+                        f,                # 文件对象
+                        "image/jpeg"      # MIME 类型（JPG 固定为 image/jpeg，PNG 则为 image/png）
+                    )
+                }
+
+    
+
+                # 确保不手动设置Content-Type，让requests自动生成（含boundary）
+                headers = {
+                    "Authorization": f"Bearer {self.bearer_token}",
+                    # 移除Content-Type，让requests自动处理（curl也不手动设置具体boundary）
+                }
+
+                response = self.session.post(
+                    url=f"{self.API_BASE_V1}files/upload",
+                    files=files,
+                    headers=headers,
+                    verify=False  # 临时关闭SSL验证（避免环境问题干扰）
+                )
+                logger.info(f"上传响应files: {files}")
+
+            # 3. 详细打印响应（用于对比curl）
+            logger.info(f"上传响应状态码: {response.status_code}")
+            logger.info(f"上传响应头: {response.headers}")
+            logger.info(f"上传响应内容: {response.text}")
+
+            response.raise_for_status()
+            result = response.json()
+
+            if result.get("code") == 0:
+                file_id = result["data"].get("id")
+                logger.info(f"上传成功，file_id: {file_id}")
+                return file_id
+            else:
+                logger.error(f"API返回错误: {result.get('msg')}，logid: {result.get('detail', {}).get('logid')}")
+                return None
+
+        except Exception as e:
+            logger.error(f"上传失败: {str(e)}")
+            return None
+
+    # 上传到简历处理服务器
+    def upload_image_url(self, image_path: str) -> Optional[str]:
+        try:
+            file_name = os.path.basename(image_path)  # 提取实际文件名（如 captured_image.jpg）
+
+            with open(image_path, "rb") as f:
+                # 2. 显式构造文件字段的元数据（完全匹配curl的格式）
+                files = {
+                    "file": (
+                        file_name,
+                        f,
+                        "image/jpeg",
+                        {"Content-Disposition": f'form-data; name="file"; filename="{file_name}"'}
+                    )
+                }
+
+                headers ={}
+                session = requests.Session()
+                response = session.post(
+                    url="http://121.40.26.93/api/upload_image",
+                    files=files,
+                    headers=headers,
+                    verify=False
+                )
+                logger.info(f"上传响应files: {files}")
+
+            # 3. 详细打印响应（用于对比curl）
+            logger.info(f"上传响应状态码: {response.status_code}")
+            logger.info(f"上传响应头: {response.headers}")
+            logger.info(f"上传响应内容: {response.text}")
+
+            response.raise_for_status()
+            result = response.json()
+
+            if result.get("success") is True:
+                url = result["data"].get("url")
+                logger.info(f"上传成功，url: {url}")
+                return url
+            else:
+                logger.error(f"API返回错误: {result.get('msg')}，logid: {result.get('detail', {}).get('logid')}")
+                return None
+
+        except Exception as e:
+            logger.error(f"上传失败: {str(e)}")
+            return None
+
 
     def check_chat_status(
             self,
@@ -158,22 +287,23 @@ class EnhancedCozeAPIClient:
             "chat_id": chat_id
         }
         return self._request("GET", "chat/retrieve", params=params)
+        #return self._request("GET", "chat/status", params=params)
 
-    def get_chat_messages(
-            self,
-            conversation_id: str,
-            chat_id: str
-    ) -> Optional[List[Dict]]:
-        """
-        获取聊天消息列表
-        :param conversation_id: 会话ID
-        :param chat_id: 聊天ID
-        :return: 消息列表数据
-        """
+    def get_chat_messages(self, conversation_id: str, chat_id: str) -> Optional[List[Dict]]:
         params = {
             "conversation_id": conversation_id,
             "chat_id": chat_id
+            # "limit": 10  # 限制条数
         }
+        # try:
+        #     # 端点从"conversation/messages"改为"chat/messages"
+        #     response = self._request("GET", "chat/messages", params=params)
+        #     logger.debug(f"get_chat_messages响应: {response}")
+        #     # 消息通常在"data"字段（根据v3 API规范）
+        #     return response.get("data", []) if response else []
+        # except Exception as e:
+        #     logger.error(f"获取消息失败: {str(e)}")
+        #     return []
         while True:
             try:
                 response = self._request("GET", "chat/message/list", params=params)

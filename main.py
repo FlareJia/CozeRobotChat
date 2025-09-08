@@ -1,3 +1,4 @@
+import json
 import logging
 import time
 import os
@@ -13,6 +14,7 @@ from services.scheduler import CleanupScheduler
 from services.error_handler import ErrorCategory
 from services.exceptions import AudioError, APIError
 from services.resource_manager import ResourceManager, ResourceType
+from services.camera_service import CameraService
 
 logging.basicConfig(
     level=logging.INFO,
@@ -37,20 +39,12 @@ def time_recorder(step_name):
         logger.info(f"[性能监控] {step_name}耗时: {elapsed:.3f}秒")
 
 
-# todo 移动到其他地方
 def _calculate_similarity(text1: str, text2: str) -> float:
-    # 计算两个字符串的相似度
-    #:param text1: 第一个字符串
-    #:param text2: 第二个字符串
-    #:return: 相似度（0-1之间）
 
     return SequenceMatcher(None, text1, text2).ratio()
 
 
 def _is_bye_word_match(text: str) -> bool:
-    # 检查文本是否匹配结束词
-    #:param text: 待检查的文本
-    #:return: 是否匹配
 
     if not text:
         return False
@@ -60,8 +54,6 @@ def _is_bye_word_match(text: str) -> bool:
     logger.info(f"文本相似度: {similarity:.2f}")
 
     return similarity >= Config.BYE_WORD_SETTINGS["bye_word_threshold"]
-
-    # todo 移动到其他地方
 
 
 def detect_bye_word(text: str) -> bool:
@@ -84,6 +76,8 @@ def main():
                 PathManager.create_dir(Config.OUTPUT_DIR)
                 PathManager.create_dir(Config.RECORD_DIR)
                 PathManager.create_dir(os.path.join(Config.OUTPUT_DIR, Config.AUDIO_NAMES["reserved_dir"]))
+                PathManager.create_dir(os.path.join(Config.OUTPUT_DIR, Config.IMAGE_NAMES["images_dir"]))
+                
             except Exception as e:
                 with resource_manager.manage_resource(ResourceType.ERROR_HANDLER) as error_handler:
                     error_handler.handle_error(e, ErrorCategory.FILE)
@@ -102,8 +96,10 @@ def main():
                             resource_manager.manage_resource(ResourceType.AUDIO_DEVICE) as audio_interface, \
                             resource_manager.manage_resource(ResourceType.ERROR_HANDLER) as error_handler:
 
-                        # 创建音频服务
+                        image_output_dir = os.path.join(Config.OUTPUT_DIR, Config.IMAGE_NAMES["images_dir"])  # 保存图片的目录
+                        camera_service = CameraService(output_dir=image_output_dir)
                         audio_service = AudioService(audio_interface, audio_mgr)
+                        
 
                         # 创建键盘监听服务
                         keyboard_service = KeyboardService(
@@ -126,7 +122,12 @@ def main():
                         keyboard_service.start()
 
                         # 创建对话处理器
-                        processor = ChatProcessor(api_client, audio_service)
+                        processor = ChatProcessor(
+                            config=Config,  # 配置实例
+                            api_client=api_client,  # API 客户端
+                            camera_service=camera_service,  # 相机服务（关键：补充此参数）
+                            audio_service=audio_service  # 音频服务
+                        )
 
                         while True:
                             try:
@@ -184,17 +185,73 @@ def main():
                                     # 处理对话流程
                                     with time_recorder("智能体处理"):
                                         try:
-                                            result_audio = processor.process_query(transcript)
-                                            logger.info("将coze返回的文字结果转为音频文件完成。")
+                                            # 1. 获取智能体响应（已解析为字典，无需再处理原始字符串）
+                                            agent_json = processor.get_raw_response(transcript)  # 重点：变量名改为agent_json，直接接收字典
+                                            if not agent_json:
+                                                logger.error("未获取到智能体响应，跳过处理")
+                                                continue
+
+                                            # 2. 无需再解析JSON（直接使用agent_json）
+                                            logger.info(f"获取智能体响应: {agent_json}")
+
+                                            # 3. 提取JSON参数（逻辑不变）
+                                            need_capture = agent_json.get("image", False)  # 是否需要拍照
+                                            speech_content = agent_json.get("speech", "正在处理")  # 智能体提示文本
+
+                                            # 4. 根据 need_capture 处理（后续逻辑完全不变）
+                                            image_path = None
+                                            if need_capture and camera_service:
+                                                logger.info("智能体要求拍照，开始拍照...")
+                                                
+                                                # 调用相机服务拍照
+                                                # 3. 捕获稳定图像（target_frame 控制等待帧数，越大越稳定，默认50）
+                                                target_frame = 50  # 可根据需求调整
+                                                image_path = camera_service.capture_stable_image(target_frame=target_frame)
+                                                if not image_path or not os.path.exists(image_path):
+                                                    logger.error("拍照失败，未生成图片文件")
+                                                    continue
+                                                logger.info(f"拍照成功: {image_path}")
+
+                                                # 带图片调用智能体处理
+                                                result_audio = processor.process_image_query(
+                                                    query=transcript,
+                                                    image_path=image_path,
+                                                    url_or_id=Config.IMAGE_NAMES["process_by_coze"]
+                                                )
+
+                                                # 播放结果音频
+                                                # todo 需要修改语音文件的位置，现在发送到了下位机
+                                                if result_audio and os.path.exists(result_audio):
+                                                    logger.info(f"播放图片分析结果音频: {result_audio}")
+                                                    audio_service.play_audio(result_audio)
+                                                else:
+                                                    logger.error("智能体处理图片失败，未生成结果音频")
+                                                    audio_service.play_error_audio("图片分析失败")
+
+                                            else:
+                                                logger.info("智能体不需要拍照，直接处理文本")
+                                                # 用智能体返回的 speech_content 生成音频
+                                                result_audio = processor.process_query(speech_content)
+                                                # todo 需要修改语音文件的位置，现在发送到了下位机
+                                                if result_audio and os.path.exists(result_audio):
+                                                    audio_service.play_audio(result_audio)
+                                                else:
+                                                    logger.error("文本处理失败，未生成结果音频")
+
+                                            logger.info("智能体处理完成，生成音频")
+
                                         except APIError as e:
                                             error_handler.handle_error(e, ErrorCategory.API)
                                             audio_service.end_conversation()
                                             continue
-
+                                        except Exception as e:
+                                            logger.error(f"处理出错: {str(e)}", exc_info=True)
+                                            audio_service.end_conversation()
+                                            continue
                                     # 播放结果
                                     with time_recorder("音频播放"):
                                         try:
-                                            if not audio_service._play_audio(Config.LOWER_AUDIO_TARGET_PATH):
+                                            if not audio_service._play_audio("/home/lab/szhr/CozeRobotChat_test/records/outputs.wav"):
                                                 audio_service.end_conversation()
                                                 continue
                                             logging.info("Conversation cycle completed successfully")

@@ -1,3 +1,4 @@
+
 import os
 import pyaudio
 from dotenv import load_dotenv
@@ -10,6 +11,8 @@ class Config:
     BEARER_TOKEN = os.getenv("BEARER_TOKEN")
     BOT_ID = os.getenv("BOT_ID")
     USER_ID = os.getenv("USER_ID")
+    LOWER_AUDIO_TARGET_PATH = "/home/lab/szhr/CozeRobotChat_test/records/outputs.wav"
+    WORKFLOW_BOT_ID = os.getenv("WORKFLOW_BOT_ID")
     LOWER_AUDIO_TARGET_PATH = "/home/lab/szhr/CozeRobotChat/records/outputs.wav"
     ROS_WS_PATH = os.path.expanduser("~/szhr/CozeRobotChat/ros_ws")
     # 音频合成参数
@@ -92,4 +95,13 @@ class Config:
     # 新增：功能开关
     FEATURE_FLAGS = {
         'USE_ASYNC_RESERVED_AUDIO': True  # 是否启用预留音频异步播放
+    }
+        # 新增：功能开关
+    FEATURE_FLAGS = {
+        'USE_ASYNC_RESERVED_AUDIO': True  # 是否启用预留音频异步播放
+    }
+
+    # 新增：上传开关
+    FEATURE_FLAGS = {
+        'ENABLE_UPLOAD_IMAGE': True   # 是否启用上传图片功能
     }
