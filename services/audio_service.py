@@ -41,7 +41,7 @@ class AudioService:
         wait_audio_dir = os.path.join(self.config.OUTPUT_DIR, self.config.AUDIO_NAMES["wait_dir"])
         wait_audio_path = os.path.join(
             wait_audio_dir,
-            Config.AUDIO_NAMES["wait_mp3_policy"]
+            Config.AUDIO_NAMES["wait_wav_policy"]
         )
 
         if os.path.exists(wait_audio_path):
@@ -55,7 +55,7 @@ class AudioService:
         hello_audio_dir = os.path.join(self.config.OUTPUT_DIR, self.config.AUDIO_NAMES["hello_dir"])
         hello_audio_path = os.path.join(
             hello_audio_dir,
-            Config.AUDIO_NAMES["hello_mp3"]
+            Config.AUDIO_NAMES["hello_wav"]
         )
 
         if os.path.exists(hello_audio_path):
@@ -83,7 +83,7 @@ class AudioService:
         bye_audio_dir = os.path.join(self.config.OUTPUT_DIR, self.config.AUDIO_NAMES["bye_dir"])
         bye_audio_path = os.path.join(
             bye_audio_dir,
-            Config.AUDIO_NAMES["bye_mp3"]
+            Config.AUDIO_NAMES["bye_wav"]
         )
 
         if os.path.exists(bye_audio_path):

@@ -25,16 +25,23 @@ class Config:
     AUDIO_NAMES = {
         "error_dir": "error_audios",
         "error_mp3": "system_error.mp3",
+        "error_wav": "system_error.wav",
         "hello_dir": "hello_audios",
         "hello_mp3": "hello.wav",
+        "hello_wav": "hello.wav",
         "hello_mp3_recruitment": "hello_recruitment.mp3",
+        "hello_wav_recruitment": "hello_recruitment.wav",
         "hello_mp3_policy": "hello_policy.mp3",
+        "hello_wav_policy": "hello_policy.wav",
         "wait_dir": "wait_audios",
         "wait_mp3_recruitment": "wait_recruitment.mp3",
+        "wait_wav_recruitment": "wait_recruitment.wav",
         "wait_mp3_policy": "wait_policy.mp3",
+        "wait_wav_policy": "wait_policy.wav",
         "reserved_dir": "reserved_audios",
         "bye_dir": "bye_audios",
-        "bye_mp3": "bye.mp3"
+        "bye_mp3": "bye.mp3",
+        "bye_wav": "bye.wav"
     }
 
     # 路径配置

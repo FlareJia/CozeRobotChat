@@ -268,7 +268,7 @@ class AdvancedErrorHandler:
     def _play_error_audio(self, message: str) -> None:
         """播放错误提示音频"""
         try:
-            error_audio_path = os.path.join(self.error_audio_dir, Config.AUDIO_NAMES["error_mp3"])
+            error_audio_path = os.path.join(self.error_audio_dir, Config.AUDIO_NAMES["error_wav"])
             if os.path.exists(error_audio_path):
                 self.audio_interface.play_audio(error_audio_path)
             else:
