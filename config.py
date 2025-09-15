@@ -10,8 +10,9 @@ class Config:
     BEARER_TOKEN = os.getenv("BEARER_TOKEN")
     BOT_ID = os.getenv("BOT_ID")
     USER_ID = os.getenv("USER_ID")
-    LOWER_AUDIO_TARGET_PATH = "/home/lab/szhr/CozeRobotChat_test/records/outputs.wav"
-
+    LOWER_AUDIO_TARGET_PATH = "/home/lab/szhr/CozeRobotChat/records/outputs.wav"
+    WORKFLOW_BOT_ID = os.getenv("WORKFLOW_BOT_ID")
+    ROS_WS_PATH = os.path.expanduser("~/szhr/CozeRobotChat/ros_ws")
     # 音频合成参数
     # VOICE_ID = 7426720361733177353    # 男声
     # VOICE_ID = 7426720361753903141      # 爽快思思
@@ -47,7 +48,7 @@ class Config:
         "channels": 1,          # 单声道（2为立体声）
         "rate": 44100,          # 提高采样率（原16000太低）
         "chunk": 4096,          # 增大缓冲区块（原1024太小）
-        "threshold": 3500,      # 降低阈值提高灵敏度，测试1000
+        "threshold": 1000,      # 降低阈值提高灵敏度，测试1000
         "silence_duration": 2,  # 延长静默判断时间
         "max_duration": 30      # 最大录音时长（秒）
     }
@@ -58,7 +59,7 @@ class Config:
         "channels": 1,  # 单声道（2为立体声）
         "rate": 44100,  # 提高采样率（原16000太低）
         "chunk": 4096,  # 增大缓冲区块（原1024太小）
-        "silence_duration": 0.5,   # 检测延长静默判断时间
+        "silence_duration": 0.7,   # 检测延长静默判断时间
         "max_duration": 5,       # 检测最大录音时长（秒）
         "threshold": 2500,        # 检测-声音阈值灵敏度，测试3000
         "min_recording_duration_second": 0.4,    # 检测-录音检测最小时间（秒）

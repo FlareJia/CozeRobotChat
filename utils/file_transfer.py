@@ -2,52 +2,70 @@
 import os
 import logging
 import subprocess
+from config import Config
 
 
 logger = logging.getLogger(__name__)
 class File_transfer:
+    def __init__(self, config:Config):
+        self.config = config
     
 
     def _transfer_audio_to_lower(self, upper_audio_path: str) -> bool:
-        """
-        调用ROS客户端脚本，将生成的音频文件传输到下位机
-        :param upper_audio_path: 上位机中音频文件的绝对路径
-        :return: 传输是否成功
-        """
         try:
-            # 1. 定义ROS环境路径和传输脚本路径（根据实际路径修改）
-            ros_ws_path = os.path.expanduser("~/szhr/CozeRobotChat_test/ros_ws")
+            # 1. 直接定义传输脚本路径（无需加载ROS环境，跳过source命令）
+            ros_ws_path = os.path.expanduser("~/szhr/CozeRobotChat/ros_ws")
             transfer_script = os.path.join(
                 ros_ws_path, "src", "file_transfer", "scripts", "audio_transfer_client.py"
             )
             
-            # 2. 下位机保存音频的目标路径（根据下位机实际路径配置）
-            # 建议在Config中添加配置项：LOWER_AUDIO_TARGET_PATH
-            lower_target_path = self.config.LOWER_AUDIO_TARGET_PATH 
+            # 2. 验证传输脚本是否存在（新增：避免脚本路径错误导致执行失败）
+            if not os.path.exists(transfer_script):
+                logger.error(f"传输脚本不存在：{transfer_script}")
+                return False
             
-            # 3. 确保上位机音频路径为绝对路径
+            # 3. 获取下位机目标路径（保持不变）
+            lower_target_path = self.config.LOWER_AUDIO_TARGET_PATH 
+            # 可选：确保下位机目标路径的父目录存在（避免目标路径不存在导致传输失败）
+            lower_target_dir = os.path.dirname(lower_target_path)
+            if not os.path.exists(lower_target_dir):
+                logger.warning(f"下位机目标路径的父目录不存在，尝试创建：{lower_target_dir}")
+                # 若有权限，可自动创建父目录（需确保上位机对下位机路径有写入权限）
+                try:
+                    os.makedirs(lower_target_dir, exist_ok=True)
+                except PermissionError:
+                    logger.error(f"创建下位机目标目录失败：权限不足（{lower_target_dir}）")
+                    return False
+            
+            # 4. 确保上位机音频路径为绝对路径（保持不变）
             upper_audio_abs = os.path.abspath(upper_audio_path)
             if not os.path.exists(upper_audio_abs):
                 logger.error(f"音频文件不存在：{upper_audio_abs}")
                 return False
 
-            # 4. 构建命令：加载ROS环境并调用传输脚本
-            command = [
-                "bash", "-c",
-                # f"source {ros_ws_path}/devel/setup.bash && "
-                # f"python3 {transfer_script} "
-                f"--upper_source {upper_audio_abs} "
-                f"--lower_target {lower_target_path}"
-            ]
+            # -------------------------- 关键：无ROS环境的命令拼接 --------------------------
+            # 直接调用python3执行脚本，无需加载ROS环境，确保命令是完整字符串
+            bash_command = (
+                f"python3 {transfer_script} "  # 调用传输脚本（末尾加空格衔接参数）
+                f"--upper_source {upper_audio_abs} "  # 上位机音频路径参数
+                f"--lower_target {lower_target_path}"  # 下位机目标路径参数（无末尾空格）
+            )
 
-            # 5. 执行命令并检查结果
+            # 构建最终命令：bash -c "完整命令字符串"（确保bash解析为一个整体）
+            command = ["bash", "-c", bash_command]
+            # -----------------------------------------------------------------------------
+
+            # 5. 执行命令（新增超时时间，避免卡住；打印完整命令方便调试）
+            logger.info(f"执行音频传输命令：{bash_command}")
             result = subprocess.run(
                 command,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
-                text=True
+                text=True,
+                timeout=30  # 30秒超时，防止命令无限阻塞
             )
 
+            # 结果判断（保持不变，增加命令打印便于调试）
             if result.returncode == 0:
                 logger.info(f"音频传输成功：{upper_audio_abs} -> {lower_target_path}")
                 logger.info(f"传输输出：{result.stdout}")
@@ -55,8 +73,9 @@ class File_transfer:
             else:
                 logger.error(f"音频传输失败，错误码：{result.returncode}")
                 logger.error(f"错误输出：{result.stderr}")
+                logger.error(f"失败的完整命令：{bash_command}")  # 关键：打印命令，方便手动复现调试
                 return False
 
         except Exception as e:
             logger.error(f"音频传输过程中发生错误：{str(e)}")
-            return False    
+            return False

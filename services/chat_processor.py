@@ -101,7 +101,8 @@ class ChatProcessor:
             return None  # 音频生成失败则返回
         
         # 4. 自动传输音频到下位机
-        transfer_success = File_transfer._transfer_audio_to_lower(audio_path)
+        file_transfer = File_transfer(self.config)  # 创建实例（如果需要配置可以传入）
+        transfer_success = file_transfer._transfer_audio_to_lower(audio_path)
         if not transfer_success:
             logger.warning("音频传输失败，但音频文件已生成")
         
@@ -118,7 +119,7 @@ class ChatProcessor:
             command = [
                 "rosservice", 
                 "call", 
-                "/execute_arm_action", 
+                "/coze_execute_arm_action", 
                 f'"{action}"'  # 确保动作内容带引号
             ]
             
@@ -168,7 +169,9 @@ class ChatProcessor:
 
             # 解析JSON格式的回答内容（假设消息内容是纯JSON字符串）
             try:
-                answer_json = json.loads(answer_messages[0])  # 取第一条回答消息
+                print(answer_messages)
+                answer_json = json.loads(answer_messages[0])
+                 # 取第一条回答消息
             except json.JSONDecodeError as e:
                 logger.error(f"智能体回答不是有效的JSON格式：{str(e)}")
                 return None

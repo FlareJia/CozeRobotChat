@@ -317,7 +317,7 @@ def main():
     )
     
     # 注册服务：接收动作请求
-    rospy.Service('execute_arm_action', ExecuteAction, execute_action_callback)
+    rospy.Service('coze_execute_arm_action', ExecuteAction, execute_action_callback)
     rospy.loginfo("动作执行服务已启动，等待请求...（固定路径：/home/lab/actions）")
     
     # 持续运行
