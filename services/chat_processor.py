@@ -169,7 +169,7 @@ class ChatProcessor:
 
             # 解析JSON格式的回答内容（假设消息内容是纯JSON字符串）
             try:
-                print(answer_messages)
+                logger.info(f"智能体回答：{answer_messages[0]}")
                 answer_json = json.loads(answer_messages[0])
                  # 取第一条回答消息
             except json.JSONDecodeError as e:
