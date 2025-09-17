@@ -4,14 +4,13 @@ import threading
 import queue
 import time
 import os
-import subprocess
 import sys
 
 
 class AudioPlaybackQueue:
     """専業音頻播放隊列，確保按序播放且等上一個播放完再播下一個（帶計時版）"""
 
-    def __init__(self):
+    def __init__(self, audio_service=None):
         self.audio_queue = queue.Queue()
         self.running = False
         self.playback_thread = None
@@ -23,6 +22,8 @@ class AudioPlaybackQueue:
         self.all_playback_start_time = None # 所有播放開始時間
         self.all_playback_end_time = None   # 所有播放結束時間
         self.play_sequence = []            # 播放順序記錄（用於計算句間延遲）
+        # 🟢 新增：音频服务引用
+        self.audio_service = audio_service
 
     def start(self):
         """啟動音頻播放線程"""
@@ -93,24 +94,34 @@ class AudioPlaybackQueue:
 
                 # 播放音頻
                 try:
-                    if sys.platform == "darwin":  # macOS
-                        subprocess.run(["afplay", audio_file], check=True)
-                    elif sys.platform == "linux":
-                        players = ["aplay", "mpg123", "paplay"]
-                        played = False
-                        for player in players:
-                            if subprocess.run(["which", player],
-                                              stdout=subprocess.DEVNULL,
-                                              stderr=subprocess.DEVNULL).returncode == 0:
-                                subprocess.run([player, audio_file], check=True)
-                                played = True
-                                break
-                        if not played:
-                            print("❌ 未找到可用的音頻播放器")
-                    elif sys.platform == "win32":  # Windows
-                        subprocess.run(["start", "wmplayer", audio_file], shell=True, check=True)
+                    # 使用audio_service播放音频
+                    if self.audio_service:
+                        # 使用同步播放方法
+                        self.audio_service._play_audio(audio_file)
                     else:
-                        print(f"❌ 不支持的平台: {sys.platform}")
+                        # 如果没有audio_service，则使用系统命令播放（兼容旧代码）
+                        print("⚠️ 未提供audio_service，使用系统命令播放音频")
+                        if sys.platform == "darwin":  # macOS
+                            import subprocess
+                            subprocess.run(["afplay", audio_file], check=True)
+                        elif sys.platform == "linux":
+                            import subprocess
+                            players = ["aplay", "mpg123", "paplay"]
+                            played = False
+                            for player in players:
+                                if subprocess.run(["which", player],
+                                                stdout=subprocess.DEVNULL,
+                                                stderr=subprocess.DEVNULL).returncode == 0:
+                                    subprocess.run([player, audio_file], check=True)
+                                    played = True
+                                    break
+                            if not played:
+                                print("❌ 未找到可用的音頻播放器")
+                        elif sys.platform == "win32":  # Windows
+                            import subprocess
+                            subprocess.run(["start", "wmplayer", audio_file], shell=True, check=True)
+                        else:
+                            print(f"❌ 不支持的平台: {sys.platform}")
 
                     # 記錄播放完成
                     play_end_time = time.time()
@@ -130,6 +141,8 @@ class AudioPlaybackQueue:
 
                 except Exception as e:
                     print(f"❌ 音頻播放失敗: {str(e)}")
+                    import traceback
+                    traceback.print_exc()
 
                 self.current_audio = None
                 self.audio_queue.task_done()

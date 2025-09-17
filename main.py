@@ -191,8 +191,8 @@ def main():
                                         # 🟢 流式处理模式
                                         logger.info("🚀 启动流式处理模式")
 
-                                        # 创建音频播放队列
-                                        audio_playback_queue = AudioPlaybackQueue()
+                                        # 创建音频播放队列，传入audio_service以使用其播放方法
+                                        audio_playback_queue = AudioPlaybackQueue(audio_service)
                                         audio_playback_queue.start()
 
                                         # 创建流式处理器
