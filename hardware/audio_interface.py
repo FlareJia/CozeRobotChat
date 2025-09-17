@@ -33,6 +33,7 @@ class RobotAudioInterface:
         self._is_playing = False  # 播放状态标志
         self.bye_word = self.config.BYE_WORD_SETTINGS["bye_word"]
         self.bye_word_threshold = self.config.BYE_WORD_SETTINGS["bye_word_threshold"]  # 语音识别相似度阈值
+        self._disable_input = False  # 禁用音频输入标志
 
     def _validate_audio_devices(self) -> None:
         """验证音频设备可用性"""
@@ -71,6 +72,11 @@ class RobotAudioInterface:
 
     def detect_wake_word(self) -> bool:
         """检测语音中的唤醒词"""
+        # 如果当前禁用了音频输入，直接返回False
+        if self._disable_input:
+            logger.info("音频输入已禁用，跳过唤醒词检测")
+            return False
+            
         try:
             # 配置音频流
             stream = self.audio.open(
@@ -160,6 +166,11 @@ class RobotAudioInterface:
 
     def record_audio(self) -> Optional[str]:
         """录音并返回文件路径"""
+        # 如果当前禁用了音频输入，直接返回None
+        if self._disable_input:
+            logger.info("音频输入已禁用，跳过录音")
+            return None
+            
         try:
             # 生成唯一文件名
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -241,9 +252,22 @@ class RobotAudioInterface:
         try:
             self.stop_audio()  # 停止当前播放（如果有）
             time.sleep(0.5)  # 等待停止完成
-            return self._play_via_ros_service(file_path)
+            
+            # 禁用音频输入，防止自己的输出被录入
+            self._disable_input = True
+            self._is_playing = True
+            
+            result = self._play_via_ros_service(file_path)
+            
+            # 恢复音频输入
+            self._disable_input = False
+            self._is_playing = False
+            
+            return result
         except Exception as e:
             logger.error(f"同步播放失败: {e}")
+            self._disable_input = False  # 确保异常情况下也恢复输入
+            self._is_playing = False
             raise AudioError(f"同步播放失败: {str(e)}")
 
     def play_audio_async(self, file_path: str) -> threading.Thread:
@@ -259,6 +283,9 @@ class RobotAudioInterface:
             self._play_thread.join(timeout=1.0)
             time.sleep(0.5)
 
+        # 禁用音频输入，防止自己的输出被录入
+        self._disable_input = True
+        
         # 创建新的播放线程
         self._stop_playing = False
         self._is_playing = True
@@ -292,6 +319,8 @@ class RobotAudioInterface:
         finally:
             self._stop_playing = True
             self._is_playing = False
+            # 恢复音频输入
+            self._disable_input = False
 
     def _play_via_ros_service(self, file_path: str) -> bool:
         """通过ROS服务同步播放音频"""
@@ -329,6 +358,8 @@ class RobotAudioInterface:
             logger.info("已停止音频播放")
             time.sleep(0.5)
         self._is_playing = False
+        # 恢复音频输入
+        self._disable_input = False
 
     def is_playing(self) -> bool:
         """检查是否正在播放音频"""

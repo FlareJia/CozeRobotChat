@@ -19,7 +19,7 @@ class Config:
     VOICE_ID = 7468512265134899251      # 知性女音
     AUDIO_SETTINGS = {
         "speed": 1,
-        "sample_rate": 16000
+        "sample_rate": 24000
     }
 
     AUDIO_NAMES = {
@@ -101,3 +101,6 @@ class Config:
     FEATURE_FLAGS = {
         'USE_ASYNC_RESERVED_AUDIO': True  # 是否启用预留音频异步播放
     }
+
+    # 🟢 新增：流式处理开关
+    ENABLE_STREAMING = True  # False = 一次性返回，True = 流式处理

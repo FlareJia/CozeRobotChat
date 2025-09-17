@@ -114,6 +114,64 @@ class EnhancedCozeAPIClient:
             logger.error(error_msg)
             raise CozeAPIError(error_msg) from e
 
+    def send_chat_request_stream(self, bot_id, user_id, content):
+        """
+        发送流式聊天请求到API并实时处理响应
+        :param bot_id: 机器人的ID
+        :param user_id: 用户的ID
+        :param content: 用户输入内容
+        :return: 生成器，产生每个事件的解析结果
+        """
+        # 构建请求体
+        additional_messages = [
+            {
+                "role": "user",
+                "content": content,
+                "content_type": "text"
+            }
+        ]
+
+        payload = {
+            "bot_id": bot_id,
+            "user_id": user_id,
+            "stream": True,  # 必须设置为True以启用流式响应
+            "type": "question",
+            "additional_messages": additional_messages
+        }
+
+        # 构建请求头
+        headers = {
+            "Authorization": f"Bearer {self.bearer_token}",
+            "Content-Type": "application/json",
+            "Accept": "text/event-stream"  # 明确指定接受SSE格式
+        }
+
+        try:
+            send_api_url = self.API_BASE_V3.strip() + "chat"
+            response = requests.post(send_api_url, headers=headers, json=payload, stream=True)
+
+            if response.status_code == 200:
+                # 处理SSE流式响应
+                for line in response.iter_lines():
+                    if line:
+                        decoded_line = line.decode('utf-8')
+                        # 解析SSE格式: event: ...\ndata: {...}\n\n
+                        if decoded_line.startswith('event:'):
+                            event = decoded_line[6:].strip()
+                        elif decoded_line.startswith('data:'):
+                            try:
+                                data = json.loads(decoded_line[5:].strip())
+                                yield {"event": event, "data": data}
+                            except json.JSONDecodeError:
+                                # 处理特殊data格式
+                                if decoded_line[5:].strip() == '[DONE]':
+                                    yield {"event": "done", "data": None}
+            else:
+                print(f"流式请求失败，状态码: {response.status_code}")
+                print(response.text)
+        except requests.RequestException as e:
+            print(f"流式请求发生异常: {e}")
+
     def send_chat_request(
             self,
             bot_id: str,

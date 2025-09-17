@@ -14,6 +14,10 @@ from services.error_handler import ErrorCategory
 from services.exceptions import AudioError, APIError
 from services.resource_manager import ResourceManager, ResourceType
 
+# 🟢 新增导入
+from services.streaming.streaming_handler import StreamingHandler
+from services.streaming.audio_playback_queue import AudioPlaybackQueue
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -181,27 +185,108 @@ def main():
                                         audio_service.play_bye_audio()
                                         break
 
-                                    # 处理对话流程
-                                    with time_recorder("智能体处理"):
-                                        try:
-                                            result_audio = processor.process_query(transcript)
-                                            logger.info("将coze返回的文字结果转为音频文件完成。")
-                                        except APIError as e:
-                                            error_handler.handle_error(e, ErrorCategory.API)
-                                            audio_service.end_conversation()
-                                            continue
+                                    # todo:改为流式处理 开始
 
-                                    # 播放结果
-                                    with time_recorder("音频播放"):
+                                    if Config.ENABLE_STREAMING:
+                                        # 🟢 流式处理模式
+                                        logger.info("🚀 启动流式处理模式")
+
+                                        # 创建音频播放队列
+                                        audio_playback_queue = AudioPlaybackQueue()
+                                        audio_playback_queue.start()
+
+                                        # 创建流式处理器
+                                        streaming_handler = StreamingHandler(
+                                            tts_engine=None,  # 不使用本地TTS
+                                            audio_playback_queue=audio_playback_queue,
+                                            api_client=api_client
+                                        )
+                                        streaming_handler.voice_id = Config.VOICE_ID
+                                        streaming_handler.speed = Config.AUDIO_SETTINGS["speed"]
+                                        streaming_handler.sample_rate = Config.AUDIO_SETTINGS["sample_rate"]
+
+                                        streaming_handler.start_tts_worker()
+
+                                        # 记录提问开始时间
+                                        question_start_time = time.time()
+                                        audio_playback_queue.set_question_start_time(question_start_time)
+
                                         try:
-                                            if not audio_service._play_audio("/home/lab/szhr/CozeRobotChat/records/outputs.wav"):
+                                            # 发送流式请求
+                                            bot_id = "7549003041853620264"  # 请根据你的实际配置修改
+                                            user_id = "zhengjia003"  # 请根据你的实际配置修改
+
+                                            for event_data in api_client.send_chat_request_stream(bot_id, user_id,
+                                                                                                  transcript):
+                                                event = event_data["event"]
+                                                data = event_data["data"]
+
+                                                if event == "conversation.message.delta":
+                                                    if data and data.get('type') == "answer" and data.get('content'):
+                                                        content_chunk = data['content']
+                                                        streaming_handler.process_chunk(content_chunk)
+
+                                                elif event == "conversation.chat.completed":
+                                                    break
+
+                                            # 处理剩余内容
+                                            streaming_handler.flush_remaining()
+
+                                            # 等待TTS处理完成
+                                            logger.info("⏳ 等待TTS处理完成...")
+                                            streaming_handler.sentence_queue.join()
+
+                                            # 等待所有音频播放完成
+                                            logger.info("⏳ 等待所有音频播放完成...")
+                                            audio_playback_queue.audio_queue.join()
+
+                                            # 打印计时统计
+                                            timing_stats = audio_playback_queue.get_timing_stats()
+                                            logger.info("⏱️  流式处理计时统计:")
+                                            if 'first_play_delay' in timing_stats:
+                                                logger.info(
+                                                    f"⏱️  提问 → 首句播放延迟: {timing_stats['first_play_delay']:.3f} 秒")
+                                            if 'inter_sentence_delays' in timing_stats:
+                                                for i, delay in enumerate(timing_stats['inter_sentence_delays'], 1):
+                                                    logger.info(
+                                                        f"⏱️  第{i}句结束 → 第{i + 1}句开始延迟: {delay:.3f} 秒")
+                                            if 'total_playback_duration' in timing_stats:
+                                                logger.info(
+                                                    f"⏱️  所有音频播放总耗时: {timing_stats['total_playback_duration']:.3f} 秒")
+
+                                        except Exception as e:
+                                            logger.error(f"流式处理异常: {str(e)}")
+                                            error_handler.handle_error(e, ErrorCategory.API)
+                                        finally:
+                                            # 停止工作线程
+                                            streaming_handler.stop_tts_worker()
+                                            audio_playback_queue.stop()
+
+                                    else:
+                                        # 🟡 原有非流式处理模式
+                                        with time_recorder("智能体处理"):
+                                            try:
+                                                result_audio = processor.process_query(transcript)
+                                                logger.info("将coze返回的文字结果转为音频文件完成。")
+                                            except APIError as e:
+                                                error_handler.handle_error(e, ErrorCategory.API)
                                                 audio_service.end_conversation()
                                                 continue
-                                            logging.info("Conversation cycle completed successfully")
-                                        except AudioError as e:
-                                            error_handler.handle_error(e, ErrorCategory.AUDIO)
-                                            audio_service.end_conversation()
-                                            continue
+
+                                        # 播放结果
+                                        with time_recorder("音频播放"):
+                                            try:
+                                                if not audio_service._play_audio(
+                                                        "/home/lab/szhr/CozeRobotChat/records/outputs.wav"):
+                                                    audio_service.end_conversation()
+                                                    continue
+                                                logging.info("Conversation cycle completed successfully")
+                                            except AudioError as e:
+                                                error_handler.handle_error(e, ErrorCategory.AUDIO)
+                                                audio_service.end_conversation()
+                                                continue
+
+                                    # todo:改为流式处理 结束
 
                                 # 标记对话结束
                                 audio_service.end_conversation()
