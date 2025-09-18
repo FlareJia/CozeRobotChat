@@ -337,6 +337,24 @@ class RobotAudioInterface:
             )
             logger.info(f"ROS服务返回: {result.stdout}")
             logger.info(f"成功播放音频: {file_path}")
+            
+            # 等待音频播放完成
+            # 估算音频长度并等待
+            try:
+                with wave.open(file_path, 'rb') as wf:
+                    # 计算音频时长（秒）
+                    frames = wf.getnframes()
+                    rate = wf.getframerate()
+                    duration = frames / float(rate)
+                    # 添加一点缓冲时间
+                    wait_time = duration + 0.5
+                    logger.info(f"等待音频播放完成，预计时长: {wait_time:.2f}秒")
+                    time.sleep(wait_time)
+            except Exception as e:
+                # 如果无法计算时长，使用固定等待时间
+                logger.warning(f"无法计算音频时长，使用默认等待时间: {e}")
+                time.sleep(1.0)  # 默认等待1秒
+                
             return True
         except subprocess.CalledProcessError as e:
             logger.error(f"ROS服务调用失败，错误输出: {e.stderr}")

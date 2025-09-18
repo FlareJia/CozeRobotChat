@@ -210,13 +210,14 @@ def main():
                                         # 记录提问开始时间
                                         question_start_time = time.time()
                                         audio_playback_queue.set_question_start_time(question_start_time)
+                                        
+                                        # 播放等待音频
+                                        wait_audio_path = "outputs/wait_audios/wait_policy.wav"
+                                        audio_playback_queue.enqueue(wait_audio_path, "已收到提问，请稍等。")
 
                                         try:
                                             # 发送流式请求
-                                            bot_id = "7549003041853620264"  # 请根据你的实际配置修改
-                                            user_id = "zhengjia003"  # 请根据你的实际配置修改
-
-                                            for event_data in api_client.send_chat_request_stream(bot_id, user_id,
+                                            for event_data in api_client.send_chat_request_stream(Config.BOT_ID, Config.USER_ID,
                                                                                                   transcript):
                                                 event = event_data["event"]
                                                 data = event_data["data"]
