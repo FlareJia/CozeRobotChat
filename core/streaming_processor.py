@@ -40,8 +40,8 @@ class StreamingProcessor:
 
             # 创建音频播放队列，传入audio_service以使用其播放方法
             # todo 本地测试就不在AudioPlaybackQueue塞入参数
-            #audio_playback_queue = AudioPlaybackQueue(self.audio_service)
-            audio_playback_queue = AudioPlaybackQueue()
+            audio_playback_queue = AudioPlaybackQueue(self.audio_service)
+            #audio_playback_queue = AudioPlaybackQueue()
             audio_playback_queue.start()
 
             # 创建流式处理器
