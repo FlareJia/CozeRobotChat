@@ -77,15 +77,21 @@ class RobotAudioInterface:
             logger.info("音频输入已禁用，跳过唤醒词检测")
             return False
             
+        stream = None
         try:
-            # 配置音频流
+            # 配置音频流，添加异常处理参数
             stream = self.audio.open(
                 format=self.config.DETECT_SETTINGS["format"],
                 channels=self.config.DETECT_SETTINGS["channels"],
                 rate=self.config.DETECT_SETTINGS["rate"],
                 input=True,
-                frames_per_buffer=self.config.DETECT_SETTINGS["chunk"]
+                frames_per_buffer=self.config.DETECT_SETTINGS["chunk"],
+                input_device_index=None,  # 使用默认输入设备
+                start=False  # 不立即开始流
             )
+            
+            # 启动音频流
+            stream.start_stream()
 
             logger.info("开始检测唤醒词...")
             frames = []
@@ -95,8 +101,18 @@ class RobotAudioInterface:
 
             # 录音主循环（检测声音并收集音频帧）
             while True:
-                data = stream.read(self.config.DETECT_SETTINGS["chunk"])
-                rms = audioop.rms(data, 2)  # 计算音频能量（判断是否有声音）
+                try:
+                    # 使用非阻塞读取，避免输入溢出
+                    data = stream.read(self.config.DETECT_SETTINGS["chunk"], exception_on_overflow=False)
+                    rms = audioop.rms(data, 2)  # 计算音频能量（判断是否有声音）
+                except Exception as read_error:
+                    logger.warning(f"音频读取警告: {read_error}")
+                    # 清空缓冲区并继续
+                    try:
+                        stream.read(stream.get_read_available(), exception_on_overflow=False)
+                    except:
+                        pass
+                    continue
 
                 if rms > self.config.DETECT_SETTINGS["threshold"]:
                     if not recording:
@@ -160,9 +176,13 @@ class RobotAudioInterface:
             logger.error(f"唤醒词检测失败: {str(e)}")
             raise AudioError(f"唤醒词检测失败: {str(e)}")
         finally:
-            if 'stream' in locals():
-                stream.stop_stream()
-                stream.close()
+            if stream is not None:
+                try:
+                    if stream.is_active():
+                        stream.stop_stream()
+                    stream.close()
+                except Exception as cleanup_error:
+                    logger.warning(f"音频流清理警告: {cleanup_error}")
 
     def record_audio(self) -> Optional[str]:
         """录音并返回文件路径"""
@@ -171,6 +191,7 @@ class RobotAudioInterface:
             logger.info("音频输入已禁用，跳过录音")
             return None
             
+        stream = None
         try:
             # 生成唯一文件名
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -183,14 +204,19 @@ class RobotAudioInterface:
             if not PathManager.create_dir(self.config.RECORD_DIR):
                 raise AudioError("无法创建录音目录")
 
-            # 配置音频流
+            # 配置音频流，添加异常处理参数
             stream = self.audio.open(
                 format=self.config.RECORD_SETTINGS["format"],
                 channels=self.config.RECORD_SETTINGS["channels"],
                 rate=self.config.RECORD_SETTINGS["rate"],
                 input=True,
-                frames_per_buffer=self.config.RECORD_SETTINGS["chunk"]
+                frames_per_buffer=self.config.RECORD_SETTINGS["chunk"],
+                input_device_index=None,  # 使用默认输入设备
+                start=False  # 不立即开始流
             )
+            
+            # 启动音频流
+            stream.start_stream()
 
             logger.info("开始录音...")
             frames = []
@@ -200,8 +226,18 @@ class RobotAudioInterface:
 
             # 录音主循环
             while True:
-                data = stream.read(self.config.RECORD_SETTINGS["chunk"])
-                rms = audioop.rms(data, 2)  # 音频能量检测
+                try:
+                    # 使用非阻塞读取，避免输入溢出
+                    data = stream.read(self.config.RECORD_SETTINGS["chunk"], exception_on_overflow=False)
+                    rms = audioop.rms(data, 2)  # 音频能量检测
+                except Exception as read_error:
+                    logger.warning(f"音频读取警告: {read_error}")
+                    # 清空缓冲区并继续
+                    try:
+                        stream.read(stream.get_read_available(), exception_on_overflow=False)
+                    except:
+                        pass
+                    continue
 
                 if rms > self.config.RECORD_SETTINGS["threshold"]:
                     if not recording:
@@ -240,9 +276,13 @@ class RobotAudioInterface:
             logger.error(f"文件操作失败: {str(e)}")
             raise AudioError(f"文件操作失败: {str(e)}")
         finally:
-            if 'stream' in locals():
-                stream.stop_stream()
-                stream.close()
+            if stream is not None:
+                try:
+                    if stream.is_active():
+                        stream.stop_stream()
+                    stream.close()
+                except Exception as cleanup_error:
+                    logger.warning(f"音频流清理警告: {cleanup_error}")
 
     def play_audio(self, file_path: str) -> bool:
         """同步播放音频（通过ROS服务）"""

@@ -39,6 +39,7 @@ class ResourceType(Enum):
     AUDIO_DEVICE = "audio_device"
     API_CLIENT = "api_client"
     AUDIO_MANAGER = "audio_manager"
+    AUDIO_SERVICE = "audio_service"
     ERROR_HANDLER = "error_handler"
 
 
@@ -72,7 +73,7 @@ class ResourceManager:
     @contextmanager
     def manage_resource(self, resource_type: ResourceType, **kwargs):
         """
-        资源管理的上下文管理器
+        资源管理的上下文管理器（用于临时资源）
         :param resource_type: 资源类型
         :param kwargs: 资源初始化参数
         """
@@ -81,6 +82,15 @@ class ResourceManager:
             yield resource
         finally:
             self._cleanup_resource(resource_type)
+    
+    def get_resource(self, resource_type: ResourceType, **kwargs) -> Any:
+        """
+        获取或创建长期资源（公共接口）
+        :param resource_type: 资源类型
+        :param kwargs: 资源初始化参数
+        :return: 资源实例
+        """
+        return self._get_or_create_resource(resource_type, **kwargs)
 
     def _get_or_create_resource(self, resource_type: ResourceType, **kwargs) -> Any:
         """
@@ -122,6 +132,12 @@ class ResourceManager:
             return EnhancedCozeAPIClient(Config.BEARER_TOKEN)
         elif resource_type == ResourceType.AUDIO_MANAGER:
             return AudioFileManager(Config.OUTPUT_DIR)
+        elif resource_type == ResourceType.AUDIO_SERVICE:
+            # AudioService需要依赖其他资源
+            from services.audio_service import AudioService
+            audio_device = self._get_or_create_resource(ResourceType.AUDIO_DEVICE)
+            audio_manager = self._get_or_create_resource(ResourceType.AUDIO_MANAGER)
+            return AudioService(audio_device, audio_manager)
         elif resource_type == ResourceType.ERROR_HANDLER:
             return AdvancedErrorHandler()
         else:
