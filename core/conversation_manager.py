@@ -6,6 +6,7 @@ from typing import Optional
 from contextlib import contextmanager
 
 from config import Config
+from core.streaming_processor import StreamingProcessor
 from services.api_client import EnhancedCozeAPIClient
 from services.audio_service import AudioService
 from services.chat_processor import ChatProcessor
@@ -40,6 +41,7 @@ class ConversationManager:
         self.audio_service = audio_service
         self.error_handler = error_handler
         self.chat_processor = ChatProcessor(api_client, audio_service)
+        self.streaming_processor = StreamingProcessor(api_client, audio_service, error_handler)
         
     def start_conversation(self) -> None:
         """
@@ -126,10 +128,7 @@ class ConversationManager:
         """
         # 根据配置选择流式处理或非流式处理
         if Config.ENABLE_STREAMING:
-            # todo 需要循环利用StreamingProcessor
-            from core.streaming_processor import StreamingProcessor
-            streaming_processor = StreamingProcessor(self.api_client, self.audio_service, self.error_handler)
-            return streaming_processor.process(transcript)
+            return self.streaming_processor.process(transcript)
         else:
             return self._process_non_streaming(transcript)
     
