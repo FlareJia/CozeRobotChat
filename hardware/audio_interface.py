@@ -8,9 +8,9 @@ import platform
 import threading
 from typing import Optional
 from datetime import datetime
-from difflib import SequenceMatcher
 from config import Config
 from utils.paths import PathManager
+from utils.string_utils import calculate_similarity
 from services.exceptions import AudioError
 import subprocess  # 仅保留subprocess用于ROS服务调用
 
@@ -42,7 +42,7 @@ class RobotAudioInterface:
 
     def _calculate_similarity(self, text1: str, text2: str) -> float:
         """计算两个字符串的相似度（0-1之间）"""
-        return SequenceMatcher(None, text1, text2).ratio()
+        return calculate_similarity(text1, text2)
 
     def _is_wake_word_match(self, text: str) -> bool:
         """检查文本是否匹配唤醒词"""

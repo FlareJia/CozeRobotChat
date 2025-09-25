@@ -152,7 +152,7 @@ class ConversationManager:
             try:
                 # todo 需要使用上面返回的result_audio作为播放路径
                 outputs_path = os.path.join(Config.RECORD_DIR, "outputs.wav")
-                if not self.audio_service._play_audio(outputs_path):
+                if not self.audio_service.play_result_audio(outputs_path):
                     return False
                 logging.info("Conversation cycle completed successfully")
                 return True

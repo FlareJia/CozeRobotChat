@@ -116,10 +116,12 @@ class Application:
         """
         注册键盘处理器
         """
-        for key, handler_name in Config.KEYBOARD_BINDINGS.items():
-            handler_method = getattr(self, f"_handle_{handler_name}", None)
-            if handler_method:
-                self.keyboard_service.register_handler(key, handler_method)
+        for key_combo, audio_name in Config.KEYBOARD_BINDINGS.items():
+            self.keyboard_service.register_handler(
+                key_combo,
+                lambda audio=audio_name: self.audio_service.play_reserved_audio(audio)
+            )
+            logger.info(f"已注册键盘绑定: {key_combo} -> {audio_name}")
                 
     def _handle_exit(self, signum: Optional[int] = None, frame: Optional[object] = None) -> None:
         """

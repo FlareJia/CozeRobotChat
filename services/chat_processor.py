@@ -91,6 +91,7 @@ class ChatProcessor:
             return None
         
         # 2. 根据ismove判断是否执行rosservice命令
+        # todo ismove应该改为is_move
         if answer_json.get('ismove', False):
             move_content = answer_json.get('move', 'none')
             self._execute_rosservice(move_content)
@@ -101,10 +102,17 @@ class ChatProcessor:
             return None  # 音频生成失败则返回
         
         # 4. 自动传输音频到下位机
-        file_transfer = File_transfer(self.config)  # 创建实例（如果需要配置可以传入）
-        transfer_success = file_transfer._transfer_audio_to_lower(audio_path)
-        if not transfer_success:
-            logger.warning("音频传输失败，但音频文件已生成")
+        # 使用公共接口替代内部方法调用
+        try:
+            from ros_ws.src.file_transfer.scripts.file_transfer_api import upload_to_lower
+            lower_target_path = os.path.join(self.config.RECORD_DIR, Config.AUDIO_NAMES["output_wav"])
+            success, message, file_size = upload_to_lower(audio_path, lower_target_path)
+            if not success:
+                logger.warning(f"音频传输失败: {message}，但音频文件已生成")
+        except ImportError as e:
+            logger.error(f"无法导入文件传输模块: {e}")
+        except Exception as e:
+            logger.error(f"音频传输过程中发生错误: {e}")
         
         return audio_path  # 即使传输失败，仍返回本地音频路径（可选）
     

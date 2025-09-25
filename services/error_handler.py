@@ -240,14 +240,11 @@ class AdvancedErrorHandler:
     def _check_network_connection(self) -> None:
         """检查网络连接状态"""
         try:
-            # 尝试连接Coze API
-            response = self.api_client._request(
-                "GET",
-                "health",
-                timeout=5
-            )
-            if not response:
-                logger.warning("网络连接检查失败：无法获取健康检查响应")
+            # 使用简单的网络连接测试替代内部方法调用
+            import requests
+            response = requests.get("https://api.coze.cn", timeout=5)
+            if response.status_code != 200:
+                logger.warning("网络连接检查失败：API服务不可达")
         except Exception as e:
             logger.error(f"网络连接检查失败: {str(e)}")
             # 可以在这里添加重试逻辑或其他网络恢复措施

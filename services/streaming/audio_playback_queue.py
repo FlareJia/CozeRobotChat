@@ -97,7 +97,7 @@ class AudioPlaybackQueue:
                     # 使用audio_service播放音频
                     if self.audio_service:
                         # 使用同步播放方法
-                        self.audio_service._play_audio(audio_file)
+                        self.audio_service.play_result_audio(audio_file)
                     else:
                         # 如果没有audio_service，则使用系统命令播放（兼容旧代码）
                         print("⚠️ 未提供audio_service，使用系统命令播放音频")
