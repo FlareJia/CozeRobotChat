@@ -14,9 +14,9 @@ class File_transfer:
     def _transfer_audio_to_lower(self, upper_audio_path: str) -> bool:
         try:
             # 1. 直接定义传输脚本路径（无需加载ROS环境，跳过source命令）
-            ros_ws_path = os.path.expanduser("~/szhr/CozeRobotChat/ros_ws")
+            #ros_ws_path = os.path.expanduser("~/szhr/CozeRobotChat/ros_ws")
             transfer_script = os.path.join(
-                ros_ws_path, "src", "file_transfer", "scripts", "audio_transfer_client.py"
+                Config.ROS_WS_PATH, "src", "file_transfer", "scripts", "audio_transfer_client.py"
             )
             
             # 2. 验证传输脚本是否存在（新增：避免脚本路径错误导致执行失败）
@@ -24,8 +24,9 @@ class File_transfer:
                 logger.error(f"传输脚本不存在：{transfer_script}")
                 return False
             
-            # 3. 获取下位机目标路径（保持不变）
-            lower_target_path = self.config.LOWER_AUDIO_TARGET_PATH 
+            # 3. 获取下位机目标路径
+            #lower_target_path = os.path.join("/home/lab/szhr/CozeRobotChat", self.config.RECORD_DIR, Config.AUDIO_NAMES["output_wav"])
+            lower_target_path = os.path.join(self.config.RECORD_DIR, Config.AUDIO_NAMES["output_wav"])
             # 可选：确保下位机目标路径的父目录存在（避免目标路径不存在导致传输失败）
             lower_target_dir = os.path.dirname(lower_target_path)
             if not os.path.exists(lower_target_dir):

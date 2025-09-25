@@ -1,7 +1,6 @@
 import logging
 import time
 import os
-import threading
 from difflib import SequenceMatcher
 from contextlib import contextmanager
 from config import Config
@@ -113,18 +112,14 @@ def main():
                         keyboard_service = KeyboardService(
                             os.path.join(Config.OUTPUT_DIR, Config.AUDIO_NAMES["reserved_dir"])
                         )
-                        keyboard_service.register_handler("ctrl+1",
-                                                          lambda: audio_service.play_reserved_audio("gaoxiao1"))
-                        keyboard_service.register_handler("ctrl+2",
-                                                          lambda: audio_service.play_reserved_audio("gaoxiao2"))
-                        keyboard_service.register_handler("alt+1",
-                                                          lambda: audio_service.play_reserved_audio("aochengda1"))
-                        keyboard_service.register_handler("alt+2",
-                                                          lambda: audio_service.play_reserved_audio("gangchengda1"))
-                        keyboard_service.register_handler("alt+3",
-                                                          lambda: audio_service.play_reserved_audio("gangchengda2"))
-                        keyboard_service.register_handler("alt+4",
-                                                          lambda: audio_service.play_reserved_audio("gangchengda3"))
+                        
+                        # 从配置文件中读取键盘绑定
+                        for key_combo, audio_name in Config.KEYBOARD_BINDINGS.items():
+                            keyboard_service.register_handler(
+                                key_combo, 
+                                lambda audio=audio_name: audio_service.play_reserved_audio(audio)
+                            )
+                            logger.info(f"已注册键盘绑定: {key_combo} -> {audio_name}")
 
                         # 启动键盘监听
                         keyboard_service.start()
@@ -212,7 +207,7 @@ def main():
                                         audio_playback_queue.set_question_start_time(question_start_time)
                                         
                                         # 播放等待音频
-                                        wait_audio_path = "outputs/wait_audios/wait_policy.wav"
+                                        wait_audio_path = os.path.join(Config.OUTPUT_DIR, Config.AUDIO_NAMES["wait_dir"], Config.AUDIO_NAMES["wait_wav_policy"])
                                         audio_playback_queue.enqueue(wait_audio_path, "已收到提问，请稍等。")
 
                                         try:
@@ -277,8 +272,8 @@ def main():
                                         # 播放结果
                                         with time_recorder("音频播放"):
                                             try:
-                                                if not audio_service._play_audio(
-                                                        "/home/lab/szhr/CozeRobotChat/records/outputs.wav"):
+                                                outputs_path = os.path.join(Config.RECORD_DIR, Config.AUDIO_NAMES["output_wav"])
+                                                if not audio_service._play_audio(outputs_path):
                                                     audio_service.end_conversation()
                                                     continue
                                                 logging.info("Conversation cycle completed successfully")

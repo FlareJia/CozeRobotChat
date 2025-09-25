@@ -10,7 +10,6 @@ class Config:
     BEARER_TOKEN = os.getenv("BEARER_TOKEN")
     BOT_ID = os.getenv("BOT_ID")
     USER_ID = os.getenv("USER_ID")
-    LOWER_AUDIO_TARGET_PATH = "/home/lab/szhr/CozeRobotChat/records/outputs.wav"
     WORKFLOW_BOT_ID = os.getenv("WORKFLOW_BOT_ID")
     ROS_WS_PATH = os.path.expanduser("~/szhr/CozeRobotChat/ros_ws")
     # 音频合成参数
@@ -41,7 +40,8 @@ class Config:
         "reserved_dir": "reserved_audios",
         "bye_dir": "bye_audios",
         "bye_mp3": "bye.mp3",
-        "bye_wav": "bye.wav"
+        "bye_wav": "bye.wav",
+        "output_wav":"output.wav"
     }
 
     # 路径配置
@@ -104,3 +104,15 @@ class Config:
 
     # 🟢 新增：流式处理开关
     ENABLE_STREAMING = True  # False = 一次性返回，True = 流式处理
+    
+    # 键盘绑定配置
+    KEYBOARD_BINDINGS = {
+        "ctrl+1": "gaoxiao1",
+        "ctrl+2": "gaoxiao2",
+        "alt+1": "aochengda1",
+        "alt+2": "gangchengda1",
+        "alt+3": "gangchengda2",
+        "alt+4": "gangchengda3"
+    }
+    
+    # 音频文件路径配置已移除，使用AUDIO_NAMES和OUTPUT_DIR/RECORD_DIR拼接
