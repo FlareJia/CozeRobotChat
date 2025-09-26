@@ -66,10 +66,11 @@ class StreamingHandler:
                 self.current_task_id += 1
                 task_id = self.current_task_id
 
-                print(f"\n{'-' * 30}")
+                separator = '-' * 30
+                print(f"\n{separator}")
                 print(f"🔄 處理TTS任務 #{task_id}")
                 print(f"📌 句子: '{sentence}'")
-                print(f"{'-' * 30}")
+                print(f"{separator}")
 
                 print(f"🔊 開始TTS生成: '{sentence}'")
                 #audio_file = self.tts_engine.generate_audio(sentence)

@@ -1,15 +1,16 @@
 import logging
 import threading
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 from contextlib import contextmanager
 from dataclasses import dataclass
 from enum import Enum
 from datetime import datetime
 
-from hardware.audio_interface import RobotAudioInterface
-from services.api_client import EnhancedCozeAPIClient
-from services.audio_manager import AudioFileManager
-from services.error_handler import AdvancedErrorHandler
+from core.di_container import DIContainer
+from core.interfaces.unified_interfaces import (
+    IAudioDevice, IAudioService, IAPIClient, IConversationManager,
+    IWakeWordDetector, IChatProcessor, IStreamingProcessor, IErrorHandler
+)
 from config import Config
 
 
@@ -54,7 +55,7 @@ class ResourceInfo:
 
 
 class ResourceManager:
-    """统一的资源管理器"""
+    """统一的资源管理器 - 与依赖注入容器配合工作"""
 
     _instance = None
     _lock = threading.Lock()
@@ -65,10 +66,15 @@ class ResourceManager:
                 cls._instance = super().__new__(cls)
             return cls._instance
 
-    def __init__(self):
+    def __init__(self, container: Optional[DIContainer] = None):
         if not hasattr(self, 'initialized'):
+            self.container = container
             self.resources: Dict[ResourceType, ResourceInfo] = {}
             self.initialized = True
+    
+    def set_container(self, container: DIContainer):
+        """设置依赖注入容器"""
+        self.container = container
 
     @contextmanager
     def manage_resource(self, resource_type: ResourceType, **kwargs):
@@ -121,27 +127,32 @@ class ResourceManager:
 
     def _create_resource(self, resource_type: ResourceType, **kwargs) -> Any:
         """
-        创建新资源
+        创建新资源 - 通过依赖注入容器获取
         :param resource_type: 资源类型
         :param kwargs: 资源初始化参数
         :return: 资源实例
         """
-        if resource_type == ResourceType.AUDIO_DEVICE:
-            return RobotAudioInterface()
-        elif resource_type == ResourceType.API_CLIENT:
-            return EnhancedCozeAPIClient(Config.BEARER_TOKEN)
-        elif resource_type == ResourceType.AUDIO_MANAGER:
-            return AudioFileManager(Config.OUTPUT_DIR)
-        elif resource_type == ResourceType.AUDIO_SERVICE:
-            # AudioService需要依赖其他资源
-            from services.audio_service import AudioService
-            audio_device = self._get_or_create_resource(ResourceType.AUDIO_DEVICE)
-            audio_manager = self._get_or_create_resource(ResourceType.AUDIO_MANAGER)
-            return AudioService(audio_device, audio_manager)
-        elif resource_type == ResourceType.ERROR_HANDLER:
-            return AdvancedErrorHandler()
-        else:
-            raise ValueError(f"未知的资源类型: {resource_type}")
+        if not self.container:
+            raise RuntimeError("依赖注入容器未设置，无法创建资源")
+        
+        try:
+            if resource_type == ResourceType.AUDIO_DEVICE:
+                return self.container.resolve(IAudioDevice)
+            elif resource_type == ResourceType.API_CLIENT:
+                return self.container.resolve(IAPIClient)
+            elif resource_type == ResourceType.AUDIO_SERVICE:
+                return self.container.resolve(IAudioService)
+            elif resource_type == ResourceType.ERROR_HANDLER:
+                return self.container.resolve(IErrorHandler)
+            elif resource_type == ResourceType.AUDIO_MANAGER:
+                # AudioFileManager可能不在DI容器中，使用传统方式创建
+                from managers.audio_manager import AudioFileManager
+                return AudioFileManager()
+            else:
+                raise ValueError(f"未知的资源类型: {resource_type}")
+        except Exception as e:
+            logger.error(f"创建资源失败 {resource_type.value}: {str(e)}")
+            raise
 
     def _cleanup_resource(self, resource_type: ResourceType) -> None:
         """

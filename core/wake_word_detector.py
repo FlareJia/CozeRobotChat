@@ -1,18 +1,18 @@
 # core/wake_word_detector.py
 import logging
 from config import Config
-from hardware.audio_interface import RobotAudioInterface
+from core.interfaces.unified_interfaces import IAudioDevice, IWakeWordDetector
 from services.exceptions import AudioError
 
 logger = logging.getLogger(__name__)
 
 
-class WakeWordDetector:
+class WakeWordDetector(IWakeWordDetector):
     """
     唤醒词检测器，负责检测用户的唤醒词
     """
     
-    def __init__(self, audio_interface: RobotAudioInterface):
+    def __init__(self, audio_interface: IAudioDevice):
         self.audio_interface = audio_interface
         self.config = Config
     

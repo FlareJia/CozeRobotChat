@@ -5,8 +5,9 @@ import requests
 import logging
 from datetime import datetime
 from retrying import retry
-from typing import Optional, Dict, List, Union
+from typing import Optional, Dict, List, Union, Any
 from urllib.parse import urljoin
+from core.interfaces.unified_interfaces import IAPIClient
 from utils.paths import PathManager
 from utils.backoff import BackoffManager
 from config import Config
@@ -22,7 +23,7 @@ class CozeAPIError(Exception):
         self.status_code = status_code
 
 
-class EnhancedCozeAPIClient:
+class EnhancedCozeAPIClient(IAPIClient):
     """增强版Coze API客户端，包含自动重试和统一错误处理"""
 
     API_BASE_V3 = "https://api.coze.cn/v3/"
@@ -393,3 +394,31 @@ class EnhancedCozeAPIClient:
         except IOError as e:
             logger.error(f"文件保存失败: {str(e)}")
             return ""
+    
+    # 实现IAPIClient接口的抽象方法
+    def get_chat_status(self, conversation_id: str, chat_id: str) -> Optional[Dict[str, Any]]:
+        """获取聊天状态 - 接口适配方法"""
+        return self.check_chat_status(conversation_id, chat_id)
+    
+    def text_to_speech(self, text: str, voice_id: str = None) -> Optional[str]:
+        """文本转语音 - 接口适配方法"""
+        voice_id_int = int(voice_id) if voice_id else Config.VOICE_ID
+        return self.generate_audio(text, voice_id_int)
+    
+    def speech_to_text(self, audio_path: str) -> Optional[str]:
+        """语音转文本 - 接口适配方法"""
+        return self.transcribe_audio(audio_path)
+    
+    def upload_to_lower(self, file_path: str) -> Optional[str]:
+        """上传文件到下位机 - 暂未实现"""
+        logger.warning("upload_to_lower方法暂未实现")
+        return None
+    
+    def create_streaming_chat(self, bot_id: str, user_id: str, query: str) -> Optional[Any]:
+        """创建流式聊天 - 接口适配方法"""
+        return self.send_chat_request_stream(bot_id, user_id, query)
+    
+    def get_streaming_response(self, stream_id: str) -> Optional[Any]:
+        """获取流式响应 - 暂未实现"""
+        logger.warning("get_streaming_response方法暂未实现")
+        return None

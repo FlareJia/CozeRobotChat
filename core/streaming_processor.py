@@ -4,22 +4,22 @@ import os
 import time
 
 from config import Config
-from services.api_client import EnhancedCozeAPIClient
-from services.audio_service import AudioService
+from core.interfaces.unified_interfaces import (
+    IAPIClient, IAudioService, IErrorHandler, ErrorCategory, IStreamingProcessor
+)
 from services.streaming.audio_playback_queue import AudioPlaybackQueue
-from services.error_handler import AdvancedErrorHandler, ErrorCategory
 from services.exceptions import AudioError, APIError
 from services.streaming.streaming_handler import StreamingHandler
 
 logger = logging.getLogger(__name__)
 
 
-class StreamingProcessor:
+class StreamingProcessor(IStreamingProcessor):
     """
     流式处理器，负责处理流式对话
     """
     
-    def __init__(self, api_client: EnhancedCozeAPIClient, audio_service: AudioService, error_handler: AdvancedErrorHandler):
+    def __init__(self, api_client: IAPIClient, audio_service: IAudioService, error_handler: IErrorHandler):
         self.api_client = api_client
         self.audio_service = audio_service
         self.error_handler = error_handler

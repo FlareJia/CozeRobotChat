@@ -6,9 +6,10 @@ import time
 from typing import Dict, Any, Callable, List
 from enum import Enum
 from dataclasses import dataclass
+from core.interfaces.unified_interfaces import IErrorHandler, ErrorCategory
+from hardware.audio_interface import RobotAudioInterface
 from services.api_client import EnhancedCozeAPIClient
 from services.exceptions import AudioError, APIError
-from hardware.audio_interface import RobotAudioInterface
 from config import Config
 from utils.paths import PathManager
 
@@ -23,16 +24,6 @@ class ErrorSeverity(Enum):
     CRITICAL = 4
 
 
-class ErrorCategory(Enum):
-    """错误类别枚举"""
-    API = "api"
-    AUDIO = "audio"
-    SYSTEM = "system"
-    NETWORK = "network"
-    FILE = "file"
-    UNKNOWN = "unknown"
-
-
 @dataclass
 class ErrorContext:
     """错误上下文数据类"""
@@ -43,7 +34,7 @@ class ErrorContext:
     original_error: Exception
 
 
-class AdvancedErrorHandler:
+class AdvancedErrorHandler(IErrorHandler):
     """增强版错误处理器"""
 
     ERROR_MAPPING = {

@@ -6,17 +6,17 @@ import subprocess  # 新增：导入subprocess模块
 from typing import Optional
 from utils.backoff import BackoffManager
 from config import Config
-from services.audio_service import AudioService
+from core.interfaces.unified_interfaces import IAPIClient, IAudioService, IChatProcessor
 logger = logging.getLogger(__name__)
 from utils.file_transfer import File_transfer
 
-class ChatProcessor:
+class ChatProcessor(IChatProcessor):
     """对话流程处理器，协调API调用和音频管理"""
 
-    def __init__(self, api_client, audio_service: AudioService):
+    def __init__(self, api_client: IAPIClient, audio_service: IAudioService):
         """
-        :param api_client: EnhancedCozeAPIClient 实例
-        :param audio_service: AudioService 实例
+        :param api_client: IAPIClient 实例
+        :param audio_service: IAudioService 实例
         """
         self.api_client = api_client
         self.audio_service = audio_service

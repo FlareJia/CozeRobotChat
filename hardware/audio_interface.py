@@ -9,6 +9,7 @@ import threading
 from typing import Optional
 from datetime import datetime
 from config import Config
+from core.interfaces.unified_interfaces import IAudioDevice
 from utils.paths import PathManager
 from utils.string_utils import calculate_similarity
 from services.exceptions import AudioError
@@ -18,7 +19,7 @@ import subprocess  # 仅保留subprocess用于ROS服务调用
 logger = logging.getLogger(__name__)
 
 
-class RobotAudioInterface:
+class RobotAudioInterface(IAudioDevice):
     """硬件音频接口控制器（基于ROS服务的音频播放实现）"""
 
     def __init__(self):
@@ -424,6 +425,10 @@ class RobotAudioInterface:
     def is_playing(self) -> bool:
         """检查是否正在播放音频"""
         return self._is_playing
+    
+    def stop_playing(self) -> None:
+        """停止播放音频"""
+        self.stop_audio()
 
     def __del__(self):
         """清理资源"""

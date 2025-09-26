@@ -2,17 +2,17 @@ import os
 import logging
 from typing import Optional
 from config import Config
-from hardware.audio_interface import RobotAudioInterface
-from services.audio_manager import AudioFileManager
+from core.interfaces.unified_interfaces import IAudioService, IAudioDevice
+from managers.audio_manager import AudioFileManager
 from services.exceptions import AudioError
 
 logger = logging.getLogger(__name__)
 
 
-class AudioService:
+class AudioService(IAudioService):
     """统一管理音频相关操作的服务类"""
 
-    def __init__(self, audio_interface: RobotAudioInterface, audio_manager: AudioFileManager):
+    def __init__(self, audio_interface: IAudioDevice, audio_manager: AudioFileManager):
         self.audio_interface = audio_interface
         self.audio_manager = audio_manager
         self.config = Config()

@@ -80,11 +80,12 @@ class AudioPlaybackQueue:
 
                 # 開始播放前日誌
                 if sentence:
-                    print(f"\n{'=' * 30}")
+                    separator = '=' * 30
+                    print(f"\n{separator}")
                     print(f"▶️ 開始播放句子: '{sentence}'")
                     print(f"📁 音頻文件: {audio_file}")
                     print(f"⏰ 播放開始時間: {time.strftime('%H:%M:%S', time.localtime(play_start_time))}")
-                    print(f"{'=' * 30}")
+                    print(f"{separator}")
                 else:
                     print(f"\n▶️ 開始播放音頻: {audio_file}")
 

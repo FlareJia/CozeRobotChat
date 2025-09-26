@@ -6,11 +6,10 @@ from typing import Optional
 from contextlib import contextmanager
 
 from config import Config
-from core.streaming_processor import StreamingProcessor
-from services.api_client import EnhancedCozeAPIClient
-from services.audio_service import AudioService
-from services.chat_processor import ChatProcessor
-from services.error_handler import AdvancedErrorHandler, ErrorCategory
+from core.interfaces.unified_interfaces import (
+    IAPIClient, IAudioService, IErrorHandler, ErrorCategory,
+    IChatProcessor, IStreamingProcessor, IConversationManager
+)
 from services.exceptions import AudioError, APIError
 from utils.string_utils import detect_bye_word
 
@@ -31,17 +30,18 @@ def time_recorder(step_name):
         logger.info(f"[性能监控] {step_name}耗时: {elapsed:.3f}秒")
 
 
-class ConversationManager:
+class ConversationManager(IConversationManager):
     """
     对话管理器，负责处理整个对话流程
     """
     
-    def __init__(self, api_client: EnhancedCozeAPIClient, audio_service: AudioService, error_handler: AdvancedErrorHandler):
+    def __init__(self, api_client: IAPIClient, audio_service: IAudioService, error_handler: IErrorHandler, 
+                 chat_processor: IChatProcessor, streaming_processor: IStreamingProcessor):
         self.api_client = api_client
         self.audio_service = audio_service
         self.error_handler = error_handler
-        self.chat_processor = ChatProcessor(api_client, audio_service)
-        self.streaming_processor = StreamingProcessor(api_client, audio_service, error_handler)
+        self.chat_processor = chat_processor
+        self.streaming_processor = streaming_processor
         
     def start_conversation(self) -> None:
         """
