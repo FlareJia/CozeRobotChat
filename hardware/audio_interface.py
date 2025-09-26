@@ -40,7 +40,8 @@ class RobotAudioInterface:
         if self.audio.get_device_count() == 0:
             raise AudioError("未检测到可用的音频设备")
 
-    def _calculate_similarity(self, text1: str, text2: str) -> float:
+    @staticmethod
+    def _calculate_similarity(text1: str, text2: str) -> float:
         """计算两个字符串的相似度（0-1之间）"""
         return calculate_similarity(text1, text2)
 
@@ -400,7 +401,8 @@ class RobotAudioInterface:
             logger.error(f"ROS服务调用失败，错误输出: {e.stderr}")
             raise AudioError(f"ROS服务调用失败: {e.stderr}")
 
-    def _validate_audio_file(self, file_path: str) -> bool:
+    @staticmethod
+    def _validate_audio_file(file_path: str) -> bool:
         """验证音频文件有效性"""
         if not os.path.exists(file_path):
             raise AudioError(f"文件不存在: {file_path}")

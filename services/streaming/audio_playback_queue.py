@@ -11,6 +11,7 @@ class AudioPlaybackQueue:
     """専業音頻播放隊列，確保按序播放且等上一個播放完再播下一個（帶計時版）"""
 
     def __init__(self, audio_service=None):
+        self.question_start_time = None
         self.audio_queue = queue.Queue()
         self.running = False
         self.playback_thread = None

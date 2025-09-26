@@ -225,7 +225,8 @@ class AdvancedErrorHandler:
         # 播放通用错误提示
         self._play_error_audio("系统出现异常，请稍后重试")
 
-    def _check_system_resources(self) -> None:
+    @staticmethod
+    def _check_system_resources() -> None:
         """检查系统资源使用情况"""
         try:
             cpu_percent = psutil.cpu_percent()
@@ -237,7 +238,8 @@ class AdvancedErrorHandler:
         except Exception as e:
             logger.error(f"系统资源检查失败: {str(e)}")
 
-    def _check_network_connection(self) -> None:
+    @staticmethod
+    def _check_network_connection() -> None:
         """检查网络连接状态"""
         try:
             # 使用简单的网络连接测试替代内部方法调用
@@ -249,7 +251,8 @@ class AdvancedErrorHandler:
             logger.error(f"网络连接检查失败: {str(e)}")
             # 可以在这里添加重试逻辑或其他网络恢复措施
 
-    def _check_file_system(self) -> None:
+    @staticmethod
+    def _check_file_system() -> None:
         """检查文件系统状态"""
         try:
             # 检查输出目录
@@ -273,7 +276,8 @@ class AdvancedErrorHandler:
         except Exception as e:
             logger.error(f"播放错误提示音频失败: {str(e)}")
 
-    def _log_error_details(self, context: ErrorContext) -> None:
+    @staticmethod
+    def _log_error_details(context: ErrorContext) -> None:
         """记录错误详细信息"""
         logger.error(f"错误详情: {context.details}")
 
@@ -294,7 +298,8 @@ class AdvancedErrorHandler:
         except Exception as e:
             logger.critical(f"紧急清理过程中发生异常: {str(e)}")
 
-    def _cleanup_temp_files(self) -> None:
+    @staticmethod
+    def _cleanup_temp_files() -> None:
         """清理临时文件"""
         try:
             temp_dirs = [Config.OUTPUT_DIR, Config.RECORD_DIR]
