@@ -27,7 +27,7 @@ cd CozeRobotChat
 
 ```bash
 # 使用 venv
-python3 -m venv venv
+python -m venv venv
 
 # 激活虚拟环境
 # macOS/Linux
@@ -76,10 +76,10 @@ LOG_LEVEL=DEBUG
 
 ```bash
 # 运行测试
-python3 -m pytest tests/ -v
+python -m pytest tests/ -v
 
 # 运行应用
-python3 main.py
+python main.py
 ```
 
 ### IDE配置
@@ -523,19 +523,19 @@ class TestConversationFlow:
 
 ```bash
 # 运行所有测试
-python3 -m pytest tests/ -v
+python -m pytest tests/ -v
 
 # 运行特定测试文件
-python3 -m pytest tests/test_audio_service.py -v
+python -m pytest tests/test_audio_service.py -v
 
 # 运行特定测试方法
-python3 -m pytest tests/test_audio_service.py::TestAudioService::test_start_conversation -v
+python -m pytest tests/test_audio_service.py::TestAudioService::test_start_conversation -v
 
 # 生成覆盖率报告
-python3 -m pytest tests/ --cov=. --cov-report=html
+python -m pytest tests/ --cov=. --cov-report=html
 
 # 运行性能测试
-python3 -m pytest tests/ -m performance
+python -m pytest tests/ -m performance
 ```
 
 ### 测试配置
@@ -671,7 +671,7 @@ def slow_function():
    ```bash
    # 编写代码
    # 运行测试
-   python3 -m pytest tests/ -v
+   python -m pytest tests/ -v
    # 检查代码风格
    flake8 .
    black .
@@ -907,7 +907,7 @@ class CachedAPIClient:
 
 ```bash
 # 1. 准备环境
-python3 -m venv venv
+python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
@@ -916,7 +916,7 @@ cp .env.example .env
 # 编辑 .env 文件
 
 # 3. 运行应用
-python3 main.py
+python main.py
 ```
 
 ### Docker部署
