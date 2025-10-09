@@ -118,6 +118,7 @@ class StreamingHandler:
         # 處理句子緩衝區剩餘內容
         self.sentence_buffer.flush_remaining()
 
+    # todo 未被调用
     def get_all_sentences(self):
         """獲取所有積累的句子"""
         return self.all_sentences

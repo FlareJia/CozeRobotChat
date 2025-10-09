@@ -396,10 +396,12 @@ class EnhancedCozeAPIClient(IAPIClient):
             return ""
     
     # 实现IAPIClient接口的抽象方法
+    # todo：未被调用
     def get_chat_status(self, conversation_id: str, chat_id: str) -> Optional[Dict[str, Any]]:
         """获取聊天状态 - 接口适配方法"""
         return self.check_chat_status(conversation_id, chat_id)
-    
+
+    # todo：仅在api文档中被使用
     def text_to_speech(self, text: str, voice_id: str = None) -> Optional[str]:
         """文本转语音 - 接口适配方法"""
         voice_id_int = int(voice_id) if voice_id else Config.VOICE_ID
@@ -408,16 +410,19 @@ class EnhancedCozeAPIClient(IAPIClient):
     def speech_to_text(self, audio_path: str) -> Optional[str]:
         """语音转文本 - 接口适配方法"""
         return self.transcribe_audio(audio_path)
-    
+
+    # todo：未被调用，需要调用file_transfer中的方法，而且放在这个地方不好
     def upload_to_lower(self, file_path: str) -> Optional[str]:
         """上传文件到下位机 - 暂未实现"""
         logger.warning("upload_to_lower方法暂未实现")
         return None
-    
+
+    # todo：未被调用
     def create_streaming_chat(self, bot_id: str, user_id: str, query: str) -> Optional[Any]:
         """创建流式聊天 - 接口适配方法"""
         return self.send_chat_request_stream(bot_id, user_id, query)
-    
+
+    # todo：未被调用
     def get_streaming_response(self, stream_id: str) -> Optional[Any]:
         """获取流式响应 - 暂未实现"""
         logger.warning("get_streaming_response方法暂未实现")

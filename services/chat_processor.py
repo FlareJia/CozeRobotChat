@@ -63,7 +63,8 @@ class ChatProcessor(IChatProcessor):
             self.audio_service.stop_audio()
             return None
 
-    def _format_query(self, query: str) -> str:
+    @staticmethod
+    def _format_query(query: str) -> str:
         """格式化查询内容"""
         return f"{query} 精简且快速的输出内容"
 
@@ -117,7 +118,8 @@ class ChatProcessor(IChatProcessor):
         return audio_path  # 即使传输失败，仍返回本地音频路径（可选）
     
     
-    def _execute_rosservice(self, action: str) -> None:
+    @staticmethod
+    def _execute_rosservice(action: str) -> None:
         """
         通过subprocess执行rosservice命令
         :param action: 要执行的动作（如"击掌"）

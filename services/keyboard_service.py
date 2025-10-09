@@ -23,7 +23,8 @@ class KeyboardService:
 # 5. 自动选择合适的键盘设备进行监听
 # 6. 启动时打印候选设备和最终选择的设备，便于调试
 # -------------------------------------------------
-    def _find_keyboard_device(self) -> InputDevice:
+    @staticmethod
+    def _find_keyboard_device() -> InputDevice:
         devices = [InputDevice(path) for path in list_devices()]
         candidates = []
 
@@ -115,7 +116,8 @@ class KeyboardService:
                 logger.error(f"键盘监听错误: {str(e)}", exc_info=True)
                 break
 
-    def _get_key_name(self, key_event) -> str:
+    @staticmethod
+    def _get_key_name(key_event) -> str:
         try:
             key_code = key_event.keycode
             if isinstance(key_code, list):

@@ -46,7 +46,7 @@ def detect_bye_word(text: str) -> bool:
         return True
     return False
 
-
+#todo 未被调用
 def is_wake_word_match(text: str) -> bool:
     """
     检查文本是否匹配唤醒词

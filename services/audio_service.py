@@ -152,9 +152,11 @@ class AudioService(IAudioService):
 
     def stop_audio(self) -> None:
         """停止当前音频播放"""
+        # todo：fix
         self.audio_interface.stop_audio()
         self._current_play_thread = None
 
+    # todo：未被调用
     def _is_playing(self) -> bool:
         """检查当前是否有音频正在播放"""
         return self._current_play_thread is not None

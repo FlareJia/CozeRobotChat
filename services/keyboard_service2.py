@@ -62,7 +62,8 @@ class KeyboardService:
                 continue 
     """
 
-    def _get_key_name(self, key) -> str:
+    @staticmethod
+    def _get_key_name(key) -> str:
         """获取按键名称"""
         try:
             if isinstance(key, keyboard.Key):

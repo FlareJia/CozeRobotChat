@@ -62,6 +62,7 @@ class RobotAudioInterface(IAudioDevice):
         logger.info(f"结束词相似度: {similarity:.2f}, 阈值: {self.bye_word_threshold}")
         return similarity >= self.bye_word_threshold
 
+    # todo 未被调用
     def detect_bye_word(self, text: str) -> bool:
         """检测文本中是否包含结束词"""
         if text and self._is_bye_word_match(text):
@@ -312,6 +313,7 @@ class RobotAudioInterface(IAudioDevice):
             self._is_playing = False
             raise AudioError(f"同步播放失败: {str(e)}")
 
+    # todo 未被调用
     def play_audio_async(self, file_path: str) -> threading.Thread:
         """异步播放音频（通过ROS服务，在独立线程中执行）"""
         if not self._validate_audio_file(file_path):
@@ -339,7 +341,7 @@ class RobotAudioInterface(IAudioDevice):
         self._play_thread.start()
         logger.info(f"已启动异步播放线程，文件: {file_path}")
         return self._play_thread
-
+    #todo 未被调用
     def _async_play_via_ros(self, file_path: str) -> None:
         """异步播放的线程执行函数"""
         try:
@@ -425,7 +427,8 @@ class RobotAudioInterface(IAudioDevice):
     def is_playing(self) -> bool:
         """检查是否正在播放音频"""
         return self._is_playing
-    
+
+    # todo：需要新增该功能
     def stop_playing(self) -> None:
         """停止播放音频"""
         self.stop_audio()

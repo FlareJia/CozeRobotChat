@@ -154,6 +154,7 @@ class AudioPlaybackQueue:
                 print(f"❌ 音頻播放錯誤: {str(e)}")
                 self.current_audio = None
 
+    # todo:未被调用
     def get_playback_history(self):
         """獲取播放歷史記錄"""
         return self.playback_history

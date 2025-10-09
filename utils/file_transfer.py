@@ -10,7 +10,7 @@ class File_transfer:
     def __init__(self, config:Config):
         self.config = config
     
-
+    # todo：外部方法应该不是_开头
     def _transfer_audio_to_lower(self, upper_audio_path: str) -> bool:
         try:
             # 1. 直接定义传输脚本路径（无需加载ROS环境，跳过source命令）

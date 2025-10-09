@@ -39,6 +39,7 @@ class SystemError(BaseError):
         details = {"system_info": system_info} if system_info else {}
         super().__init__(message, error_code, details)
 
+# todo：未被调用
 class FileError(BaseError):
     """文件系统相关错误
     
@@ -47,7 +48,7 @@ class FileError(BaseError):
     def __init__(self, message: str, error_code: Optional[str] = None, file_info: Optional[Dict[str, Any]] = None):
         details = {"file_info": file_info} if file_info else {}
         super().__init__(message, error_code, details)
-
+# todo：未被调用
 class NetworkError(BaseError):
     """网络相关错误
     
