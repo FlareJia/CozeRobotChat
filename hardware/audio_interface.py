@@ -13,6 +13,7 @@ from core.interfaces.unified_interfaces import IAudioDevice
 from utils.paths import PathManager
 from utils.string_utils import calculate_similarity
 from services.exceptions import AudioError
+from utils.string_utils import is_wake_word_match
 import subprocess  # 仅保留subprocess用于ROS服务调用
 
 
@@ -46,13 +47,13 @@ class RobotAudioInterface(IAudioDevice):
         """计算两个字符串的相似度（0-1之间）"""
         return calculate_similarity(text1, text2)
 
-    def _is_wake_word_match(self, text: str) -> bool:
-        """检查文本是否匹配唤醒词"""
-        if not text:
-            return False
-        similarity = self._calculate_similarity(text, self.wake_word)
-        logger.info(f"唤醒词相似度: {similarity:.2f}, 阈值: {self.wake_word_threshold}")
-        return similarity >= self.wake_word_threshold
+    # def _is_wake_word_match(self, text: str) -> bool:
+    #     """检查文本是否匹配唤醒词"""
+    #     if not text:
+    #         return False
+    #     similarity = self._calculate_similarity(text, self.wake_word)
+    #     logger.info(f"唤醒词相似度: {similarity:.2f}, 阈值: {self.wake_word_threshold}")
+    #     return similarity >= self.wake_word_threshold
 
     def _is_bye_word_match(self, text: str) -> bool:
         """检查文本是否匹配结束词"""
@@ -62,16 +63,16 @@ class RobotAudioInterface(IAudioDevice):
         logger.info(f"结束词相似度: {similarity:.2f}, 阈值: {self.bye_word_threshold}")
         return similarity >= self.bye_word_threshold
 
-    # todo 未被调用
-    def detect_bye_word(self, text: str) -> bool:
-        """检测文本中是否包含结束词"""
-        if text and self._is_bye_word_match(text):
-            logger.info("相似度检测：检测到结束词！")
-            return True
-        if text and self.bye_word in text:
-            logger.info("全量匹配：检测到结束词！")
-            return True
-        return False
+    # todo done 未被调用
+    # def detect_bye_word(self, text: str) -> bool:
+    #     """检测文本中是否包含结束词"""
+    #     if text and self._is_bye_word_match(text):
+    #         logger.info("相似度检测：检测到结束词！")
+    #         return True
+    #     if text and self.bye_word in text:
+    #         logger.info("全量匹配：检测到结束词！")
+    #         return True
+    #     return False
 
     def detect_wake_word(self) -> bool:
         """检测语音中的唤醒词"""
@@ -166,7 +167,7 @@ class RobotAudioInterface(IAudioDevice):
                     logger.warning(f"删除临时文件失败: {e}")
 
                 logger.info(f"检测到的语音文本: {text}")
-                if text and self._is_wake_word_match(text):
+                if text and is_wake_word_match(text) :
                     logger.info("相似度检测：检测到唤醒词！")
                     return True
                 if text and self.wake_word in text:
