@@ -46,7 +46,9 @@ class AudioConfig:
         "chunk": 4096,          # 增大缓冲区块（原1024太小）
         "threshold": 1000,      # 降低阈值提高灵敏度，测试1000
         "silence_duration": 2,  # 延长静默判断时间
-        "max_duration": 30      # 最大录音时长（秒）
+        "max_duration": 30,      # 最大录音时长（秒）
+        "required_consecutive_frames": 3,   #需要连续超过这个帧数才会开始录音
+        "frame_duration": 0.064         #单帧时长,用于日志
     }
 
     # 检测录音参数
@@ -57,8 +59,10 @@ class AudioConfig:
         "chunk": 4096,  # 增大缓冲区块（原1024太小）
         "silence_duration": 0.7,   # 检测延长静默判断时间
         "max_duration": 5,       # 检测最大录音时长（秒）
-        "threshold": 2500,        # 检测-声音阈值灵敏度，测试3000
-        "min_recording_duration_second": 0.4,    # 检测-录音检测最小时间（秒）
+        "threshold": 3500,        # 检测-声音阈值灵敏度，测试3000
+        "min_recording_duration_second": 0.15,    # 检测-录音检测最小时间（秒）
+        "required_consecutive_frames": 3,           #需要连续超过这个帧数才会开始录音
+        "frame_duration": 0.064                  #单帧时长,用于日志
     }
 
     WAKE_WORD_SETTINGS = {
