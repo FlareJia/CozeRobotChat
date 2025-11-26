@@ -13,7 +13,7 @@ from core.interfaces.unified_interfaces import (
     IWakeWordDetector, IChatProcessor, IStreamingProcessor, IErrorHandler
 )
 from services.scheduler import CleanupScheduler
-from services.keyboard_service import KeyboardService
+from services.keyboard_service_windows import KeyboardService
 from utils.paths import PathManager
 
 # 配置日志

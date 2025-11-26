@@ -64,15 +64,15 @@ class RobotAudioInterface(IAudioDevice):
         return similarity >= self.bye_word_threshold
 
     # todo done 未被调用
-    # def detect_bye_word(self, text: str) -> bool:
-    #     """检测文本中是否包含结束词"""
-    #     if text and self._is_bye_word_match(text):
-    #         logger.info("相似度检测：检测到结束词！")
-    #         return True
-    #     if text and self.bye_word in text:
-    #         logger.info("全量匹配：检测到结束词！")
-    #         return True
-    #     return False
+    def detect_bye_word(self, text: str) -> bool:
+        """检测文本中是否包含结束词"""
+        if text and self._is_bye_word_match(text):
+            logger.info("相似度检测：检测到结束词！")
+            return True
+        if text and self.bye_word in text:
+            logger.info("全量匹配：检测到结束词！")
+            return True
+        return False
 
     def detect_wake_word(self) -> bool:
         """检测语音中的唤醒词"""
