@@ -85,10 +85,18 @@ class AudioConfig:
 
     # 键盘绑定配置
     KEYBOARD_BINDINGS = {
-        "ctrl+1": "gaoxiao1",
-        "ctrl+2": "gaoxiao2",
-        "alt+1": "aochengda1",
-        "alt+2": "gangchengda1",
-        "alt+3": "gangchengda2",
-        "alt+4": "gangchengda3"
+        # 原有配置
+        "ctrl+1": {
+            "function": "play_reserved_audio",
+            "params": {"audio_name": "gaoxiao1"}
+        },
+        # 新增：触发 Action.play_action 的快捷键
+        "ctrl+4": {
+            "function": "play_action",
+            "params": {"number": 1}  # number 为整数，与代码校验一致
+        },
+        "ctrl+5": {
+            "function": "play_action",
+            "params": {"number": 2}  # 不同快捷键可传不同 number
+        }
     }

@@ -3,8 +3,8 @@ import logging
 import os
 import signal
 import sys
+from utils.action import Action
 from typing import Optional
-
 from config import Config, DIConfig, Environment
 from core.di_container import DIContainer
 from core.service_registry import ServiceRegistry
@@ -52,8 +52,8 @@ class Application:
         self.error_handler: Optional[IErrorHandler] = None
         self.audio_service: Optional[IAudioService] = None
         self.cleanup_scheduler: Optional[CleanupScheduler] = None
+        self.action_handler: Optional[Action] = None
         self.keyboard_service: Optional[KeyboardService] = None
-        
         # 核心组件（通过DI容器获取）
         self.wake_word_detector: Optional[IWakeWordDetector] = None
         self.conversation_manager: Optional[IConversationManager] = None
@@ -90,7 +90,7 @@ class Application:
             reserved_audio_dir = os.path.join(Config.OUTPUT_DIR, Config.AUDIO_NAMES["reserved_dir"])
             self.keyboard_service = KeyboardService(reserved_audio_dir)
             self._register_keyboard_handlers()
-            
+            self.action_handler = Action()
             # 记录DI容器状态（如果启用了DI日志）
             if self.di_config.should_enable_di_logging():
                 logger.info(f"DI容器服务状态: {self.container.get_registered_services()}")
@@ -126,20 +126,56 @@ class Application:
             
     def _register_keyboard_handlers(self) -> None:
         """
-        注册键盘处理器
+        注册键盘处理器（支持不同快捷键触发不同函数）
         """
-        # 确保audio_service已初始化
-        if not self.audio_service:
-            logger.warning("AudioService未初始化，无法注册键盘处理器")
-            return
+        # 1. 前置校验：确保依赖服务已初始化（根据你的实际依赖修改）
+        required_services = ["audio_service", "keyboard_service", "conversation_manager"]
+        for service_name in required_services:
+            if not hasattr(self, service_name) or not getattr(self, service_name):
+                logger.warning(f"{service_name}未初始化，无法注册键盘处理器")
+                return
+        
+        # 2. 解绑所有旧绑定（避免冲突，若keyboard_service支持）
+        for key_combo in Config.KEYBOARD_BINDINGS.keys():
+            if hasattr(self.keyboard_service, "unregister_handler"):
+                self.keyboard_service.unregister_handler(key_combo)
+                logger.info(f"已解绑旧绑定：{key_combo}")
+        
+        # 3. 遍历配置，动态注册不同函数
+        for key_combo, bind_info in Config.KEYBOARD_BINDINGS.items():
+            function_name = bind_info["function"]
+            function_params = bind_info["params"]  # 函数所需参数
             
-        for key_combo, audio_name in Config.KEYBOARD_BINDINGS.items():
-            self.keyboard_service.register_handler(
-                key_combo,
-                lambda audio=audio_name: self.audio_service.play_reserved_audio(audio)
-            )
-            logger.info(f"已注册键盘绑定: {key_combo} -> {audio_name}")
+            # 4. 根据函数名，绑定对应的回调函数
+            try:
+                if function_name == "play_reserved_audio":
+                    # 绑定函数1：播放预留音频（需要 audio_name 参数）
+                    audio_name = function_params.get("audio_name")
+                    if not audio_name:
+                        logger.error(f"快捷键 {key_combo} 绑定 {function_name} 缺少参数 audio_name")
+                        continue
+                    # lambda 绑定参数（避免延迟绑定问题）
+                    callback = lambda audio=audio_name: self.audio_service.play_reserved_audio(audio)
                 
+                elif function_name == "play_action":
+                    # 绑定函数2：开始对话（无参数）
+                    number = function_params.get("number")
+                    callback = lambda num = number:self.action_handler.play_action(num)
+                
+                else:
+                    logger.error(f"快捷键 {key_combo} 绑定未知函数：{function_name}")
+                    continue
+            
+            except Exception as e:
+                logger.error(f"快捷键 {key_combo} 绑定函数失败：{str(e)}")
+                continue
+            
+            # 5. 注册当前快捷键的回调
+            self.keyboard_service.register_handler(key_combo, callback)
+            logger.info(
+                f"已注册键盘绑定：{key_combo} → "
+                f"{function_name}(参数：{function_params})"
+            )       
     def _handle_exit(self, signum: Optional[int] = None, frame: Optional[object] = None) -> None:
         """
         处理退出信号

@@ -348,7 +348,7 @@ class RobotAudioInterface(IAudioDevice):
         try:
             # 调用ROS服务播放，通过_stop_playing标志控制中断
             result = subprocess.run(
-                f"rosservice call /play_music2 '{file_path}'",
+                f"rosservice call /coze_audio_player '{file_path}'",
                 shell=True,
                 check=True,
                 timeout=30  # 防止无限阻塞（可根据需求调整）
@@ -373,7 +373,7 @@ class RobotAudioInterface(IAudioDevice):
         try:
             # 调用ROS服务播放音频
             result = subprocess.run(
-                f"rosservice call /play_music2 '{abs_path}'",
+                f"rosservice call /coze_audio_player '{abs_path}'",
                 shell=True,
                 check=True,
                 stdout=subprocess.PIPE,
