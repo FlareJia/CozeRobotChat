@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(kuavo_audio_player)
+project(coze_audio_player)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -59,7 +59,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate services in the 'srv' folder
 add_service_files(
   FILES
-  playmusic.srv
+  coze_audio_player.srv
 )
 
 ## Generate actions in the 'action' folder
@@ -133,7 +133,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/kuavo_audio_player.cpp
+#   src/${PROJECT_NAME}/coze_audio_player.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -144,7 +144,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/kuavo_audio_player_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/coze_audio_player_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the

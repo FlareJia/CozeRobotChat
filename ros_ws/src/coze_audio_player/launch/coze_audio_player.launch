@@ -1,9 +1,9 @@
-<!-- play_music2.launch -->
+<!-- coze_audio_player.launch -->
 <launch>
     <!-- 设置音频文件路径参数 -->
     <param name="audio_path" value="/home/lab/szhr/CozeRobotChat/outputs/reserved_audios" type="string"/>
 
     <!-- 启动 播放音乐服务 -->
-    <node pkg="kuavo_audio_player" type="loundspeaker.py" name="play_music_node2" output="screen" respawn="true" respawn_delay="5"/>
+    <node pkg="coze_audio_player" type="coze_audio_player_node.py" name="coze_audio_player_node" output="screen" respawn="true" respawn_delay="5"/>
     <param name="music_path" value="/home/lab/szhr/CozeRobotChat/outputs/reserved_audios" />
 </launch>

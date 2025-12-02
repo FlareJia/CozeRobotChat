@@ -32,9 +32,9 @@ class MusicPlayerNode:
             print("未检测到播音设备，不启用播音功能！")
             time.sleep(10000)   
 
-        rospy.init_node('music_player_node2')
+        rospy.init_node('coze_audio_player_node')
         # 服务名称保持不变，但处理逻辑会改变
-        self.service = rospy.Service('play_music2', playmusic, self.play_music_callback)
+        self.service = rospy.Service('coze_audio_player', playmusic, self.play_music_callback)
         # 不再需要音乐路径参数，因为将使用绝对路径
         self.audio_subscriber = rospy.Subscriber('audio_data', Int16MultiArray, self.audio_callback, queue_size=10)
         self.stop_music_subscriber = rospy.Subscriber('stop_music', Bool, self.stop_music_callback, queue_size=10)   
