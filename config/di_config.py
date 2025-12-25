@@ -1,6 +1,6 @@
 """依赖注入配置模块"""
 
-from typing import Dict, Type, Any
+from typing import Dict, Any
 from .environment import Environment
 
 

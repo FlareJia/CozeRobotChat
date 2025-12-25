@@ -8,7 +8,6 @@ from utils.backoff import BackoffManager
 from config import Config
 from core.interfaces.unified_interfaces import IAPIClient, IAudioService, IChatProcessor
 logger = logging.getLogger(__name__)
-from utils.file_transfer import File_transfer
 
 class ChatProcessor(IChatProcessor):
     """对话流程处理器，协调API调用和音频管理"""

@@ -1,7 +1,7 @@
 # core/di_container.py
 import logging
 import threading
-from typing import Dict, Any, Type, Callable, Optional, TypeVar, Generic
+from typing import Dict, Any, Type, Callable, Optional, TypeVar
 from enum import Enum
 from dataclasses import dataclass
 from datetime import datetime

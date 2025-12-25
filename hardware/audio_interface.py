@@ -4,7 +4,6 @@ import logging
 import audioop
 import wave
 import os
-import platform
 import threading
 from typing import Optional
 from datetime import datetime

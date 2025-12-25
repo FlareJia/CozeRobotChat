@@ -8,8 +8,7 @@ from datetime import datetime
 
 from core.di_container import DIContainer
 from core.interfaces.unified_interfaces import (
-    IAudioDevice, IAudioService, IAPIClient, IConversationManager,
-    IWakeWordDetector, IChatProcessor, IStreamingProcessor, IErrorHandler
+    IAudioDevice, IAudioService, IAPIClient, IErrorHandler
 )
 from config import Config
 

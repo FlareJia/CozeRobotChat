@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import time
 import queue
 import threading
 from services.streaming.speech_marker_extractor import SpeechMarkerExtractor

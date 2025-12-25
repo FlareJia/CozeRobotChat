@@ -9,8 +9,7 @@ from config import Config, DIConfig, Environment
 from core.di_container import DIContainer
 from core.service_registry import ServiceRegistry
 from core.interfaces.unified_interfaces import (
-    IAudioDevice, IAudioService, IAPIClient, IConversationManager, 
-    IWakeWordDetector, IChatProcessor, IStreamingProcessor, IErrorHandler
+    IAudioService, IConversationManager, IWakeWordDetector, IErrorHandler
 )
 from services.scheduler import CleanupScheduler
 from services.keyboard_service import KeyboardService

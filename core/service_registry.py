@@ -1,10 +1,8 @@
 # core/service_registry.py
 import logging
-import importlib
-from typing import Type
 
 from core.di_container import DIContainer
-from config import DIConfig, Environment
+from config import DIConfig
 from core.interfaces.unified_interfaces import (
     IAudioDevice, IAudioService, IAPIClient, IConversationManager,
     IWakeWordDetector, IChatProcessor, IStreamingProcessor, IErrorHandler
