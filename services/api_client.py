@@ -59,14 +59,15 @@ class QwenAPIClient:
             result = recognition.call(file_path)
 
             if result.status_code == 200:
-                sentence = result.get_sentence()
-                if sentence and 'text' in sentence:
-                    text = sentence['text'].strip()
-                    logger.info(f"ASR 识别结果: {text}")
-                    return text
-                else:
-                    logger.warning("ASR 返回空文本")
-                    return None
+                sentences = result.get_sentence()
+                # get_sentence() 返回的是列表，取第一条
+                if sentences and isinstance(sentences, list) and len(sentences) > 0:
+                    text = sentences[0].get('text', '').strip()
+                    if text:
+                        logger.info(f"ASR 识别结果: {text}")
+                        return text
+                logger.warning("ASR 返回空文本")
+                return None
             else:
                 logger.error(f"ASR 失败 (status={result.status_code}): {result.message}")
                 return None
