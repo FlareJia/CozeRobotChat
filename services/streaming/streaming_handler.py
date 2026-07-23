@@ -3,6 +3,7 @@
 import time
 import queue
 import threading
+from config import Config
 from services.streaming.speech_marker_extractor import SpeechMarkerExtractor
 from services.streaming.sentence_buffer import SentenceBuffer
 
@@ -27,10 +28,9 @@ class StreamingHandler:
         self.speech_extractor = SpeechMarkerExtractor()
         self.sentence_buffer = SentenceBuffer(self.sentence_queue)
 
-        # coze api 生成音频
-        self.voice_id = 7468512265134899251
-        self.speed = 1
-        self.sample_rate = 24000
+        # qwen-tts 生成音频
+        self.voice = Config.TTS_VOICE
+        self.sample_rate = Config.AUDIO_SETTINGS["sample_rate"]
 
 
     def start_tts_worker(self):
@@ -71,10 +71,12 @@ class StreamingHandler:
                 print(f"📌 句子: '{sentence}'")
                 print(f"{'-' * 30}")
 
+                # 移除句子中的换行符和连字符
+                sentence = sentence.replace('\n', '').replace('-', '')
+
                 print(f"🔊 開始TTS生成: '{sentence}'")
-                #audio_file = self.tts_engine.generate_audio(sentence)
-                # 用cozeApi生成音频替代本地生成
-                audio_file = self.api_client.generate_audio(sentence, self.voice_id, self.speed, self.sample_rate)
+                # 用 qwen-tts 生成音频
+                audio_file = self.api_client.generate_audio(sentence, self.voice, self.sample_rate)
                 if audio_file:
                     print(f"✅ TTS生成成功: {audio_file}")
                     # ===== 🟥🟥🟥 將音頻加入播放隊列 🟥🟥🟥 =====

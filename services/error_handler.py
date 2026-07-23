@@ -6,7 +6,7 @@ import time
 from typing import Dict, Any, Callable, List
 from enum import Enum
 from dataclasses import dataclass
-from services.api_client import EnhancedCozeAPIClient
+from services.api_client import QwenAPIClient
 from services.exceptions import AudioError, APIError
 from hardware.audio_interface import RobotAudioInterface
 from config import Config
@@ -56,7 +56,7 @@ class AdvancedErrorHandler:
     }
 
     def __init__(self):
-        self.api_client = EnhancedCozeAPIClient(Config.BEARER_TOKEN)
+        self.api_client = QwenAPIClient()
         self.audio_interface = RobotAudioInterface()
         self.error_audio_dir = os.path.join(Config.OUTPUT_DIR, Config.AUDIO_NAMES["error_dir"])
         self.error_history: List[ErrorContext] = []

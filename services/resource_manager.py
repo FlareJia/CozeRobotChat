@@ -7,7 +7,7 @@ from enum import Enum
 from datetime import datetime
 
 from hardware.audio_interface import RobotAudioInterface
-from services.api_client import EnhancedCozeAPIClient
+from services.api_client import QwenAPIClient
 from services.audio_manager import AudioFileManager
 from services.error_handler import AdvancedErrorHandler
 from config import Config
@@ -119,7 +119,7 @@ class ResourceManager:
         if resource_type == ResourceType.AUDIO_DEVICE:
             return RobotAudioInterface()
         elif resource_type == ResourceType.API_CLIENT:
-            return EnhancedCozeAPIClient(Config.BEARER_TOKEN)
+            return QwenAPIClient()
         elif resource_type == ResourceType.AUDIO_MANAGER:
             return AudioFileManager(Config.OUTPUT_DIR)
         elif resource_type == ResourceType.ERROR_HANDLER:

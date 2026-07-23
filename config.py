@@ -6,22 +6,40 @@ load_dotenv()
 
 
 class Config:
-    # API 配置
-    BEARER_TOKEN = os.getenv("BEARER_TOKEN")
-    BOT_ID = os.getenv("BOT_ID")
-    USER_ID = os.getenv("USER_ID")
-    LOWER_AUDIO_TARGET_PATH = "/home/lab/szhr/CozeRobotChat/records/outputs.wav"
-    WORKFLOW_BOT_ID = os.getenv("WORKFLOW_BOT_ID")
-    ROS_WS_PATH = os.path.expanduser("~/szhr/CozeRobotChat/ros_ws")
-    # 音频合成参数
-    # VOICE_ID = 7426720361733177353    # 男声
-    # VOICE_ID = 7426720361753903141      # 爽快思思
-    VOICE_ID = 7468512265134899251      # 知性女音
+    # ==================== API 配置 ====================
+    # DashScope API（阿里云百炼）
+    DASHSCOPE_API_KEY = os.getenv("DASHSCOPE_API_KEY")
+    # OpenAI 兼容端点
+    DASHSCOPE_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+
+    # Qwen 模型选择
+    QWEN_MODEL = os.getenv("QWEN_MODEL", "qwen-plus")
+
+    # 系统提示词（让 Qwen 输出 <<SPEECH_START>>/<<SPEECH_END>> 标记）
+    SYSTEM_PROMPT = (
+        '你是一个叫"伯乐"的智能招聘助手机器人。'
+        '你需要：\n'
+        '1. 用简短、口语化的中文回复用户，控制在 2-3 句话以内\n'
+        '2. 把你所有要说的话用 <<SPEECH_START>> 和 <<SPEECH_END>> 包裹起来\n'
+        '3. 不要在标记之外输出任何其他文字'
+    )
+
+    # ==================== TTS 配置 ====================
+    TTS_MODEL = "qwen3-tts-flash"
+    TTS_VOICE = os.getenv("TTS_VOICE", "Ethan")  # 年轻男声：Ethan（晨煦）
+
     AUDIO_SETTINGS = {
         "speed": 1,
         "sample_rate": 24000
     }
 
+    # ==================== 路径配置 ====================
+    LOWER_AUDIO_TARGET_PATH = "/home/lab/szhr/CozeRobotChat/records/outputs.wav"
+    ROS_WS_PATH = os.path.expanduser("~/szhr/CozeRobotChat/ros_ws")
+    OUTPUT_DIR = "outputs"
+    RECORD_DIR = "records"
+
+    # ==================== 音频文件命名 ====================
     AUDIO_NAMES = {
         "error_dir": "error_audios",
         "error_mp3": "system_error.mp3",
@@ -44,35 +62,31 @@ class Config:
         "bye_wav": "bye.wav"
     }
 
-    # 路径配置
-    OUTPUT_DIR = "outputs"
-    RECORD_DIR = "records"
-
-
-    # 提问录音参数
+    # ==================== 录音参数 ====================
+    # 采样率改为 16000（Paraformer ASR 要求）
     RECORD_SETTINGS = {
-        "format": pyaudio.paInt16,  # 采样格式（16位）
-        "channels": 1,          # 单声道（2为立体声）
-        "rate": 44100,          # 提高采样率（原16000太低）
-        "chunk": 4096,          # 增大缓冲区块（原1024太小）
-        "threshold": 1000,      # 降低阈值提高灵敏度，测试1000
-        "silence_duration": 2,  # 延长静默判断时间
-        "max_duration": 30      # 最大录音时长（秒）
+        "format": pyaudio.paInt16,
+        "channels": 1,
+        "rate": 16000,          # 原 44100 → 16000（Paraformer 要求）
+        "chunk": 4096,
+        "threshold": 1000,
+        "silence_duration": 2,
+        "max_duration": 30
     }
 
-    # 检测录音参数
+    # ==================== 唤醒词检测参数 ====================
     DETECT_SETTINGS = {
-        "format": pyaudio.paInt16,  # 采样格式（16位）
-        "channels": 1,  # 单声道（2为立体声）
-        "rate": 44100,  # 提高采样率（原16000太低）
-        "chunk": 4096,  # 增大缓冲区块（原1024太小）
-        "silence_duration": 0.7,   # 检测延长静默判断时间
-        "max_duration": 5,       # 检测最大录音时长（秒）
-        "threshold": 2500,        # 检测-声音阈值灵敏度，测试3000
-        "min_recording_duration_second": 0.4,    # 检测-录音检测最小时间（秒）
+        "format": pyaudio.paInt16,
+        "channels": 1,
+        "rate": 16000,          # 原 44100 → 16000（Paraformer 要求）
+        "chunk": 4096,
+        "silence_duration": 0.7,
+        "max_duration": 5,
+        "threshold": 1500,
+        "min_recording_duration_second": 0.4,
     }
 
-
+    # ==================== 唤醒词 / 结束词 ====================
     WAKE_WORD_SETTINGS = {
         "wake_word": "你好，伯乐",
         "wake_word_buffer": [],
@@ -85,22 +99,18 @@ class Config:
         "bye_word_threshold": 0.7
     }
 
-
-    # 音频管理配置
-    # MAX_AUDIO_FILES = 100  # 最大保留文件数
+    # ==================== 音频管理 ====================
     AUDIO_FORMATS = [".wav", ".mp3", ".ogg"]
 
-    # 文件清理配置
     CLEANUP_CONFIG = {
-        'retention_minutes': 10,  # 文件保留分钟数
-        'min_retain_files': 5,  # 每个目录至少保留最新文件数
-        'cleanup_interval': 10  # 清理间隔分钟数
+        'retention_minutes': 10,
+        'min_retain_files': 5,
+        'cleanup_interval': 10
     }
 
-    # 新增：功能开关
+    # ==================== 功能开关 ====================
     FEATURE_FLAGS = {
-        'USE_ASYNC_RESERVED_AUDIO': True  # 是否启用预留音频异步播放
+        'USE_ASYNC_RESERVED_AUDIO': True
     }
 
-    # 🟢 新增：流式处理开关
-    ENABLE_STREAMING = True  # False = 一次性返回，True = 流式处理
+    ENABLE_STREAMING = True  # True = 流式处理，False = 非流式

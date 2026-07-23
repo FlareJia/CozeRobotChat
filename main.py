@@ -7,13 +7,14 @@ from contextlib import contextmanager
 from config import Config
 from services.chat_processor import ChatProcessor
 from services.audio_service import AudioService
-from services.keyboard_service import KeyboardService
+from services.keyboard_service_windows import KeyboardService
 from utils.paths import PathManager
 from services.scheduler import CleanupScheduler
 from services.error_handler import ErrorCategory
 from services.exceptions import AudioError, APIError
 from services.resource_manager import ResourceManager, ResourceType
-
+from logg import setup_global_logger
+setup_global_logger()  
 # 🟢 新增导入
 from services.streaming.streaming_handler import StreamingHandler
 from services.streaming.audio_playback_queue import AudioPlaybackQueue
@@ -114,17 +115,34 @@ def main():
                             os.path.join(Config.OUTPUT_DIR, Config.AUDIO_NAMES["reserved_dir"])
                         )
                         keyboard_service.register_handler("ctrl+1",
-                                                          lambda: audio_service.play_reserved_audio("gaoxiao1"))
+                                                          lambda: audio_service.play_reserved_audio("1"))
                         keyboard_service.register_handler("ctrl+2",
-                                                          lambda: audio_service.play_reserved_audio("gaoxiao2"))
+                                                          lambda: audio_service.play_reserved_audio("2"))
+                        keyboard_service.register_handler("ctrl+3",
+                                                          lambda: audio_service.play_reserved_audio("3"))
+                        keyboard_service.register_handler("ctrl+4",
+                                                          lambda: audio_service.play_reserved_audio("4"))
+                        keyboard_service.register_handler("ctrl+5",
+                                                          lambda: audio_service.play_reserved_audio("5"))
+                        keyboard_service.register_handler("ctrl+6",
+                                                          lambda: audio_service.play_reserved_audio("6"))
+                        keyboard_service.register_handler("ctrl+7",
+                                                          lambda: audio_service.play_reserved_audio("7"))
+                        keyboard_service.register_handler("ctrl+8",
+                                                          lambda: audio_service.play_reserved_audio("8"))
+                        keyboard_service.register_handler("ctrl+9",
+                                                          lambda: audio_service.play_reserved_audio("9"))
+
+
+
                         keyboard_service.register_handler("alt+1",
-                                                          lambda: audio_service.play_reserved_audio("aochengda1"))
+                                                          lambda: audio_service.play_reserved_audio("21"))
                         keyboard_service.register_handler("alt+2",
-                                                          lambda: audio_service.play_reserved_audio("gangchengda1"))
+                                                          lambda: audio_service.play_reserved_audio("22"))
                         keyboard_service.register_handler("alt+3",
-                                                          lambda: audio_service.play_reserved_audio("gangchengda2"))
+                                                          lambda: audio_service.play_reserved_audio("23"))
                         keyboard_service.register_handler("alt+4",
-                                                          lambda: audio_service.play_reserved_audio("gangchengda3"))
+                                                          lambda: audio_service.play_reserved_audio("24"))
 
                         # 启动键盘监听
                         keyboard_service.start()
@@ -216,19 +234,13 @@ def main():
                                         audio_playback_queue.enqueue(wait_audio_path, "已收到提问，请稍等。")
 
                                         try:
-                                            # 发送流式请求
-                                            for event_data in api_client.send_chat_request_stream(Config.BOT_ID, Config.USER_ID,
-                                                                                                  transcript):
-                                                event = event_data["event"]
-                                                data = event_data["data"]
-
-                                                if event == "conversation.message.delta":
-                                                    if data and data.get('type') == "answer" and data.get('content'):
-                                                        content_chunk = data['content']
-                                                        streaming_handler.process_chunk(content_chunk)
-
-                                                elif event == "conversation.chat.completed":
-                                                    break
+                                            # 发送流式请求（Qwen OpenAI 兼容接口）
+                                            messages = [
+                                                {"role": "system", "content": Config.SYSTEM_PROMPT},
+                                                {"role": "user", "content": transcript}
+                                            ]
+                                            for text_chunk in api_client.chat_stream(messages):
+                                                streaming_handler.process_chunk(text_chunk)
 
                                             # 处理剩余内容
                                             streaming_handler.flush_remaining()

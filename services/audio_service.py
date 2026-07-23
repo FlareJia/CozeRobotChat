@@ -143,9 +143,9 @@ class AudioService:
 
     def play_reserved_audio(self, audio_number: int) -> None:
         """播放预留音频"""
-        audio_path = os.path.join(self.reserved_audios_dir, f"reserved_{audio_number}.mp3")
+        audio_path = os.path.join(self.reserved_audios_dir, f"{audio_number}.wav")
         if os.path.exists(audio_path):
-            logger.info(f"播放预留音频: reserved_{audio_number}.mp3")
+            logger.info(f"播放预留音频: {audio_number}.wav")
             self._play_audio_async(audio_path)
         else:
             logger.warning(f"预留音频文件不存在: {audio_path}")

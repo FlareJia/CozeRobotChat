@@ -1,3 +1,9 @@
+# 阿里云百炼 DashScope SDK（ASR + TTS）
+dashscope>=1.25.0
+
+# OpenAI 兼容客户端（Qwen Chat）
+openai>=1.0.0
+
 # 核心网络请求库
 requests>=2.28.1
 
@@ -13,14 +19,8 @@ retrying>=1.3.3
 # 定时任务调度
 apscheduler>=3.10.0
 
-# 系统工具库 (Mac/Linux可能需要)
-portaudio>=19.6.0  # pyaudio的底层依赖
-
-# 开发工具 (可选)
-python-dotenv>=0.21.0  # 已包含，再次强调重要性
-loguru>=0.7.0          # 更友好的日志工具（可选替换logging）
-
-
+# 系统工具库
+portaudio>=19.6.0
 filelock>=3.12.2
 psutil>=5.9.4
 playsound>=1.3.0

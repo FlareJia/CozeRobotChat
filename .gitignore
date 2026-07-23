@@ -1,0 +1,45 @@
+# 环境变量（含密钥，不提交）
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# 虚拟环境
+venv/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 日志
+logs/
+*.log
+
+# 输出文件（生成的音频）
+outputs/
+
+# 录音文件
+records/
+
+# 测试（本地测试脚本）
+test/
+
+# 文档（本地方案文档）
+docs/
+
+# ROS 生成文件
+ros_ws/build/
+ros_ws/devel/
+ros_ws/install/
+
+# 系统文件
+.DS_Store
+Thumbs.db

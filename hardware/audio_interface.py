@@ -1,7 +1,8 @@
 import pyaudio
 import time
 import logging
-import audioop
+import struct
+import math
 import wave
 import os
 import platform
@@ -13,6 +14,19 @@ from config import Config
 from utils.paths import PathManager
 from services.exceptions import AudioError
 import subprocess  # 仅保留subprocess用于ROS服务调用
+
+
+def _rms(data: bytes, sample_width: int = 2) -> int:
+    """计算 16-bit 音频数据的 RMS（替代 Python 3.13+ 已移除的 audioop.rms）"""
+    if not data:
+        return 0
+    count = len(data) // sample_width
+    if count == 0:
+        return 0
+    fmt = {1: 'b', 2: 'h', 4: 'i'}[sample_width]
+    samples = struct.unpack(f'{count}{fmt}', data)
+    sum_squares = sum(s * s for s in samples)
+    return int(math.sqrt(sum_squares / count))
 
 
 logger = logging.getLogger(__name__)
@@ -96,7 +110,7 @@ class RobotAudioInterface:
             # 录音主循环（检测声音并收集音频帧）
             while True:
                 data = stream.read(self.config.DETECT_SETTINGS["chunk"])
-                rms = audioop.rms(data, 2)  # 计算音频能量（判断是否有声音）
+                rms = _rms(data)  # 计算音频能量（判断是否有声音）
 
                 if rms > self.config.DETECT_SETTINGS["threshold"]:
                     if not recording:
@@ -136,8 +150,8 @@ class RobotAudioInterface:
                     wf.writeframes(b''.join(frames))
 
                 # 调用语音识别API转文字
-                from services.api_client import EnhancedCozeAPIClient
-                api_client = EnhancedCozeAPIClient(Config.BEARER_TOKEN)
+                from services.api_client import QwenAPIClient
+                api_client = QwenAPIClient()
                 text = api_client.transcribe_audio(temp_filename)
 
                 # 清理临时文件
@@ -201,7 +215,7 @@ class RobotAudioInterface:
             # 录音主循环
             while True:
                 data = stream.read(self.config.RECORD_SETTINGS["chunk"])
-                rms = audioop.rms(data, 2)  # 音频能量检测
+                rms = _rms(data)  # 音频能量检测
 
                 if rms > self.config.RECORD_SETTINGS["threshold"]:
                     if not recording:
@@ -233,7 +247,7 @@ class RobotAudioInterface:
                 return filename
             return None
 
-        except audioop.error as e:
+        except struct.error as e:
             logger.error(f"音频处理错误: {str(e)}")
             raise AudioError(f"音频处理错误: {str(e)}")
         except IOError as e:

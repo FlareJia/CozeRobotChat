@@ -1,10 +1,9 @@
 import logging
-import time
 import json
 import os
-import subprocess  # 新增：导入subprocess模块
+import re
+import subprocess
 from typing import Optional
-from utils.backoff import BackoffManager
 from config import Config
 from services.audio_service import AudioService
 logger = logging.getLogger(__name__)
@@ -15,12 +14,11 @@ class ChatProcessor:
 
     def __init__(self, api_client, audio_service: AudioService):
         """
-        :param api_client: EnhancedCozeAPIClient 实例
+        :param api_client: QwenAPIClient 实例
         :param audio_service: AudioService 实例
         """
         self.api_client = api_client
         self.audio_service = audio_service
-        self.backoff = BackoffManager()
         self.config = Config()
 
     def process_query(self, query: str) -> Optional[str]:
@@ -30,36 +28,29 @@ class ChatProcessor:
         :return: 生成的音频文件路径
         """
         try:
-            # 发送聊天请求
-            response = self.api_client.send_chat_request(
-                self.config.BOT_ID,
-                self.config.USER_ID,
-                self._format_query(query)
-            )
-            if not response:
-                return None
+            # 构建消息
+            messages = [
+                {"role": "system", "content": Config.SYSTEM_PROMPT},
+                {"role": "user", "content": self._format_query(query)}
+            ]
 
             # 播放等待音频
             self.audio_service.play_wait_audio()
 
-            # 提取对话ID
-            chat_id = response.get('data', {}).get('id')
-            conversation_id = response.get('data', {}).get('conversation_id')
-            if not chat_id or not conversation_id:
-                logger.error("无法获取对话ID")
+            # 发送聊天请求（非流式，直接返回结果）
+            response_text = self.api_client.chat(messages)
+            if not response_text:
+                self.audio_service.stop_audio()
                 return None
 
-            # 等待处理完成
-            if self._wait_for_completion(conversation_id, chat_id):
-                # 停止等待音频播放
-                self.audio_service.stop_audio()
-                return self._handle_response(conversation_id, chat_id)
+            # 停止等待音频
+            self.audio_service.stop_audio()
 
-            return None
+            # 处理响应
+            return self._handle_response(response_text)
 
         except Exception as e:
             logger.error(f"处理查询失败: {str(e)}")
-            # 确保停止等待音频播放
             self.audio_service.stop_audio()
             return None
 
@@ -67,119 +58,92 @@ class ChatProcessor:
         """格式化查询内容"""
         return f"{query} 精简且快速的输出内容"
 
-    def _wait_for_completion(self, conv_id: str, chat_id: str) -> bool:
-        """等待对话完成"""
-        self.backoff.reset()
-        start_time = time.time()
-
-        while time.time() - start_time < 120:
-            try:
-                status = self.api_client.check_chat_status(conv_id, chat_id)
-                if status.get('data', {}).get('status') == "completed":
-                    return True
-                self.backoff.wait()
-            except Exception as e:
-                logger.error(f"状态检查失败: {str(e)}")
-                self.backoff.wait()
-        return False
-
-    def _handle_response(self, conv_id: str, chat_id: str) -> Optional[str]:
+    def _handle_response(self, response_text: str) -> Optional[str]:
         """处理API响应，整合获取回答、音频转换和传输逻辑"""
-        # 1. 获取智能体的JSON回答
-        answer_json = self._get_agent_answer(conv_id, chat_id)
+        # 1. 解析智能体的JSON回答
+        answer_json = self._parse_agent_answer(response_text)
         if not answer_json:
             return None
-        
+
         # 2. 根据ismove判断是否执行rosservice命令
         if answer_json.get('ismove', False):
             move_content = answer_json.get('move', 'none')
             self._execute_rosservice(move_content)
-        
+
         # 3. 将speech内容转换为音频
         audio_path = self._convert_answer_to_audio(answer_json)
         if not audio_path:
             return None  # 音频生成失败则返回
-        
+
         # 4. 自动传输音频到下位机
-        file_transfer = File_transfer(self.config)  # 创建实例（如果需要配置可以传入）
+        file_transfer = File_transfer(self.config)
         transfer_success = file_transfer._transfer_audio_to_lower(audio_path)
         if not transfer_success:
             logger.warning("音频传输失败，但音频文件已生成")
-        
-        return audio_path  # 即使传输失败，仍返回本地音频路径（可选）
-    
-    
+
+        return audio_path
+
     def _execute_rosservice(self, action: str) -> None:
         """
         通过subprocess执行rosservice命令
         :param action: 要执行的动作（如"击掌"）
         """
         try:
-            # 构建命令：rosservice call /execute_arm_action "动作内容"
             command = [
-                "rosservice", 
-                "call", 
-                "/coze_execute_arm_action", 
-                f'"{action}"'  # 确保动作内容带引号
+                "rosservice",
+                "call",
+                "/coze_execute_arm_action",
+                f'"{action}"'
             ]
-            
+
             logger.info(f"执行命令: {' '.join(command)}")
-            
-            # 执行命令并捕获输出
+
             result = subprocess.run(
                 command,
                 check=True,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
-                text=True  # 输出为字符串而非字节
+                text=True
             )
-            
-            # 记录成功信息
+
             logger.info(f"rosservice执行成功，输出: {result.stdout}")
             print(f"动作执行成功: {action}")
-            
+
         except subprocess.CalledProcessError as e:
-            # 命令执行失败（返回非0状态码）
             logger.error(f"rosservice执行失败，错误码: {e.returncode}, 错误信息: {e.stderr}")
         except Exception as e:
-            # 其他异常（如命令不存在）
             logger.error(f"执行rosservice时发生错误: {str(e)}")
 
-    def _get_agent_answer(self, conv_id: str, chat_id: str) -> Optional[dict]:
+    def _parse_agent_answer(self, response_text: str) -> Optional[dict]:
         """
-        从智能体获取JSON格式回答，并提取关键字段
-        :return: 包含speech、ismove、move的字典，或None
+        解析智能体的 JSON 格式回答
+        :param response_text: Qwen 返回的原始文本
+        :return: 包含 speech、ismove、move 的字典，或 None
         """
         try:
-            # 调用API获取消息列表（智能体返回的内容在消息中）
-            messages = self.api_client.get_chat_messages(conv_id, chat_id)
-            if not messages:
-                logger.error("未获取到消息列表")
-                return None
+            logger.info(f"智能体原始回答：{response_text}")
 
-            # 提取智能体的回答消息（type="answer"）
-            answer_messages = [
-                msg.get('content', '') 
-                for msg in messages 
-                if msg.get('type') == "answer"
-            ]
-            if not answer_messages:
-                logger.error("未提取到智能体的回答消息")
-                return None
-
-            # 解析JSON格式的回答内容（假设消息内容是纯JSON字符串）
+            # 尝试直接解析 JSON
             try:
-                logger.info(f"智能体回答：{answer_messages[0]}")
-                answer_json = json.loads(answer_messages[0])
-                 # 取第一条回答消息
-            except json.JSONDecodeError as e:
-                logger.error(f"智能体回答不是有效的JSON格式：{str(e)}")
-                return None
+                answer_json = json.loads(response_text)
+            except json.JSONDecodeError:
+                # 尝试提取 JSON 块（可能在 markdown 代码块中）
+                json_match = re.search(r'```(?:json)?\s*\n?(.*?)\n?```', response_text, re.DOTALL)
+                if json_match:
+                    answer_json = json.loads(json_match.group(1))
+                else:
+                    # 尝试找到花括号包裹的 JSON
+                    brace_match = re.search(r'\{.*\}', response_text, re.DOTALL)
+                    if brace_match:
+                        answer_json = json.loads(brace_match.group(0))
+                    else:
+                        logger.error("无法从回答中提取 JSON")
+                        return None
 
-            # 验证JSON字段是否完整
+            # 验证 JSON 字段
             required_fields = ["image", "ismove", "move", "speech"]
             if not all(field in answer_json for field in required_fields):
-                logger.error("智能体返回的JSON缺少必要字段")
+                logger.error("返回的JSON缺少必要字段")
                 return None
 
             logger.info("智能体返回的解析结果：")
@@ -188,9 +152,8 @@ class ChatProcessor:
             return answer_json
 
         except Exception as e:
-            logger.error(f"获取智能体回答失败：{str(e)}")
+            logger.error(f"解析智能体回答失败：{str(e)}")
             return None
-        
 
     def _convert_answer_to_audio(self, answer_json: dict) -> Optional[str]:
         """
@@ -199,13 +162,12 @@ class ChatProcessor:
         :return: 音频文件路径或None
         """
         try:
-            # 提取speech内容
             speech_text = answer_json.get('speech', '').strip()
             if not speech_text:
                 logger.error("speech字段为空，无法生成音频")
                 return None
 
-            # 调用API生成音频
+            # 调用 Qwen TTS 生成音频
             audio_path = self.api_client.generate_audio(speech_text)
             if not audio_path:
                 logger.error("音频生成失败")
